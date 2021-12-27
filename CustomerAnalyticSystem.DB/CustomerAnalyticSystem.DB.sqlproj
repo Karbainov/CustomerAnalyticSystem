@@ -78,5 +78,17 @@
     <Build Include="dbo\Stored Procedures\CRUD\Group\DeleteGroupById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Group\GetGroupById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Group\UpdateGroupById.sql" />
+    <Build Include="dbo\Tables\CustomerType.sql" />
+    <Build Include="dbo\Tables\Customer.sql" />
+    <Build Include="dbo\Tables\ContactType.sql" />
+    <Build Include="dbo\Tables\Contact.sql" />
+    <Build Include="dbo\Tables\Comment.sql" />
+    <Build Include="dbo\Tables\Check.sql" />
+    <Build Include="dbo\Tables\Order.sql" />
+    <Build Include="dbo\Tables\Status.sql" />
+    <Build Include="dbo\Tables\Tag.sql" />
+    <Build Include="dbo\Tables\Product_Tag.sql" />
+    <Build Include="dbo\Tables\Grade.sql" />
+    <Build Include="dbo\Tables\Preferences.sql" />
   </ItemGroup>
 </Project>
