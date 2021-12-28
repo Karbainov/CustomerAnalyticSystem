@@ -90,5 +90,6 @@
     <Build Include="dbo\Tables\Product_Tag.sql" />
     <Build Include="dbo\Tables\Grade.sql" />
     <Build Include="dbo\Tables\Preferences.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllProductInfoById.sql" />
   </ItemGroup>
 </Project>
