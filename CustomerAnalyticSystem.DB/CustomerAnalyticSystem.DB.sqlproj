@@ -93,5 +93,6 @@
     <Build Include="dbo\Stored Procedures\GetAllProductInfoById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Group\GetAllGroup.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Product\GetAllProduct.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllGroupsWithProducts.sql" />
   </ItemGroup>
 </Project>
