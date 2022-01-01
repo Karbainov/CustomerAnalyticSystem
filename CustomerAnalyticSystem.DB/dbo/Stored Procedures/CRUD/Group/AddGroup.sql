@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[AddGroupById]
+﻿CREATE PROCEDURE [dbo].[AddGroup]
 	@Name nvarchar(35),
 	@Description nvarchar(100)
 AS
