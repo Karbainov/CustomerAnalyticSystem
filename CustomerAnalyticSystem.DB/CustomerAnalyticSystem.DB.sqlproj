@@ -66,6 +66,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Client" />
     <Folder Include="dbo\Stored Procedures\CRUD\Product" />
     <Folder Include="dbo\Stored Procedures\CRUD\Group" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Grade" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Preference" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Stored Procedures\CRUD\Client\Udalite.sql" />
@@ -95,5 +97,15 @@
     <Build Include="dbo\Stored Procedures\CRUD\Group\GetAllGroup.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Product\GetAllProduct.sql" />
     <Build Include="dbo\Stored Procedures\GetAllGroupsWithProducts.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Grade\AddGrade.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Grade\GetAllGrade.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Grade\GetAllGradeById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Grade\UpdateGradeById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Grade\DeleteGradeById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Preference\AddPreference.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Preference\GetAllPreferences.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Preference\GetAllPreferencesById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Preference\UpdatePreferencesById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Preference\DeletePreferencesById.sql" />
   </ItemGroup>
 </Project>
