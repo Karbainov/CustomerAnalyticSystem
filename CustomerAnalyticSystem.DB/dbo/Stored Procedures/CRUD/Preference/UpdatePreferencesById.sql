@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[UpdatePreferences]
-	@param1 int = 0,
-	@param2 int
-AS
-	SELECT @param1, @param2
-RETURN 0
+	@Id integer, @IsInterested bit
+as
+update dbo.[Preferences]
+set IsInterested=@IsInterested
+where Id=@Id
+
