@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateGrade]
-	@param1 int = 0,
-	@param2 int
-AS
-	SELECT @param1, @param2
-RETURN 0
+		@Id integer, @Value nvarchar(255)
+as
+update dbo.[Grade]
+set Value=@Value
+where Id=@Id
