@@ -1,6 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[AddGrade]
-	@param1 int = 0,
-	@param2 int
-AS
-	SELECT @param1, @param2
-RETURN 0
+	@ProductId integer, @CustomerId integer, @Value nvarchar(255)
+as
+insert into [dbo].[Grade]
+values (@ProductId, @CustomerId, @Value)
