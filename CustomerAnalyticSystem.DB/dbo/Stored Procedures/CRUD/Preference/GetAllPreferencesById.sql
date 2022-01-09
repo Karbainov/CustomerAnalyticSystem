@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllPreferencesById]
-	@param1 int = 0,
-	@param2 int
-AS
-	SELECT @param1, @param2
-RETURN 0
+	@Id integer
+as
+select *
+from dbo.[Preferences]
+where Id=@Id

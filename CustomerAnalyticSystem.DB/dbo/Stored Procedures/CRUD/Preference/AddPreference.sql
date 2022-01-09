@@ -1,6 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[AddPreference]
-	@param1 int = 0,
-	@param2 int
-AS
-	SELECT @param1, @param2
-RETURN 0
+	@ProductId integer, @CustomerId integer, @TagId integer, @GroupId integer, @IsInterested bit
+as
+insert into [dbo].[Preferences]
+values (@ProductId, @CustomerId, @TagId, @GroupId, @IsInterested)
