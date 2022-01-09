@@ -107,5 +107,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Preference\GetAllPreferencesById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Preference\UpdatePreferencesById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Preference\DeletePreferencesById.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllOrderInfoByOrderId.sql" />
   </ItemGroup>
 </Project>
