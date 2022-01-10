@@ -126,6 +126,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\ContactType\UpdateContactType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllProductsByTag.sql" />
     <Build Include="dbo\Stored Procedures\GetAllPreferencesByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GetAllOrdersByCustomerId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
