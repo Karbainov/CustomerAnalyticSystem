@@ -70,6 +70,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Preference" />
     <Folder Include="dbo\Stored Procedures\CRUD\Customer" />
     <Folder Include="dbo\Stored Procedures\CRUD\CustomerType" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Contact" />
+    <Folder Include="dbo\Stored Procedures\CRUD\ContactType" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Stored Procedures\CRUD\Client\Udalite.sql" />
@@ -112,5 +114,21 @@
     <Build Include="dbo\Stored Procedures\GetAllOrderInfoByOrderId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Customer\UpdateCustomerById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Customer\AddCustomer.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Contact\AddContact.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Contact\DeleteContact.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Contact\GetAllContact.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Contact\GetContactById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Contact\UpdateContact.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\AddContactType.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\DeleteContactType.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\GetAllContactType.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\GetContactTypeById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\UpdateContactType.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllProductsByTag.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllPreferencesByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GetAllOrdersByCustomerId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
   </ItemGroup>
 </Project>
