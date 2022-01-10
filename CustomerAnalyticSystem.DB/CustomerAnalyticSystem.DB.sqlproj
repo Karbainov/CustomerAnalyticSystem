@@ -71,6 +71,7 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Customer" />
     <Folder Include="dbo\Stored Procedures\CRUD\CustomerType" />
     <Folder Include="dbo\Stored Procedures\CRUD\Contact" />
+    <Folder Include="dbo\Stored Procedures\CRUD\ContactType" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Stored Procedures\CRUD\Client\Udalite.sql" />
@@ -118,5 +119,10 @@
     <Build Include="dbo\Stored Procedures\CRUD\Contact\GetAllContact.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Contact\GetContactById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Contact\UpdateContact.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\AddContactType.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\DeleteContactType.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\GetAllContactType.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\GetContactTypeById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\ContactType\UpdateContactType.sql" />
   </ItemGroup>
 </Project>
