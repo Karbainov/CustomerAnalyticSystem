@@ -68,6 +68,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Group" />
     <Folder Include="dbo\Stored Procedures\CRUD\Grade" />
     <Folder Include="dbo\Stored Procedures\CRUD\Preference" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Customer" />
+    <Folder Include="dbo\Stored Procedures\CRUD\CustomerType" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Stored Procedures\CRUD\Client\Udalite.sql" />
@@ -108,5 +110,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Preference\UpdatePreferencesById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Preference\DeletePreferencesById.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrderInfoByOrderId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Customer\UpdateCustomerById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Customer\AddCustomer.sql" />
   </ItemGroup>
 </Project>
