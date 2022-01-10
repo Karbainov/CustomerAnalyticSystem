@@ -1,8 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllContactByCustomerId]
 	@Id integer
 as
-	select * from Contact as cont
+	select C.CustomerId, C.Value, CT.Name from Contact as C
 	inner join ContactType as CT
-	on cont.ContactTypeId = CT.Id
+	on C.ContactTypeId = CT.Id
 	where CustomerId = @Id
+
 RETURN @Id

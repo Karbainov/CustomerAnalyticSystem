@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllCommentByCustomerId]
   @Id integer
 as
-  select * from Comment
+  select Comment.Id,Comment.CustomerId, Comment.Text from Comment
   where CustomerId = @Id
 RETURN @Id
