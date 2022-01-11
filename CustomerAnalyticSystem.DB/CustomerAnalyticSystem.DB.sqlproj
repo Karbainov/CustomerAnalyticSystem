@@ -132,6 +132,7 @@
     <Build Include="dbo\Stored Procedures\GetAllPreferencesByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\GetAllOrdersByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCommentByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllContactByCustomerId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
