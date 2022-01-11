@@ -110,8 +110,14 @@
     <Build Include="dbo\Stored Procedures\CRUD\Preference\UpdatePreferencesById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Preference\DeletePreferencesById.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrderInfoByOrderId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\CustomerType\UpdateCustomerTypeById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\CustomerType\DropCustomerTypeById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\CustomerType\AddCustomerType.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\CustomerType\GetCustomerTypeById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Customer\UpdateCustomerById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Customer\AddCustomer.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Customer\DropCustomerById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Customer\GetCustomerById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Contact\AddContact.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Contact\DeleteContact.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Contact\GetAllContact.sql" />
@@ -126,6 +132,7 @@
     <Build Include="dbo\Stored Procedures\GetAllPreferencesByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\GetAllOrdersByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCommentByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllContactByCustomerId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
