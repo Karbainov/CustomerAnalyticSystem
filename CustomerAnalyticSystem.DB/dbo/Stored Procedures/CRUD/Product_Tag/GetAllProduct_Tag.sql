@@ -1,6 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[Add]
-	@param1 int = 0,
-	@param2 int
-AS
-	SELECT @param1, @param2
-RETURN 0
+﻿CREATE PROCEDURE [dbo].[GetAllProduct_Tag]
+	as
+select *
+from dbo.[Product_Tag]
+
