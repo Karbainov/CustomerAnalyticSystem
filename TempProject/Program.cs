@@ -20,9 +20,20 @@ namespace TempProject
             {
                products = connection.Query<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>(query).ToList();
             }
-            foreach (var p in products)
+            //foreach (var p in products)
+            //{
+            //    Console.WriteLine((CustomerAnalyticSystem.DAL.DTOs.ProductDTO)p);
+            //}
+            MagicCLass maaagic = new MagicCLass(connectionString, query);
+            object test;
+            test = (List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>)maaagic.fdd(query);
+            if (test is List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>)
             {
-                Console.WriteLine((CustomerAnalyticSystem.DAL.DTOs.ProductDTO)p);
+
+                foreach (var p in (List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>)test)
+                {
+                    Console.WriteLine((CustomerAnalyticSystem.DAL.DTOs.ProductDTO)p);
+                }
             }
         }
     }
