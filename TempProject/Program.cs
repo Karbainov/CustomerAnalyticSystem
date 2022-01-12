@@ -3,7 +3,7 @@ using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
-using CustomerAnalyticSystem.DAL;
+using CustomerAnalyticSystem.DAL.DTOs;
 
 namespace TempProject
 {
@@ -11,29 +11,16 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
-            string query = "EXEC GetAllProduct";
-            string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False;
-                                       Pooling=False;MultipleActiveResultSets=False;
-                                       Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
+            List<AllOrderInfoByOrderId> products;
+            string query = "EXEC GetAllOrderInfoByOrderId 1";
+            string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False; Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-               products = connection.Query<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>(query).ToList();
+               products = connection.Query<AllOrderInfoByOrderId>(query).ToList();
             }
-            //foreach (var p in products)
-            //{
-            //    Console.WriteLine((CustomerAnalyticSystem.DAL.DTOs.ProductDTO)p);
-            //}
-            MagicCLass maaagic = new MagicCLass(connectionString, query);
-            object test;
-            test = (List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>)maaagic.fdd(query);
-            if (test is List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>)
+            foreach (var p in (List<AllOrderInfoByOrderId>)products)
             {
-
-                foreach (var p in (List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>)test)
-                {
-                    Console.WriteLine((CustomerAnalyticSystem.DAL.DTOs.ProductDTO)p);
-                }
+                Console.WriteLine((AllOrderInfoByOrderId)p);
             }
         }
     }

@@ -13,13 +13,13 @@ namespace TempProject
         public string connectionString { get; set; }
         public string StoredProcedure { get; set; }
 
-        public MagicCLass(string connect, string nameProc)
+        public MagicCLass(string connect)
         {
             connectionString = connect;
         }
-        public object fdd(string procedure)
+        public object GetAll(string procedure)
         {
-            object toReturn = 1;
+            object toReturn;
             StoredProcedure = procedure;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

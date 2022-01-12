@@ -13,5 +13,12 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public int OrderId { get; set; }
         public int Amount { get; set; }
         public int Mark { get; set; }
+
+        public override string ToString()
+        {
+            string s = "";
+            s = s + " " + Id + " " + ProductId + " " + OrderId + " " + Amount + " " + Mark;
+            return s;
+        }
     }
 }
