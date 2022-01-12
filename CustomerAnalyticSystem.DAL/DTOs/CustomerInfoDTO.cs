@@ -15,6 +15,6 @@ namespace CustomerAnalyticSystem.DAL.DTOs
 
         List<CommentDTO> Comments;
 
-        List<ContactDTO> Contacts;
+        //List<ContactDTO> Contacts;
     }
 }

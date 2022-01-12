@@ -13,6 +13,9 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         string LastName { get; set; }
         int TypeId { get; set; }
 
-
+        public override string ToString()
+        {
+            return $"{Id} {FirstName} {LastName} {TypeId}";
+        }
     }
 }
