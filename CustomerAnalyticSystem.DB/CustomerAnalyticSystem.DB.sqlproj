@@ -136,6 +136,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\ContactType\UpdateContactType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllProductsByTag.sql" />
     <Build Include="dbo\Stored Procedures\GetAllPreferencesByCustomerId.sql" />
+<Build Include="dbo\Stored Procedures\GetAllGradesByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCommentByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllContactByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrdersByCustomerId.sql" />
