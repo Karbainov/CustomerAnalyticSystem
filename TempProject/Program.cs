@@ -11,13 +11,9 @@ namespace TempProject
     {
         public static void FillCustomerDTO()
         {
-            List<CustomerAnalyticSystem.DAL.DTOs.CustomerDTO> customers;
-
-            string query = "EXEC GetAllCustomers";
-            string connectionString = @"Data Source=LAPTOP-JUFI6541;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False;
-                                       Pooling=False;MultipleActiveResultSets=False;
-                                       Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
-
+            List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
+            string query = "EXEC GetAllProduct";
+            string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 customers = connection.Query<CustomerAnalyticSystem.DAL.DTOs.CustomerDTO>(query).ToList();
