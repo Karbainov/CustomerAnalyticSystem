@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllOrderInfoByOrderId]
 @Id integer
 AS
-	SELECT Cust.Id as "CustomerId",C.Id, C.ProductId, C.OrderId, C.Amount, C.Mark FROM [dbo].[Check] AS C
+	SELECT  C.OrderId,Cust.Id as "CustomerId",C.Id, C.ProductId, C.Amount, C.Mark FROM [dbo].[Check] AS C
 	join [dbo].[Order] as O
 	on C.OrderId = O.ID
 	join [dbo].[Customer] as Cust
