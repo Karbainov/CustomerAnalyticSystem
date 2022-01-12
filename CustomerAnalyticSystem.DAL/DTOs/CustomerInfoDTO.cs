@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    internal class CustomerTypeDTO
+    internal class CustomerInfoDTO
     {
-        int Id { get; set; }
-        string Name { get; set; }
     }
 }
