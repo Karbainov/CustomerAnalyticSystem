@@ -13,9 +13,7 @@ namespace TempProject
         {
             List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             string query = "EXEC GetAllProduct";
-            string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False;
-                                       Pooling=False;MultipleActiveResultSets=False;
-                                       Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
+            string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                products = connection.Query<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>(query).ToList();
