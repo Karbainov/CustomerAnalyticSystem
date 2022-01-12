@@ -75,6 +75,8 @@
     <Folder Include="dbo\Stored Procedures\CRUD\Product_Tag\" />
     <Folder Include="dbo\Stored Procedures\CRUD\Comment" />
     <Folder Include="dbo\Stored Procedures\CRUD\Check" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Order" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Status" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Product.sql" />
@@ -154,6 +156,16 @@
     <Build Include="dbo\Stored Procedures\CRUD\Check\AddCheck.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Check\DeleteCheckById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Check\UpdateCheckById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\GetAllStatus.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\GetStatusById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\UpdateStatusById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\DeleteStatusById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\AddStatus.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\AddOrder.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\DeleteOrderById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\UpdateOrderById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\GetOrderById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\GetAllOrders.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
