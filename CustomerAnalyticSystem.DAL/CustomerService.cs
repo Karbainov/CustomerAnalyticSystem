@@ -33,28 +33,23 @@ namespace CustomerAnalyticSystem.DAL
             List<CommentDTO> comments = null;
             //List<ContactDTO> contacts = null;
 
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                customer = connection.QuerySingle<CustomerInfoDTO>(Querys.GetCustomerById, new { id }, commandType: CommandType.StoredProcedure);
+            }
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                comments = connection.Query<CommentDTO>(Querys.GetAllCommentByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
+                customer.Comments = connection.Query<CommentDTO>(Querys.GetAllCommentByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
 
             //using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             //{
-            //    contacts = connection.Query<ContactDTO>(Querys.GetAllContactByCustomerId,
+            //    customer.Contacts = connection.Query<ContactDTO>(Querys.GetAllContactByCustomerId,
             //        param: id).ToList();
             //}
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customerDTO = connection.QuerySingle<CustomerDTO>(Querys.GetCustomerById, new { id }, commandType: CommandType.StoredProcedure);
-            }
 
-            customer.Id = customerDTO.Id;
-            customer.FirstName = customerDTO.FirstName;
-            customer.LastName = customerDTO.LastName;
-            customer.TypeId = customerDTO.TypeId;
-
-            customer.Comments = comments;
+            //customer.Comments = comments;
             //customer.Contacts = contacts;
 
             return customer;
