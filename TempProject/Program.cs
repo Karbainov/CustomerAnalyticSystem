@@ -13,7 +13,7 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            CustomerDapper customerDapper = new CustomerDapper();
+            CustomerService customerDapper = new CustomerService();
             List<CustomerDTO> c = customerDapper.GetAllCustomerService();
 
             foreach (CustomerDTO cust in c)

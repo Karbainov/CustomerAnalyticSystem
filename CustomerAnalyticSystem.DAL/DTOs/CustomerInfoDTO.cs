@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    internal class CustomerInfoDTO
+    public class CustomerInfoDTO
     {
-        int Id { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        int TypeId { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int TypeId { get; set; }
 
-        List<CommentDTO> Comments;
+        public List<CommentDTO> Comments { get; set; }
 
-        //List<ContactDTO> Contacts;
+        public List<ContactDTO> Contacts;
+
+        public CustomerInfoDTO()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return $"{Id} {FirstName} {LastName} {TypeId}";
+        }
     }
 }
