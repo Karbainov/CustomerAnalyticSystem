@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[GetGroupById]
 	@Id integer
 AS
-	SELECT * FROM [dbo].[Group]
+	SELECT G.[Id], G.[Name], G.[Description] FROM [dbo].[Group] as G
 	WHERE Id = @Id
 RETURN 0
