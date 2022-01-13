@@ -15,7 +15,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
 
         public List<CommentDTO> Comments { get; set; }
 
-        public List<ContactDTO> Contacts;
+        //public List<ContactDTO> Contacts;
 
         public override string ToString()
         {

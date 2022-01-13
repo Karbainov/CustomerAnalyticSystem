@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL;
+using System.Data;
 
 namespace CustomerAnalyticSystem.DAL
 {
@@ -26,27 +27,26 @@ namespace CustomerAnalyticSystem.DAL
 
         public CustomerInfoDTO GetCustomerInfoService(int id)
         {
-            CustomerInfoDTO customer = null;
+            CustomerInfoDTO customer = new();
 
             CustomerDTO customerDTO = null;
             List<CommentDTO> comments = null;
-            List<ContactDTO> contacts = null;
+            //List<ContactDTO> contacts = null;
+
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                comments = connection.Query<CommentDTO>(Querys.GetAllCommentByCustomerId,
-                    param: id).ToList();
+                comments = connection.Query<CommentDTO>(Querys.GetAllCommentByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
 
+            //using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            //{
+            //    contacts = connection.Query<ContactDTO>(Querys.GetAllContactByCustomerId,
+            //        param: id).ToList();
+            //}
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                contacts = connection.Query<ContactDTO>(Querys.GetAllContactByCustomerId,
-                    param: id).ToList();
-            }
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customerDTO = connection.QuerySingle<CustomerDTO>(Querys.GetCustomerById,
-                    param: id);
+                customerDTO = connection.QuerySingle<CustomerDTO>(Querys.GetCustomerById, new { id }, commandType: CommandType.StoredProcedure);
             }
 
             customer.Id = customerDTO.Id;
@@ -55,7 +55,7 @@ namespace CustomerAnalyticSystem.DAL
             customer.TypeId = customerDTO.TypeId;
 
             customer.Comments = comments;
-            customer.Contacts = contacts;
+            //customer.Contacts = contacts;
 
             return customer;
         }

@@ -13,13 +13,16 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            CustomerService customerDapper = new CustomerService();
-            List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            //CustomerService customerDapper = new CustomerService();
+            //List<CustomerDTO> c = customerDapper.GetAllCustomerService();
 
-            foreach (CustomerDTO cust in c)
-            {
-                Console.WriteLine(cust);
-            }
+            //foreach (CustomerDTO cust in c)
+            //{
+            //    Console.WriteLine(cust);
+            //}
+            CustomerService temp = new();
+            CustomerInfoDTO qqq = 
+            temp.GetCustomerInfoService(1);
         }
     }
 }
