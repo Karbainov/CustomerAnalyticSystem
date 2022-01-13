@@ -37,7 +37,7 @@ namespace TempProject
             //}
             AllOrderInfoByOrderId kekis = new();
             FillOrderInfo test = new();
-            kekis = test.FillOrderInfoByOrderId();
+            kekis = test.FillOrderInfoByOrderId(1);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
