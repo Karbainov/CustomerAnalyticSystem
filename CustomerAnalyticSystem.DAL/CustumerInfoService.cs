@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL.DTOs;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 
 namespace CustomerAnalyticSystem.DAL
@@ -19,7 +20,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                tagMarksDTOs = connection.Query<TagMarksDTO>(query, param:id).ToList() ;
+                tagMarksDTOs = connection.Query<TagMarksDTO>(query, new { id }, commandType: CommandType.StoredProcedure).ToList() ;
             }
             return tagMarksDTOs;
         }

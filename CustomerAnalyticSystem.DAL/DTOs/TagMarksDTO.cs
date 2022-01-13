@@ -11,7 +11,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
     {
         public int Id { get; set; }
         public int TagId { get; set; }
-        public string TagName { get; set; }
+        public string Name { get; set; }
         public int Mark { get; set; }
     }
 }
