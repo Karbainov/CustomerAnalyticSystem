@@ -29,18 +29,18 @@ namespace CustomerAnalyticSystem.DAL
         {
             CustomerInfoDTO customer = new();
 
-            CustomerDTO customerDTO = null;
-            List<CommentDTO> comments = null;
             //List<ContactDTO> contacts = null;
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customer = connection.QuerySingle<CustomerInfoDTO>(Querys.GetCustomerByIdWithCustomerType, new { id }, commandType: CommandType.StoredProcedure);
+                customer = connection.QuerySingle<CustomerInfoDTO>(Querys.GetCustomerByIdWithCustomerType, new { id }
+                , commandType: CommandType.StoredProcedure);
             }
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customer.Comments = connection.Query<CommentDTO>(Querys.GetAllCommentByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
+                customer.Comments = connection.Query<CommentDTO>(Querys.GetAllCommentByCustomerId, new { id }
+                , commandType: CommandType.StoredProcedure).ToList();
             }
 
             //using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
@@ -48,9 +48,6 @@ namespace CustomerAnalyticSystem.DAL
             //    customer.Contacts = connection.Query<ContactDTO>(Querys.GetAllContactByCustomerId,
             //        param: id).ToList();
             //}
-
-            //customer.Comments = comments;
-            //customer.Contacts = contacts;
 
             return customer;
         }

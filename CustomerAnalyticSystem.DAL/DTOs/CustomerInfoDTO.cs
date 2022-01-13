@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
@@ -12,7 +9,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int TypeId { get; set; }
-        public string name { get; set; }
+        public string Name { get; set; }
         public List<CommentDTO> Comments { get; set; }
 
         //public List<ContactDTO> Contacts;
