@@ -155,6 +155,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Check\AddCheck.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Check\DeleteCheckById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Check\UpdateCheckById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\CustomerType\GetAllCustomerType.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
