@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    public class CheckDTO
+    internal class CommentDTO
     {
-		public int Id { get; set; }
-		public int ProductId { get; set; }
-		public int Amount { get; set; }
-		public int Mark { get; set; }
-	}
+        int Id { get; set; }
+        int CustomerId { get; set; }
+        string Text { get; set; }
+    }
 }

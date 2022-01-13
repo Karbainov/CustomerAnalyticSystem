@@ -18,11 +18,10 @@ namespace CustomerAnalyticSystem.DAL
             AllOrderInfoByOrderId concreteOrder = null;
 
             string query = "GetAllOrderInfoByOrderId";
-            string connectionString = ConnectionString.ConnectString;
+            string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
-                connection.Query<AllOrderInfoByOrderId, CheckDTO, AllOrderInfoByOrderId>(query,(orderInfo, item)=>//возвращает последнее
+                connection.Query<AllOrderInfoByOrderId, CheckDTO, AllOrderInfoByOrderId>(query,(orderInfo, item)=>
                 {
                     if (concreteOrder == null)
                     {
@@ -32,8 +31,7 @@ namespace CustomerAnalyticSystem.DAL
                     concreteOrder.Items.Add(item);
                     return concreteOrder;
                 }
-                //лямбда это map: можно поставить в конце
-                , new { Id = id },
+                ,new { Id = id },
                 commandType: CommandType.StoredProcedure
                 ,splitOn:"OrderId,Id");
             }

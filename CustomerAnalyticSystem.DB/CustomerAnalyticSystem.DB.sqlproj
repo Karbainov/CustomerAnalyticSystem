@@ -71,6 +71,12 @@
     <Folder Include="dbo\Stored Procedures\CRUD\CustomerType" />
     <Folder Include="dbo\Stored Procedures\CRUD\Contact" />
     <Folder Include="dbo\Stored Procedures\CRUD\ContactType" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Tag\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Product_Tag\" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Comment" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Check" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Order" />
+    <Folder Include="dbo\Stored Procedures\CRUD\Status" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Product.sql" />
@@ -130,9 +136,37 @@
     <Build Include="dbo\Stored Procedures\CRUD\ContactType\UpdateContactType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllProductsByTag.sql" />
     <Build Include="dbo\Stored Procedures\GetAllPreferencesByCustomerId.sql" />
+<Build Include="dbo\Stored Procedures\GetAllGradesByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCommentByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllContactByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrdersByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\AddTag.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\GetAllProduct_Tag.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\GetProduct_TagById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\GetAllTags.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\GetTagById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\UpdateTagById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Tag\DeleteTagById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Comment\GetAllComment.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Comment\GetCommentById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Comment\AddComment.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Comment\DeleteCommentById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Comment\UpdateCommentById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Check\GetAllCheck.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Check\GetCheckById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Check\AddCheck.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Check\DeleteCheckById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Check\UpdateCheckById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\GetAllStatus.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\GetStatusById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\UpdateStatusById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\DeleteStatusById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Status\AddStatus.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\AddOrder.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\DeleteOrderById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\UpdateOrderById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\GetOrderById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Order\GetAllOrders.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />

@@ -8,9 +8,6 @@ namespace CustomerAnalyticSystem.DAL
 {
     public class ConnectionString
     {
-        public static string ConnectString = 
-        @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False; Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
+        public const string Connection = @"Data Source=80.78.240.16;Initial Catalog=KazanDB;Persist Security Info=True;User ID=student;Password=qwe!23;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
     }
 }
-//класс с хранимками статик
-//добавить статику для смены

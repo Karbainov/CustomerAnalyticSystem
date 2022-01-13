@@ -1,13 +1,13 @@
 ﻿CREATE TABLE [dbo].[Preferences]
 (
-	ID integer identity primary key,
-	[ProductId] integer NULL,
-	[CustomerId] integer NULL,
-	TagID integer NULL,
-	GroupID integer NULL,
-	IsInterested bit NULL,
-	Foreign key ([ProductId]) references [Product] (ID),
-	Foreign key ([CustomerId]) references [Customer] (ID),
-	Foreign key (TagID) references [Tag] (ID),
-	Foreign key (GroupID) references [Group] (ID)
+	Id integer identity primary key,
+	[ProductId] integer NOT NULL,
+	[CustomerId] integer NOT NULL,
+	TagId integer NOT NULL,
+	GroupId integer NOT NULL,
+	IsInterested bit NOT NULL,
+	Foreign key ([ProductId]) references [Product] (Id),
+	Foreign key ([CustomerId]) references [Customer] (Id),
+	Foreign key (TagId) references [Tag] (Id),
+	Foreign key (GroupId) references [Group] (Id)
 )

@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[Order]
 (
-	ID integer identity primary key,
-	CustomerID integer NULL,
-	Date nvarchar(10) NULL,
-	StatusID integer NULL,
-	Cost integer NULL,
+	Id integer identity primary key,
+	CustomerId integer NOT NULL,
+	Date nvarchar(10) NOT NULL,
+	StatusId integer NOT NULL,
+	Cost integer NOT NULL,
 	Foreign key (StatusID) references [Status] (Id),
 	Foreign key (CustomerID) references [Customer] (ID)
 )
