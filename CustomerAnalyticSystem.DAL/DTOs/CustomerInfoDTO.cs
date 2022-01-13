@@ -12,7 +12,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int TypeId { get; set; }
-
+        public string name { get; set; }
         public List<CommentDTO> Comments { get; set; }
 
         //public List<ContactDTO> Contacts;
