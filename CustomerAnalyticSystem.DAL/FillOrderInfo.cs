@@ -18,7 +18,7 @@ namespace CustomerAnalyticSystem.DAL
             AllOrderInfoByOrderId concreteOrder = null;
 
             string query = "GetAllOrderInfoByOrderId";
-            string connectionString = ConnectionString.ConnectString;
+            string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
 

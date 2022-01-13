@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using CustomerAnalyticSystem.DAL.DTOs;
 using CustomerAnalyticSystem.DAL;
+using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL;
 
 namespace TempProject
 {
@@ -12,6 +14,16 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
+            //CustomerService customerDapper = new CustomerService();
+            //List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+
+            //foreach (CustomerDTO cust in c)
+            //{
+            //    Console.WriteLine(cust);
+            //}
+            CustomerService temp = new();
+            CustomerInfoDTO qqq = 
+            temp.GetCustomerInfoService(1);
             //List<AllOrderInfoByOrderId> products;
             //string query = "EXEC GetAllOrderInfoByOrderId 1";
             //string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False; Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";

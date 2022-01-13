@@ -139,7 +139,9 @@
 <Build Include="dbo\Stored Procedures\GetAllGradesByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCommentByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllContactByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\GetCustomerByIdWithCustomerType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrdersByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Customer\GetAllCustomer.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Tag\AddTag.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\GetAllProduct_Tag.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\GetProduct_TagById.sql" />
@@ -157,6 +159,7 @@
     <Build Include="dbo\Stored Procedures\CRUD\Check\AddCheck.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Check\DeleteCheckById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Check\UpdateCheckById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\CustomerType\GetAllCustomerType.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Status\GetAllStatus.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Status\GetStatusById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Status\UpdateStatusById.sql" />
