@@ -17,11 +17,6 @@ namespace CustomerAnalyticSystem.DAL.DTOs
 
         public List<ContactDTO> Contacts;
 
-        public CustomerInfoDTO()
-        {
-
-        }
-
         public override string ToString()
         {
             return $"{Id} {FirstName} {LastName} {TypeId}";
