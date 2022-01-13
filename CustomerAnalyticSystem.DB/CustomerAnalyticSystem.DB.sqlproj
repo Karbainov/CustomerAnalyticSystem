@@ -136,6 +136,7 @@
     <Build Include="dbo\Stored Procedures\GetAllPreferencesByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCommentByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllContactByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\GetCustomerByIdWithCustomerType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrdersByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Customer\GetAllCustomer.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Tag\AddTag.sql" />
