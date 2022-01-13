@@ -4,7 +4,7 @@
   @LastName nvarchar,
   @TypeId integer
 as
-  update dbo.Customer
+  update [dbo].[Customer]
   set FirstName = @FirstName,
   LastName = @LastName,
   TypeId = @TypeId
