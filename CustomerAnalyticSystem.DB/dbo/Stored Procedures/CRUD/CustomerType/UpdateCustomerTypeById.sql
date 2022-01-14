@@ -2,6 +2,6 @@
   @Id integer,
   @Name nvarchar
 as
-  update dbo.CustomerType
+  update [dbo].[CustomerType]
   set [Name] = @Name
   where Id = @Id

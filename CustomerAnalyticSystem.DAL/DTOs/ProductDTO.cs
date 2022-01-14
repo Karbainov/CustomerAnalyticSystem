@@ -13,6 +13,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public string Description { get; set; }
         public int GroupId { get; set; }
 
+
         public override string ToString()
         {
             string s = "";
