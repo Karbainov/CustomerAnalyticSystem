@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[GetProduct_TagById]
 	@Id integer
 AS
-	SELECT * FROM [dbo].[Product_Tag]
+	SELECT PT.Id, PT.ProductId, PT.TagId FROM [dbo].[Product_Tag] as PT
 	WHERE Id = @Id
-RETURN 0
+RETURN @Id
