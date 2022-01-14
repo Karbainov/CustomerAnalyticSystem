@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Comment]
 (
 	[Id] integer identity primary key,
-	[CustomerId] integer NOT NULL,
-	[Text] nvarchar(255) NOT NULL,
+	[CustomerId] integer NULL,
+	[Text] nvarchar(255) NULL,
 	Foreign key (CustomerId) references [Customer] (Id)
 )

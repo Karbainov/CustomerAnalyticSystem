@@ -5,8 +5,8 @@
   @GroupId integer
   as
   update dbo.[Product]
-  set Name = @Name,
-  Description = @Description,
-  GroupId = @GroupId
+  set [Name] = @Name,
+  [Description] = @Description,
+  [GroupId] = @GroupId
   where Id = @Id
-RETURN 0
+RETURN @Id
