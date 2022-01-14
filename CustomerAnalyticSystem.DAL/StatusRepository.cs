@@ -12,7 +12,7 @@ namespace CustomerAnalyticSystem.DAL
 {
     public class StatusRepository
     {
-        public List<StatusDTO> GetAllOrders()
+        public List<StatusDTO> GetAllStatus()
         {
             List<StatusDTO> status = new List<StatusDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
@@ -33,12 +33,12 @@ namespace CustomerAnalyticSystem.DAL
             return status;
         }
 
-        public void AddStatus(int Id, string Name)
+        public void AddStatus(string Name)
         {
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<StatusDTO>(Querys.AddStatus, new { Id, Name }
+                connection.Query<StatusDTO>(Querys.AddStatus, new { Name }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -48,7 +48,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<StatusDTO>(Querys.DeleteStatusById, new { id }
+                connection.Query<StatusDTO>(Querys.DeleteStatusById, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -58,7 +58,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<StatusDTO>(Querys.UpdateStatusById, new { id, Name}
+                connection.Query<StatusDTO>(Querys.UpdateStatusById, new { id, Name}
                 , commandType: CommandType.StoredProcedure);
             }
         }
