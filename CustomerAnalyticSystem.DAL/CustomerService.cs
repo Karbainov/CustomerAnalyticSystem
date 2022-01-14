@@ -51,5 +51,16 @@ namespace CustomerAnalyticSystem.DAL
 
             return customer;
         }
+
+        public List<TagMarksDTO> GetAllMarksOfTagByCustomerId(int id)
+        {
+            List<TagMarksDTO> tagMarksDTOs = new List<TagMarksDTO>();
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                tagMarksDTOs = connection.Query<TagMarksDTO>(Querys.GetAllTagsWithMarksByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
+            }
+            return tagMarksDTOs;
+        }
     }
 }
