@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    class PreferencesDTO
+    public class PreferencesDTO
     {
         public int Id { get; set; }
         public int ProductId { get; set; }

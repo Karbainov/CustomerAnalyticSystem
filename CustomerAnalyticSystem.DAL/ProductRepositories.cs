@@ -13,13 +13,13 @@ namespace CustomerAnalyticSystem.DAL.DTOs
 {
     class ProductRepositories
     {
-        public List<ProductDTO> GetAllProductsByTag(string tag)
+        public List<ProductDTO> GetAllProductsByTag(int id)
         {
             List<ProductDTO> productDTOs = new List<ProductDTO>();
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                productDTOs = connection.Query<ProductDTO>(Querys.GetAllProductsByTag, new { tag }, commandType: CommandType.StoredProcedure).ToList();
+                productDTOs = connection.Query<ProductDTO>(Querys.GetAllProductsByTag, new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
             return productDTOs;
         }

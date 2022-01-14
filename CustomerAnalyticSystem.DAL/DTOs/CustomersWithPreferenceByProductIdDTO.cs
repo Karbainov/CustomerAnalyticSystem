@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    class CustomersWithPreferenceByProductIdDTO
+    public class CustomersWithPreferenceByProductIdDTO
     {
-        public List<CustomerDTO> customers { get; set; }
-        public List<PreferencesDTO> preferences { get; set; }
-       
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int TypeId { get; set; }
+        public int ProductId { get; set; }
+        public int TagId { get; set; }
+        public int GroupId { get; set; }
+        public bool IsInterested { get; set; }
+
     }
 }
