@@ -23,5 +23,46 @@ namespace CustomerAnalyticSystem.DAL
             }
             return grades;
         }
+        public GradeDTO GetGradesById(int id)
+        {
+            GradeDTO grade;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                grade = connection.QuerySingle<GradeDTO>(Querys.GetAllGradesById, new { id }
+               , commandType: CommandType.StoredProcedure);
+            }
+            return grade;
+        }
+
+        public void AddGrade(int ProductId, int CustomerId, string Value)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<GradeDTO>(Querys.AddGrade, new { ProductId, CustomerId, Value }
+                ,commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteGradeById(int id)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<GradeDTO>(Querys.DeleteGradeById, new { id }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateGradeById(int id, string Value)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<GradeDTO>(Querys.UpdateGradeById, new { id, Value }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

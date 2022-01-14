@@ -25,6 +25,7 @@
     <DefaultCollation>Cyrillic_General_CI_AS</DefaultCollation>
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
     <TargetFrameworkProfile />
+    <PermissionSet>SAFE</PermissionSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -175,4 +176,8 @@
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
   </ItemGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
