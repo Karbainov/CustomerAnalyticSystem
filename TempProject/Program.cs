@@ -45,33 +45,34 @@ namespace TempProject
             ////    Console.WriteLine((ProductDTO)p);
             ////}
 
-            //1
-            List<GradeDTO> grades = new List<GradeDTO>();
-            GradeRepository Repository = new();
-            grades = Repository.GetAllGrades();
 
-            //2
+            GradeRepository Repository = new();
+            ////1
+            List<GradeDTO> grades = new List<GradeDTO>();
+            //GradeRepository Repository = new();
+            //grades = Repository.GetAllGrades();
+
+            ////2
             //GradeDTO gradesbyid;
             //GradeRepository Repository = new();
             //gradesbyid = Repository.GetGradesById(2);
-            //Console.WriteLine(gradesbyid);
 
-            //3
-            //Repository.AddGrade(2, 1, "bad");
+            // 3
+            //Repository.AddGrade(1, 1, "1234354");
             //Console.WriteLine(grades);
 
-            //4
-            //Repository.DeleteGradeById(2);
-            //Console.WriteLine(grades);
+            //// 4
+            //Repository.DeleteGradeById(3);
+            // Console.WriteLine(grades);
 
-            //5
-            //Repository.UpdateGradeById(2, "bad");
-            //Console.WriteLine(grades);
+            // //5
+            Repository.UpdateGradeById(6, "RomaMolodec");
+            // Console.WriteLine(grades);
 
-            List<OrderDTO> orders = new List<OrderDTO>();
-            OrderRepository repository = new();
-            orders = repository.GetAllOrders();
-            Console.WriteLine(orders);
+            //List<OrderDTO> orders = new List<OrderDTO>();
+            //OrderRepository repository = new();
+            //orders = repository.GetAllOrders();
+            //Console.WriteLine(orders);
 
         }
     }

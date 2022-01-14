@@ -16,10 +16,10 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllOrderInfoByOrderId = "GetAllOrderInfoByOrderId";
         public const string GetAllTagsWithMarksByCustomerId = "GetAllTagsWithMarksByCustomerId";
         public const string GetAllGrades = "GetAllGrade";
-        public const string GetAllGradesById = "GetAllGradesById";
+        public const string GetAllGradeById = "GetAllGradeById";
         public const string AddGrade = "AddGrade";
-        public const string DeleteGradeById = "DeleteGradeById";
-        public const string UpdateGradeById = "UpdateGradeById";
+        public const string DeleteGradeById = "DeleteGrade";
+        public const string UpdateGradeById = "UpdateGrade";
         public const string GetAllOrders = "GetAllOrders";
         public const string GetOrderById = "GetOrderById";
         

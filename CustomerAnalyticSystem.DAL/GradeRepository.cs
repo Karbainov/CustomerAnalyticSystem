@@ -29,7 +29,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                grade = connection.QuerySingle<GradeDTO>(Querys.GetAllGradesById, new { id }
+                grade = connection.QuerySingle<GradeDTO>(Querys.GetAllGradeById, new { id }
                , commandType: CommandType.StoredProcedure);
             }
             return grade;
@@ -50,7 +50,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<GradeDTO>(Querys.DeleteGradeById, new { id }
+                connection.QuerySingle(Querys.DeleteGradeById, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
         }
