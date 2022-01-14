@@ -37,5 +37,35 @@ namespace CustomerAnalyticSystem.DAL
             }
             return order;
         }
+
+        public void AddOrder(int CustomerId, string Date, string StatusId, int Cost)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<OrderDTO>(Querys.AddOrder, new { CustomerId, Date, StatusId, Cost }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteOrderById(int id)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<OrderDTO>(Querys.DeleteOrderById, new { id }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateOrderById(int id, int CustomerId, string Date, string StatusId, int Cost)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<GradeDTO>(Querys.UpdateOrderById, new { id, CustomerId, Date, StatusId, Cost }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
