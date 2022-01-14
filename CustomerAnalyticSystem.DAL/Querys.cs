@@ -13,6 +13,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";
         public const string GetAllContactByCustomerId = "EXEC GetAllContactByCustomerId";
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
+
         public const string GetAllOrderInfoByOrderId = "GetAllOrderInfoByOrderId";
         public const string GetAllTagsWithMarksByCustomerId = "GetAllTagsWithMarksByCustomerId";
         public const string GetAllGrades = "GetAllGrade";

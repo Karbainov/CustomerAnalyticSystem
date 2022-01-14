@@ -38,32 +38,32 @@ namespace CustomerAnalyticSystem.DAL
             return order;
         }
 
-        public void AddOrder(int CustomerId, string Date, string StatusId, int Cost)
+        public void AddOrder(int CustomerId, string Date, int StatusId, int Cost)
         {
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<OrderDTO>(Querys.AddOrder, new { CustomerId, Date, StatusId, Cost }
+                connection.Query<OrderDTO>(Querys.AddOrder, new { CustomerId, Date, StatusId, Cost }
                 , commandType: CommandType.StoredProcedure);
             }
         }
 
-        public void DeleteOrderById(int id)
+        public void DeleteOrderById(int id) // хз че с ним делать, удалять нельзя изза ссылки
         {
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<OrderDTO>(Querys.DeleteOrderById, new { id }
+                connection.Query<OrderDTO>(Querys.DeleteOrderById, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
         }
 
-        public void UpdateOrderById(int id, int CustomerId, string Date, string StatusId, int Cost)
+        public void UpdateOrderById(int id, int CustomerId, string Date, int StatusId, int Cost)
         {
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<GradeDTO>(Querys.UpdateOrderById, new { id, CustomerId, Date, StatusId, Cost }
+                connection.Query<GradeDTO>(Querys.UpdateOrderById, new { id, CustomerId, Date, StatusId, Cost }
                 , commandType: CommandType.StoredProcedure);
             }
         }
