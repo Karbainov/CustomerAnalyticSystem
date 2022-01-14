@@ -40,7 +40,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
                     }
                 , new { Id = id }
                 , commandType: CommandType.StoredProcedure
-                , splitOn: "Id,OrderId,Id");
+                , splitOn: "Id");
             }
             return concreteProduct;
         }

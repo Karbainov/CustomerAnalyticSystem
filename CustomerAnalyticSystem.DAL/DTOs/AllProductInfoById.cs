@@ -14,7 +14,6 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public string Description { get; set; }
         public int GroupId { get; set; }
         public string GroupName { get; set; }
-        public int OrderId { get; set; }
         public List<AllOrderInfoByOrderId> CheckForCurrentProduct { get; set; }
     }
 }
