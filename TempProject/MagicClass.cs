@@ -23,7 +23,7 @@ namespace TempProject
             StoredProcedure = procedure;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                toReturn = connection.Query<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>(StoredProcedure).ToList();
+                toReturn = connection.Query<CustomerAnalyticSystem.DAL.DTOs.ProductBaseDTO>(StoredProcedure).ToList();
             }
             return toReturn;
         }
