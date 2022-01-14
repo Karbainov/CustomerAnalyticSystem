@@ -27,6 +27,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string AddContactType = "AddContactType";
         public const string DeleteContactType = "DeleteContactType";
         public const string UpdateContactType = "UpdateContactType";
+        public const string GetAllProductsByTag = "GetAllProductsByTag";
 
 
     }
