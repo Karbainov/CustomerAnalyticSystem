@@ -5,7 +5,7 @@ using System.Data;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    public class FillOrderInfo
+    public class OrderCheckStatusRepository
     {
         public AllOrderInfoByOrderId FillOrderInfoByOrderId(int id)
         {
@@ -14,7 +14,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query<AllOrderInfoByOrderId, CheckWithProductAndGroupInfoDTO, AllOrderInfoByOrderId>(Querys.GetAllOrderInfoByOrderId,
+                connection.Query<AllOrderInfoByOrderId, CheckWithProductAndGroupInfoDTO, AllOrderInfoByOrderId>(Queries.GetAllOrderInfoByOrderId,
                     (orderInfo, item)=>
                 {
                     if (concreteOrder == null)

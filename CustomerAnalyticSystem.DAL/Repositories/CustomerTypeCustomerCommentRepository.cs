@@ -11,7 +11,7 @@ using System.Data;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    public class CustomerService
+    public class CustomerTypeCustomerCommentRepository
     {
         public List<CustomerDTO> GetAllCustomerService()
         {
@@ -19,7 +19,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customers = connection.Query<CustomerDTO>(Querys.GetAllCustomer).ToList();
+                customers = connection.Query<CustomerDTO>(Queries.GetAllCustomer).ToList();
             }
             return customers;
         }
@@ -33,13 +33,13 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customer = connection.QuerySingle<CustomerInfoDTO>(Querys.GetCustomerByIdWithCustomerType, new { id }
+                customer = connection.QuerySingle<CustomerInfoDTO>(Queries.GetCustomerByIdWithCustomerType, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customer.Comments = connection.Query<CommentDTO>(Querys.GetAllCommentByCustomerId, new { id }
+                customer.Comments = connection.Query<CommentDTO>(Queries.GetAllCommentByCustomerId, new { id }
                 , commandType: CommandType.StoredProcedure).ToList();
             }
 
@@ -58,7 +58,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                tagMarksDTOs = connection.Query<TagMarksDTO>(Querys.GetAllTagsWithMarksByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
+                tagMarksDTOs = connection.Query<TagMarksDTO>(Queries.GetAllTagsWithMarksByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
             return tagMarksDTOs;
         }

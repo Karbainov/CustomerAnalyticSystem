@@ -22,7 +22,7 @@ namespace TempProject
             //{
             //    Console.WriteLine(cust);
             //}
-            CustomerService temp = new();
+            CustomerTypeCustomerCommentRepository temp = new();
             CustomerInfoDTO qqq = 
             temp.GetCustomerInfoService(1);
             //List<AllOrderInfoByOrderId> products;
