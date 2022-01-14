@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    public class Querys
+    public class Queries
     {
         public const string GetAllCustomer = "EXEC GetAllCustomer";
         public const string GetCustomerById = "GetCustomerById";
