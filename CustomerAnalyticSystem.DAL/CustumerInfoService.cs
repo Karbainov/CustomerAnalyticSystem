@@ -23,5 +23,18 @@ namespace CustomerAnalyticSystem.DAL
             }
             return tagMarksDTOs;
         }
+
+        public List <CustomerPreferenceDTO> GetAllPreferencesByCustomerId (int id)
+        {
+            List<CustomerPreferenceDTO> customerPreferenceDTOs = new List<CustomerPreferenceDTO>();
+            string query = "GetAllPreferencesByCustomerId";
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<CustomerPreferenceDTO>(query, param: id).ToList();
+            }
+            //return customerPreferenceDTOs;
+        }
+
     }
 }
