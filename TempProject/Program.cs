@@ -39,6 +39,11 @@ namespace TempProject
             AllOrderInfoByOrderId kekis = new();
             OrderCheckStatusRepository test = new();
             kekis = test.FillOrderInfoByOrderId(1);
+
+
+
+
+
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
