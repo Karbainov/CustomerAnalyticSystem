@@ -31,6 +31,7 @@ namespace CustomerAnalyticSystem.DAL
             }
             return concreteOrder;
         }
+        
     }
 }
 
