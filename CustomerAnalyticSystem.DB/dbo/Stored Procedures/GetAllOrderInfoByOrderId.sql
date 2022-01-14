@@ -1,10 +1,14 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllOrderInfoByOrderId]
 @Id integer
 AS
-	SELECT  C.OrderId,Cust.Id as "CustomerId",C.Id, C.ProductId, C.Amount, C.Mark FROM [dbo].[Check] AS C
+	SELECT  C.OrderId,Cust.Id as "CustomerId",C.Id, C.ProductId,Prod.[Name],Prod.[Description],G.[Name] as "GroupName", C.Amount, C.Mark FROM [dbo].[Check] AS C
 	join [dbo].[Order] as O
 	on C.OrderId = O.ID
 	join [dbo].[Customer] as Cust
 	on Cust.Id = O.CustomerID
+	join [dbo].[Product] as Prod
+	on C.ProductId = Prod.Id
+	join [dbo].[Group] as G
+	on Prod.[GroupId] = G.Id
 	WHERE  C.OrderId = @Id
-RETURN 0
+RETURN @Id
