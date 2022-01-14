@@ -8,6 +8,7 @@ using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
 using CustomerAnalyticSystem.DAL;
 
+
 namespace TempProject
 {
     class Program
