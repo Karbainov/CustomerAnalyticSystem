@@ -3,10 +3,7 @@ using CustomerAnalyticSystem.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL;
-using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL;
+
 
 
 namespace TempProject
@@ -38,7 +35,7 @@ namespace TempProject
             //}
             AllOrderInfoByOrderId kekis = new();
             FillOrderInfo test = new();
-            kekis = test.FillOrderInfoByOrderId(1);
+            //kekis = test.FillOrderInfoByOrderId(1);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;

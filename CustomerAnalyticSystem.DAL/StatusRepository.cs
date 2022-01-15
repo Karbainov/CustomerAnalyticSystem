@@ -17,7 +17,7 @@ namespace CustomerAnalyticSystem.DAL
             List<StatusDTO> status = new List<StatusDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                status = connection.Query<StatusDTO>(Querys.GetAllStatus).ToList();
+                status = connection.Query<StatusDTO>(Queries.GetAllStatus).ToList();
             }
             return status;
         }
@@ -27,7 +27,7 @@ namespace CustomerAnalyticSystem.DAL
             StatusDTO status;
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                status = connection.QuerySingle<StatusDTO>(Querys.GetStatusById, new { id }
+                status = connection.QuerySingle<StatusDTO>(Queries.GetStatusById, new { id }
                , commandType: CommandType.StoredProcedure);
             }
             return status;
@@ -38,7 +38,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.Query<StatusDTO>(Querys.AddStatus, new { Name }
+                connection.Query<StatusDTO>(Queries.AddStatus, new { Name }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -48,7 +48,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.Query<StatusDTO>(Querys.DeleteStatusById, new { id }
+                connection.Query<StatusDTO>(Queries.DeleteStatusById, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -58,7 +58,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.Query<StatusDTO>(Querys.UpdateStatusById, new { id, Name}
+                connection.Query<StatusDTO>(Queries.UpdateStatusById, new { id, Name}
                 , commandType: CommandType.StoredProcedure);
             }
         }

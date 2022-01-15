@@ -22,7 +22,7 @@ namespace CustomerAnalyticSystem.DAL
             List<OrderDTO> orders = new List<OrderDTO>();
             using(SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                orders = connection.Query<OrderDTO>(Querys.GetAllOrders).ToList();
+                orders = connection.Query<OrderDTO>(Queries.GetAllOrders).ToList();
             }
             return orders;
         }
@@ -32,7 +32,7 @@ namespace CustomerAnalyticSystem.DAL
             OrderDTO order;
             using(SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                order = connection.QuerySingle<OrderDTO>(Querys.GetOrderById, new { id }
+                order = connection.QuerySingle<OrderDTO>(Queries.GetOrderById, new { id }
                , commandType: CommandType.StoredProcedure);
             }
             return order;
@@ -43,7 +43,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.Query<OrderDTO>(Querys.AddOrder, new { CustomerId, Date, StatusId, Cost }
+                connection.Query<OrderDTO>(Queries.AddOrder, new { CustomerId, Date, StatusId, Cost }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -53,7 +53,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.Query<OrderDTO>(Querys.DeleteOrderById, new { id }
+                connection.Query<OrderDTO>(Queries.DeleteOrderById, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -63,7 +63,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.Query<GradeDTO>(Querys.UpdateOrderById, new { id, CustomerId, Date, StatusId, Cost }
+                connection.Query<GradeDTO>(Queries.UpdateOrderById, new { id, CustomerId, Date, StatusId, Cost }
                 , commandType: CommandType.StoredProcedure);
             }
         }

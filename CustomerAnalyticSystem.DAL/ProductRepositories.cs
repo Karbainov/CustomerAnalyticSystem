@@ -20,7 +20,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                productDTOs = connection.Query<ProductBaseDTO>(Querys.GetAllProductsByTag, new { id }, commandType: CommandType.StoredProcedure).ToList();
+                productDTOs = connection.Query<ProductBaseDTO>(Queries.GetAllProductsByTag, new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
             return productDTOs;
         }

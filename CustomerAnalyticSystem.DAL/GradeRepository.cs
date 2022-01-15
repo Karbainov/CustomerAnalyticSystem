@@ -19,7 +19,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                grades = connection.Query<GradeDTO>(Querys.GetAllGrades).ToList();
+                grades = connection.Query<GradeDTO>(Queries.GetAllGrades).ToList();
             }
             return grades;
         }
@@ -29,7 +29,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                grade = connection.QuerySingle<GradeDTO>(Querys.GetAllGradeById, new { id }
+                grade = connection.QuerySingle<GradeDTO>(Queries.GetAllGradeById, new { id }
                , commandType: CommandType.StoredProcedure);
             }
             return grade;
@@ -40,7 +40,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<GradeDTO>(Querys.AddGrade, new { ProductId, CustomerId, Value }
+                connection.QuerySingle<GradeDTO>(Queries.AddGrade, new { ProductId, CustomerId, Value }
                 ,commandType: CommandType.StoredProcedure);
             }
         }
@@ -50,7 +50,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle(Querys.DeleteGradeById, new { id }
+                connection.QuerySingle(Queries.DeleteGradeById, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -60,7 +60,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<GradeDTO>(Querys.UpdateGradeById, new { id, Value }
+                connection.QuerySingle<GradeDTO>(Queries.UpdateGradeById, new { id, Value }
                 , commandType: CommandType.StoredProcedure);
             }
         }

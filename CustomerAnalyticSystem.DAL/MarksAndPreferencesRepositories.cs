@@ -18,7 +18,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
             List<CustomersWithPreferenceByProductIdDTO> customersWithPreferenceByProductIdDTOs = new List<CustomersWithPreferenceByProductIdDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customersWithPreferenceByProductIdDTOs = connection.Query<CustomersWithPreferenceByProductIdDTO>(Querys.GetCustomersWithPreferenceByProductId, 
+                customersWithPreferenceByProductIdDTOs = connection.Query<CustomersWithPreferenceByProductIdDTO>(Queries.GetCustomersWithPreferenceByProductId, 
                     new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
             return customersWithPreferenceByProductIdDTOs;

@@ -5,7 +5,7 @@ AS
 	join [dbo].[Order] as O
 	on C.OrderId = O.Id
 	join [dbo].[Customer] as Cust
-	on Cust.Id = O.CustomerID
+	on Cust.Id = O.CustomerId
 	join [dbo].[Product] as Prod
 	on C.ProductId = Prod.Id
 	join [dbo].[Group] as G

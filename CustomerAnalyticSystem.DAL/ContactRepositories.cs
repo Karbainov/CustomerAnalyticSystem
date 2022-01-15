@@ -18,7 +18,7 @@ namespace CustomerAnalyticSystem.DAL
             List<ContactDTO> contactDTOs = new List<ContactDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                contactDTOs = connection.Query<ContactDTO>(Querys.GetAllContact, commandType: CommandType.StoredProcedure).ToList();
+                contactDTOs = connection.Query<ContactDTO>(Queries.GetAllContact, commandType: CommandType.StoredProcedure).ToList();
             }
             return contactDTOs;
         }
@@ -28,7 +28,7 @@ namespace CustomerAnalyticSystem.DAL
             ContactDTO contactDTO;
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                contactDTO = connection.QuerySingle<ContactDTO>(Querys.GetContactById, new { id },
+                contactDTO = connection.QuerySingle<ContactDTO>(Queries.GetContactById, new { id },
                 commandType: CommandType.StoredProcedure);
             }
                 return contactDTO;
@@ -39,7 +39,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactDTO>(Querys.AddContact, new {CustomerId, ContactTypeId, Value},
+                connection.QuerySingle<ContactDTO>(Queries.AddContact, new {CustomerId, ContactTypeId, Value},
                 commandType: CommandType.StoredProcedure);
             }
         }
@@ -48,7 +48,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactDTO>(Querys.DeleteContact, new { id},
+                connection.QuerySingle<ContactDTO>(Queries.DeleteContact, new { id},
                 commandType: CommandType.StoredProcedure);
             }
         }
@@ -57,7 +57,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactDTO>(Querys.UpdateContact, new { id, CustomerId, ContactTypeId, Value },
+                connection.QuerySingle<ContactDTO>(Queries.UpdateContact, new { id, CustomerId, ContactTypeId, Value },
                 commandType: CommandType.StoredProcedure);
             }
         }
@@ -67,7 +67,7 @@ namespace CustomerAnalyticSystem.DAL
             List<ContactTypeDTO> contactDTOs = new List<ContactTypeDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                contactDTOs = connection.Query<ContactTypeDTO>(Querys.GetAllContactType, commandType: CommandType.StoredProcedure).ToList();
+                contactDTOs = connection.Query<ContactTypeDTO>(Queries.GetAllContactType, commandType: CommandType.StoredProcedure).ToList();
             }
             return contactDTOs;
         }
@@ -77,7 +77,7 @@ namespace CustomerAnalyticSystem.DAL
             ContactTypeDTO contactTypeDTO;
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                contactTypeDTO = connection.QuerySingle<ContactTypeDTO>(Querys.GetContactTypeById, new { id }, commandType: CommandType.StoredProcedure);
+                contactTypeDTO = connection.QuerySingle<ContactTypeDTO>(Queries.GetContactTypeById, new { id }, commandType: CommandType.StoredProcedure);
             }
             return contactTypeDTO;
         }
@@ -86,7 +86,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactTypeDTO>(Querys.AddContactType, new { Name}, commandType: CommandType.StoredProcedure);
+                connection.QuerySingle<ContactTypeDTO>(Queries.AddContactType, new { Name}, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -94,7 +94,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactTypeDTO>(Querys.DeleteContactType, new {id}, commandType: CommandType.StoredProcedure);
+                connection.QuerySingle<ContactTypeDTO>(Queries.DeleteContactType, new {id}, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -102,7 +102,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactTypeDTO>(Querys.UpdateContactType, new {id, Name}, commandType: CommandType.StoredProcedure);
+                connection.QuerySingle<ContactTypeDTO>(Queries.UpdateContactType, new {id, Name}, commandType: CommandType.StoredProcedure);
             }
         }
     }
