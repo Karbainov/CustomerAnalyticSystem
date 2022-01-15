@@ -10,6 +10,11 @@ namespace CustomerAnalyticSystem.DAL.DTOs
     {
         public int CustomerId { get; set; }
         public int OrderId { get; set; }
-        //public List<CheckWithProductAndGroupInfoDTO> Items { get; set; }
+        public List<CheckDTO> Items { get; set; }
+
+        public AllOrderInfoByOrderId()
+        {
+            Items = new();
+        }
     }
 }

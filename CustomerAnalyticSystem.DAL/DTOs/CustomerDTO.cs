@@ -1,6 +1,8 @@
-﻿namespace CustomerAnalyticSystem.DAL.DTOs
+﻿using CustomerAnalyticSystem.DAL.Interfaces;
+
+namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    public class CustomerDTO
+    public class CustomerDTO : IBaseCustomer
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

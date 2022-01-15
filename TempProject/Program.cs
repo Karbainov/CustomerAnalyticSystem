@@ -33,9 +33,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            //AllOrderInfoByOrderId kekis = new();
-            //FillOrderInfo test = new();
-            //kekis = test.FillOrderInfoByOrderId(1);
+            AllProductInfoById kekis = new();
+            ProductRepository test = new();
+            kekis = test.FillAllProductById(1);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
@@ -47,6 +47,8 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
+            CheckWithCustomerInfoDTO fff = new();
+
         }
     }
 }
