@@ -8,7 +8,6 @@ using Microsoft.Data.SqlClient;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
 using System.Data;
-using CustomerAnalyticSystem.DAL;
 
 namespace CustomerAnalyticSystem.DAL
 {
@@ -123,7 +122,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query<AllOrderInfoByOrderId, CheckDTO, AllOrderInfoByOrderId>(Querys.GetAllOrderInfoByOrderId,
+                connection.Query<AllOrderInfoByOrderId, CheckDTO, AllOrderInfoByOrderId>(Queries.GetAllOrderInfoByOrderId,
                     (orderInfo, item) =>
                 {
                     if (concreteOrder == null)
