@@ -15,6 +15,24 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
         public const string GetAllOrderInfoByOrderId = "GetAllOrderInfoByOrderId";
         public const string GetAllTagsWithMarksByCustomerId = "GetAllTagsWithMarksByCustomerId";
+        public const string GetAllGrades = "GetAllGrade";
+        public const string GetAllGradesById = "GetAllGradesById";
+        public const string AddGrade = "AddGrade";
+        public const string DeleteGradeById = "DeleteGradeById";
+        public const string UpdateGradeById = "UpdateGradeById";
+
+        public const string GetAllOrders = "GetAllOrders";
+        public const string GetOrderById = "GetOrderById";
+        public const string AddOrder = "AddOrder";
+        public const string DeleteOrderById = "DeleteOrderById";
+        public const string UpdateOrderById = "UpdateOrderById";
+
+        public const string GetAllStatus = "GetAllStatus";
+        public const string GetStatusById = "GetStatusById";
+        public const string AddStatus = "AddStatus";
+        public const string DeleteStatusById = "DeleteStatusById";
+        public const string UpdateStatusById = "UpdateStatusById";
+
         public const string GetCustomersWithPreferenceByProductId = "GetCustomersWithPreferenceByProductId";
         public const string GetAllPreferencesByCustomerId = "GetAllPreferencesByCustomerId";
         public const string GetContactById = "GetContactById";

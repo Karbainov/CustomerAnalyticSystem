@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    class StatusDTO
-    { 
-        int Id { get; set; }
-        string Name { get; set; }
+    public class StatusDTO
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
 
     }
 }
