@@ -37,21 +37,21 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public TagDTO GetTagById (int id)
+        public TagDTO GetTagById(int id)
         {
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                return connection.QuerySingle(Queries.GetTagById, commandType: CommandType.StoredProcedure);
+                return connection.QuerySingle<TagDTO>(Queries.GetTagById, new { id }, commandType: CommandType.StoredProcedure);
             }
         }
 
-        public void UpdateTagById (int id, string name)
+        public void UpdateTagById(int id, string name)
         {
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query(Queries.UpdateTagById, commandType: CommandType.StoredProcedure);
+                connection.Query(Queries.UpdateTagById, new { id, name }, commandType: CommandType.StoredProcedure);
             }
         }
     }
