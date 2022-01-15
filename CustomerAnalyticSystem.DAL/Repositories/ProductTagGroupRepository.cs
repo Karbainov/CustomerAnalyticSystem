@@ -21,7 +21,6 @@ namespace CustomerAnalyticSystem.DAL
             {
                 connection.Query(Queries.AddTag, new { name }, commandType: CommandType.StoredProcedure);
             }
-
         }
 
         public void DeleteTagById (int id)
@@ -127,7 +126,6 @@ namespace CustomerAnalyticSystem.DAL
                 , splitOn: "Id");
             }
             return concreteProduct;
-
         }
     }
 }
