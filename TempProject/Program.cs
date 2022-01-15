@@ -12,16 +12,16 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            ////CustomerService customerDapper = new CustomerService();
-            ////List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            //CustomerService customerDapper = new CustomerService();
+            //List<CustomerDTO> c = customerDapper.GetAllCustomerService();
 
             //foreach (CustomerDTO cust in c)
             //{
             //    Console.WriteLine(cust);
             //}
-            //CustomerService temp = new();
-            //CustomerInfoDTO qqq = 
-            //temp.GetCustomerInfoService(1);
+            CustomerTypeCustomerCommentRepository temp = new();
+            CustomerInfoDTO qqq = 
+            temp.GetCustomerInfoService(1);
             //List<AllOrderInfoByOrderId> products;
             //string query = "EXEC GetAllOrderInfoByOrderId 1";
             //string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False; Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
@@ -33,9 +33,14 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            AllProductInfoById kekis = new();
-            ProductRepository test = new();
-            kekis = test.FillAllProductById(1);
+            AllOrderInfoByOrderId kekis = new();
+            OrderCheckStatusRepository test = new();
+            kekis = test.FillOrderInfoByOrderId(1);
+
+
+
+
+
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
@@ -47,8 +52,6 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
-            CheckWithCustomerInfoDTO fff = new();
-
         }
     }
 }

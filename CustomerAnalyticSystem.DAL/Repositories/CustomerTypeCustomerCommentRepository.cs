@@ -13,20 +13,39 @@ namespace CustomerAnalyticSystem.DAL
 {
     public class CustomerTypeCustomerCommentRepository
     {
-        public List<CustomerDTO> GetAllCustomer()
+        public List<CustomerTypeDTO> GetAllCustomerType()
         {
-            List<CustomerDTO> customers = new List<CustomerDTO>();
-
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customers = connection.Query<CustomerDTO>(Queries.GetAllCustomer).ToList();
+                return connection.Query<CustomerTypeDTO>(Queries.GetAllCustomerType
+                    ,commandType: CommandType.StoredProcedure).ToList();
             }
-            return customers;
+        }
+
+        public CustomerTypeDTO GetCustomerTypeById(int id)
+        {
+            CustomerTypeDTO type = new CustomerTypeDTO();
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                type = connection.QuerySingle<CustomerTypeDTO>(Queries.GetCustomerTypeById
+                    , new { id }
+                    , commandType: CommandType.StoredProcedure);
+            }
+            return type;
         }
 
         public CustomerDTO GetCustomerById(int id)
         {
             CustomerDTO customer = new CustomerDTO();
+        public void UpdateCustomerTypeById(int id, string name)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.UpdateCustomerTypeById
+                    , new { id,name}
+                    ,commandType: CommandType.StoredProcedure);
+            }
+        }
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
@@ -63,6 +82,26 @@ namespace CustomerAnalyticSystem.DAL
             {
                 connection.Query(Queries.DeleteCustomerById
                     ,new { id }
+                    ,commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteCustomerTypeById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.DeleteCustomerTypeById
+                    ,new { id }
+                    ,commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void AddCustomerType(string name)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.AddCustomerType
+                    ,new { name }
                     ,commandType: CommandType.StoredProcedure);
             }
         }
