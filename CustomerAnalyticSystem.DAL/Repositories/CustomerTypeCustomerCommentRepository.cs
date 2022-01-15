@@ -37,6 +37,16 @@ namespace CustomerAnalyticSystem.DAL
         public CustomerDTO GetCustomerById(int id)
         {
             CustomerDTO customer = new CustomerDTO();
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                customer = connection.QuerySingle<CustomerDTO>(Queries.GetCustomerById
+                    , new { id }
+                    , commandType: CommandType.StoredProcedure);
+            }
+            return customer;
+        }
+
         public void UpdateCustomerTypeById(int id, string name)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
@@ -47,14 +57,7 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customer = connection.QuerySingle<CustomerDTO>(Queries.GetCustomerById
-                    , new { id }
-                    , commandType: CommandType.StoredProcedure);
-            }
-            return customer;
-        }
+            
 
         public void AddCustomer(string firstName, string lastName, int typeId)
         {
@@ -155,5 +158,6 @@ namespace CustomerAnalyticSystem.DAL
             }
             return customerPreferenceDTOs;
         }
+
     }
 }
