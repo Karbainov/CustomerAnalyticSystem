@@ -20,7 +20,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query<AllProductInfoById, CheckWithCustomerInfoDTO, AllProductInfoById>(Querys.GetAllProductInfoById,
+                connection.Query<AllProductInfoById, CheckWithCustomerInfoDTO, AllProductInfoById>(Queries.GetAllProductInfoById,
                     (productInfo, check) =>
                     {
                         if (concreteProduct == null)
@@ -33,7 +33,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
                     }
                 , new { Id = id }
                 , commandType: CommandType.StoredProcedure
-                , splitOn: "Id");
+                , splitOn:"Id");
             }
             return concreteProduct;
 

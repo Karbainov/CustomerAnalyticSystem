@@ -3,4 +3,4 @@
 as
 select *
 from dbo.[Grade]
-where id=@id
+where Id=@Id

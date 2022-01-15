@@ -1,30 +1,27 @@
-﻿using System;
-using Dapper;
-using Microsoft.Data.SqlClient;
+﻿using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL;
-using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL;
+
 
 
 namespace TempProject
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            //CustomerService customerDapper = new CustomerService();
-            //List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            ////CustomerService customerDapper = new CustomerService();
+            ////List<CustomerDTO> c = customerDapper.GetAllCustomerService();
 
             //foreach (CustomerDTO cust in c)
             //{
             //    Console.WriteLine(cust);
             //}
-            CustomerService temp = new();
-            CustomerInfoDTO qqq = 
-            temp.GetCustomerInfoService(1);
+            //CustomerService temp = new();
+            //CustomerInfoDTO qqq = 
+            //temp.GetCustomerInfoService(1);
             //List<AllOrderInfoByOrderId> products;
             //string query = "EXEC GetAllOrderInfoByOrderId 1";
             //string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False; Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
@@ -36,9 +33,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            AllProductInfoById kekis = new();
-            ProductRepository test = new();
-            kekis = test.FillAllProductById(1);
+            List<GroupsWithProductsDTO> kekis = new();
+            ProductTagGroupRepository test = new();
+            kekis = test.GetAllGroupsWithProducts();
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
