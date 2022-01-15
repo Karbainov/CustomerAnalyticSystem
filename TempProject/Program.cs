@@ -19,9 +19,9 @@ namespace TempProject
             //{
             //    Console.WriteLine(cust);
             //}
-            CustomerService temp = new();
-            CustomerInfoDTO qqq = 
-            temp.GetCustomerInfoService(1);
+            //CustomerService temp = new();
+            //CustomerInfoDTO qqq = 
+            //temp.GetCustomerInfoService(1);
             //List<AllOrderInfoByOrderId> products;
             //string query = "EXEC GetAllOrderInfoByOrderId 1";
             //string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False; Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
@@ -33,8 +33,8 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            AllOrderInfoByOrderId kekis = new();
-            FillOrderInfo test = new();
+            //AllOrderInfoByOrderId kekis = new();
+            //FillOrderInfo test = new();
             //kekis = test.FillOrderInfoByOrderId(1);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
