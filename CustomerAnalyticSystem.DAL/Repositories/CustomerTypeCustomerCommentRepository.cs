@@ -13,7 +13,7 @@ namespace CustomerAnalyticSystem.DAL
 {
     public class CustomerTypeCustomerCommentRepository
     {
-        public List<CustomerDTO> GetAllCustomerService()
+        public List<CustomerDTO> GetAllCustomer()
         {
             List<CustomerDTO> customers = new List<CustomerDTO>();
 
@@ -24,6 +24,48 @@ namespace CustomerAnalyticSystem.DAL
             return customers;
         }
 
+        public CustomerDTO GetCustomerById(int id)
+        {
+            CustomerDTO customer = new CustomerDTO();
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                customer = connection.QuerySingle<CustomerDTO>(Queries.GetCustomerById
+                    , new { id }
+                    , commandType: CommandType.StoredProcedure);
+            }
+            return customer;
+        }
+
+        public void AddCustomer(string firstName, string lastName, int typeId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.AddCustomer
+                    , new { lastName, firstName, typeId }
+                    , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateCustomerById(int id, string firstName, string lastName, int typeId)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.UpdateCustomerById
+                    , new { id, firstName, lastName, typeId }
+                    , commandType: CommandType.StoredProcedure);
+            }
+        }
+        
+        public void DeleteCustomerById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.DeleteCustomerById
+                    ,new { id }
+                    ,commandType: CommandType.StoredProcedure);
+            }
+        }
 
         public CustomerInfoDTO GetCustomerInfoService(int id)
         {
