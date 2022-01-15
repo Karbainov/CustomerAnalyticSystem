@@ -15,12 +15,11 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public AllProductInfoById FillAllProductById(int id)
         {
             AllProductInfoById concreteProduct = null;
-            int i = 0;
 
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query<AllProductInfoById, CheckWithCustomerInfoDTO, AllProductInfoById>(Querys.GetAllProductInfoById,
+                connection.Query<AllProductInfoById, CheckWithCustomerInfoDTO, AllProductInfoById>(Queries.GetAllProductInfoById,
                     (productInfo, check) =>
                     {
                         if (concreteProduct == null)
