@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetAllGradeById]
+﻿CREATE PROCEDURE [dbo].[GetGradeById]
 	@Id integer
 as
 select *

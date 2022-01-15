@@ -46,7 +46,7 @@ namespace TempProject
             ////}
 
 
-            GradeRepository Repository = new();
+            GradeAndPreferencesRepository Repository = new();
             ////1
             List<GradeDTO> grades = new List<GradeDTO>();
             //GradeRepository Repository = new();
