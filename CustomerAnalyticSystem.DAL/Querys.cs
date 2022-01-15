@@ -15,5 +15,6 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
         public const string GetAllOrderInfoByOrderId = "GetAllOrderInfoByOrderId";
         public const string GetAllTagsWithMarksByCustomerId = "GetAllTagsWithMarksByCustomerId";
+        public const string GetAllProductInfoById = "GetAllProductInfoById";
     }
 }
