@@ -12,43 +12,9 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            ////CustomerService customerDapper = new CustomerService();
-            ////List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
 
-            //foreach (CustomerDTO cust in c)
-            //{
-            //    Console.WriteLine(cust);
-            //}
-            //CustomerService temp = new();
-            //CustomerInfoDTO qqq = 
-            //temp.GetCustomerInfoService(1);
-            //List<AllOrderInfoByOrderId> products;
-            //string query = "EXEC GetAllOrderInfoByOrderId 1";
-            //string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False; Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //   products = connection.Query<AllOrderInfoByOrderId>(query).ToList();
-            //}
-            //foreach (var p in (List<AllOrderInfoByOrderId>)products)
-            //{
-            //    Console.WriteLine((AllOrderInfoByOrderId)p);
-            //}
-            List<GroupsWithProductsDTO> kekis = new();
-            ProductTagGroupRepository test = new();
-            kekis = test.GetAllGroupsWithProducts();
-            //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
-            //string query = "EXEC GetAllProduct";
-            //string connectionString = ConnectionString.Connection;
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //   products = connection.Query<CustomerAnalyticSystem.DAL.DTOs.ProductDTO>(query).ToList();
-            //}
-            //foreach (var p in products)
-            //{
-            //    Console.WriteLine((ProductDTO)p);
-            //}
-            CheckWithCustomerInfoDTO fff = new();
-
+            CustomerDTO cust = rep.GetCustomerById(1);
         }
     }
 }

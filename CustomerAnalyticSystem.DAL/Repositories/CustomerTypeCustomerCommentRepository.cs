@@ -26,13 +26,22 @@ namespace CustomerAnalyticSystem.DAL
 
         public CustomerDTO GetCustomerById(int id)
         {
-            CustomerDTO customer = new CustomerDTO();
+            CustomerDTO customer = null;
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customer = connection.QuerySingle<CustomerDTO>(Queries.GetCustomerById
+                connection.Query<CustomerDTO, object, CustomerDTO>(Queries.GetCustomerById
+                    , (customer1, hz) =>
+                     {
+                         if (customer == null)
+                         {
+                             customer = customer1;
+                         }
+                         return customer;
+                     }
                     , new { id }
-                    , commandType: CommandType.StoredProcedure);
+                    , commandType: CommandType.StoredProcedure
+                    , splitOn: "TI");
             }
             return customer;
         }
