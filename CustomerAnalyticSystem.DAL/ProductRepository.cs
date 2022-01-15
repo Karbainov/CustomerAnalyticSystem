@@ -20,32 +20,20 @@ namespace CustomerAnalyticSystem.DAL.DTOs
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query<AllProductInfoById, AllOrderInfoByOrderId, CheckDTO, AllProductInfoById>(Querys.GetAllProductInfoById,
-                    (productInfo, order, item) =>
+                connection.Query<AllProductInfoById, CheckWithCustomerInfoDTO, AllProductInfoById>(Querys.GetAllProductInfoById,
+                    (productInfo, check) =>
                     {
-                        if (i != 0)
-                            concreteProduct.CheckForCurrentProduct.Add(order);
                         if (concreteProduct == null)
                         {
                             concreteProduct = productInfo;
                             concreteProduct.CheckForCurrentProduct = new();
-                            concreteProduct.CheckForCurrentProduct.Add(order);
-                            concreteProduct.CheckForCurrentProduct[i] = new();
-                            concreteProduct.CheckForCurrentProduct[i].Items = new();
-                            return concreteProduct;
                         }
-                        else if (concreteProduct != null)
-                        {
-                            concreteProduct.CheckForCurrentProduct[i].Items = new();
-                            concreteProduct.CheckForCurrentProduct.Add(order);
-                        }
-                        concreteProduct.CheckForCurrentProduct[i].Items.Add(item);
-                        i++;
+                        concreteProduct.CheckForCurrentProduct.Add(check);
                         return concreteProduct;
                     }
                 , new { Id = id }
                 , commandType: CommandType.StoredProcedure
-                , splitOn: "ProductId,CustomerId,Id");
+                , splitOn: "Id");
             }
             return concreteProduct;
 

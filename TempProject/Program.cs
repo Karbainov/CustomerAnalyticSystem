@@ -50,6 +50,8 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
+            CheckWithCustomerInfoDTO fff = new();
+
         }
     }
 }

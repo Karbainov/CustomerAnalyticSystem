@@ -9,11 +9,11 @@ namespace CustomerAnalyticSystem.DAL.DTOs
 {
     public class AllProductInfoById
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         public int GroupId { get; set; }
         public string GroupName { get; set; }
-        public List<AllOrderInfoByOrderId> CheckForCurrentProduct { get; set; }
+        public string GroupDescription { get; set; }
+        public List<CheckDTO> CheckForCurrentProduct { get; set; }
     }
 }
