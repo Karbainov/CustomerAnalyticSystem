@@ -87,7 +87,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                return connection.QuerySingle(Queries.GetProduct_TagById, new { id }, commandType: CommandType.StoredProcedure);
+                return connection.QuerySingle<Product_TagDTO>(Queries.GetProduct_TagById, new { id }, commandType: CommandType.StoredProcedure);
             }
         }
 
