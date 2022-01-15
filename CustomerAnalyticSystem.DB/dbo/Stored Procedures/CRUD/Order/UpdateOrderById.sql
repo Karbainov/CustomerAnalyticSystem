@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateOrderById]
 	@Id integer,
 	@CustomerId integer,
-	@Date nvarchar, 
+	@Date nvarchar(10), 
 	@StatusId nvarchar,
 	@Cost integer
 	AS
@@ -13,4 +13,4 @@
 	where Id= @Id
 
 	
-RETURN 0
+RETURN @Id

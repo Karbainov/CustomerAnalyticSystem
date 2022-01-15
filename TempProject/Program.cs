@@ -10,7 +10,7 @@ using CustomerAnalyticSystem.DAL;
 
 namespace TempProject
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -54,6 +54,15 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
+
+            OrderRepository rep = new OrderRepository();
+
+            OrderDTO order = rep.GetOrderById(1);
+
+            rep.UpdateOrderById(1, 1, "7654321", 1, 78956123);
+
+            OrderDTO order2 = rep.GetOrderById(1);
+
         }
     }
 }
