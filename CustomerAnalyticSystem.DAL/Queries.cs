@@ -84,6 +84,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetCustomersWithPreferenceByProductId = "GetCustomersWithPreferenceByProductId";
         public const string GetAllPreferencesByCustomerId = "GetAllPreferencesByCustomerId";
         public const string GetAllProductsByTag = "GetAllProductsByTag";
+        public const string GetAllProductInfoById = "GetAllProductInfoById";
 
 
     }

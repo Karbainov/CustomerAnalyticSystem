@@ -123,7 +123,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query<AllOrderInfoByOrderId, CheckDTO, AllOrderInfoByOrderId>(Querys.GetAllOrderInfoByOrderId,
+                connection.Query<AllOrderInfoByOrderId, CheckDTO, AllOrderInfoByOrderId>(Queries.GetAllOrderInfoByOrderId,
                     (orderInfo, item) =>
                 {
                     if (concreteOrder == null)
