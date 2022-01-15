@@ -54,5 +54,51 @@ namespace CustomerAnalyticSystem.DAL
                 connection.Query(Queries.UpdateTagById, new { id, name }, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public void AddProduct_Tag (int productId, int tagId)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddProduct_Tag, new { productId, tagId }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteProduct_TagById (int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.DeleteProduct_Tag, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List <Product_TagDTO> GetAllProduct_Tag ()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<Product_TagDTO>(Queries.GetAllProduct_Tag, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public Product_TagDTO GetProduct_TagById (int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingle<Product_TagDTO>(Queries.GetProduct_TagById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateProduct_TagById (int id, int productId, int tagId)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.UpdateProduct_TagById, new { id, productId, tagId }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
     }
 }
