@@ -13,6 +13,55 @@ namespace CustomerAnalyticSystem.DAL
 {
     public class CustomerTypeCustomerCommentRepository
     {
+        public List<CustomerTypeDTO> GetAllCustomerType()
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<CustomerTypeDTO>(Queries.GetAllCustomerType
+                    ,commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public CustomerDTO GetCustomerById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.QuerySingle(Queries.GetCustomerTypeById
+                    , new { id }
+                    , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateCustomerTypeById(int id, string name)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.UpdateCustomerTypeById
+                    , new { id,name}
+                    ,commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteCustomerTypeById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.DeleteCustomerTypeById
+                    ,new { id }
+                    ,commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void AddCustomerType(string name)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query(Queries.AddCustomerType
+                    ,new { name }
+                    ,commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public List<CustomerDTO> GetAllCustomerService()
         {
             List<CustomerDTO> customers = new List<CustomerDTO>();
