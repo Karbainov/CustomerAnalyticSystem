@@ -22,14 +22,16 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public CustomerDTO GetCustomerById(int id)
+        public CustomerTypeDTO GetCustomerTypeById(int id)
         {
+            CustomerTypeDTO type = new CustomerTypeDTO();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                return connection.QuerySingle(Queries.GetCustomerTypeById
+                type = connection.QuerySingle<CustomerTypeDTO>(Queries.GetCustomerTypeById
                     , new { id }
                     , commandType: CommandType.StoredProcedure);
             }
+            return type;
         }
 
         public void UpdateCustomerTypeById(int id, string name)
@@ -61,18 +63,6 @@ namespace CustomerAnalyticSystem.DAL
                     ,commandType: CommandType.StoredProcedure);
             }
         }
-
-        public List<CustomerDTO> GetAllCustomerService()
-        {
-            List<CustomerDTO> customers = new List<CustomerDTO>();
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customers = connection.Query<CustomerDTO>(Queries.GetAllCustomer).ToList();
-            }
-            return customers;
-        }
-
 
         public CustomerInfoDTO GetCustomerInfoService(int id)
         {

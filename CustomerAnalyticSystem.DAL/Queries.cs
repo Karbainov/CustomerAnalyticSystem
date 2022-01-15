@@ -18,7 +18,7 @@ namespace CustomerAnalyticSystem.DAL
 
         public const string AddCustomerType = "AddCustomerType";
         public const string GetAllCustomerType = "GetAllCustomerType";
-        public const string GetCustomerTypeById = "GetCustopmerTypeById";
+        public const string GetCustomerTypeById = "GetCustomerTypeById";
         public const string DeleteCustomerTypeById = "DropCustomerTypeById";
         public const string UpdateCustomerTypeById = "UpdateCustomerTypeById";
     }
