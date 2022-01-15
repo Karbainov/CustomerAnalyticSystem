@@ -55,9 +55,7 @@ namespace CustomerAnalyticSystem.DAL
                     , new { id,name}
                     ,commandType: CommandType.StoredProcedure);
             }
-        }
-
-            
+        }            
 
         public void AddCustomer(string firstName, string lastName, int typeId)
         {

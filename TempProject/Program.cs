@@ -41,6 +41,8 @@ namespace TempProject
 
 
 
+
+
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
