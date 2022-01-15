@@ -56,5 +56,17 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateContactType = "UpdateContactType";
 
         public const string GetAllProductsByTag = "GetAllProductsByTag";
+
+        public const string AddProduct_Tag = "AddProduct_Tag";
+        public const string DeleteProduct_Tag = "DeleteProduct_Tag";
+        public const string GetAllProduct_Tag = "GetAllProduct_Tag";
+        public const string GetProduct_TagById = "GetProduct_TagById";
+        public const string UpdateProduct_TagById = "UpdateProduct_TagById";
+
+        public const string AddTag = "AddTag";
+        public const string DeleteTagById = "DeleteTagById";
+        public const string GetAllTags = "GetAllTags";
+        public const string GetTagById = "GetTagById";
+        public const string UpdateTagById = "UpdateTagById";
     }
 }
