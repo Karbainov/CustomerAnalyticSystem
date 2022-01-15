@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[GetProductById]
 	@Id integer
 AS
-	SELECT * from [dbo].[Product]
+	SELECT P.[Id], P.[Name], P.[Description], P.[GroupId] from [dbo].[Product] as P
 	where Id = @Id
-RETURN 0
+RETURN @Id
