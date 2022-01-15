@@ -2,6 +2,6 @@
   @ProductId integer,
   @TagId integer
 as
-  insert into [dbo].[Product_tag] (ProductId, TagId)
+  insert into [dbo].[Product_Tag] (ProductId, TagId)
   values 
 (@ProductId, @TagId)

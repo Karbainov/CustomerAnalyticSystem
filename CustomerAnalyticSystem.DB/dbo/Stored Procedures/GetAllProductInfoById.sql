@@ -2,7 +2,7 @@
 	@Id integer
 AS
 	SELECT P.[Name],P.[Description],G.[Id] as "GroupId", G.[Name] as "GroupName",C.[Id] as "CheckId"
-	, C.[Mark], C.[Amount],O.[Id] as "OrderId", O.[Date], O.[CustomerID] from [dbo].[Product] as P
+	, C.[Mark], C.[Amount],O.[Id] as "OrderId", O.[Date], O.[CustomerId] from [dbo].[Product] as P
 left join [dbo].[Check] as C
 on P.Id=C.ProductId
 left join [dbo].[Order] as O

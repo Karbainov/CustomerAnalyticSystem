@@ -3,7 +3,7 @@
 AS
 	SELECT  C.OrderId,Cust.Id as "CustomerId",C.Id, C.ProductId,Prod.[Name],Prod.[Description],G.[Name] as "GroupName", C.Amount, C.Mark FROM [dbo].[Check] AS C
 	join [dbo].[Order] as O
-	on C.OrderId = O.ID
+	on C.OrderId = O.Id
 	join [dbo].[Customer] as Cust
 	on Cust.Id = O.CustomerID
 	join [dbo].[Product] as Prod
