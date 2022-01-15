@@ -10,5 +10,6 @@ namespace CustomerAnalyticSystem.BLL.Services
     public class OrderInfoByOrderIdService
     {
 
+        //какаято мапа расчеты и прочее
     }
 }
