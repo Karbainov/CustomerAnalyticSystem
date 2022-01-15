@@ -1,11 +1,12 @@
-﻿using System;
-using Dapper;
-using Microsoft.Data.SqlClient;
+﻿using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CustomerAnalyticSystem.DAL.DTOs;
 using CustomerAnalyticSystem.DAL;
-
+using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL;
 
 
 namespace TempProject
@@ -14,14 +15,14 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            //CustomerService customerDapper = new CustomerService();
-            //List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            ////CustomerService customerDapper = new CustomerService();
+            ////List<CustomerDTO> c = customerDapper.GetAllCustomerService();
 
             //foreach (CustomerDTO cust in c)
             //{
             //    Console.WriteLine(cust);
             //}
-            CustomerTypeCustomerCommentRepository temp = new();
+            CustomerService temp = new();
             CustomerInfoDTO qqq = 
             temp.GetCustomerInfoService(1);
             //List<AllOrderInfoByOrderId> products;
@@ -36,13 +37,8 @@ namespace TempProject
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
             AllOrderInfoByOrderId kekis = new();
-            OrderCheckStatusRepository test = new();
+            FillOrderInfo test = new();
             kekis = test.FillOrderInfoByOrderId(1);
-
-
-
-
-
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
@@ -54,15 +50,6 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
-
-            OrderRepository rep = new OrderRepository();
-
-            OrderDTO order = rep.GetOrderById(1);
-
-            rep.UpdateOrderById(1, 1, "7654321", 1, 78956123);
-
-            OrderDTO order2 = rep.GetOrderById(1);
-
         }
     }
 }
