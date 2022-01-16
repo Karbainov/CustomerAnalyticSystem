@@ -14,7 +14,13 @@ namespace CustomerAnalyticSystem.BLL
         public CustomerModel MapCustomerInfoDTOToCustomerModel(CustomerInfoDTO DTO)
         {
             var mapConfig = new MapperConfigs();
-            return new Mapper(mapConfig.TestConfig()).Map<CustomerInfoDTO, CustomerModel>(DTO);
+            return new Mapper(mapConfig.SuperCustomerConfig).Map<CustomerInfoDTO, CustomerModel>(DTO);
+        }
+
+        public ContactModel MapContacDTOToContactModel(ContactDTO DTO)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.configForCustomersContact).Map<ContactDTO, ContactModel>(DTO);
         }
     }
 }

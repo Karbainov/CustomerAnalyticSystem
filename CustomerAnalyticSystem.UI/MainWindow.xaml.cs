@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomerAnalyticSystem.BLL;
+using CustomerAnalyticSystem.BLL.Models;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -34,6 +35,12 @@ namespace CustomerAnalyticSystem.UI
             TextBoxCustomerFirstName.Text = customerInfo.FirstName;
             TextBoxCustomerLastName.Text = customerInfo.LastName;
             TextBoxCustomerTypeName.Text = customerInfo.Name;
+            foreach (ContactModel contact in customerInfo.Contacts)
+            {
+                Label lable = new Label();
+                lable.Content = contact.ToString();
+                StackPanelContacts.Children.Add(lable);
+            }
         }
     }
 }
