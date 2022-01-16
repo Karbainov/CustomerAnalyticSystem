@@ -29,7 +29,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void BtnGetCustomer_Click(object sender, RoutedEventArgs e)
         {
-            var service = new CustomerService();
+            var service = new CustomerTypeCustomerCommentService();
             var customerInfo = service.GetCustomerModel(Convert.ToInt32(TextBoxGetCustomerId.Text));
 
             TextBoxCustomerFirstName.Text = customerInfo.FirstName;
