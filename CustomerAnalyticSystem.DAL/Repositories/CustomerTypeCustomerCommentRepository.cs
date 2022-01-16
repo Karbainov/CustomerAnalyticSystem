@@ -111,7 +111,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             CustomerInfoDTO customer = new();
 
-            //List<ContactDTO> contacts = null;
+            List<ContactDTO> contacts = null;
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
@@ -125,11 +125,11 @@ namespace CustomerAnalyticSystem.DAL
                 , commandType: CommandType.StoredProcedure).ToList();
             }
 
-            //using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            //{
-            //    customer.Contacts = connection.Query<ContactDTO>(Querys.GetAllContactByCustomerId,
-            //        param: id).ToList();
-            //}
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                customer.Contacts = connection.Query<ContactDTO>(Querys.GetAllContactByCustomerId,
+                    param: id).ToList();
+            }
 
             return customer;
         }

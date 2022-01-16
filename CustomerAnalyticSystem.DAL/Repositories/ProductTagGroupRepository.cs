@@ -8,11 +8,56 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL;
 using System.Data;
+using CustomerAnalyticSystem.DAL.DTOs;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    internal class ProductTagGroupRepository
+    public class ProductTagGroupRepository
     {
+        public void AddTag (string name)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddTag, new { name }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteTagById (int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.DeleteTagById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<TagDTO> GetAllTags ()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+               return connection.Query<TagDTO>(Queries.GetAllTags, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public TagDTO GetTagById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingle<TagDTO>(Queries.GetTagById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateTagById(int id, string name)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.UpdateTagById, new { id, name }, commandType: CommandType.StoredProcedure);
+            }
+        }
         public List<ProductBaseDTO> GetAllProductsByTag(int id)
         {
             List<ProductBaseDTO> productDTOs = new List<ProductBaseDTO>();
@@ -22,6 +67,40 @@ namespace CustomerAnalyticSystem.DAL
                 productDTOs = connection.Query<ProductBaseDTO>(Queries.GetAllProductsByTag, new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
             return productDTOs;
+        }
+
+        public List<GroupsWithProductsDTO> GetAllGroupsWithProducts()
+        {
+            int count = 0;
+            string groupName = null;
+            List<GroupsWithProductsDTO> allGroupsWithProducts = null;
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query<GroupsWithProductsDTO, ProductBaseDTO, GroupsWithProductsDTO>(Queries.GetAllGroupsWithProduct,
+                    (group, product) =>
+                    {
+                        if (allGroupsWithProducts == null)
+                        {
+                            allGroupsWithProducts = new();
+                            allGroupsWithProducts.Add(group);
+                            allGroupsWithProducts[count].Products = new();
+                            groupName = group.Name;
+                        }
+                        if (groupName != group.Name)
+                        {
+                            allGroupsWithProducts.Add(group);
+                            groupName = group.Name;
+                            count++;
+                            allGroupsWithProducts[count].Products = new();
+                        }
+                        allGroupsWithProducts[count].Products.Add(product);
+                        return allGroupsWithProducts[count];
+                    }
+                    , splitOn: "Id"
+                    , commandType: CommandType.StoredProcedure);
+            }
+                return allGroupsWithProducts;
         }
 
         public AllProductInfoById FillAllProductById(int id)
@@ -47,7 +126,6 @@ namespace CustomerAnalyticSystem.DAL
                 , splitOn: "Id");
             }
             return concreteProduct;
-
         }
     }
 }
