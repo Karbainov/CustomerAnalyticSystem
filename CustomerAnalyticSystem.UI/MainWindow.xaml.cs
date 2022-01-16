@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CustomerAnalyticSystem.BLL;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -23,6 +24,16 @@ namespace CustomerAnalyticSystem.UI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnGetCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            var service = new CustomerService();
+            var customerInfo = service.GetCustomerModel(Convert.ToInt32(TextBoxGetCustomerId.Text));
+
+            TextBoxCustomerFirstName.Text = customerInfo.FirstName;
+            TextBoxCustomerLastName.Text = customerInfo.LastName;
+            TextBoxCustomerTypeName.Text = customerInfo.Name;
         }
     }
 }
