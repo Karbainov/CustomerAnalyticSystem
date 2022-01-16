@@ -22,9 +22,9 @@ namespace CustomerAnalyticSystem.BLL
             conf =>
             {
                 conf.CreateMap<CustomerInfoDTO, CustomerModel>();
-                conf.CreateMap<ContactDTO, ContactModel>().ForMember(dest => dest.CustomerId, act => act.MapFrom(src => src.CustomerId))
+                conf.CreateMap<ContactWithContactTypeNameDTO, ContactModel>()
                 .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
-                .ForMember(dest => dest.ContactTypeId, act => act.MapFrom(src => src.ContactTypeId))
+                .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Value, act => act.MapFrom(src => src.Value));
             }
             );
