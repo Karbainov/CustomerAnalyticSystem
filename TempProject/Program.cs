@@ -3,8 +3,8 @@ using CustomerAnalyticSystem.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
 
 namespace TempProject
 {
@@ -33,9 +33,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            AllOrderInfoByOrderId kekis = new();
-            OrderCheckStatusRepository test = new();
-            kekis = test.FillOrderInfoByOrderId(123);
+            //AllOrderInfoByOrderId kekis = new();
+            //OrderCheckStatusRepository test = new();
+            //kekis = test.FillOrderInfoByOrderId(123);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
@@ -47,8 +47,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
-            CheckWithCustomerInfoDTO fff = new();
-
+            OrderInfoByOrderIdModel keks = new();
+            OrderInfoByOrderIdService test = new();
+            keks = test.GetOrderInfoByOrderId(1);
         }
     }
 }

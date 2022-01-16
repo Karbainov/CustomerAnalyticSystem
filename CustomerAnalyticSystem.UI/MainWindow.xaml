@@ -30,7 +30,8 @@
                         <Label Content="Контакт"/>
                         <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
 
-                        <ComboBox Width="527"/>  <!--Тут тип контакта-->
+                        <ComboBox Width="527"/>
+                        <!--Тут тип контакта-->
                         <Button Content="История заказов"/>
                         <Button Content="Преференсес кастомера"/>
                         <Button Content="Какие продукты(теги) заказывал"/>
@@ -43,7 +44,11 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Orders">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="TextBoxOrderId" HorizontalAlignment="Left" Margin="50,47,0,0" Text="write id" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="ButtonAccept" Content="Button" HorizontalAlignment="Left" Margin="50,89,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click"/>
+                    <TextBox x:Name="TextBoxInformationAboutOrder" HorizontalAlignment="Left" Margin="50,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="165"/>
+                </Grid>
             </TabItem>
         </TabControl>
 
