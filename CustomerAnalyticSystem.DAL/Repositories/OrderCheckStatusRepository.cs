@@ -8,7 +8,6 @@ using Microsoft.Data.SqlClient;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
 using System.Data;
-using CustomerAnalyticSystem.DAL;
 
 namespace CustomerAnalyticSystem.DAL
 {
