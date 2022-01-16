@@ -49,5 +49,14 @@ namespace CustomerAnalyticSystem.UI
                 StaclPanelComments.Children.Add(label);
             }
         }
+
+        private void BtnUpdateCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            var service = new CustomerService();
+            service.UpdateCustomer(
+                Convert.ToInt32(TextBoxGetCustomerId.Text)
+                ,TextBoxCustomerFirstName.Text
+                ,TextBoxCustomerLastName.Text);
+        }
     }
 }
