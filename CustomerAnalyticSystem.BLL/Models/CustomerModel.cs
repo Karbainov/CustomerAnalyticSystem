@@ -13,5 +13,6 @@ namespace CustomerAnalyticSystem.BLL.Models
         public string LastName { get; set; }
         public string Name { get; set; }
         public List<ContactModel> Contacts { get; set; }
+        public List<CommentModel> Comments { get; set; }
     }
 }

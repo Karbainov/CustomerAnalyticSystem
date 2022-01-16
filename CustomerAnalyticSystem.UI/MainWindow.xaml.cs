@@ -37,9 +37,16 @@ namespace CustomerAnalyticSystem.UI
             TextBoxCustomerTypeName.Text = customerInfo.Name;
             foreach (ContactModel contact in customerInfo.Contacts)
             {
-                Label lable = new Label();
-                lable.Content = contact.ToString();
-                StackPanelContacts.Children.Add(lable);
+                Label label = new Label();
+                label.Content = contact.ToString();
+                StackPanelContacts.Children.Add(label);
+            }
+
+            foreach(CommentModel comment in customerInfo.Comments)
+            {
+                Label label = new Label();
+                label.Content = comment.ToString();
+                StaclPanelComments.Children.Add(label);
             }
         }
     }
