@@ -5,7 +5,7 @@ as
   from Grade as G
   left join [dbo].[Product] as P
   on P.Id=G.ProductId
-  left outer join [dbo].[Check] as C
+  left join [dbo].[Check] as C
   on P.Id=C.ProductId
   where P.Id=@Id
 RETURN @Id
