@@ -9,7 +9,7 @@ namespace CustomerAnalyticSystem.DAL
     public class Queries
     {
 
-        // еще нет коммент, чек, груп, преференс, продукт
+        // еще нет коммент, чек, груп, продукт
 
 
         #region customer
