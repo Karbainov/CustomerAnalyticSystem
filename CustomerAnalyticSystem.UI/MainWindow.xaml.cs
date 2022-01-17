@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,20 +29,17 @@ namespace CustomerAnalyticSystem.UI
             InitializeComponent();
         }
 
-        private void BtnGetCustomer_Click(object sender, RoutedEventArgs e)
+        private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
-            var service = new CustomerService();
-            var customerInfo = service.GetCustomerModel(Convert.ToInt32(TextBoxGetCustomerId.Text));
-
-            TextBoxCustomerFirstName.Text = customerInfo.FirstName;
-            TextBoxCustomerLastName.Text = customerInfo.LastName;
-            TextBoxCustomerTypeName.Text = customerInfo.Name;
-            foreach (ContactModel contact in customerInfo.Contacts)
+            OrderInfoByOrderIdModel keks = new();
+            OrderInfoByOrderIdService test = new();
+            keks = test.GetOrderInfoByOrderId(Convert.ToInt32( TextBoxOrderId.Text));
+            TextBoxInformationAboutOrder.Text = keks.OrderId + "Order" + keks.CustomerId + "Customer id" + "\n";
+            foreach(var c in keks.Items)
             {
-                Label label = new Label();
-                label.Content = contact.ToString();
-                StackPanelContacts.Children.Add(label);
+                TextBoxInformationAboutOrder.Text += $"({c.ProductId} prodId \t {c.Mark} \t {c.Mark} = Mark \n";
             }
+        }
 
             foreach(CommentModel comment in customerInfo.Comments)
             {
@@ -48,15 +47,6 @@ namespace CustomerAnalyticSystem.UI
                 label.Content = comment.ToString();
                 StaclPanelComments.Children.Add(label);
             }
-        }
-
-        private void BtnUpdateCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            var service = new CustomerService();
-            service.UpdateCustomer(
-                Convert.ToInt32(TextBoxGetCustomerId.Text)
-                ,TextBoxCustomerFirstName.Text
-                ,TextBoxCustomerLastName.Text);
         }
     }
 }
