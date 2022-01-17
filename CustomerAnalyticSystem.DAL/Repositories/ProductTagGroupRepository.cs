@@ -152,7 +152,7 @@ namespace CustomerAnalyticSystem.DAL
                 connection.Query(Queries.UpdateProduct_TagById, new { id, productId, tagId }, commandType: CommandType.StoredProcedure);
             }
         }
-
+        #region Group
         public void AddGroup (string name, string description)
         {
             string connectionString = ConnectionString.Connection;
@@ -171,6 +171,24 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
+        public GroupBaseDTO GetGroupById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingle<GroupBaseDTO>(Queries.GetGroupById, new { id = id }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteGroupById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query<>
+            }
+        }
         public void UpdateGroupById(int id, string name, string description )
         {
             string connectionString = ConnectionString.Connection;
@@ -180,5 +198,6 @@ namespace CustomerAnalyticSystem.DAL
                 , commandType: CommandType.StoredProcedure);
             }
         }
+        #endregion
     }
 }
