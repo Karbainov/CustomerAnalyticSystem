@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    public class ContactDTO
+    public class Product_TagDTO
     {
         public int Id { get; set; }
-        public int CustomerId { get; set; }
-        public int ContactTypeId { get; set; }
-        public string Value { get; set; }
-
+        public int ProductId { get; set; }
+        public int TagId { get; set; }
     }
 }

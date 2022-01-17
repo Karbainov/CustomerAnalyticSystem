@@ -3,8 +3,8 @@ using CustomerAnalyticSystem.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
 
 namespace TempProject
 {
@@ -12,16 +12,16 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            //CustomerService customerDapper = new CustomerService();
-            //List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            ////CustomerService customerDapper = new CustomerService();
+            ////List<CustomerDTO> c = customerDapper.GetAllCustomerService();
 
             //foreach (CustomerDTO cust in c)
             //{
             //    Console.WriteLine(cust);
             //}
-            CustomerTypeCustomerCommentRepository temp = new();
-            CustomerInfoDTO qqq = 
-            temp.GetCustomerInfoService(1);
+            //CustomerService temp = new();
+            //CustomerInfoDTO qqq = 
+            //temp.GetCustomerInfoService(1);
             //List<AllOrderInfoByOrderId> products;
             //string query = "EXEC GetAllOrderInfoByOrderId 1";
             //string connectionString = @"Data Source=DESKTOP-16PSAEB;Initial Catalog=CreateAnalyticSystem;Integrated Security=True;Persist Security Info=False; Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False";
@@ -33,14 +33,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            AllOrderInfoByOrderId kekis = new();
-            OrderCheckStatusRepository test = new();
-            kekis = test.FillOrderInfoByOrderId(1);
-
-
-
-
-
+            //AllOrderInfoByOrderId kekis = new();
+            //OrderCheckStatusRepository test = new();
+            //kekis = test.FillOrderInfoByOrderId(123);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
@@ -52,6 +47,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
+            OrderInfoByOrderIdModel keks = new();
+            OrderInfoByOrderIdService test = new();
+            keks = test.GetOrderInfoByOrderId(1);
         }
     }
 }

@@ -140,7 +140,16 @@ namespace CustomerAnalyticSystem.DAL
             return concreteOrder;
         }
 
-        
+        public List<CustomersOrderDTO> GetAllOrdersByCustomerId(int id)
+        {
+            List<CustomersOrderDTO> customersOrderDTOs = new List<CustomersOrderDTO>();
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                customersOrderDTOs = connection.Query<CustomersOrderDTO>(Queries.GetAllOrdersByCustomerId,
+                    new { id }, commandType: CommandType.StoredProcedure).ToList();
+            }
+            return customersOrderDTOs;
+        }
     }
 }
 
