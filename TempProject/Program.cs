@@ -12,8 +12,7 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            ////CustomerService customerDapper = new CustomerService();
-            ////List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
 
             //foreach (CustomerDTO cust in c)
             //{
