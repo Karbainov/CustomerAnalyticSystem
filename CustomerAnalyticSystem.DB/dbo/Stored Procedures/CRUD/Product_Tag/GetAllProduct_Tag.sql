@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllProduct_Tag]
 	as
-select *
-from dbo.[Product_Tag]
+select PT.Id, PT.ProductId, PT.TagId
+from dbo.[Product_Tag] as PT
 

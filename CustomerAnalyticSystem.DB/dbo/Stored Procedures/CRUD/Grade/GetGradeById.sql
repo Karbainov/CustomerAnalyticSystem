@@ -3,4 +3,4 @@
 as
 select Grade.Id, Grade.ProductId, Grade.CustomerId, Grade.Value
 from dbo.[Grade]
-where id=@id
+where Id=@Id

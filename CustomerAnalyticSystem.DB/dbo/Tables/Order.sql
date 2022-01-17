@@ -4,7 +4,7 @@
 	CustomerId integer NOT NULL,
 	Date nvarchar(10) NOT NULL,
 	StatusId integer NOT NULL,
-	Cost integer NOT NULL,
-	Foreign key (StatusID) references [Status] (Id),
-	Foreign key (CustomerID) references [Customer] (ID)
+	Cost integer NULL,
+	Foreign key (StatusId) references [Status] (Id),
+	Foreign key (CustomerId) references [Customer] (Id)
 )

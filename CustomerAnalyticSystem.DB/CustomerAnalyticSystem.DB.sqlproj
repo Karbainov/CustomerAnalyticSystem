@@ -139,6 +139,9 @@
     <Build Include="dbo\Stored Procedures\CRUD\Tag\AddTag.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\GetAllProduct_Tag.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\GetProduct_TagById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\UpdateProduct_TagById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\DeleteProduct_TagById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Product_Tag\AddProduct_Tag.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Tag\GetAllTags.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Tag\GetTagById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Tag\UpdateTagById.sql" />
@@ -172,6 +175,8 @@
     <Build Include="dbo\Stored Procedures\CRUD\Preferences\GetPreferenceById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Preferences\DeletePreferenceById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Preferences\UpdatePreferenceById.sql" />
+    <Build Include="dbo\Stored Procedures\GetCustomersWithPreferenceByProductId.sql" />
+    <Build Include="dbo\Stored Procedures\GetNumberOfTagsInOrderByCustomerId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
