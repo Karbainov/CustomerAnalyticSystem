@@ -76,6 +76,10 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateTagById = "UpdateTagById";
         #endregion
 
+        #region Group
+        public const string AddGroup = "AddGroup";
+        #endregion
+
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";
         public const string GetAllContactByCustomerId = "GetAllContactByCustomerId";
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
