@@ -3,4 +3,4 @@
 AS
 	insert dbo.[Status]
 	values (@Name)
-RETURN 0
+

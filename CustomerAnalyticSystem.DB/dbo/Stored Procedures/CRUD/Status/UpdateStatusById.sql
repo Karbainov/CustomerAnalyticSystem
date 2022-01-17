@@ -5,4 +5,4 @@ AS
 	update dbo.[Status]
 	set Name = @Name
 	where Id= @Id
-RETURN 0
+RETURN @Id

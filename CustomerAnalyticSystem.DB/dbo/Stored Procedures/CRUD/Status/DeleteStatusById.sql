@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[DeleteStatusById]
 	@Id integer
 AS
-	delete dbo.[Status]
+	delete from dbo.[Status]
 	where Id= @Id
-RETURN 0
+

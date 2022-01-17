@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateOrderById]
 	@Id integer,
-	@CustomerID integer,
-	@Date nvarchar, 
-	@StatusID nvarchar,
+	@CustomerId integer,
+	@Date nvarchar(10), 
+	@StatusId integer,
 	@Cost integer
 	AS
 	update dbo.[Order]
