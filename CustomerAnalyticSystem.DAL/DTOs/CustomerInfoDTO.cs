@@ -12,7 +12,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public string Name { get; set; }
         public List<CommentDTO> Comments { get; set; }
 
-        public List<ContactDTO> Contacts { get; set; }
+        public List<ContactWithContactTypeNameDTO> Contacts { get; set; }
 
         public override string ToString()
         {

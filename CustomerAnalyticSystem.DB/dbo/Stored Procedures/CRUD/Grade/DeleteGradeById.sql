@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[DeleteGrade]
+﻿CREATE PROCEDURE [dbo].[DeleteGradeById]
 	@Id integer
 as
 delete dbo.[Grade]
