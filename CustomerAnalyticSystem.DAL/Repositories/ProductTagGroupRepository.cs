@@ -10,6 +10,50 @@ namespace CustomerAnalyticSystem.DAL
 {
     public class ProductTagGroupRepository
     {
+        public void AddTag (string name)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddTag, new { name }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+        public List<TagDTO> GetAllTags ()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+               return connection.Query<TagDTO>(Queries.GetAllTags, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public TagDTO GetTagById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingle<TagDTO>(Queries.GetTagById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateTagById(int id, string name)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.UpdateTagById, new { id, name }, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void DeleteTagById (int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.DeleteTagById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
         public List<ProductBaseDTO> GetAllProductsByTag(int id)
         {
             List<ProductBaseDTO> productDTOs = new List<ProductBaseDTO>();
@@ -54,52 +98,31 @@ namespace CustomerAnalyticSystem.DAL
             }
                 return allGroupsWithProducts;
         }
-        public void AddTag (string name)
+
+        public AllProductInfoById FillAllProductById(int id)
         {
+            AllProductInfoById concreteProduct = null;
+
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query(Queries.AddTag, new { name }, commandType: CommandType.StoredProcedure);
+                connection.Query<AllProductInfoById, CheckWithCustomerInfoDTO, AllProductInfoById>(Queries.GetAllProductInfoById,
+                    (productInfo, check) =>
+                    {
+                        if (concreteProduct == null)
+                        {
+                            concreteProduct = productInfo;
+                            concreteProduct.CheckForCurrentProduct = new();
+                        }
+                        concreteProduct.CheckForCurrentProduct.Add(check);
+                        return concreteProduct;
+                    }
+                , new { Id = id }
+                , commandType: CommandType.StoredProcedure
+                , splitOn: "Id");
             }
-
+            return concreteProduct;
         }
-
-        public void DeleteTagById (int id)
-        {
-            string connectionString = ConnectionString.Connection;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Query(Queries.DeleteTagById, new { id }, commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public List<TagDTO> GetAllTags ()
-        {
-            string connectionString = ConnectionString.Connection;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-               return connection.Query<TagDTO>(Queries.GetAllTags, commandType: CommandType.StoredProcedure).ToList();
-            }
-        }
-
-        public TagDTO GetTagById(int id)
-        {
-            string connectionString = ConnectionString.Connection;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                return connection.QuerySingle<TagDTO>(Queries.GetTagById, new { id }, commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void UpdateTagById(int id, string name)
-        {
-            string connectionString = ConnectionString.Connection;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Query(Queries.UpdateTagById, new { id, name }, commandType: CommandType.StoredProcedure);
-            }
-        }
-
         public void AddProduct_Tag (int productId, int tagId)
         {
             string connectionString = ConnectionString.Connection;
@@ -121,12 +144,12 @@ namespace CustomerAnalyticSystem.DAL
         public List <Product_TagDTO> GetAllProduct_Tag ()
         {
             string connectionString = ConnectionString.Connection;
-            using (SqlConnection connection = new SqlConnection(connectionString))
             {
+            using (SqlConnection connection = new SqlConnection(connectionString))
                 return connection.Query<Product_TagDTO>(Queries.GetAllProduct_Tag, commandType: CommandType.StoredProcedure).ToList();
             }
-        }
 
+        }
         public Product_TagDTO GetProduct_TagById (int id)
         {
             string connectionString = ConnectionString.Connection;
