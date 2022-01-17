@@ -153,5 +153,32 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
+        public void AddGroup (string name, string description)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddGroup, new { Name = name, description= description }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<GroupBaseDTO> GetAllGroup()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<GroupBaseDTO>(Queries.GetAllGroup, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public void UpdateGroupById(int id, string name, string description )
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query<GroupBaseDTO>(Queries.UpdateGroupById, new {Id = id, name = name, description = description }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
