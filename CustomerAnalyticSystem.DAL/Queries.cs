@@ -18,11 +18,19 @@ namespace CustomerAnalyticSystem.DAL
         public const string AddCustomer = "AddCustomer";
         public const string UpdateCustomerById = "UpdateCustomerById";
         public const string DeleteCustomerById = "DropCustomerById";
-        #endregion     
+        #endregion
+
+        #region preferences
+        public const string GetAllPreferences = "GetAllPreferences";
+        public const string GetPreferenceById = "GetPreferenceById";
+        public const string AddPreference = "AddPreference";
+        public const string DeletePreferenceById = "DeletePreferenceById";
+        public const string UpdatePreferenceById = "UpdatePreferenceById";
+        #endregion
 
         #region grades
         public const string GetAllGrades = "GetAllGrade";
-        public const string GetAllGradeById = "GetAllGradeById";
+        public const string GetGradeById = "GetAllGradeById";
         public const string AddGrade = "AddGrade";
         public const string DeleteGradeById = "DeleteGrade";
         public const string UpdateGradeById = "UpdateGrade";

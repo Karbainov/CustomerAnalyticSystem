@@ -7,7 +7,6 @@ using System.Text;
 using AutoMapper;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.BLL.Configs;
-using CustomerAnalyticSystem.BLL.Models;
 
 namespace CustomerAnalyticSystem.BLL
 {

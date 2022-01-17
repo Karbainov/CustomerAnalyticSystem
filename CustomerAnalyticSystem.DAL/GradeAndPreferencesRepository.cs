@@ -19,7 +19,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                grades = connection.Query<GradeDTO>(Querys.GetAllGrades).ToList();
+                grades = connection.Query<GradeDTO>(Queries.GetAllGrades).ToList();
             }
             return grades;
         }
@@ -29,7 +29,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                grade = connection.QuerySingle<GradeDTO>(Querys.GetGradeById, new { id }
+                grade = connection.QuerySingle<GradeDTO>(Queries.GetGradeById, new { id }
                , commandType: CommandType.StoredProcedure);
             }
             return grade;
@@ -40,7 +40,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<GradeDTO>(Querys.AddGrade, new { ProductId, CustomerId, Value }
+                connection.QuerySingle<GradeDTO>(Queries.AddGrade, new { ProductId, CustomerId, Value }
                 ,commandType: CommandType.StoredProcedure);
             }
         }
@@ -50,7 +50,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle(Querys.DeleteGradeById, new { id }
+                connection.QuerySingle(Queries.DeleteGradeById, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -60,7 +60,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<GradeDTO>(Querys.UpdateGradeById, new { id, Value }
+                connection.Query<GradeDTO>(Queries.UpdateGradeById, new { id, Value }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -72,7 +72,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                preferences = connection.Query<PreferencesDTO>(Querys.GetAllPreferences).ToList();
+                preferences = connection.Query<PreferencesDTO>(Queries.GetAllPreferences).ToList();
             }
             return preferences;
         }
@@ -83,7 +83,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                preference = connection.QuerySingle<PreferencesDTO>(Querys.GetPreferenceById, new { id }
+                preference = connection.QuerySingle<PreferencesDTO>(Queries.GetPreferenceById, new { id }
                , commandType: CommandType.StoredProcedure);
             }
             return preference;
@@ -94,7 +94,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<PreferencesDTO>(Querys.AddPreference, new { ProductId, CustomerId, TagId, GroupId, IsInterested }
+                connection.QuerySingle<PreferencesDTO>(Queries.AddPreference, new { ProductId, CustomerId, TagId, GroupId, IsInterested }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -104,7 +104,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle(Querys.DeletePreferenceById, new { id }
+                connection.QuerySingle(Queries.DeletePreferenceById, new { id }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -114,7 +114,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<PreferencesDTO>(Querys.UpdatePreferenceById, new { Id, IsInterested }
+                connection.QuerySingle<PreferencesDTO>(Queries.UpdatePreferenceById, new { Id, IsInterested }
                 , commandType: CommandType.StoredProcedure);
             }
         }

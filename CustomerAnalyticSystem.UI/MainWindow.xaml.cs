@@ -40,13 +40,7 @@ namespace CustomerAnalyticSystem.UI
                 TextBoxInformationAboutOrder.Text += $"({c.ProductId} prodId \t {c.Mark} \t {c.Mark} = Mark \n";
             }
         }
-
-            foreach(CommentModel comment in customerInfo.Comments)
-            {
-                Label label = new Label();
-                label.Content = comment.ToString();
-                StaclPanelComments.Children.Add(label);
-            }
+      
         }
     }
-}
+
