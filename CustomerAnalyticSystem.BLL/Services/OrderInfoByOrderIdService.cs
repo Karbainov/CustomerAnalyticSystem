@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Configs;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
@@ -12,10 +13,10 @@ namespace CustomerAnalyticSystem.BLL.Services
     {
         public OrderInfoByOrderIdModel GetOrderInfoByOrderId (int id)
         {
+            MrMappi map = new();
             var service = new OrderCheckStatusRepository();
             var dto = service.FillOrderInfoByOrderId(id);
-            var mrMappi = new MapperWork();
-            OrderInfoByOrderIdModel result = mrMappi.MapOrderInfoByOrderId(dto);
+            OrderInfoByOrderIdModel result = map.MapOrderInfoByOrderId(dto);
             return result;
         }
     }
