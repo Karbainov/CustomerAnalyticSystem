@@ -10,4 +10,6 @@
     <ProjectReference Include="..\CustomerAnalyticSystem.BLL\CustomerAnalyticSystem.BLL.csproj" />
   </ItemGroup>
 
+ 
+
 </Project>

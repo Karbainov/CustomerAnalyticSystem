@@ -8,60 +8,104 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
-            <TabItem Header="Customers">
+            <TabItem Header="Клиенты">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="267*"/>
-                        <ColumnDefinition Width="527*"/>
+                        <ColumnDefinition/>
 
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Margin="0,39,0,0" >
-                        <Button Content="Создать нового"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Margin="0,39,0,0" >
-                        <Label Content="Имя клиента"/>
-                        <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
-                        <Label Content="Фамилия клиента"/>
-                        <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
-                        <Label Content="Тип клиента"/>
-                        <ComboBox Width="527"/>
-                        <Label Content="Коммент"/>
-                        <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
-                        <Label Content="Контакт"/>
-                        <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
 
-                        <ComboBox Width="527"/>
-                        <!--Тут тип контакта-->
-                        <Button Content="История заказов"/>
-                        <Button Content="Преференсес кастомера"/>
-                        <Button Content="Какие продукты(теги) заказывал"/>
-                    </StackPanel>
-                    <Label Content="Тут стакпанель с именами кастомеров" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10" Foreground="#FFE82222" FontWeight="Bold" Height="23" Width="198"/>
-                    <Label Content="Тут стакпанель с подробностями о кастомерах" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10" Foreground="#FFE82222" FontWeight="Bold" Height="23" Width="240"/>
+
+                    <Button Content="Новый клиент" HorizontalAlignment="Left" Margin="41,8,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Открыть" HorizontalAlignment="Left" Margin="335,10,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Удалить" HorizontalAlignment="Left" Margin="610,10,0,0" VerticalAlignment="Top" Width="97"/>
+                    <ListView d:ItemsSource="{d:SampleData ItemCount=4}" ItemsSource="{Binding Effects}" SelectedIndex="0" 
+                              FontSize="12" FontFamily="Bahnschrift SemiLight" FontStretch="Normal" FontStyle="Normal" FontWeight="Heavy" 
+                              IsSynchronizedWithCurrentItem="True" SelectionMode="Single" BorderBrush="#89EF0101" BorderThickness="0,0,0,0" 
+                              Background="White" Foreground="#DD0F9ECE" Margin="0,44,0,0">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Width" Value="auto" />
+                                <Setter Property="BorderBrush" Value="LightGray" />
+                                <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn  Width="Auto"  Header="Имя"/>
+                                <GridViewColumn Width="Auto" Header="Фамилия"/>
+                                <GridViewColumn Width="Auto" Header="Тип"/>
+                                <GridViewColumn Width="Auto" Header="Тип контакта"/>
+                                <GridViewColumn Width="Auto" Header="Контакт"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
-            <TabItem Header="Products">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Orders">
+            <TabItem Header="Продукты">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="TextBoxGetCustomerId" HorizontalAlignment="Left" Margin="10,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Label x:Name="OrdersLable" Content="Введи ид кастомера" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.469,0.604"/>
-                    <Button x:Name="BtnGetCustomer" Content="ПАКАЖИ" HorizontalAlignment="Left" Margin="28,98,0,0" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.5,0.5" Width="84" Click="BtnGetCustomer_Click">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleY="1"/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                    <TextBox x:Name="TextBoxCustomerFirstName" HorizontalAlignment="Left" Margin="28,203,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="TextBoxCustomerLastName" HorizontalAlignment="Left" Margin="28,253,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="TextBoxCustomerTypeName" HorizontalAlignment="Left" Margin="28,296,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Label Content="Выберите раздел" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Добавить новый продукт" HorizontalAlignment="Left" Margin="15,149,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Удалить продукт" HorizontalAlignment="Left" Margin="15,183,0,0" VerticalAlignment="Top" Width="142"/>
+                    <Button Content="Открыть" HorizontalAlignment="Left" Margin="14,218,0,0" VerticalAlignment="Top" Width="144"/>
+                    <Label Content="Введите тэг" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Margin="10,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
+                    <ListView d:ItemsSource="{d:SampleData ItemCount=4}" ItemsSource="{Binding Effects}" SelectedIndex="0" 
+                              FontSize="12" FontFamily="Bahnschrift SemiLight" FontStretch="Normal" FontStyle="Normal" FontWeight="Heavy" 
+                              IsSynchronizedWithCurrentItem="True" SelectionMode="Single" BorderBrush="#89EF0101" BorderThickness="0,0,0,0" 
+                              Background="White" Foreground="#DD0F9ECE" Margin="178,10,0,0">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Width" Value="auto" />
+                                <Setter Property="BorderBrush" Value="LightGray" />
+                                <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn  Width="Auto"  Header="Название"/>
+                                <GridViewColumn Width="Auto" Header="Описание"/>
+                                <GridViewColumn Width="Auto" Header="Остаток"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="Поиск" HorizontalAlignment="Left" Margin="14,114,0,0" VerticalAlignment="Top" Width="48"/>
+                    <Button Content="+" HorizontalAlignment="Left" Margin="138,34,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="87,114,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Заказы">
+                <Grid Background="#FFE5E5E5">
                     <StackPanel x:Name="StackPanelContacts" HorizontalAlignment="Left" Height="111" Margin="339,203,0,0" VerticalAlignment="Top" Width="232"/>
                     <StackPanel x:Name="StaclPanelComments" HorizontalAlignment="Left" Height="111" Margin="153,203,0,0" VerticalAlignment="Top" Width="186"/>
+                    <Button Content="Создать новый заказ" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" Width="138"/>
+                    <Button Content="Открыть" HorizontalAlignment="Left" Margin="339,10,0,0" VerticalAlignment="Top" Width="138"/>
+                    <Button Content="Удалить" HorizontalAlignment="Left" Margin="620,10,0,0" VerticalAlignment="Top" Width="138"/>
+                    <ListView d:ItemsSource="{d:SampleData ItemCount=4}" ItemsSource="{Binding Effects}" SelectedIndex="0" 
+                              FontSize="12" FontFamily="Bahnschrift SemiLight" FontStretch="Normal" FontStyle="Normal" FontWeight="Heavy" 
+                              IsSynchronizedWithCurrentItem="True" SelectionMode="Single" BorderBrush="#89EF0101" BorderThickness="0,0,0,0" 
+                              Background="White" Foreground="#DD0F9ECE" Margin="0,47,0,0">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Width" Value="auto" />
+                                <Setter Property="BorderBrush" Value="LightGray" />
+                                <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="Auto" Header="Номер заказа"/>
+                                <GridViewColumn  Width="Auto"  Header="Имя"/>
+                                <GridViewColumn Width="Auto" Header="Фамилия"/>
+                                <GridViewColumn Width="Auto" Header="Дата"/>
+                                <GridViewColumn Width="Auto" Header="Статус"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
         </TabControl>

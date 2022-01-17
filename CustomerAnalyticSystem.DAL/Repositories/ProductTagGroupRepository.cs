@@ -16,7 +16,7 @@ namespace CustomerAnalyticSystem.DAL
         public AllProductInfoById FillAllProductById(int id)
         {
             AllProductInfoById concreteProduct = null;
-            int i = 0;
+            
 
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
