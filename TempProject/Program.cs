@@ -46,11 +46,11 @@ namespace TempProject
             ////}
 
 
-            GradeAndPreferencesRepository Repository = new();
-            ////1
+
+            //1
             List<GradeDTO> grades = new List<GradeDTO>();
-            //GradeRepository Repository = new();
-            //grades = Repository.GetAllGrades();
+            GradeAndPreferencesRepository Repository = new();
+            grades = Repository.GetAllGrades();
 
             ////2
             //GradeDTO gradesbyid;
@@ -66,7 +66,7 @@ namespace TempProject
             // Console.WriteLine(grades);
 
             // //5
-            Repository.UpdateGradeById(6, "RomaMolodec");
+            //Repository.UpdateGradeById(6, "RomaMolodec");
             // Console.WriteLine(grades);
 
             //List<OrderDTO> orders = new List<OrderDTO>();

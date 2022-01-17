@@ -4,3 +4,4 @@ as
 update dbo.[Preferences]
 set IsInterested=@IsInterested
 where Id=@Id
+

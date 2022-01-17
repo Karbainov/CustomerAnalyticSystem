@@ -107,8 +107,6 @@
     <Build Include="dbo\Stored Procedures\CRUD\Product\GetAllProduct.sql" />
     <Build Include="dbo\Stored Procedures\GetAllGroupsWithProducts.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Grade\AddGrade.sql" />
-    <Build Include="dbo\Stored Procedures\CRUD\Grade\GetAllGrade.sql" />
-    <Build Include="dbo\Stored Procedures\CRUD\Grade\GetAllGradeById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Grade\UpdateGradeById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Grade\DeleteGradeById.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrderInfoByOrderId.sql" />
@@ -168,10 +166,12 @@
     <Build Include="dbo\Stored Procedures\CRUD\Order\GetAllOrders.sql" />
     <Build Include="dbo\Stored Procedures\GetAllTagsWithMarksByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Preferences\AddPreference.sql" />
-    <Build Include="dbo\Stored Procedures\CRUD\Preferences\DeletePreferencesById.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\Preferences\GetAllPreferences.sql" />
-    <Build Include="dbo\Stored Procedures\CRUD\Preferences\GetAllPreferencesById.sql" />
-    <Build Include="dbo\Stored Procedures\CRUD\Preferences\UpdatePreferencesById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Grade\GetAllGrades.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Grade\GetGradeById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Preferences\GetPreferenceById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Preferences\DeletePreferenceById.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\Preferences\UpdatePreferenceById.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />

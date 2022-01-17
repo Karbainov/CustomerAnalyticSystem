@@ -1,4 +1,4 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllGrades] 
 	as 
-select * 
+select Grade.Id, Grade.ProductId, Grade.CustomerId, Grade.Value
 from dbo.[Grade] 
