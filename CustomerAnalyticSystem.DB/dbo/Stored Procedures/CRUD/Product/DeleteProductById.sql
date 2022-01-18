@@ -3,4 +3,4 @@
 AS
 	DELETE FROM [dbo].[Product]
 	WHERE Id = @Id
-RETURN 0
+RETURN @Id
