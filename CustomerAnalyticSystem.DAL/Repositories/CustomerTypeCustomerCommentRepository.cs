@@ -24,14 +24,11 @@ namespace CustomerAnalyticSystem.DAL
 
         public CustomerTypeDTO GetCustomerTypeById(int id)
         {
-            CustomerTypeDTO type = new CustomerTypeDTO();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                type = connection.QuerySingle<CustomerTypeDTO>(Queries.GetCustomerTypeById
-                    , new { id }
-                    , commandType: CommandType.StoredProcedure);
+                return connection.QuerySingle<CustomerTypeDTO>(Queries.GetCustomerTypeById
+                    , new { id }, commandType: CommandType.StoredProcedure);
             }
-            return type;
         }
 
         public CustomerDTO GetCustomerById(int id)
@@ -62,7 +59,7 @@ namespace CustomerAnalyticSystem.DAL
             {
                 connection.Query(Queries.UpdateCustomerTypeById
                     , new { id,name}
-                    ,commandType: CommandType.StoredProcedure);
+                    , commandType: CommandType.StoredProcedure);
             }
         }            
 
@@ -144,25 +141,21 @@ namespace CustomerAnalyticSystem.DAL
 
         public List<TagMarksDTO> GetAllMarksOfTagByCustomerId(int id)
         {
-            List<TagMarksDTO> tagMarksDTOs = new List<TagMarksDTO>();
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                tagMarksDTOs = connection.Query<TagMarksDTO>(Queries.GetAllTagsWithMarksByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<TagMarksDTO>(Queries.GetAllTagsWithMarksByCustomerId, new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
-            return tagMarksDTOs;
         }
 
         public List<CustomerPreferenceDTO> GetAllPreferencesByCustomerId(int id)
         {
-            List<CustomerPreferenceDTO> customerPreferenceDTOs = new List<CustomerPreferenceDTO>();
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                customerPreferenceDTOs = connection.Query<CustomerPreferenceDTO>(Queries.GetAllPreferencesByCustomerId, new { id },
+                return connection.Query<CustomerPreferenceDTO>(Queries.GetAllPreferencesByCustomerId, new { id },
                     commandType: CommandType.StoredProcedure).ToList();
             }
-            return customerPreferenceDTOs;
         }
 
     }

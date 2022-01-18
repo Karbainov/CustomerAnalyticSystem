@@ -15,28 +15,23 @@ namespace CustomerAnalyticSystem.DAL
     {
         public List<OrderDTO> GetAllOrders()
         {
-            List<OrderDTO> orders = new List<OrderDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                orders = connection.Query<OrderDTO>(Queries.GetAllOrders).ToList();
+                return connection.Query<OrderDTO>(Queries.GetAllOrders).ToList();
             }
-            return orders;
         }
 
         public OrderDTO GetOrderById(int id)
         {
-            OrderDTO order;
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                order = connection.QuerySingle<OrderDTO>(Queries.GetOrderById, new { id }
+                return connection.QuerySingle<OrderDTO>(Queries.GetOrderById, new { id }
                , commandType: CommandType.StoredProcedure);
             }
-            return order;
         }
 
         public void AddOrder(int CustomerId, string Date, int StatusId, int Cost)
         {
-
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query<OrderDTO>(Queries.AddOrder, new { CustomerId, Date, StatusId, Cost }
@@ -46,7 +41,6 @@ namespace CustomerAnalyticSystem.DAL
 
         public void DeleteOrderById(int id) 
         {
-
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query<OrderDTO>(Queries.DeleteOrderById, new { id }
@@ -56,7 +50,6 @@ namespace CustomerAnalyticSystem.DAL
 
         public void UpdateOrderById(int id, int CustomerId, string Date, int StatusId, int Cost)
         {
-
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query<GradeDTO>(Queries.UpdateOrderById, new { id, CustomerId, Date, StatusId, Cost }
@@ -66,23 +59,19 @@ namespace CustomerAnalyticSystem.DAL
 
         public List<StatusDTO> GetAllStatus()
         {
-            List<StatusDTO> status = new List<StatusDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                status = connection.Query<StatusDTO>(Queries.GetAllStatus).ToList();
+                return connection.Query<StatusDTO>(Queries.GetAllStatus).ToList();
             }
-            return status;
         }
 
         public StatusDTO GetStatusById(int id)
         {
-            StatusDTO status;
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                status = connection.QuerySingle<StatusDTO>(Queries.GetStatusById, new { id }
+                return connection.QuerySingle<StatusDTO>(Queries.GetStatusById, new { id }
                , commandType: CommandType.StoredProcedure);
             }
-            return status;
         }
 
         public void AddStatus(string Name)
@@ -142,13 +131,11 @@ namespace CustomerAnalyticSystem.DAL
 
         public List<CustomersOrderDTO> GetAllOrdersByCustomerId(int id)
         {
-            List<CustomersOrderDTO> customersOrderDTOs = new List<CustomersOrderDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customersOrderDTOs = connection.Query<CustomersOrderDTO>(Queries.GetAllOrdersByCustomerId,
+                return connection.Query<CustomersOrderDTO>(Queries.GetAllOrdersByCustomerId,
                     new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
-            return customersOrderDTOs;
         }
     }
 }
