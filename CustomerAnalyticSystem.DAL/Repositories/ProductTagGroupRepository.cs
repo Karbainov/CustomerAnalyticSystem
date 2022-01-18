@@ -92,30 +92,6 @@ namespace CustomerAnalyticSystem.DAL
                 return allGroupsWithProducts;
         }
 
-        public AllProductInfoById FillAllProductById(int id)
-        {
-            AllProductInfoById concreteProduct = null;
-
-            string connectionString = ConnectionString.Connection;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Query<AllProductInfoById, CheckWithCustomerInfoDTO, AllProductInfoById>(Queries.GetAllProductInfoById,
-                    (productInfo, check) =>
-                    {
-                        if (concreteProduct == null)
-                        {
-                            concreteProduct = productInfo;
-                            concreteProduct.CheckForCurrentProduct = new();
-                        }
-                        concreteProduct.CheckForCurrentProduct.Add(check);
-                        return concreteProduct;
-                    }
-                , new { Id = id }
-                , commandType: CommandType.StoredProcedure
-                , splitOn: "Id");
-            }
-            return concreteProduct;
-        }
         public void AddProduct_Tag (int productId, int tagId)
         {
             string connectionString = ConnectionString.Connection;

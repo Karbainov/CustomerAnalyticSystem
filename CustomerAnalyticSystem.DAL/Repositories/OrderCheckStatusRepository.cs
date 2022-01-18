@@ -44,7 +44,7 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public void DeleteOrderById(int id) // хз че с ним делать, удалять нельзя изза ссылки
+        public void DeleteOrderById(int id) 
         {
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))

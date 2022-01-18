@@ -60,7 +60,7 @@ namespace CustomerAnalyticSystem.DAL
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<GradeDTO>(Queries.UpdateGradeById, new { id, Value }
+                connection.Query<GradeDTO>(Queries.UpdateGradeById, new { id, Value }
                 , commandType: CommandType.StoredProcedure);
             }
         }
