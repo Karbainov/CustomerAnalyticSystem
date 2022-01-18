@@ -86,6 +86,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllProductsByTag = "GetAllProductsByTag";
         public const string GetAllProductInfoById = "GetAllProductInfoById";
         public const string GetAllGroupsWithProduct = "GetAllGroupsWithProducts";
+        public const string GetNumberOfTagsInOrderByCustomerId = "GetNumberOfTagsInOrderByCustomerId";
 
     }
 }

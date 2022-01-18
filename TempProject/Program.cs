@@ -33,9 +33,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            List<GroupsWithProductsDTO> kekis = new();
+            List<GetNumberOfTagsInOrderByCustomerIdDTO> kekis = new();
             ProductTagGroupRepository test = new();
-            kekis = test.GetAllGroupsWithProducts();
+            kekis = test.GetNumberOfTagsInOrderByCustomerId(1);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
