@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[ContactType]
 (
 	[Id] integer identity primary key,
-    [Name] nvarchar (255) NOT NULL
+    [Name] nvarchar (30) NOT NULL
 )

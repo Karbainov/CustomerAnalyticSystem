@@ -1,4 +1,4 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllTags]
 	as
-select *
-from dbo.[Tag]
+select Tag.Id, Tag.[Name]
+from [dbo].[Tag]

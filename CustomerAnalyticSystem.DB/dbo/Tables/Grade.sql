@@ -2,8 +2,8 @@
 (
 	[Id] integer identity primary key,
 	ProductId integer NOT NULL,
-	CustumerId integer NOT NULL,
-	[Value] nvarchar (50) NOT NULL,
-	Foreign key (ProductID) references [Product] (ID),
-	Foreign key (CustumerID) references [Customer] (ID)
+	CustomerId integer NOT NULL,
+	[Value] nvarchar (30) NULL,
+	Foreign key (ProductId) references [Product] (Id),
+	Foreign key (CustomerId) references [Customer] (Id)
 )
