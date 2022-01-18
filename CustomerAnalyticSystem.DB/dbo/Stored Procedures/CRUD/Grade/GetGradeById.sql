@@ -2,5 +2,5 @@
 	@Id integer
 as
 select Grade.Id, Grade.ProductId, Grade.CustomerId, Grade.Value
-from dbo.[Grade]
+from [dbo].[Grade]
 where Id=@Id
