@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace CustomerAnalyticSystem.UI
 {
     /// <summary>
-    /// Interaction logic for OrderHistory.xaml
+    /// Interaction logic for BuyHistoryWindow.xaml
     /// </summary>
-    public partial class OrderHistory : Window
+    public partial class BuyHistoryWindow : Window
     {
-        public OrderHistory()
+        public BuyHistoryWindow()
         {
             InitializeComponent();
         }

@@ -3,8 +3,8 @@ using CustomerAnalyticSystem.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
 
 namespace TempProject
 {
@@ -12,8 +12,7 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            ////CustomerService customerDapper = new CustomerService();
-            ////List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
 
             //foreach (CustomerDTO cust in c)
             //{
@@ -47,8 +46,15 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
-            CheckWithCustomerInfoDTO fff = new();
 
+
+            //OrderInfoByOrderIdModel keks = new();
+            //OrderInfoByOrderIdService test = new();
+            //keks = test.GetOrderInfoByOrderId(1);
+
+            List<GroupsWithProductsModel> keks1 = new();
+            AllGroupsWithProductsService test1 = new();
+            keks1 = test1.GetAllGroupsWithProducts();
         }
     }
 }
