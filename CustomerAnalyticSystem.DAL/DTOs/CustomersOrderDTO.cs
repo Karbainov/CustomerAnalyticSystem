@@ -12,7 +12,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int OrderId { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public int Amount { get; set; }
 
     }

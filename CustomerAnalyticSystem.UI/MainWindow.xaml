@@ -8,11 +8,10 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
-            <TabItem Header="Customers">
+            <TabItem Header="Клиенты">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="267*"/>
-                        <ColumnDefinition Width="527*"/>
+                        <ColumnDefinition/>
 
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="0,39,0,0" >

@@ -2,9 +2,9 @@
 (
 	Id integer identity primary key,
 	CustomerId integer NOT NULL,
-	Date nvarchar(10) NOT NULL,
+	Date NVARCHAR(10) NOT NULL,
 	StatusId integer NOT NULL,
-	Cost integer NOT NULL,
+	Cost integer NULL,
 	Foreign key (StatusId) references [Status] (Id),
 	Foreign key (CustomerId) references [Customer] (Id)
 )

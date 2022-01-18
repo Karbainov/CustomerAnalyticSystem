@@ -7,7 +7,6 @@ using System.Text;
 using AutoMapper;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.BLL.Configs;
-using CustomerAnalyticSystem.BLL.Models;
 
 namespace CustomerAnalyticSystem.BLL
 {
@@ -24,5 +23,11 @@ namespace CustomerAnalyticSystem.BLL
             var config = new MapperConfigs();
             return new Mapper(config.ConfigAllGroupsWithProducts).Map<List<GroupsWithProductsDTO>, List<GroupsWithProductsModel>>(dto);
         }
-    }
+        public CustomerModel MapCustomerInfoDTOToCustomerModel(CustomerInfoDTO DTO)
+        {
+            var mapConfig = new MapperConfigs();
+            return new Mapper(mapConfig.ConfFromCustomerInfoDTOToCustomerModel).Map<CustomerInfoDTO, CustomerModel>(DTO);
+        }
+    
+}
 }

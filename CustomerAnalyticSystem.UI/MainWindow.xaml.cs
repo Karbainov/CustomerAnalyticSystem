@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CustomerAnalyticSystem.BLL;
+using CustomerAnalyticSystem.BLL.Models;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -38,5 +40,7 @@ namespace CustomerAnalyticSystem.UI
                 TextBoxInformationAboutOrder.Text += $"({c.ProductId} prodId \t {c.Mark} \t {c.Mark} = Mark \n";
             }
         }
+      
+        }
     }
-}
+

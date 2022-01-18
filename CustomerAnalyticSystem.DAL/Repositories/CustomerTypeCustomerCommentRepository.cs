@@ -36,13 +36,22 @@ namespace CustomerAnalyticSystem.DAL
 
         public CustomerDTO GetCustomerById(int id)
         {
-            CustomerDTO customer = new CustomerDTO();
+            CustomerDTO customer = null;
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                customer = connection.QuerySingle<CustomerDTO>(Queries.GetCustomerById
+                connection.Query<CustomerDTO, object, CustomerDTO>(Queries.GetCustomerById
+                    , (customer1, hz) =>
+                     {
+                         if (customer == null)
+                         {
+                             customer = customer1;
+                         }
+                         return customer;
+                     }
                     , new { id }
-                    , commandType: CommandType.StoredProcedure);
+                    , commandType: CommandType.StoredProcedure
+                    , splitOn: "TI");
             }
             return customer;
         }
@@ -111,8 +120,6 @@ namespace CustomerAnalyticSystem.DAL
         {
             CustomerInfoDTO customer = new();
 
-            List<ContactDTO> contacts = null;
-
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 customer = connection.QuerySingle<CustomerInfoDTO>(Queries.GetCustomerByIdWithCustomerType, new { id }
@@ -125,11 +132,12 @@ namespace CustomerAnalyticSystem.DAL
                 , commandType: CommandType.StoredProcedure).ToList();
             }
 
-            //using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            //{
-            //    customer.Contacts = connection.Query<ContactDTO>(Querys.GetAllContactByCustomerId,
-            //        param: id).ToList();
-            //}
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                customer.Contacts = connection.Query<ContactWithContactTypeNameDTO>(Queries.GetAllContactByCustomerId,
+                    new { id },
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
 
             return customer;
         }

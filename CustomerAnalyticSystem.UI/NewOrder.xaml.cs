@@ -15,13 +15,18 @@ using System.Windows.Shapes;
 namespace CustomerAnalyticSystem.UI
 {
     /// <summary>
-    /// Interaction logic for CustomerPreferences.xaml
+    /// Логика взаимодействия для NewOrder.xaml
     /// </summary>
-    public partial class CustomerPreferences : Window
+    public partial class NewOrder : Window
     {
-        public CustomerPreferences()
+        public NewOrder()
         {
             InitializeComponent();
+        }
+
+        private void ComboBox_SelectionChanged(object sender)
+        {
+
         }
     }
 }

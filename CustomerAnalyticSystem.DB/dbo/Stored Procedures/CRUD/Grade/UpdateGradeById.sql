@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[UpdateGrade]
-		@Id integer, @Value nvarchar(255)
+﻿CREATE PROCEDURE [dbo].[UpdateGradeById]
+		@Id integer, @Value nvarchar(50)
 as
 update dbo.[Grade]
 set Value=@Value
