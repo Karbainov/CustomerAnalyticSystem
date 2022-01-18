@@ -137,5 +137,17 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
+        public List<GetNumberOfTagsInOrderByCustomerIdDTO> GetNumberOfTagsInOrderByCustomerId (int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<GetNumberOfTagsInOrderByCustomerIdDTO>(Queries.GetNumberOfTagsInOrderByCustomerId
+                    , new { id }, commandType: CommandType.StoredProcedure).ToList();
+
+            }
+
+        }
+
     }
 }
