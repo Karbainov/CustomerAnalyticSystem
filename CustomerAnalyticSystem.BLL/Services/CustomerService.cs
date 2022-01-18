@@ -9,17 +9,27 @@ using CustomerAnalyticSystem.DAL.DTOs;
 
 namespace CustomerAnalyticSystem.BLL
 {
-    public class CustomerTypeCustomerCommentService
+    public class CustomerService
     {
-        public CustomerModel GetCustomerModel(int id)
+        public CustomerInfoModel GetCustomerModel(int id)
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             var DTO = rep.GetCustomerInfoService(id);
-            var map = new MyMapper();
-            CustomerModel result = map.MapCustomerInfoDTOToCustomerModel(DTO);
+            var map = new MrMappi();
+            CustomerInfoModel result = map.MapCustomerInfoDTOToCustomerModel(DTO);
 
             return result;
         }
+
+        public List<CustomerModel> GetAllCustomerModels()
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            List<CustomerDTO> customers = rep.GetAllCustomers();
+            var map = new MrMappi();
+
+            return  map.MapListCustomerDTOToListCustomerModel(customers);
+        }
+
         //public CustomerModel GetCustomerModel(int id)
         //{
         //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();

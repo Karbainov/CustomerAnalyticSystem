@@ -34,6 +34,15 @@ namespace CustomerAnalyticSystem.DAL
             return type;
         }
 
+        public List<CustomerDTO> GetAllCustomers()
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<CustomerDTO>(Queries.GetAllCustomers
+                    , commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
         public CustomerDTO GetCustomerById(int id)
         {
             CustomerDTO customer = null;

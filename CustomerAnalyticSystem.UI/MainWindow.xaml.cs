@@ -27,6 +27,16 @@ namespace CustomerAnalyticSystem.UI
         public MainWindow()
         {
             InitializeComponent();
+            CustomerService custServe = new CustomerService();
+            List<CustomerModel> customers = custServe.GetAllCustomerModels();
+
+            foreach (CustomerModel customer in customers)
+            {
+                Button btn = new Button();
+                btn.Name = Convert.ToString("qwe" + customer.Id);
+                btn.Content = $"{customer.LastName} {customer.FirstName}";
+                StackPanelAllCustomers.Children.Add(btn);
+            }
         }
 
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
