@@ -11,7 +11,7 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public int Id { get; set; }
         public int ProductId { get; set; }
         public int CustumerId { get; set; }
-        public string Value { get; set; }
+        public int Value { get; set; }
         
     }
 }
