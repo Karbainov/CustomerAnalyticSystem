@@ -37,11 +37,13 @@
                         <ColumnDefinition Width="100*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Total" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TextBlockTotal_AllProductBuyStatisticWindow" Grid.Column="1" HorizontalAlignment="Left" Margin="64,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
-            <ScrollViewer Grid.Row="1"/>
-            <ScrollViewer Grid.Column="1" Grid.Row="1"/>
-            <ScrollViewer Grid.Column="2" Grid.Row="1"/>
+            <ScrollViewer x:Name="ScrollViewer_AllProductBuyStatisticWindow" Margin="0,0,0,64" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="1"/>
+            <StackPanel x:Name="StackPanelProduct_AllProductBuyStatisticWindow" Grid.Row="1"/>
+            <StackPanel x:Name="StackPanelAmountOfOrders_AllProductBuyStatisticWindow" Grid.Column="1" Grid.Row="1"/>
+            <StackPanel x:Name="StackPanelTotalBuy_AllProductBuyStatisticWindow" Grid.Column="2" Grid.Row="1"/>
         </Grid>
     </Border>
 </Window>
