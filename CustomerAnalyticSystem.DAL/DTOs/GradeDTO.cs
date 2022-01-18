@@ -8,11 +8,10 @@ namespace CustomerAnalyticSystem.DAL.DTOs
 {
     class GradeDTO
     {
-        int Id { get; set; }
-        int ProductId { get; set; }
-        int CustumerId { get; set; }
-        string Value { get; set; }
-
+        public int Id { get; set; }
+        public int ProductId { get; set; }
+        public int CustumerId { get; set; }
+        public string Value { get; set; }
         
     }
 }
