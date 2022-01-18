@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllGradesByCustomerId]
 	@Id integer
 as
-  select C.Name, C.Age, P.Name, P.Description, G.Value, Ch.Amount, Ch.Mark from Grade as G
-  left join [dbo].[Customer] as C
+  select C.[FirstName], C.[LastName], P.[Name], G.[Value] as ProductGrade, Ch.[Amount]as AmountProduct, Ch.[Mark] as OrderGrade from [dbo].[Customer] as C
+  left join [dbo].[Grade] as G
   on C.Id=G.CustomerId
   left join [dbo].[Product] as P
   on P.Id=G.ProductId
