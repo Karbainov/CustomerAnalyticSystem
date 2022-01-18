@@ -57,7 +57,7 @@ namespace TempProject
             //keks1 = test1.GetAllGroupsWithProducts();
 
             GradeAndPreferencesRepository grades = new();
-            List<GradeDTO> grade = grades.GetAllGrades();
+            GradeDTO grade = grades.GetGradeById(2);
 
         }
     }
