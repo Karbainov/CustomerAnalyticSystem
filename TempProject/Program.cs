@@ -52,9 +52,13 @@ namespace TempProject
             //OrderInfoByOrderIdService test = new();
             //keks = test.GetOrderInfoByOrderId(1);
 
-            List<GroupsWithProductsModel> keks1 = new();
-            AllGroupsWithProductsService test1 = new();
-            keks1 = test1.GetAllGroupsWithProducts();
+            //List<GroupsWithProductsModel> keks1 = new();
+            //AllGroupsWithProductsService test1 = new();
+            //keks1 = test1.GetAllGroupsWithProducts();
+
+            GradeAndPreferencesRepository grades = new();
+            List<GradeDTO> grade = grades.GetAllGrades();
+
         }
     }
 }

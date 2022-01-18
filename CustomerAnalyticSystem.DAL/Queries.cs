@@ -22,10 +22,18 @@ namespace CustomerAnalyticSystem.DAL
 
         #region grades
         public const string GetAllGrades = "GetAllGrade";
-        public const string GetAllGradeById = "GetAllGradeById";
+        public const string GetGradeById = "GetGradeById";
         public const string AddGrade = "AddGrade";
         public const string DeleteGradeById = "DeleteGrade";
         public const string UpdateGradeById = "UpdateGrade";
+        #endregion
+
+        #region grades
+        public const string GetAllPreferences = "GetAllPreferences";
+        public const string GetPreferenceById = "GetPreferenceById";
+        public const string AddPreference = "AddPreference";
+        public const string DeletePreferenceById = "DeletePreferenceById";
+        public const string UpdatePreferenceById = "UpdatePreferenceById";
         #endregion
 
         #region orders
