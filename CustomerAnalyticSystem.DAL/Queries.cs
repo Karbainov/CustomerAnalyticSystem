@@ -28,7 +28,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateGradeById = "UpdateGrade";
         #endregion
 
-        #region grades
+        #region preferences
         public const string GetAllPreferences = "GetAllPreferences";
         public const string GetPreferenceById = "GetPreferenceById";
         public const string AddPreference = "AddPreference";
