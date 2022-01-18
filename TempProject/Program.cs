@@ -1,13 +1,7 @@
-﻿using System;
-using Dapper;
-using Microsoft.Data.SqlClient;
+﻿using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL;
-using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL;
-
 
 namespace TempProject
 {
@@ -50,8 +44,36 @@ namespace TempProject
             ////{
             ////    Console.WriteLine((ProductDTO)p);
             ////}
-            ///
-            
+
+
+
+            //1
+            //List<GradeDTO> grades = new List<GradeDTO>();
+            //GradeAndPreferencesRepository Repository = new();
+            //grades = Repository.GetAllGrades();
+
+            ////2
+            //GradeDTO gradesbyid;
+            //GradeRepository Repository = new();
+            //gradesbyid = Repository.GetGradesById(2);
+
+            // 3
+            //Repository.AddGrade(1, 1, "1234354");
+            //Console.WriteLine(grades);
+
+            //// 4
+            //Repository.DeleteGradeById(3);
+            // Console.WriteLine(grades);
+
+            // //5
+            //Repository.UpdateGradeById(6, "RomaMolodec");
+            // Console.WriteLine(grades);
+
+            //List<OrderDTO> orders = new List<OrderDTO>();
+            //OrderRepository repository = new();
+            //orders = repository.GetAllOrders();
+            //Console.WriteLine(orders);
+
         }
     }
 }
