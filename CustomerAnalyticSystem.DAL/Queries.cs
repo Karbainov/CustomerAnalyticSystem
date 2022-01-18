@@ -92,6 +92,15 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateCustomerTypeById = "UpdateCustomerTypeById";
         #endregion
 
+
+        #region product
+        public const string AddProduct = "AddProduct";
+        public const string DeleteProductId = "DeleteProductId";
+        public const string GetAllProduct = "GetAllProduct";
+        public const string GetProductById = "GetProductById";
+        public const string UpdateProductById = "UpdateProductById";
+        #endregion
+
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";
         public const string GetAllContactByCustomerId = "GetAllContactByCustomerId";
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";

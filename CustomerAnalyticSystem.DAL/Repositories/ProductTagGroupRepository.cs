@@ -117,7 +117,6 @@ namespace CustomerAnalyticSystem.DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
                 return connection.Query<Product_TagDTO>(Queries.GetAllProduct_Tag, commandType: CommandType.StoredProcedure).ToList();
             }
-
         }
         public Product_TagDTO GetProduct_TagById (int id)
         {
@@ -136,6 +135,51 @@ namespace CustomerAnalyticSystem.DAL
                 connection.Query(Queries.UpdateProduct_TagById, new { id, productId, tagId }, commandType: CommandType.StoredProcedure);
             }
         }
+        #region Product
+        public void AddProduct(string name, string description, int groupId)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddProduct, new { Name = name, description = description, groupId = groupId }, commandType: CommandType.StoredProcedure);
+            }
+        }
 
+        public void DeleteProductById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.DeleteProductById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<ProductBaseDTO> GetAllProduct()
+        {
+            string connectionString = ConnectionString.Connection;
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                    return connection.Query<ProductBaseDTO>(Queries.GetAllProduct, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public ProductBaseDTO GetProductById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingle<ProductBaseDTO>(Queries.GetProductById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateProductById(int id, string name, string description, int groupId)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.UpdateProductById, new { id = id, name = name, description = description, groupId = groupId }, commandType: CommandType.StoredProcedure);
+            }
+        }
+        #endregion
     }
 }
