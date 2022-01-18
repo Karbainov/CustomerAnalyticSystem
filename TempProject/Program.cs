@@ -55,6 +55,10 @@ namespace TempProject
             List<GroupsWithProductsModel> keks1 = new();
             AllGroupsWithProductsService test1 = new();
             keks1 = test1.GetAllGroupsWithProducts();
+
+            List<OrderBaseModel> keks = new();
+            OrderCheckStatusService test = new();
+            keks = test.GetBaseOrderModel();
         }
     }
 }

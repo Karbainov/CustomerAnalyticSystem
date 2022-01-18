@@ -34,19 +34,25 @@ namespace CustomerAnalyticSystem.BLL.Configs
             ForMember(dest => dest.Amount, act => act.MapFrom(src => src.Amount)).ForMember(dest => dest.ProductId, act => act.MapFrom(src => src.ProductId));
         });
 
-        public MapperConfiguration ConfigAllGroupsWithProducts = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<GroupsWithProductsDTO, GroupsWithProductsModel>();
-                cfg.CreateMap<ProductBaseDTO, ProductBaseModel>().ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description));
-            }
+        public MapperConfiguration ConfigAllGroupsWithProducts()
+        {
+            var s = new MapperConfiguration(cfg =>
+              {
+                  cfg.CreateMap<GroupsWithProductsDTO, GroupsWithProductsModel>();
+                  cfg.CreateMap<ProductBaseDTO, ProductBaseModel>().ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
+                  .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description));
+              }
             );
+            return s;
+        }
+
+
+        public MapperConfiguration ConfigForBaseOrderModel = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();
+            cfg.CreateMap<OrderBaseModel, OrderDTO>().ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Date, act => act.MapFrom(src => src.Date)).ForMember(dest => dest.Cost, act => act.MapFrom(src => src.Cost))
+            .ForMember(dest => dest.CustomerId, act => act.MapFrom(src => src.CustomerId)).ForMember(dest => dest.StatusId, act => act.MapFrom(src => src.StatusId));
+        });
     }
 }
-//CreateMap<Models.Project.Project, Dal.Repository.Project_Master>().
-//    ForMember(dest => dest.Project_Locations, opt => opt.MapFrom(src => src.ProjectLocation));
-
-            //MapperConfiguration listHelp = new MapperConfiguration(
-            //    cnfg => cnfg.CreateMap<List<CheckBaseModel>, AllOrderInfoByOrderId>().ForMember(dest=>dest.Items, opt=>opt.MapFrom(
-            //        src=>mapper.Map<List<CheckBaseModel>, List<CheckDTO>>(src)))
-            //    );

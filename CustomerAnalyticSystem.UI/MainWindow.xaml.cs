@@ -31,16 +31,30 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
-            OrderInfoByOrderIdModel keks = new();
-            OrderInfoByOrderIdService test = new();
-            keks = test.GetOrderInfoByOrderId(Convert.ToInt32( TextBoxOrderId.Text));
-            TextBoxInformationAboutOrder.Text = keks.OrderId + "Order" + keks.CustomerId + "Customer id" + "\n";
-            foreach(var c in keks.Items)
+            //OrderInfoByOrderIdModel keks = new();
+            //OrderInfoByOrderIdService test = new();
+            //keks = test.GetOrderInfoByOrderId(Convert.ToInt32( TextBoxOrderId.Text));
+            //TextBoxInformationAboutOrder.Text = keks.OrderId + "Order" + keks.CustomerId + "Customer id" + "\n";
+            //foreach(var c in keks.Items)
+            //{
+            //    TextBoxInformationAboutOrder.Text += $"({c.ProductId} prodId \t {c.Mark} \t {c.Mark} = Mark \n";
+            //}
+            var temp = new OrderCheckStatusService();
+            var listOrder = temp.GetBaseOrderModel();
+            foreach(var c in listOrder)
             {
-                TextBoxInformationAboutOrder.Text += $"({c.ProductId} prodId \t {c.Mark} \t {c.Mark} = Mark \n";
+                Button newOrder = new();
+                newOrder.Name = Convert.ToString(c.Id);
+                newOrder.Click += ButtonOrder_Click;
+                newOrder.Content = $"{c.Date}, {c.CustomerId}";
+                StackPanelAllOrders.Children.Add(newOrder);
             }
         }
-      
+
+        private void ButtonOrder_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
+}
 

@@ -87,16 +87,24 @@
             </TabItem>
             <TabItem Header="Orders">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="TextBoxOrderId" HorizontalAlignment="Left" Margin="50,47,0,0" Text="write id" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="ButtonAccept" Content="Button" HorizontalAlignment="Left" Margin="50,89,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="TextBoxOrderId" HorizontalAlignment="Left" Margin="50,47,0,0" Text="write id" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
+                    <Button x:Name="ButtonAccept" Content="Button" HorizontalAlignment="Left" Margin="50,89,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click" Height="20"/>
                     <TextBox x:Name="TextBoxInformationAboutOrder" HorizontalAlignment="Left" Margin="50,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="165"/>
+                    <StackPanel x:Name="StackPanelAllOrders" Grid.Column="1"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Orders">
+            <TabItem Header="CUSTOMERSBIAAAAAD">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="TextBoxOrderId" HorizontalAlignment="Left" Margin="50,47,0,0" Text="write id" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="ButtonAccept" Content="Button" HorizontalAlignment="Left" Margin="50,89,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click"/>
-                    <TextBox x:Name="TextBoxInformationAboutOrder" HorizontalAlignment="Left" Margin="50,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="165"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="143*"/>
+                        <ColumnDefinition Width="651*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="99,148,0,0" VerticalAlignment="Top" Height="180" Width="358" Grid.ColumnSpan="2"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="20,43,0,0" VerticalAlignment="Top" Width="716" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
         </TabControl>
