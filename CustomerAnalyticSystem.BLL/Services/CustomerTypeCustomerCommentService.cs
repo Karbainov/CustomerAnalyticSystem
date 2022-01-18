@@ -15,7 +15,7 @@ namespace CustomerAnalyticSystem.BLL
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             var DTO = rep.GetCustomerInfoService(id);
-            var map = new MyMapper();
+            var map = new MrMappi();
             CustomerModel result = map.MapCustomerInfoDTOToCustomerModel(DTO);
 
             return result;
