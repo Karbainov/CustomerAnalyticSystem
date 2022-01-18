@@ -47,7 +47,7 @@ namespace CustomerAnalyticSystem.UI
                 newOrder.Name = Convert.ToString(c.Id);
                 newOrder.Click += ButtonOrder_Click;
                 newOrder.Content = $"{c.Date}, {c.CustomerId}";
-                StackPanelAllOrders.Children.Add(newOrder);
+                //StackPanelAllOrders.Children.Add(newOrder);
             }
         }
 

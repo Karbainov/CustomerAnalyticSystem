@@ -29,11 +29,11 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(mapConfig.ConfFromCustomerInfoDTOToCustomerModel).Map<CustomerInfoDTO, CustomerModel>(DTO);
         }
 
-        public List<OrderBaseModel> MapBaseOrder (List<OrderDTO> dto)
+        public List<OrderBaseModel> MapBaseOrder(List<OrderDTO> dto)
         {
             var config = new MapperConfigs();
-            return new Mapper(config.ConfigForBaseOrderModel).Map<List<OrderDTO>, List<OrderBaseModel>>(dto);
+            return new Mapper(config.ConfigAllGroupsWithProducts).Map<List<OrderDTO>,List<OrderBaseModel>>(dto);
         }
-    
-}
+
+    }
 }
