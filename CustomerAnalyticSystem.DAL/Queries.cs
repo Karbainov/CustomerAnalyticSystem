@@ -81,6 +81,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllGroup = "GetAllGroup";
         public const string UpdateGroupById = "UpdateGroupById";
         public const string GetGroupById = "GetGroupById";
+        public const string DeleteGroupById = "DeleteGroupById";
         #endregion
 
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";

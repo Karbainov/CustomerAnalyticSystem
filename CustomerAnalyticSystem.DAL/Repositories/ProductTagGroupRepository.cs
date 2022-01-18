@@ -186,7 +186,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query<>
+                connection.Query(Queries.DeleteGroupById, new { id }, commandType: CommandType.StoredProcedure);
             }
         }
         public void UpdateGroupById(int id, string name, string description )
