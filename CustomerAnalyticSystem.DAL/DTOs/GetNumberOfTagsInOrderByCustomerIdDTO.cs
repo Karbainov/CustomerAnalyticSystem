@@ -8,8 +8,8 @@ namespace CustomerAnalyticSystem.DAL.DTOs
 {
     public class GetNumberOfTagsInOrderByCustomerIdDTO
     {
-        public int Id { get; set; }
+        
         public int TagId { get; set; }
-        public int NumberOfTags { get; set; }
+        public int Number { get; set; }
     }
 }
