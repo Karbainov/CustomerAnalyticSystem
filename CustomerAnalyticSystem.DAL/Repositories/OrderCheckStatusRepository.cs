@@ -115,6 +115,62 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
+
+        #region Group
+        public void AddGroup (string name, string description)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query<GroupBaseDTO>(Queries.AddGroup, new { name, description }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+        #endregion
+        public List<CheckDTO> GetAllCheck()
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<CheckDTO>(Queries.GetAllCheck, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public CheckDTO GetCheckById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.QuerySingle<CheckDTO>(Queries.GetCheckById, new { id },
+                commandType: CommandType.StoredProcedure);
+            }
+
+        }
+
+        public void AddCheck(int ProductId, int OrderId, int Amount, int Mark)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CheckDTO>(Queries.AddCheck, new { ProductId, OrderId, Amount, Mark},
+                commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteCheck(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CheckDTO>(Queries.DeleteCheck, new { id },
+                commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateCheck(int id, int ProductId, int OrderId, int Amount, int Mark)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CheckDTO>(Queries.UpdateCheck, new { id, ProductId, OrderId, Amount, Mark },
+                commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public AllOrderInfoByOrderId FillOrderInfoByOrderId(int id)
         {
             AllOrderInfoByOrderId concreteOrder = null;
