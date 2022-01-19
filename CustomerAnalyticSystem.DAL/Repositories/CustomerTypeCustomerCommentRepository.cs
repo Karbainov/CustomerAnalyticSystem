@@ -165,5 +165,7 @@ namespace CustomerAnalyticSystem.DAL
             return customerPreferenceDTOs;
         }
 
+
+
     }
 }
