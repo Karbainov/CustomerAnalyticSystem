@@ -5,8 +5,105 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CAS.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CustomerAnalyticSystem ©" Height="674" Width="1024">
     <Grid>
+        <TabControl TabStripPlacement="Top">
+            <TabItem Header="Клиенты" Width="340">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="207*"/>
+                        <ColumnDefinition Width="811*">
+
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="74*"/>
+                            <RowDefinition Height="31*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ListView Grid.Column="0" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="175" Header="Любимые продукты"/>
+                                        <GridViewColumn Width="auto" Header="Статистика"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <ListView Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="175" Header="Любимые тэги"/>
+                                        <GridViewColumn Width="auto" Header="Статистика"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <ListView Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="175" Header="Любимые группы"/>
+                                        <GridViewColumn Width="auto" Header="Статистика"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+
+
+                        </Grid>
+                        <ListView d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="135" Header="Тип клиента"/>
+                                    <GridViewColumn Width="135" Header="Фамилия"/>
+                                    <GridViewColumn Width="135" Header="Имя"/>
+                                    <GridViewColumn Width="135" Header="Номер телефона"/>
+                                    <GridViewColumn Width="135" Header ="e-mail"/>
+                                    <GridViewColumn Width="135" Header="Комментарий"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <StackPanel Grid.Column="0" Margin="0,0,0,411">
+                        <Button Content="Добавить нового клиента" Height="75"/>
+                        <Button Content="Редактировать карту клиента" Height="75"/>
+                        <Button Content="Удалить карту клиента" Height="75"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Товары" Width="340">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Заказы" Width="340">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
 
     </Grid>
 </Window>
