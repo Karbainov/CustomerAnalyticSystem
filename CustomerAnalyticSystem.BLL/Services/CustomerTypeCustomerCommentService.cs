@@ -11,12 +11,12 @@ namespace CustomerAnalyticSystem.BLL
 {
     public class CustomerTypeCustomerCommentService
     {
-        public CustomerModel GetCustomerModel(int id)
+        public CustomerInfoModel GetCustomerModel(int id)
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             var DTO = rep.GetCustomerInfoService(id);
             var map = new MrMappi();
-            CustomerModel result = map.MapCustomerInfoDTOToCustomerModel(DTO);
+            CustomerInfoModel result = map.MapCustomerInfoDTOToCustomerModel(DTO);
 
             return result;
         }
@@ -24,7 +24,7 @@ namespace CustomerAnalyticSystem.BLL
         //{
         //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
         //    CustomerInfoDTO DTO = rep.GetCustomerInfoService(id);
-        //    MyMapper map = new MyMapper();
+        //    MrMappi map = new MrMappi();
         //    CustomerModel result = map.MapCustomerInfoDTOToCustomerModel(DTO);
 
         //    return result;

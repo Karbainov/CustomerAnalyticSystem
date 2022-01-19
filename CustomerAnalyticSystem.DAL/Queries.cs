@@ -18,6 +18,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string AddCustomer = "AddCustomer";
         public const string UpdateCustomerById = "UpdateCustomerById";
         public const string DeleteCustomerById = "DropCustomerById";
+        public const string GetAllCustomerWithContactAndContactType = "GetAllCustomerWithContactAndContactType";
         #endregion
 
         #region preferences
@@ -113,6 +114,6 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllGroupsWithProduct = "GetAllGroupsWithProducts";
         public const string GetNumberOfTagsInOrderByCustomerId = "GetNumberOfTagsInOrderByCustomerId";
 
-
+        public const string GetAllComment = "GetAllComment";
     }
 }

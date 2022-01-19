@@ -21,13 +21,13 @@ namespace CustomerAnalyticSystem.BLL
             return result;
         }
 
-        public List<CustomerModel> GetAllCustomerModels()
+        public List<CustomerInfoModel> GetAllCustomerInfoModels()
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-            List<CustomerDTO> customers = rep.GetAllCustomers();
+            List<CustomerInfoDTO> customers = rep.GetAllCustomerInfoDTO();
             var map = new MrMappi();
 
-            return  map.MapListCustomerDTOToListCustomerModel(customers);
+            return map.MapListCustomerDTOToListCustomerModel(customers);
         }
 
         public void UpdateCustomer(int id, string firstName, string lastName, int TypeId = 1)

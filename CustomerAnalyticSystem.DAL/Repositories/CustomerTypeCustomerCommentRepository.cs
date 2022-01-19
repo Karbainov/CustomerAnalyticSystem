@@ -125,30 +125,97 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
+        public CustomerInfoDTO GetCustomerByIdWithCustomerType(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.QuerySingle<CustomerInfoDTO>(Queries.GetCustomerByIdWithCustomerType, new { id }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<CommentDTO> GetAllCommentByCustomerId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<CommentDTO>(Queries.GetAllCommentByCustomerId, new { id }
+                , commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public List<ContactWithContactTypeNameDTO> GetAllContactByCustomerId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<ContactWithContactTypeNameDTO>(Queries.GetAllContactByCustomerId,
+                    new { id }
+                    ,commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
         public CustomerInfoDTO GetCustomerInfoService(int id)
         {
             CustomerInfoDTO customer = new();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customer = connection.QuerySingle<CustomerInfoDTO>(Queries.GetCustomerByIdWithCustomerType, new { id }
-                , commandType: CommandType.StoredProcedure);
-            }
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customer.Comments = connection.Query<CommentDTO>(Queries.GetAllCommentByCustomerId, new { id }
-                , commandType: CommandType.StoredProcedure).ToList();
-            }
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customer.Contacts = connection.Query<ContactWithContactTypeNameDTO>(Queries.GetAllContactByCustomerId,
-                    new { id },
-                    commandType: CommandType.StoredProcedure).ToList();
-            }
+            customer = GetCustomerByIdWithCustomerType(id);
+            customer.Comments = GetAllCommentByCustomerId(id);
+            customer.Contacts = GetAllContactByCustomerId(id);
 
             return customer;
+        }
+
+        // починить SRP?        !!!!!
+        public List<CustomerInfoDTO> GetAllCustomerInfoDTO()
+        {
+            List<CustomerInfoDTO> customers = new List<CustomerInfoDTO>();
+            int tempId = 0;
+            int curCustomer = -1;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query<CustomerInfoDTO, ContactWithContactTypeNameDTO, CustomerInfoDTO>(
+                    Queries.GetAllCustomerWithContactAndContactType
+                    ,(customerInfo, contact) =>
+                    {
+                        if (tempId != customerInfo.Id)
+                        {
+                            customers.Add(customerInfo);
+                            curCustomer++;
+                            customers[curCustomer].Contacts = new List<ContactWithContactTypeNameDTO>();
+                            customers[curCustomer].Comments = new List<CommentDTO>();
+                            tempId = customerInfo.Id;
+                        }
+
+                        customers[curCustomer].Contacts.Add(contact);
+                        return customers[curCustomer];
+                    }
+                    , splitOn: "Id"
+                    , commandType: CommandType.StoredProcedure);
+            }
+
+            int curCustomerId = 0;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query<CommentDTO, object, CommentDTO>(
+                    Queries.GetAllComment
+                    , (comment, obj) =>
+                     {
+                         foreach (CustomerInfoDTO cust in customers)
+                         {
+                             if(comment.CustomerId == cust.Id)
+                             {
+                                 cust.Comments.Add(comment);
+                             }
+                         }
+
+                         return comment;
+                     }
+                     , splitOn: "TempId"
+                    , commandType: CommandType.StoredProcedure);
+            }
+
+                return customers;
         }
 
         public List<TagMarksDTO> GetAllMarksOfTagByCustomerId(int id)

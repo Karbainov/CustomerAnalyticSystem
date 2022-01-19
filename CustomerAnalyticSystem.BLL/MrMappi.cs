@@ -29,10 +29,10 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(mapConfig.ConfFromCustomerInfoDTOToCustomerModel).Map<CustomerInfoDTO, CustomerInfoModel>(DTO);
         }
 
-        public List<CustomerModel> MapListCustomerDTOToListCustomerModel(List<CustomerDTO> list)
+        public List<CustomerInfoModel> MapListCustomerDTOToListCustomerModel(List<CustomerInfoDTO> list)
         {
             var config = new MapperConfigs();
-            return new Mapper(config.ConfFromCustomerDTOToCustomerModel).Map<List<CustomerDTO>, List<CustomerModel>>(list);
+            return new Mapper(config.ConfFromCustomerInfoDTOToCustomerinfoModel).Map<List<CustomerInfoDTO>, List<CustomerInfoModel>>(list);
         }
     
     }

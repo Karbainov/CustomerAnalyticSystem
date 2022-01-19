@@ -61,9 +61,9 @@
                         <ListView x:Name="ListViewClients" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="135" Header="Тип клиента"/>
-                                    <GridViewColumn Width="135" Header="Фамилия"/>
-                                    <GridViewColumn Width="135" Header="Имя"/>
+                                    <GridViewColumn Width="135" Header="Тип клиента" DisplayMemberBinding="{Binding Name}" />
+                                    <GridViewColumn Width="135" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="135" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                                     <GridViewColumn Width="135" Header="Номер телефона"/>
                                     <GridViewColumn Width="135" Header ="e-mail"/>
                                     <GridViewColumn Width="135" Header="Комментарий"/>

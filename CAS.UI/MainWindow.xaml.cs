@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CustomerAnalyticSystem.BLL;
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
 
 namespace CAS.UI
 {
@@ -23,6 +26,17 @@ namespace CAS.UI
         public MainWindow()
         {
             InitializeComponent();
+
+            CustomerService customerService = new CustomerService();
+            List<CustomerInfoModel> customers = customerService.GetAllCustomerInfoModels();
+
+            Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+
+            foreach (CustomerInfoModel customer in customers)
+            {
+                customersDict.Add(customer.Id, customer);
+                ListViewClients.Items.Add(customer);
+            }
         }
     }
 }
