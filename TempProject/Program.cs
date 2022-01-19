@@ -49,10 +49,10 @@ namespace TempProject
                     //OrderInfoByOrderIdModel keks = new();
                     //OrderInfoByOrderIdService test = new();
                     //keks = test.GetOrderInfoByOrderId(1);
-            GroupBaseDTO keks = new();
-            GroupBaseDTO qwe = new() { Description = "qqqqw123", Name = "kek"};
-            ProductTagGroupRepository test = new();
-            test.AddGroup(qwe);
+            //GroupBaseDTO keks = new();
+            //GroupBaseDTO qwe = new() { Description = "qqqqw123", Name = "kek"};
+            //ProductTagGroupRepository test = new();
+            //test.AddGroup(qwe);
         }
     }
 }

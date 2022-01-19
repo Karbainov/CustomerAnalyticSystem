@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CAS.UI"
         mc:Ignorable="d"
-        Title="CustomerAnalyticSystem ©" Height="674" Width="1024">
+        Title="CustomerAnalyticSystem ©" Height="768" Width="1040">
     <Grid>
         <TabControl TabStripPlacement="Top">
             <TabItem Header="Клиенты" Width="340">
@@ -33,7 +33,7 @@
                             <ListView x:Name="ListViewFavoriteProductsOfChosenClient" Grid.Column="0" d:ItemsSource="{d:SampleData ItemCount=5}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Width="175" Header="Любимые продукты"/>
+                                        <GridViewColumn Width="200" Header="Любимые продукты"/>
                                         <GridViewColumn Width="auto" Header="Статистика"/>
                                     </GridView>
                                 </ListView.View>
@@ -41,7 +41,7 @@
                             <ListView x:Name="ListViewFavoriteTagsOfChosenClient" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Width="175" Header="Любимые тэги"/>
+                                        <GridViewColumn Width="200" Header="Любимые тэги"/>
                                         <GridViewColumn Width="auto" Header="Статистика"/>
                                     </GridView>
                                 </ListView.View>
@@ -49,7 +49,7 @@
                             <ListView x:Name="ListViewFavoriteGroupsOfChosenClient" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Width="175" Header="Любимые группы"/>
+                                        <GridViewColumn Width="200" Header="Любимые группы"/>
                                         <GridViewColumn Width="auto" Header="Статистика"/>
                                     </GridView>
                                 </ListView.View>

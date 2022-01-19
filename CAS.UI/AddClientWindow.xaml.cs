@@ -17,9 +17,9 @@ namespace CAS.UI
     /// <summary>
     /// Interaction logic for ClientWindow.xaml
     /// </summary>
-    public partial class ClientWindow : Window
+    public partial class AddClientWindow : Window
     {
-        public ClientWindow()
+        public AddClientWindow()
         {
             InitializeComponent();
         }
