@@ -11,7 +11,7 @@ using System.Data;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    internal class ContactTypeContactRepository
+    public class ContactTypeContactRepository
     {
         public List<ContactDTO> GetAllContact()
         {

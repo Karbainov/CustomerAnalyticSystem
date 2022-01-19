@@ -8,15 +8,15 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
-            <TabItem Header="Customers">
+            <TabItem Header="Клиенты">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="267*"/>
-                        <ColumnDefinition Width="527*"/>
+                        <ColumnDefinition/>
 
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="0,39,0,0" >
-                        <Button Content="Создать нового"/>
+                        <Button Content="Создать нового" Width="229"/>
+                        <ScrollViewer Height="349"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Margin="0,39,0,0" >
                         <Label Content="Имя клиента"/>
@@ -41,7 +41,49 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Products">
-                <Grid Background="#FFE5E5E5"/>
+                <Border>
+                    <Grid ShowGridLines="True" Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180*"/>
+                            <ColumnDefinition Width="180*"/>
+                            <ColumnDefinition Width="400*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150*"/>
+                            <RowDefinition Height="850*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0"/>
+                        <StackPanel Grid.Column="1"/>
+                        <StackPanel Grid.Column="2"/>
+                        <Label Content="Product Group" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                        <Label Grid.Column="1" Content="Products" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                        <Label Grid.Column="2" Content="Product Info" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                        <Border Grid.Column="2" Grid.Row="2">
+                            <Grid ShowGridLines="True" Grid.Column="2" Grid.Row="2" Margin="31,25,38,30">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="107*"/>
+                                    <ColumnDefinition Width="190*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                </Grid.RowDefinitions>
+                                <Label Content="Name" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="41" Margin="30,0,0,0"/>
+                                <Label Content="Cost" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="38" Margin="30,0,0,0"/>
+                                <Label Content="Amount" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="58" Margin="30,10,0,0"/>
+                                <Label Content="Description" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="78" Margin="10,0,0,0"/>
+                                <Button Content="Buy History" HorizontalAlignment="Left" Margin="13,0,0,0" Grid.Row="5" VerticalAlignment="Center" Height="20" Width="75"/>
+                                <Label Content="Tags" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ScrollViewer Grid.Row="1"/>
+                        <ScrollViewer Grid.ColumnSpan="2" Margin="188,0,0,0" Grid.Row="1"/>
+                    </Grid>
+                </Border>
             </TabItem>
             <TabItem Header="Orders">
                 <Grid Background="#FFE5E5E5">
@@ -53,4 +95,5 @@
         </TabControl>
 
     </Grid>
+
 </Window>

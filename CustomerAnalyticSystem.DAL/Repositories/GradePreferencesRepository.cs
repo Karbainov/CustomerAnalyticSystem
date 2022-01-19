@@ -23,17 +23,17 @@ namespace CustomerAnalyticSystem.DAL
             }
             return grades;
         }
-        public GradeDTO GetGradesById(int id)
-        {
-            GradeDTO grade;
+        //public GradeDTO GetGradesById(int id)
+        //{
+        //    GradeDTO grade;
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                grade = connection.QuerySingle<GradeDTO>(Queries.GetAllGradeById, new { id }
-               , commandType: CommandType.StoredProcedure);
-            }
-            return grade;
-        }
+        //    using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+        //    {
+        //        grade = connection.QuerySingle<GradeDTO>(Queries.GetAllGradeById, new { id }
+        //       , commandType: CommandType.StoredProcedure);
+        //    }
+        //    return grade;
+        //}
 
         public void AddGrade(int ProductId, int CustomerId, string Value)
         {

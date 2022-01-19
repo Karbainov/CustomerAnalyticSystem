@@ -8,7 +8,6 @@ using Microsoft.Data.SqlClient;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
 using System.Data;
-using CustomerAnalyticSystem.DAL;
 
 namespace CustomerAnalyticSystem.DAL
 {
@@ -45,7 +44,7 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public void DeleteOrderById(int id) // хз че с ним делать, удалять нельзя изза ссылки
+        public void DeleteOrderById(int id) 
         {
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
@@ -152,30 +151,16 @@ namespace CustomerAnalyticSystem.DAL
             return concreteOrder;
         }
 
-        //public AllOrderInfoByOrderId FillOrderInfoByOrderId(int id)
-        //{
-        //    AllOrderInfoByOrderId concreteOrder = null;
-
-        //    string connectionString = ConnectionString.Connection;
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Query<AllOrderInfoByOrderId, CheckWithProductAndGroupInfoDTO, AllOrderInfoByOrderId>(Queries.GetAllOrderInfoByOrderId,
-        //            (orderInfo, item)=>
-        //        {
-        //            if (concreteOrder == null)
-        //            {
-        //                concreteOrder = orderInfo;
-        //                concreteOrder.Items = new();
-        //            }
-        //            concreteOrder.Items.Add(item);
-        //            return concreteOrder;
-        //        }
-        //        , new { Id = id }
-        //        , commandType: CommandType.StoredProcedure
-        //        , splitOn:"OrderId,Id");
-        //    }
-        //    return concreteOrder;
-        //}
+        public List<CustomersOrderDTO> GetAllOrdersByCustomerId(int id)
+        {
+            List<CustomersOrderDTO> customersOrderDTOs = new List<CustomersOrderDTO>();
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                customersOrderDTOs = connection.Query<CustomersOrderDTO>(Queries.GetAllOrdersByCustomerId,
+                    new { id }, commandType: CommandType.StoredProcedure).ToList();
+            }
+            return customersOrderDTOs;
+        }
     }
 }
 

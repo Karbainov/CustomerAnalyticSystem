@@ -9,7 +9,7 @@ namespace CustomerAnalyticSystem.DAL
     public class Queries
     {
 
-        // еще нет кастомер тайп, коммент, чек, груп, преференс, продукт
+        // еще нет коммент, чек, груп, продукт
 
 
         #region customer
@@ -18,11 +18,19 @@ namespace CustomerAnalyticSystem.DAL
         public const string AddCustomer = "AddCustomer";
         public const string UpdateCustomerById = "UpdateCustomerById";
         public const string DeleteCustomerById = "DropCustomerById";
-        #endregion     
+        #endregion
+
+        #region preferences
+        public const string GetAllPreferences = "GetAllPreferences";
+        public const string GetPreferenceById = "GetPreferenceById";
+        public const string AddPreference = "AddPreference";
+        public const string DeletePreferenceById = "DeletePreferenceById";
+        public const string UpdatePreferenceById = "UpdatePreferenceById";
+        #endregion
 
         #region grades
         public const string GetAllGrades = "GetAllGrade";
-        public const string GetAllGradeById = "GetAllGradeById";
+        public const string GetGradeById = "GetAllGradeById";
         public const string AddGrade = "AddGrade";
         public const string DeleteGradeById = "DeleteGrade";
         public const string UpdateGradeById = "UpdateGrade";
@@ -76,6 +84,14 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateTagById = "UpdateTagById";
         #endregion
 
+        #region customer_type
+        public const string AddCustomerType = "AddCustomerType";
+        public const string GetAllCustomerType = "GetAllCustomerType";
+        public const string GetCustomerTypeById = "GetCustomerTypeById";
+        public const string DeleteCustomerTypeById = "DropCustomerTypeById";
+        public const string UpdateCustomerTypeById = "UpdateCustomerTypeById";
+        #endregion
+
         #region Group
         public const string AddGroup = "AddGroup";
         public const string GetAllGroup = "GetAllGroup";
@@ -93,7 +109,10 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllPreferencesByCustomerId = "GetAllPreferencesByCustomerId";
         public const string GetAllProductsByTag = "GetAllProductsByTag";
         public const string GetAllProductInfoById = "GetAllProductInfoById";
+        public const string GetAllOrdersByCustomerId = "GetAllOrdersByCustomerId";
         public const string GetAllGroupsWithProduct = "GetAllGroupsWithProducts";
+        public const string GetNumberOfTagsInOrderByCustomerId = "GetNumberOfTagsInOrderByCustomerId";
+
 
     }
 }

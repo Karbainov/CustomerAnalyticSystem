@@ -12,8 +12,7 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            ////CustomerService customerDapper = new CustomerService();
-            ////List<CustomerDTO> c = customerDapper.GetAllCustomerService();
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
 
             //foreach (CustomerDTO cust in c)
             //{
@@ -33,9 +32,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            //AllOrderInfoByOrderId kekis = new();
-            //OrderCheckStatusRepository test = new();
-            //kekis = test.FillOrderInfoByOrderId(123);
+            List<GetNumberOfTagsInOrderByCustomerIdDTO> kekis = new();
+            ProductTagGroupRepository test = new();
+            kekis = test.GetNumberOfTagsInOrderByCustomerId(1);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
