@@ -115,6 +115,17 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
+
+        #region Group
+        public void AddGroup (string name, string description)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query<GroupBaseDTO>(Queries.AddGroup, new { name, description }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+        #endregion
         public AllOrderInfoByOrderId FillOrderInfoByOrderId(int id)
         {
             AllOrderInfoByOrderId concreteOrder = null;

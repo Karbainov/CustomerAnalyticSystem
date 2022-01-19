@@ -32,9 +32,9 @@ namespace TempProject
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
             //}
-            //AllOrderInfoByOrderId kekis = new();
-            //OrderCheckStatusRepository test = new();
-            //kekis = test.FillOrderInfoByOrderId(123);
+            List<GetNumberOfTagsInOrderByCustomerIdDTO> kekis = new();
+            ProductTagGroupRepository test = new();
+            kekis = test.GetNumberOfTagsInOrderByCustomerId(1);
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
             //string connectionString = ConnectionString.Connection;
@@ -46,19 +46,13 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
-
-
-            //OrderInfoByOrderIdModel keks = new();
-            //OrderInfoByOrderIdService test = new();
-            //keks = test.GetOrderInfoByOrderId(1);
-
-            //List<GroupsWithProductsModel> keks1 = new();
-            //AllGroupsWithProductsService test1 = new();
-            //keks1 = test1.GetAllGroupsWithProducts();
-
-            List<OrderBaseModel> keks = new();
-            OrderCheckStatusService test = new();
-            keks = test.GetBaseOrderModel();
+                    //OrderInfoByOrderIdModel keks = new();
+                    //OrderInfoByOrderIdService test = new();
+                    //keks = test.GetOrderInfoByOrderId(1);
+            GroupBaseDTO keks = new();
+            GroupBaseDTO qwe = new() { Description = "qqqqw123", Name = "kek"};
+            ProductTagGroupRepository test = new();
+            test.AddGroup(qwe);
         }
     }
 }
