@@ -6,7 +6,7 @@
 	@Cost integer
 	AS
 	update dbo.[Order]
-	set CustomerId = @CustomerID,
+	set CustomerId = @CustomerId,
 	Date = @Date,
 	StatusId = @StatusId,
 	Cost = @Cost
