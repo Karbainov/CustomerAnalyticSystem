@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CustomerAnalyticSystem.BLL\CustomerAnalyticSystem.BLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="AddClientWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
