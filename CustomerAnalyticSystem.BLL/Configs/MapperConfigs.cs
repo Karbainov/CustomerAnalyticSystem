@@ -60,5 +60,11 @@ namespace CustomerAnalyticSystem.BLL.Configs
         //    .ForMember(dest => dest.Date, act => act.MapFrom(src => src.Date)).ForMember(dest => dest.Cost, act => act.MapFrom(src => src.Cost))
         //    .ForMember(dest => dest.CustomerId, act => act.MapFrom(src => src.CustomerId)).ForMember(dest => dest.StatusId, act => act.MapFrom(src => src.StatusId));
         //});
+
+
+        public MapperConfiguration ConfigAllGradesByCustomerId = new MapperConfiguration(cfg => 
+        {
+            cfg.CreateMap<GetAllGradesByCustomerIdDTO, AllGradesByCustomerIdModel>();
+        });
     }
 }
