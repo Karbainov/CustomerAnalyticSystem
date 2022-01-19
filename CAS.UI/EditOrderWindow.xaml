@@ -13,7 +13,7 @@
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0">
+        <ListView x:Name="ListViewChecksEditOrderWndw" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID товара"/>
@@ -44,9 +44,9 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0"/>
-                <TextBox HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
-                <TextBox HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
+                <ComboBox x:Name="ComboBoxChooseProductEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0"/>
+                <TextBox x:Name="TextBoxAmountOfProductEditOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
+                <TextBox x:Name="TextBoxPriceOfUnitEditOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
@@ -54,16 +54,16 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="Добавить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
-            <Button Content="Удалить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
+            <Button x:Name="ButtonAddPositionEditOrderWndw" Content="Добавить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
+            <Button x:Name="ButtonDeletePositionEditOrderWndw" Content="Удалить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="Сохранить изменения" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
-            <Button Content="Удалить заказ" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
+            <Button x:Name="ButtonSaveChangesEditOrderWndw" Content="Сохранить изменения" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
+            <Button x:Name="ButtonDeleteOrderEditOrderWndw" Content="Удалить заказ" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
         </Grid>
 
     </Grid>
