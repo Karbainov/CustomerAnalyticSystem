@@ -20,7 +20,7 @@
                     <GridViewColumn Header="Наименование" Width="90"/>
                     <GridViewColumn Header="Количество" Width="90"/>
                     <GridViewColumn Header="Стоимость" Width="90"/>
-                    <GridViewColumn Header="Оценка" Width="90"/>
+                    
                 </GridView>
             </ListView.View>
         </ListView>
@@ -34,22 +34,21 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    
                 </Grid.RowDefinitions>
                 <Label Content="Товар" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
                 <Label Content="Количество" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="1"/>
-                <Label Content="Цена единицы" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2"/>
-                <Label Content="Оценка" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="3"/>
+                <Label Content="Цена единицы" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2"/>                
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="ComboBoxChooseProductAddOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0"/>
-                <ComboBox x:Name="ComboBoxChooseMarkAddOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="3"/>
+                
                 <TextBox x:Name="TextBoxAmountOfProductAddOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
                 <TextBox x:Name="TextBoxPriceOfUnitAddOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
             </Grid>
