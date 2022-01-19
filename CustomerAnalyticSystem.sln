@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31605.320
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CustomerAnalyticSystem.DB", "CustomerAnalyticSystem.DB\CustomerAnalyticSystem.DB.sqlproj", "{E47E056C-C867-4FF1-B7A0-8148F3A927C8}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAnalyticSystem.BLL"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempProject", "TempProject\TempProject.csproj", "{999F9677-5250-47E4-9A68-E121C1B5176E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAnalyticSystem.UI", "CustomerAnalyticSystem.UI\CustomerAnalyticSystem.UI.csproj", "{4B78ABFE-CE46-40E9-8096-37BDDC06390B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAnalyticSystem.UI", "CustomerAnalyticSystem.UI\CustomerAnalyticSystem.UI.csproj", "{4B78ABFE-CE46-40E9-8096-37BDDC06390B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAS.UI", "CAS.UI\CAS.UI.csproj", "{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{4B78ABFE-CE46-40E9-8096-37BDDC06390B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B78ABFE-CE46-40E9-8096-37BDDC06390B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B78ABFE-CE46-40E9-8096-37BDDC06390B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
