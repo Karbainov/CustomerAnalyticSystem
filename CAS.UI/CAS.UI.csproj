@@ -14,6 +14,9 @@
     <Compile Update="AddProductWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AddOrderWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +25,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AddProductWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddOrderWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
