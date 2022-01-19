@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL;
 using System.Data;
-
+using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 namespace CustomerAnalyticSystem.DAL
 {
-    internal class GradePreferencesRepository
+    public class GradePreferencesRepository
     {
         public List<GradeDTO> GetAllGrades()
         {
@@ -107,6 +108,45 @@ namespace CustomerAnalyticSystem.DAL
                 return connection.Query<CustomersWithPreferenceByProductIdDTO>(Queries.GetCustomersWithPreferenceByProductId,
                     new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
+        }
+
+        public AllPreferencesInfoByCustomerIdDTO Logic (int id)
+        {
+            int i = 0;
+            string connectionString = ConnectionString.Connection;
+            AllPreferencesInfoByCustomerIdDTO customerPreferences = null;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query<AllPreferencesInfoByCustomerIdDTO, ProductForPrefDTO, TagForPrefDTO
+                    , GroupForPrefDTO, AllPreferencesInfoByCustomerIdDTO>("GetAllPreferencesInfoByCustomerId",
+                    (customer, product, tag, group) =>
+                    {
+                        if (customerPreferences == null)
+                        {
+                            customerPreferences = customer;
+                            customerPreferences.Preferences = new();
+                        }
+                        if (product != null)
+                        {
+                            customerPreferences.Preferences.Add(product);
+                        }
+                        else if (group != null)
+                        {
+                            customerPreferences.Preferences.Add(group);
+                        }
+                        else if (tag != null)
+                        {
+                            customerPreferences.Preferences.Add(tag);
+                        }
+                        i++;
+                        return customerPreferences;
+                    }
+                    , new { id = id }
+                    , commandType: CommandType.StoredProcedure
+                    , splitOn: "Id"
+                    );
+            }
+            return null;
         }
     }
 }
