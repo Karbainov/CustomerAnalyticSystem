@@ -11,10 +11,10 @@ namespace CustomerAnalyticSystem.BLL.Services
 {
     public class ContactTypeContactService
     {
-        public void UpdateContact (int id, int customerId, int contactType, string value, string name)
+        public void UpdateContact (int id, int customerId, int contactTypeId, string value)
         {
             ContactTypeContactRepository rep = new ContactTypeContactRepository();
-            rep.UpdateContact(id, customerId, contactType, value);
+            rep.UpdateContact(id, customerId, contactTypeId, value);
         }
 
         public void DeleteContact (int id)
@@ -34,7 +34,5 @@ namespace CustomerAnalyticSystem.BLL.Services
             ContactTypeContactRepository rep = new ContactTypeContactRepository();
             rep.DeleteContactType(id);
         }
-
-
     }
 }
