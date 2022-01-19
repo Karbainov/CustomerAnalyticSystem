@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Analytics;
 
 namespace CustomerAnalyticSystem.BLL
 {
@@ -12,7 +13,7 @@ namespace CustomerAnalyticSystem.BLL
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Id { get; set; }
-        List<PreferencesBaseModel> CustomerPrefs { get; set; }
+        List<PreferencesBaseAbstractModel> CustomerPrefs { get; set; }
         List<GradeBaseModel> CustomerGrades { get; set; }
 
 
@@ -36,17 +37,12 @@ namespace CustomerAnalyticSystem.BLL
             }
         }
 
-        public void FillPreferencesList (List<PreferencesBaseModel> preferencesByCustomerId)
+        public void FillPreferencesList (List<PreferencesBaseAbstractModel> preferencesByCustomerId)
         {
-            int curProduct = 0;
             CustomerPrefs = new();
             foreach (var product in preferencesByCustomerId)
             {
-                if (curProduct != product.ProductId)
-                {
-                    CustomerPrefs.Add(product);
-                    curProduct = product.ProductId;
-                }
+                CustomerPrefs.Add(product);
             }
         }
     }
