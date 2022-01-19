@@ -41,5 +41,11 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseTag).Map<List<TagDTO>, List<TagModel>>(dto);
         }
 
+        public List<ProductBaseModel> MapFromProductBaseDTOToProductBaseModel(List<ProductBaseDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigBaseProduct).Map<List<ProductBaseDTO>, List<ProductBaseModel>>(dto);
+        }
+
     }
 }

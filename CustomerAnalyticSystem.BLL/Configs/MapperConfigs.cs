@@ -48,6 +48,11 @@ namespace CustomerAnalyticSystem.BLL.Configs
        {
            cfg.CreateMap<TagDTO, TagModel>();
        });
+
+        public MapperConfiguration ConfigBaseProduct = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
+        });
         //public MapperConfiguration ConfigForBaseOrderModel = new MapperConfiguration(cfg =>
         //{
         //    cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();
