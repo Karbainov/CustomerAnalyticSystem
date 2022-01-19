@@ -92,9 +92,9 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="TextBoxOrderId" HorizontalAlignment="Left" Margin="50,47,0,0" Text="write id" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
-                    <Button x:Name="ButtonAccept" Content="Button" HorizontalAlignment="Left" Margin="50,89,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click" Height="20"/>
+                    <Button x:Name="ButtonAccept" Content="GetAllOrders" HorizontalAlignment="Left" Margin="466,376,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click" Height="20"/>
                     <TextBox x:Name="TextBoxInformationAboutOrder" HorizontalAlignment="Left" Margin="50,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="165"/>
-                    <StackPanel x:Name="StackPanelAllOrders" Grid.Column="1"/>
+                    <StackPanel x:Name="StackPanelAllOrders" Grid.Column="1" Background="#FFFBC8C8"/>
                 </Grid>
             </TabItem>
             <TabItem Header="CUSTOMERSBIAAAAAD">

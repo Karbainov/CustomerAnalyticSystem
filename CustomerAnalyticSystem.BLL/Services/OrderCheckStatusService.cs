@@ -18,8 +18,6 @@ namespace CustomerAnalyticSystem.BLL.Services
             var dto = service.GetAllOrders();
             List<OrderBaseModel> result = map.MapBaseOrder(dto);
             return result;
-            
         }
-
     }
 }

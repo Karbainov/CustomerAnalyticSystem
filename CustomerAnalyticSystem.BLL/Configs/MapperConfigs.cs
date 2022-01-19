@@ -38,8 +38,9 @@ namespace CustomerAnalyticSystem.BLL.Configs
               {
                   cfg.CreateMap<GroupsWithProductsDTO, GroupsWithProductsModel>();
                   cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
-                  cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();
+                  //cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();
                   cfg.CreateMap<OrderBaseModel, OrderDTO>();
+                  cfg.CreateMap<OrderDTO, OrderBaseModel>();
               }
             );
             

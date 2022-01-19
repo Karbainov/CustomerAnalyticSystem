@@ -44,10 +44,10 @@ namespace CustomerAnalyticSystem.UI
             foreach(var c in listOrder)
             {
                 Button newOrder = new();
-                newOrder.Name = Convert.ToString(c.Id);
+                newOrder.Name = $"q_{c.Id}";
                 newOrder.Click += ButtonOrder_Click;
                 newOrder.Content = $"{c.Date}, {c.CustomerId}";
-                //StackPanelAllOrders.Children.Add(newOrder);
+                StackPanelAllOrders.Children.Add(newOrder);
             }
         }
 
