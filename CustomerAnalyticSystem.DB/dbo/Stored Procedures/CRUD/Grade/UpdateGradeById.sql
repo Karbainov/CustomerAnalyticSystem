@@ -1,6 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateGradeById]
-		@Id integer, @Value nvarchar(50)
+	@Id integer, 
+	@ProductId integer, 
+	@CustomerId integer, 
+	@Value integer
 as
 update dbo.[Grade]
-set Value=@Value
+set ProductId=@ProductId, CustomerId=@CustomerId, Value=@Value
 where Id=@Id
