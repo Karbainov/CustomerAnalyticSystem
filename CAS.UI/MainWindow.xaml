@@ -30,7 +30,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <ListView Grid.Column="0" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView x:Name="ListViewFavoriteProductsOfChosenClient" Grid.Column="0" d:ItemsSource="{d:SampleData ItemCount=5}">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Width="175" Header="Любимые продукты"/>
@@ -38,7 +38,7 @@
                                     </GridView>
                                 </ListView.View>
                             </ListView>
-                            <ListView Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView x:Name="ListViewFavoriteTagsOfChosenClient" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Width="175" Header="Любимые тэги"/>
@@ -46,7 +46,7 @@
                                     </GridView>
                                 </ListView.View>
                             </ListView>
-                            <ListView Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView x:Name="ListViewFavoriteGroupsOfChosenClient" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Width="175" Header="Любимые группы"/>
@@ -58,7 +58,7 @@
 
 
                         </Grid>
-                        <ListView d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView x:Name="ListViewClients" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Width="135" Header="Тип клиента"/>
@@ -72,9 +72,9 @@
                         </ListView>
                     </Grid>
                     <StackPanel Grid.Column="0" Margin="0,0,0,411">
-                        <Button Content="Добавить нового клиента" Height="75"/>
-                        <Button Content="Редактировать карту клиента" Height="75"/>
-                        <Button Content="Удалить карту клиента" Height="75"/>
+                        <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75"/>
+                        <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75"/>
+                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
