@@ -81,13 +81,44 @@
             <TabItem Header="Товары" Width="340">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="207*"/>
+                        <ColumnDefinition Width="811*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="74*"/>
+                            <RowDefinition Height="31*"/>
+                        </Grid.RowDefinitions>
+                        <ListView x:Name="ListViewInterestedClients" Grid.Row="1" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Приоритет" Width="115"/>                                    
+                                    <GridViewColumn Header="Тип клиента" Width="115"/>                                    
+                                    <GridViewColumn Header="Фамилия" Width="115"/>                                    
+                                    <GridViewColumn Header="Имя" Width="115"/>                                    
+                                    <GridViewColumn Header="Номер телефона" Width="115"/>                                    
+                                    <GridViewColumn Header="e-mail" Width="115"/>                                    
+                                    <GridViewColumn Header="Комментарий" Width="115"/>                                    
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ListView x:Name="ListViewProducts" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0" Grid.Column="1">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Группа" Width="202"/>
+                                    <GridViewColumn Header="Наименование" Width="202"/>
+                                    <GridViewColumn Header="Описание товара" Width="202"/>
+                                    <GridViewColumn Header="Остаток" Width="202"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <StackPanel Grid.Column="0">
+                        <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75"/>
+                        <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75"/>
+                        <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75"/>
+                    </StackPanel>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Заказы" Width="340">
