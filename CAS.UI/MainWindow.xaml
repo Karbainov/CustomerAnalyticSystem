@@ -154,11 +154,12 @@
                         <ListView Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID заказа" Width="162"/>
-                                    <GridViewColumn Header="ID товара" Width="162"/>
-                                    <GridViewColumn Header="Наименование товара" Width="162"/>
-                                    <GridViewColumn Header="Количество" Width="162"/>
-                                    <GridViewColumn Header="Стоимость" Width="162"/>
+                                    <GridViewColumn Header="ID заказа" Width="135"/>
+                                    <GridViewColumn Header="ID товара" Width="135"/>
+                                    <GridViewColumn Header="Наименование товара" Width="135"/>
+                                    <GridViewColumn Header="Количество" Width="135"/>
+                                    <GridViewColumn Header="Стоимость" Width="135"/>
+                                    <GridViewColumn Header="Оценка" Width="135"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CAS.UI"
         mc:Ignorable="d"
-        Title="Редактор заказа" Height="500" Width="379">
+        Title="Редактор заказа" Height="500" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="161*"/>
@@ -16,10 +16,12 @@
         <ListView x:Name="ListViewChecksEditOrderWndw" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID товара"/>
-                    <GridViewColumn Header="Наименование"/>
-                    <GridViewColumn Header="Количество"/>
-                    <GridViewColumn Header="Стоимость"/>
+                    <GridViewColumn Header="ID" Width="40"/>
+                    <GridViewColumn Header="Наименование" Width="90"/>
+                    <GridViewColumn Header="Количество" Width="90"/>
+                    <GridViewColumn Header="Стоимость" Width="90"/>
+                    <GridViewColumn Header="Оценка" Width="90"/>
+                
                 </GridView>
             </ListView.View>
         </ListView>
@@ -33,18 +35,22 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Content="Товар" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
                 <Label Content="Количество" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="1"/>
                 <Label Content="Цена единицы" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2"/>
+                <Label Content="Оценка" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="3"/>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="ComboBoxChooseProductEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0"/>
+                <ComboBox x:Name="ComboBoxChooseMarkEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="3"/>
                 <TextBox x:Name="TextBoxAmountOfProductEditOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
                 <TextBox x:Name="TextBoxPriceOfUnitEditOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
             </Grid>
