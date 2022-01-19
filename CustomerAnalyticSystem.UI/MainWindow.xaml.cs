@@ -82,12 +82,13 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillingListViewProducts()
         {
-            if (ComboBoxTags.SelectedIndex != null)
+            ListViewProducts.Items.Clear();
+
+            if (ComboBoxTags.SelectedIndex != -1)
             {
                 string tag = ComboBoxTags.SelectedItem.ToString();
                 int id;
                 TagsIdAndTags.TryGetValue(tag, out id);
-                ListViewProducts.Items.Clear();
                 var products = new ProductTagGroupService();
                 var listProducts = products.GetAllProductsByTagId(id);
                 foreach (var p in listProducts)
