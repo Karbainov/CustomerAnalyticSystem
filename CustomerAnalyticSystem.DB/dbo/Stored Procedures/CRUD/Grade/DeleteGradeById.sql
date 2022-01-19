@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[DeleteGradeById]
 	@Id integer
 as
-delete dbo.[Grade]
+delete from dbo.[Grade]
 where Id=@Id

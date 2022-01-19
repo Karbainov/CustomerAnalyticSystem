@@ -15,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomerAnalyticSystem.BLL;
-using CustomerAnalyticSystem.BLL.Models;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -27,28 +26,30 @@ namespace CustomerAnalyticSystem.UI
         public MainWindow()
         {
             InitializeComponent();
+            CustomerService custServe = new CustomerService();
+            List<CustomerModel> customers = custServe.GetAllCustomerModels();
+
+            //foreach (CustomerModel customer in customers)
+            //{
+            //    Button btn = new Button();
+            //    btn.Name = Convert.ToString("qwe" + customer.Id);
+            //    btn.Content = $"{customer.LastName} {customer.FirstName}";
+            //    StackPanelAllCustomers.Children.Add(btn);
+            //}
         }
 
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
-            //OrderInfoByOrderIdModel keks = new();
-            //OrderInfoByOrderIdService test = new();
-            //keks = test.GetOrderInfoByOrderId(Convert.ToInt32( TextBoxOrderId.Text));
-            //TextBoxInformationAboutOrder.Text = keks.OrderId + "Order" + keks.CustomerId + "Customer id" + "\n";
-            //foreach(var c in keks.Items)
-            //{
-            //    TextBoxInformationAboutOrder.Text += $"({c.ProductId} prodId \t {c.Mark} \t {c.Mark} = Mark \n";
-            //}
             var temp = new OrderCheckStatusService();
             var listOrder = temp.GetBaseOrderModel();
             foreach(var c in listOrder)
             {
                 Button newOrder = new();
                 newOrder.Name = $"q_{c.Id}";
-                newOrder.Click += ButtonOrder_Click;
-                newOrder.Content = $"{c.Date}, {c.CustomerId}";
-                StackPanelAllOrders.Children.Add(newOrder);
             }
+                StackPanelAllOrders.Children.Add(newOrder);
+                newOrder.Content = $"{c.Date}, {c.CustomerId}";
+                newOrder.Click += ButtonOrder_Click;
         }
 
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)

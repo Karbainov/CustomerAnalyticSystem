@@ -13,7 +13,7 @@ namespace CustomerAnalyticSystem.DAL
 
 
         #region customer
-        public const string GetAllCustomer = "GetAllCustomer";
+        public const string GetAllCustomers = "GetAllCustomer";
         public const string GetCustomerById = "GetCustomerById";
         public const string AddCustomer = "AddCustomer";
         public const string UpdateCustomerById = "UpdateCustomerById";
@@ -103,6 +103,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllProductInfoById = "GetAllProductInfoById";
         public const string GetAllOrdersByCustomerId = "GetAllOrdersByCustomerId";
         public const string GetAllGroupsWithProduct = "GetAllGroupsWithProducts";
+        public const string GetNumberOfTagsInOrderByCustomerId = "GetNumberOfTagsInOrderByCustomerId";
 
 
     }
