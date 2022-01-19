@@ -39,6 +39,14 @@ namespace CustomerAnalyticSystem.DAL
             return concreteProduct;
 
         }
+        public List<TagDTO> GetAllTags ()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<TagDTO>(Queries.GetAllTags, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
         public void DeleteTagById (int id)
         {
             string connectionString = ConnectionString.Connection;
