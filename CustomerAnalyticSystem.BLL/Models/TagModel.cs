@@ -9,5 +9,9 @@ namespace CustomerAnalyticSystem.BLL.Models
     public class TagModel
     {
         public string Name { get; set; }
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }
