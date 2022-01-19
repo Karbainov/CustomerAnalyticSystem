@@ -100,6 +100,14 @@ namespace CustomerAnalyticSystem.DAL
         public const string DeleteGroupById = "DeleteGroupById";
         #endregion
 
+        #region product
+        public const string AddProduct = "AddProduct";
+        public const string DeleteProductById = "DeleteProductById";
+        public const string GetAllProducts = "GetAllProducts";
+        public const string GetProductById = "GetProductById";
+        public const string UpdateProductById = "UpdateProductById";
+        #endregion
+
         #region comment
         public const string GetCommentById = "GetCommentById";
         public const string GetAllComment = "GetAllComment";

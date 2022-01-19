@@ -28,5 +28,14 @@ namespace CustomerAnalyticSystem.BLL.Services
             List<ProductBaseModel> result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
         }
+
+        public List<ProductBaseModel> GetAllProducts()
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllProducts();
+            List<ProductBaseModel> result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            return result;
+        }
     }
 }

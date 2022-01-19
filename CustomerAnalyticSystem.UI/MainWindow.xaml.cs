@@ -15,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomerAnalyticSystem.BLL;
-using CustomerAnalyticSystem.BLL.Models;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -27,6 +26,8 @@ namespace CustomerAnalyticSystem.UI
         public MainWindow()
         {
             InitializeComponent();
+            FillingComboBoxTags();
+            FillingListViewProducts();
         }
 
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
@@ -55,6 +56,32 @@ namespace CustomerAnalyticSystem.UI
         {
 
         }
+
+        private void FillingComboBoxTags()
+        {
+            var tags = new ProductTagGroupService();
+            var listTags = tags.GetAllTags();
+            foreach(var t in listTags)
+            {
+                ComboBoxTags.Items.Add(t);
+            }
+        }
+
+        public void FillingListViewProducts()
+        {
+            ListViewProducts.Items.Clear();
+            var products = new ProductTagGroupService();
+            var listProducts = products.GetAllProducts();
+            foreach (var p in listProducts)
+            {
+                ListViewProducts.Items.Add(p);
+                //p.GroupId; 
+                //p.Name; 
+                //p.Description;
+            }
+        }
+
+
     }
 }
 

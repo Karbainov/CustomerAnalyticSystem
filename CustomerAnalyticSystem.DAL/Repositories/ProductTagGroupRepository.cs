@@ -13,6 +13,52 @@ namespace CustomerAnalyticSystem.DAL
 {
     public class ProductTagGroupRepository
     {
+        #region Product
+        public void AddProduct(string name, string description, int groupId)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddProduct, new { Name = name, description = description, groupId = groupId }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteProductById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.DeleteProductById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<ProductBaseDTO> GetAllProducts()
+        {
+            string connectionString = ConnectionString.Connection;
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                    return connection.Query<ProductBaseDTO>(Queries.GetAllProducts, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public ProductBaseDTO GetProductById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingle<ProductBaseDTO>(Queries.GetProductById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateProductById(int id, string name, string description, int groupId)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.UpdateProductById, new { id = id, name = name, description = description, groupId = groupId }, commandType: CommandType.StoredProcedure);
+            }
+        }
+        #endregion
         public AllProductInfoById FillAllProductById(int id)
         {
             AllProductInfoById concreteProduct = null;

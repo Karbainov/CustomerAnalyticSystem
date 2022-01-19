@@ -27,17 +27,17 @@ namespace CustomerAnalyticSystem.BLL
             rep.UpdateCustomerById(id, firstName, lastName, TypeId);
         }
 
-        public void UpdateComment(int id, int customerId, string text)
-        {
-            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-            rep.UpdateComment(id, customerId, text);
-        }
+        //public void UpdateComment(int id, int customerId, string text)
+        //{
+        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+        //    rep.UpdateComment(id, customerId, text);
+        //}
 
-        public void DeleteComment(int id)
-        {
-            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-            rep.DeleteComment(id);
-        }
+        //public void DeleteComment(int id)
+        //{
+        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+        //    rep.DeleteComment(id);
+        //}
 
     }
 }
