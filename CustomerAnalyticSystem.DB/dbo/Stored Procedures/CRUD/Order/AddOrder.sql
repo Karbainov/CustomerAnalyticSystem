@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[AddOrder]
-	@CustomerID integer, 
-	@Date nvarchar, 
-	@StatusID nvarchar,
+	@CustomerId integer, 
+	@Date nvarchar(10), 
+	@StatusId integer,
 	@Cost integer
 AS
 	insert dbo.[Order]
-	values (@CustomerID, @Date, @StatusID, @Cost)
-RETURN 0
+	values (@CustomerId, @Date, @StatusId, @Cost)
+
