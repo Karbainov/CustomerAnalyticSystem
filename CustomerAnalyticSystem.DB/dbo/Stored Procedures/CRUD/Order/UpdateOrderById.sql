@@ -13,4 +13,4 @@
 	where Id= @Id
 
 	
-RETURN 0
+RETURN @Id

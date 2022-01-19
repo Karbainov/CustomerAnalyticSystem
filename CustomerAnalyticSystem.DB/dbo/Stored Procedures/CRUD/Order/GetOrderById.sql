@@ -3,4 +3,4 @@
 AS
 	select O.Id, O.CustomerID, O.Date, O.StatusID, O.Cost from dbo.[Order] as O
 	where Id = @Id
-RETURN Id
+RETURN @Id

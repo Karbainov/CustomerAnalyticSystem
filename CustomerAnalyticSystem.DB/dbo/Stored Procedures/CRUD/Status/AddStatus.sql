@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[AddStatus]
-	@Name nvarchar(255)
+	@Name nvarchar(30)
 AS
 	insert dbo.[Status]
 	values (@Name)

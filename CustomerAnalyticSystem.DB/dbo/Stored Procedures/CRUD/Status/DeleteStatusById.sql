@@ -3,4 +3,5 @@
 AS
 	delete from dbo.[Status]
 	where Id= @Id
+return @Id
 
