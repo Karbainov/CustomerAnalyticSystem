@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    class GetAllGradesByCustomerIdDTO
+   public class GetAllGradesByCustomerIdDTO
     {   
         public int ProductId { get; set; }
         public string Name { get; set; }

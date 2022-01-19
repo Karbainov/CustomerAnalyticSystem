@@ -209,5 +209,18 @@ namespace CustomerAnalyticSystem.DAL
                 commandType: CommandType.StoredProcedure);
             }
         }
+
+
+        public List<GetAllGradesByCustomerIdDTO> GetAllGradesByCustomerId(int id)
+        {
+            List<GetAllGradesByCustomerIdDTO> gradesByCustomerId = new List<GetAllGradesByCustomerIdDTO>();
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                gradesByCustomerId = connection.Query<GetAllGradesByCustomerIdDTO>(Queries.GetAllGradesByCustomerId, new { id },
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+            return gradesByCustomerId;
+        }
     }
 }

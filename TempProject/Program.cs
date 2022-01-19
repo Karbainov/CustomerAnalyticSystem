@@ -51,7 +51,7 @@ namespace TempProject
                     //keks = test.GetOrderInfoByOrderId(1);
             GroupBaseDTO keks = new();
             GroupBaseDTO qwe = new() { Description = "qqqqw123", Name = "kek"};
-            ProductTagGroupRepository test = new();
+            //ProductTagGroupRepository test = new();
             test.AddGroup(qwe);
         }
     }
