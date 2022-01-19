@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="OrderWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="ComboBoxStatuses" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="120"/>
+        <ComboBox x:Name="ComboBoxCustomers" HorizontalAlignment="Left" Margin="151,0,0,0" VerticalAlignment="Center" Width="120"/>
+        <StackPanel x:Name="StackPanelProductsInOrder" Grid.Column="1" Background="#FFB8B8B8"/>
+        <Button x:Name="AddProduct" Content="AddProduct" HorizontalAlignment="Left" Margin="381,403,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

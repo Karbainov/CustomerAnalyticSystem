@@ -35,13 +35,13 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigAllGroupsWithProducts).Map<List<OrderDTO>,List<OrderBaseModel>>(dto);
         }
 
-    }
-
         public List<CustomerModel> MapListCustomerDTOToListCustomerModel(List<CustomerDTO> list)
         {
             var config = new MapperConfigs();
             return new Mapper(config.ConfFromCustomerDTOToCustomerModel).Map<List<CustomerDTO>, List<CustomerModel>>(list);
         }
+    }
+
     
     }
-}
+

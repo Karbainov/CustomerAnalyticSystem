@@ -47,14 +47,21 @@ namespace CustomerAnalyticSystem.UI
                 Button newOrder = new();
                 newOrder.Name = $"q_{c.Id}";
             }
-                StackPanelAllOrders.Children.Add(newOrder);
-                newOrder.Content = $"{c.Date}, {c.CustomerId}";
-                newOrder.Click += ButtonOrder_Click;
+                //ListViewLoans.Items.Add(newOrder)
+                //newOrder.Content = $"{c.Date}, {c.CustomerId}";
+                //newOrder.Click += ButtonOrder_Click;
         }
 
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ButtonOpenOrder_Click(object sender, RoutedEventArgs e)
+        {
+            
+            ListViewOrders.Items.Add(м);
+            
         }
     }
 }
