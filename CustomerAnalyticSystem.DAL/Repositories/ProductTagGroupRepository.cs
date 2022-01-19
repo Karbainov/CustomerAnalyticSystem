@@ -39,6 +39,18 @@ namespace CustomerAnalyticSystem.DAL
             return concreteProduct;
 
         }
+
+        public List<GetAllGradesByProductIdDTO> GetAllGradesByProductId(int id)
+        {
+            List<GetAllGradesByProductIdDTO> productGradesDTOs = new List<GetAllGradesByProductIdDTO>();
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                productGradesDTOs = connection.Query<GetAllGradesByProductIdDTO>(Queries.GetAllGradesByProductId, new { id },
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+            return productGradesDTOs;
+        }
         public List<TagDTO> GetAllTags ()
         {
             string connectionString = ConnectionString.Connection;
