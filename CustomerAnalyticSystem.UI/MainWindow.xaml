@@ -119,7 +119,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ComboBox x:Name="ComboBoxTags" HorizontalAlignment="Left" Margin="244,277,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="ComboBoxTags" HorizontalAlignment="Left" Margin="244,277,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxTags_SelectionChanged"/>
                 </Grid>
             </TabItem>
         </TabControl>

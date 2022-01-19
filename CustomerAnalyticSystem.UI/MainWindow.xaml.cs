@@ -27,20 +27,11 @@ namespace CustomerAnalyticSystem.UI
         public MainWindow()
         {
             InitializeComponent();
-            FillDictTags();
+            FillingDictTags();
             FillingComboBoxTags();
             FillingListViewProducts();
         }
 
-        private void FillDictTags()
-        {
-            var service = new ProductTagGroupService();
-            var tagList = service.GetAllTags();
-            foreach (var t in tagList)
-            {
-                TagsIdAndTags.Add(t.Name, t.Id);
-            }
-        }
 
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
         {
@@ -69,6 +60,16 @@ namespace CustomerAnalyticSystem.UI
 
         }
 
+        private void FillingDictTags()
+        {
+            var service = new ProductTagGroupService();
+            var tagList = service.GetAllTags();
+            foreach (var t in tagList)
+            {
+                TagsIdAndTags.Add(t.Name, t.Id);
+            }
+        }
+
         private void FillingComboBoxTags()
         {
             var tags = new ProductTagGroupService();
@@ -79,21 +80,36 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        public void FillingListViewProducts()
+        private void FillingListViewProducts()
         {
-            string tag = ComboBoxTags.SelectedItem.ToString();
-            int id;
-            TagsIdAndTags.TryGetValue(tag, out id);
-            ListViewProducts.Items.Clear();
-            var products = new ProductTagGroupService();
-            var listProducts = products.GetAllProductsByTagId(id);
-            foreach (var p in listProducts)
+            if (ComboBoxTags.SelectedIndex != null)
             {
-                ListViewProducts.Items.Add(p);
+                string tag = ComboBoxTags.SelectedItem.ToString();
+                int id;
+                TagsIdAndTags.TryGetValue(tag, out id);
+                ListViewProducts.Items.Clear();
+                var products = new ProductTagGroupService();
+                var listProducts = products.GetAllProductsByTagId(id);
+                foreach (var p in listProducts)
+                {
+                    ListViewProducts.Items.Add(p);
+                }
+            }
+            else
+            {
+                var products = new ProductTagGroupService();
+                var listProducts = products.GetAllTags();
+                foreach (var p in listProducts)
+                {
+                    ListViewProducts.Items.Add(p);
+                }
             }
         }
 
-
+        private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillingListViewProducts();
+        }
     }
 }
 
