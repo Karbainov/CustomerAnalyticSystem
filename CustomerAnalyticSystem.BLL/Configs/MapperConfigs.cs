@@ -48,10 +48,3 @@ namespace CustomerAnalyticSystem.BLL.Configs
 
     }
 }
-//CreateMap<Models.Project.Project, Dal.Repository.Project_Master>().
-//    ForMember(dest => dest.Project_Locations, opt => opt.MapFrom(src => src.ProjectLocation));
-
-            //MapperConfiguration listHelp = new MapperConfiguration(
-            //    cnfg => cnfg.CreateMap<List<CheckBaseModel>, AllOrderInfoByOrderId>().ForMember(dest=>dest.Items, opt=>opt.MapFrom(
-            //        src=>mapper.Map<List<CheckBaseModel>, List<CheckDTO>>(src)))
-            //    );

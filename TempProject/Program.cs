@@ -46,15 +46,13 @@ namespace TempProject
             //{
             //    Console.WriteLine((ProductDTO)p);
             //}
-
-
-            //OrderInfoByOrderIdModel keks = new();
-            //OrderInfoByOrderIdService test = new();
-            //keks = test.GetOrderInfoByOrderId(1);
-
-            List<GroupsWithProductsModel> keks1 = new();
-            AllGroupsWithProductsService test1 = new();
-            keks1 = test1.GetAllGroupsWithProducts();
+                    //OrderInfoByOrderIdModel keks = new();
+                    //OrderInfoByOrderIdService test = new();
+                    //keks = test.GetOrderInfoByOrderId(1);
+            //GroupBaseDTO keks = new();
+            //GroupBaseDTO qwe = new() { Description = "qqqqw123", Name = "kek"};
+            //ProductTagGroupRepository test = new();
+            //test.AddGroup(qwe);
         }
     }
 }
