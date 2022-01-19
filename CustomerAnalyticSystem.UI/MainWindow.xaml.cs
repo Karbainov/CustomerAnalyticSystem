@@ -23,11 +23,23 @@ namespace CustomerAnalyticSystem.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
         public MainWindow()
         {
             InitializeComponent();
+            FillDictTags();
             FillingComboBoxTags();
             FillingListViewProducts();
+        }
+
+        private void FillDictTags()
+        {
+            var service = new ProductTagGroupService();
+            var tagList = service.GetAllTags();
+            foreach (var t in tagList)
+            {
+                TagsIdAndTags.Add(t.Name, t.Id);
+            }
         }
 
         private void ButtonAccept_Click(object sender, RoutedEventArgs e)
@@ -69,15 +81,15 @@ namespace CustomerAnalyticSystem.UI
 
         public void FillingListViewProducts()
         {
+            string tag = ComboBoxTags.SelectedItem.ToString();
+            int id;
+            TagsIdAndTags.TryGetValue(tag, out id);
             ListViewProducts.Items.Clear();
             var products = new ProductTagGroupService();
-            var listProducts = products.GetAllProducts();
+            var listProducts = products.GetAllProductsByTagId(id);
             foreach (var p in listProducts)
             {
                 ListViewProducts.Items.Add(p);
-                //p.GroupId; 
-                //p.Name; 
-                //p.Description;
             }
         }
 
