@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllCountOrderByProductIdAndSummAllOrderdsByProductId]
-	 @Id integer
+	@Id integer
 as
-SELECT ProductId, Count(ProductId)AS CountOrder, SUM(Amount)AS SummAllOrder
-FROM [dbo].[Check] as C 
-join [dbo].[Product] as P
+SELECT P.[Id] AS ProductId, Count(ProductId)AS CountOrder, SUM(Amount)AS SummAllProductsInOrders
+FROM [dbo].[Product] as P
+left join [dbo].[Check] as C
 	on C.ProductId = P.Id
 	where P.Id=@Id
-GROUP BY ProductId
+GROUP BY ProductId, P.Id
 ORDER BY ProductId
-return @id
+return @Id

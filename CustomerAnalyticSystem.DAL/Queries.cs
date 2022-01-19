@@ -119,6 +119,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";
         public const string GetAllContactByCustomerId = "GetAllContactByCustomerId";
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
+        public const string GetAllCountOrderByProductIdAndSummAllOrderdsByProductId = "GetAllCountOrderByProductIdAndSummAllOrderdsByProductId";
         public const string GetAllOrderInfoByOrderId = "GetAllOrderInfoByOrderId";
         public const string GetAllTagsWithMarksByCustomerId = "GetAllTagsWithMarksByCustomerId";
         public const string GetCustomersWithPreferenceByProductId = "GetCustomersWithPreferenceByProductId";

@@ -66,6 +66,17 @@ namespace CustomerAnalyticSystem.DAL
             return productDTOs;
         }
 
+        public List<GetAllCountOrderByProductIdAndSummAllOrderdsByProductIdDTO> GetAllCountOrderByProductIdAndSummAllOrderdsByProductId(int id)
+        {
+            List<GetAllCountOrderByProductIdAndSummAllOrderdsByProductIdDTO> AllCountOrderByProductIdAndSummAllOrderdsByProductIdDTOs = new List<GetAllCountOrderByProductIdAndSummAllOrderdsByProductIdDTO>();
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                AllCountOrderByProductIdAndSummAllOrderdsByProductIdDTOs = connection.Query<GetAllCountOrderByProductIdAndSummAllOrderdsByProductIdDTO>(Queries.GetAllCountOrderByProductIdAndSummAllOrderdsByProductId,
+                    new { id }, commandType: CommandType.StoredProcedure).ToList();
+            }
+            return AllCountOrderByProductIdAndSummAllOrderdsByProductIdDTOs;
+        }
+
         public List<GroupsWithProductsDTO> GetAllGroupsWithProducts()
         {
             int count = 0;
