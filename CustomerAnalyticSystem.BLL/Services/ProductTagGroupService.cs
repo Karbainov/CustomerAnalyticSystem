@@ -11,5 +11,13 @@ namespace CustomerAnalyticSystem.BLL.Services
 {
     public class ProductTagGroupService
     {
+        public List<GroupsWithProductsModel> GetAllGroupsWithProducts()
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllGroupsWithProducts();
+            List<GroupsWithProductsModel> result = map.MapGroupsWithProducts(dto);
+            return result;
+        }
     }
 }
