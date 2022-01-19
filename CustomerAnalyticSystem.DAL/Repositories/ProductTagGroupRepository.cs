@@ -39,6 +39,14 @@ namespace CustomerAnalyticSystem.DAL
             return concreteProduct;
 
         }
+        public List<TagDTO> GetAllTags ()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<TagDTO>(Queries.GetAllTags, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
         public void DeleteTagById (int id)
         {
             string connectionString = ConnectionString.Connection;
@@ -136,6 +144,15 @@ namespace CustomerAnalyticSystem.DAL
                 connection.Query(Queries.UpdateProduct_TagById, new { id, productId, tagId }, commandType: CommandType.StoredProcedure);
             }
         }
+        #region Group
+        public void AddGroup (string name, string description)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddGroup, new { Name = name, description= description }, commandType: CommandType.StoredProcedure);
+            }
+        }
 
         public List<GetNumberOfTagsInOrderByCustomerIdDTO> GetNumberOfTagsInOrderByCustomerId (int id)
         {
@@ -149,5 +166,63 @@ namespace CustomerAnalyticSystem.DAL
 
         }
 
+        public List<GroupBaseDTO> GetAllGroup()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<GroupBaseDTO>(Queries.GetAllGroup, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public GroupBaseDTO GetGroupById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingle<GroupBaseDTO>(Queries.GetGroupById, new { id = id }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteGroupById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.DeleteGroupById, new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateGroupById(int id, string name, string description )
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query<GroupBaseDTO>(Queries.UpdateGroupById, new {Id = id, name = name, description = description }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateGroupById(GroupBaseDTO updatedGroup)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query<GroupBaseDTO>(Queries.UpdateGroupById, new { 
+                    Id = updatedGroup.Id, name = updatedGroup.Name
+                    , description = updatedGroup.Description
+                }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void AddGroup(GroupBaseDTO newGroup)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddGroup, new { Name = newGroup.Name, description = newGroup.Description }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+        #endregion
     }
 }
