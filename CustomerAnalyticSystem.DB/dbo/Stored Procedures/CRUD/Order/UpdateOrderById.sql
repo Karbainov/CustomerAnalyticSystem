@@ -2,7 +2,7 @@
 	@Id integer,
 	@CustomerId integer,
 	@Date nvarchar(10), 
-	@StatusId integer,
+	@StatusId nvarchar,
 	@Cost integer
 	AS
 	update dbo.[Order]

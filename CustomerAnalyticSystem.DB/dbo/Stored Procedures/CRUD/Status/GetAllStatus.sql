@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[GetAllStatus]
 	as
-	select S.[Id], S.[Name] from [dbo].[Status] as S
-	
+	select *
+	from dbo.[Status]
 RETURN 0

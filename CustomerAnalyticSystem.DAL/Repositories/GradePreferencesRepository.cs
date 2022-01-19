@@ -15,22 +15,29 @@ namespace CustomerAnalyticSystem.DAL
     {
         public List<GradeDTO> GetAllGrades()
         {
+            List<GradeDTO> grades = new List<GradeDTO>();
+
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                return connection.Query<GradeDTO>(Queries.GetAllGrades).ToList();
+                grades = connection.Query<GradeDTO>(Queries.GetAllGrades).ToList();
             }
+            return grades;
         }
-        public GradeDTO GetGradeById(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                return connection.QuerySingle<GradeDTO>(Queries.GetGradeById, new { id }
-               , commandType: CommandType.StoredProcedure);
-            }
-        }
+        //public GradeDTO GetGradesById(int id)
+        //{
+        //    GradeDTO grade;
+
+        //    using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+        //    {
+        //        grade = connection.QuerySingle<GradeDTO>(Queries.GetAllGradeById, new { id }
+        //       , commandType: CommandType.StoredProcedure);
+        //    }
+        //    return grade;
+        //}
 
         public void AddGrade(int ProductId, int CustomerId, string Value)
         {
+
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.QuerySingle<GradeDTO>(Queries.AddGrade, new { ProductId, CustomerId, Value }
@@ -40,6 +47,7 @@ namespace CustomerAnalyticSystem.DAL
 
         public void DeleteGradeById(int id)
         {
+
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.QuerySingle(Queries.DeleteGradeById, new { id }
@@ -49,64 +57,22 @@ namespace CustomerAnalyticSystem.DAL
 
         public void UpdateGradeById(int id, string Value)
         {
+
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.Query<GradeDTO>(Queries.UpdateGradeById, new { id, Value }
+                connection.QuerySingle<GradeDTO>(Queries.UpdateGradeById, new { id, Value }
                 , commandType: CommandType.StoredProcedure);
             }
         }
-
-        public List<PreferencesDTO> GetAllPreferences()
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                return connection.Query<PreferencesDTO>(Queries.GetAllPreferences).ToList();
-            }
-        }
-
-        public PreferencesDTO GetPreferenceById(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                return connection.QuerySingle<PreferencesDTO>(Queries.GetPreferenceById, new { id }
-               , commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void AddPreference(int ProductId, int CustomerId, int TagId, int GroupId, bool IsInterested)
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                connection.QuerySingle<PreferencesDTO>(Queries.AddPreference, new { ProductId, CustomerId, TagId, GroupId, IsInterested }
-                , commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void DeletePreferenceById(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                connection.QuerySingle(Queries.DeletePreferenceById, new { id }
-                , commandType: CommandType.StoredProcedure);
-            }
-        }
-
-        public void UpdatePreferenceById(int Id, bool IsInterested)
-        {
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                connection.QuerySingle<PreferencesDTO>(Queries.UpdatePreferenceById, new { Id, IsInterested }
-                , commandType: CommandType.StoredProcedure);
-            }
-        }
-
         public List<CustomersWithPreferenceByProductIdDTO> GetCustomersWithPreferenceByProductId(int id)
         {
+            List<CustomersWithPreferenceByProductIdDTO> customersWithPreferenceByProductIdDTOs = new List<CustomersWithPreferenceByProductIdDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                return connection.Query<CustomersWithPreferenceByProductIdDTO>(Queries.GetCustomersWithPreferenceByProductId,
+                customersWithPreferenceByProductIdDTOs = connection.Query<CustomersWithPreferenceByProductIdDTO>(Queries.GetCustomersWithPreferenceByProductId,
                     new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
+            return customersWithPreferenceByProductIdDTOs;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[GetOrderById]
 	@Id integer
 AS
-	select O.Id, O.CustomerID, O.Date, O.StatusID, O.Cost from dbo.[Order] as O
+	select *
+	from dbo.[Order]
 	where Id = @Id
-RETURN @Id
+RETURN 0

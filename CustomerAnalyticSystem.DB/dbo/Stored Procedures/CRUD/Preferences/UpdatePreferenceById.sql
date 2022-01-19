@@ -1,11 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[UpdatePreferenceById]
-	@Id integer, 
-	@ProductId integer, 
-	@CustomerId integer, 
-	@TagId integer, 
-	@GroupId integer, 
-	@IsInterested bit
+	@Id integer, @IsInterested bit
 as
 update dbo.[Preferences]
-set ProductId=@ProductId, CustomerId=@CustomerId, TagId=@TagId, GroupId=@GroupId, IsInterested=@IsInterested
+set IsInterested=@IsInterested
 where Id=@Id
+

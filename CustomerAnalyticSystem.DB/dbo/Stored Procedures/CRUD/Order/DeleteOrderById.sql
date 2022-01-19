@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[DeleteOrderById]
 	@Id integer
 AS
-	delete from dbo.[Order]
+	delete dbo.[Order]
 	where Id= @Id
-RETURN @Id
+RETURN 0

@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[GetStatusById]
 	@Id integer 
 AS
-	select S.[Id], S.[Name] from [dbo].[Status] as S
+	select *
+	from dbo.[Status]
 	where Id = @Id
-RETURN @Id
+RETURN 0
