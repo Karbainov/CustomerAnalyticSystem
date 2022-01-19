@@ -99,7 +99,7 @@ namespace CustomerAnalyticSystem.UI
             else
             {
                 var products = new ProductTagGroupService();
-                var listProducts = products.GetAllTags();
+                var listProducts = products.GetAllProducts();
                 foreach (var p in listProducts)
                 {
                     ListViewProducts.Items.Add(p);
