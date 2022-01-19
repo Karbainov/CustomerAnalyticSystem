@@ -64,6 +64,17 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
+        public void UpdateOrderById(OrderDTO updated)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query<GradeDTO>(Queries.UpdateOrderById, new { updated.Id, updated.CustomerId, updated.Date
+                    , updated.StatusId, updated.Cost }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public List<StatusDTO> GetAllStatus()
         {
             List<StatusDTO> status = new List<StatusDTO>();
