@@ -198,6 +198,27 @@ namespace CustomerAnalyticSystem.DAL
                 , commandType: CommandType.StoredProcedure);
             }
         }
+        public void UpdateGroupById(GroupBaseDTO updatedGroup)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query<GroupBaseDTO>(Queries.UpdateGroupById, new { 
+                    Id = updatedGroup.Id, name = updatedGroup.Name
+                    , description = updatedGroup.Description
+                }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void AddGroup(GroupBaseDTO newGroup)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddGroup, new { Name = newGroup.Name, description = newGroup.Description }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
         #endregion
     }
 }
