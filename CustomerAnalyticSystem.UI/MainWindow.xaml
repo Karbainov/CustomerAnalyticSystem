@@ -14,82 +14,108 @@
                         <ColumnDefinition/>
 
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Margin="0,39,0,0" >
-                        <Button Content="Создать нового" Width="229"/>
-                        <ScrollViewer Height="349"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Margin="0,39,0,0" >
-                        <Label Content="Имя клиента"/>
-                        <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
-                        <Label Content="Фамилия клиента"/>
-                        <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
-                        <Label Content="Тип клиента"/>
-                        <ComboBox Width="527"/>
-                        <Label Content="Коммент"/>
-                        <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
-                        <Label Content="Контакт"/>
-                        <TextBox Text="TextBox" TextWrapping="Wrap" Width="527"/>
+                    <ListView x:Name="ListViewLoans" d:ItemsSource="{d:SampleData ItemCount=4}" ItemsSource="{Binding Effects}" SelectedIndex="0" SelectionChanged="ListViewLoans_SelectionChanged" 
+                              FontSize="12" FontFamily="Bahnschrift SemiLight" FontStretch="Normal" FontStyle="Normal" FontWeight="Heavy" 
+                              IsSynchronizedWithCurrentItem="True" SelectionMode="Single" BorderBrush="#89EF0101" BorderThickness="0,0,0,0" 
+                              Background="White" Foreground="#DD0F9ECE" Margin="608,0,0,0">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Width" Value="auto" />
+                                <Setter Property="BorderBrush" Value="LightGray" />
+                                <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="Имя"  DisplayMemberBinding="{Binding FirstName}"/>
+                                <GridViewColumn Header="Фамилия"  DisplayMemberBinding="{Binding LastName}"/>
 
-                        <ComboBox Width="527"/>
-                        <!--Тут тип контакта-->
-                        <Button Content="История заказов"/>
-                        <Button Content="Преференсес кастомера"/>
-                        <Button Content="Какие продукты(теги) заказывал"/>
-                    </StackPanel>
-                    <Label Content="Тут стакпанель с именами кастомеров" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10" Foreground="#FFE82222" FontWeight="Bold" Height="23" Width="198"/>
-                    <Label Content="Тут стакпанель с подробностями о кастомерах" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10" Foreground="#FFE82222" FontWeight="Bold" Height="23" Width="240"/>
+
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="ButtonCreateNewCustomer" Content="Новый клиент" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="ButtonOpenInfoByCustomer" Content="Открыть" HorizontalAlignment="Left" Margin="220,49,0,0" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="358,130,0,0" VerticalAlignment="Top" Width="124"/>
+                    <Label Content="Выберите тип клиента" HorizontalAlignment="Left" Margin="358,104,0,0" VerticalAlignment="Top" Width="133"/>
+
+
                 </Grid>
             </TabItem>
             <TabItem Header="Products">
                 <Border>
                     <Grid ShowGridLines="True" Background="#FFE5E5E5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="180*"/>
-                            <ColumnDefinition Width="180*"/>
-                            <ColumnDefinition Width="400*"/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="150*"/>
-                            <RowDefinition Height="850*"/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <StackPanel Grid.Column="0"/>
-                        <StackPanel Grid.Column="1"/>
-                        <StackPanel Grid.Column="2"/>
-                        <Label Content="Product Group" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                        <Label Grid.Column="1" Content="Products" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                        <Label Grid.Column="2" Content="Product Info" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                        <Border Grid.Column="2" Grid.Row="2">
-                            <Grid ShowGridLines="True" Grid.Column="2" Grid.Row="2" Margin="31,25,38,30">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="107*"/>
-                                    <ColumnDefinition Width="190*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                </Grid.RowDefinitions>
-                                <Label Content="Name" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="41" Margin="30,0,0,0"/>
-                                <Label Content="Cost" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="38" Margin="30,0,0,0"/>
-                                <Label Content="Amount" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="58" Margin="30,10,0,0"/>
-                                <Label Content="Description" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="78" Margin="10,0,0,0"/>
-                                <Button Content="Buy History" HorizontalAlignment="Left" Margin="13,0,0,0" Grid.Row="5" VerticalAlignment="Center" Height="20" Width="75"/>
-                                <Label Content="Tags" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center"/>
-                            </Grid>
-                        </Border>
-                        <ScrollViewer Grid.Row="1"/>
-                        <ScrollViewer Grid.ColumnSpan="2" Margin="188,0,0,0" Grid.Row="1"/>
+                        <ListView x:Name="Products" d:ItemsSource="{d:SampleData ItemCount=4}" ItemsSource="{Binding Effects}" SelectedIndex="0" SelectionChanged="ListViewLoans_SelectionChanged" 
+                              FontSize="12" FontFamily="Bahnschrift SemiLight" FontStretch="Normal" FontStyle="Normal" FontWeight="Heavy" 
+                              IsSynchronizedWithCurrentItem="True" SelectionMode="Single" BorderBrush="#89EF0101" BorderThickness="0,0,0,0" 
+                              Background="White" Foreground="#DD0F9ECE" Margin="608,0,0,0">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Width" Value="auto" />
+                                    <Setter Property="BorderBrush" Value="LightGray" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" />
+                                    <GridViewColumn Header="Название"  DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Остаток"  DisplayMemberBinding="{Binding Amount}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Button x:Name="ButtonCreateNewProduct" Content="Новый продукт" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top"/>
+                        <Button x:Name="ButtonOpenInfoByProduct" Content="Открыть" HorizontalAlignment="Left" Margin="319,91,0,0" VerticalAlignment="Top"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="397,46,0,0" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Выберите группу" HorizontalAlignment="Left" Margin="397,20,0,0" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Поиск по тэгу" HorizontalAlignment="Left" Margin="408,91,0,0" VerticalAlignment="Top"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="408,122,0,0" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="тут все тэги с сортировкой по алфавиту мб" HorizontalAlignment="Left" Margin="345,133,0,0" VerticalAlignment="Top"/>
+                        <Button Content="+" HorizontalAlignment="Left" Margin="533,122,0,0" VerticalAlignment="Top"/>
+                        <Button Content="+" HorizontalAlignment="Left" Margin="522,48,0,0" VerticalAlignment="Top"/>
                     </Grid>
                 </Border>
             </TabItem>
             <TabItem Header="Orders">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="TextBoxOrderId" HorizontalAlignment="Left" Margin="50,47,0,0" Text="write id" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="ButtonAccept" Content="Button" HorizontalAlignment="Left" Margin="50,89,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click"/>
-                    <TextBox x:Name="TextBoxInformationAboutOrder" HorizontalAlignment="Left" Margin="50,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="165"/>
+                    <ListView x:Name="Orders" d:ItemsSource="{d:SampleData ItemCount=4}" ItemsSource="{Binding Effects}" SelectedIndex="0" SelectionChanged="ListViewLoans_SelectionChanged" 
+                              FontSize="12" FontFamily="Bahnschrift SemiLight" FontStretch="Normal" FontStyle="Normal" FontWeight="Heavy" 
+                              IsSynchronizedWithCurrentItem="True" SelectionMode="Single" BorderBrush="#89EF0101" BorderThickness="0,0,0,0" 
+                              Background="White" Foreground="#DD0F9ECE" Margin="265,0,0,0">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Width" Value="auto" />
+                                <Setter Property="BorderBrush" Value="LightGray" />
+                                <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="Имя клиента"  DisplayMemberBinding="{Binding FirstName}"/>
+                                <GridViewColumn Header="Фамилия клиента"  DisplayMemberBinding="{Binding LastName}"/>
+                                <GridViewColumn Header="Дата создания"  DisplayMemberBinding="{Binding Date}" />
+                                <GridViewColumn Header="Статус"  DisplayMemberBinding="{Binding Status}"/>
+                                <GridViewColumn Header="Сумма"  DisplayMemberBinding="{Binding Amount}"/>
+                                <GridViewColumn Header="Оценка"  DisplayMemberBinding="{Binding Mark}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="Новый заказ" HorizontalAlignment="Left" Margin="161,71,0,0" VerticalAlignment="Top" IsCancel="True"/>
+                    <Button Content="Открыть" HorizontalAlignment="Left" Margin="89,118,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Статус заказа" HorizontalAlignment="Left" Margin="78,147,0,0" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="78,173,0,0" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
         </TabControl>
