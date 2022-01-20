@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.BLL.Models
 {
-    class GradesByProductIdModel
+    public class GradesByProductIdModel
     {
         public int ProductName { get; set; }
-        public int Value { get; set; }
+        public List<GradeBaseModel> Value { get; set; }
     }
 }
