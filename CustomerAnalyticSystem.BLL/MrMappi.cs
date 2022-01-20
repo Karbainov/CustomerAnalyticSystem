@@ -47,5 +47,10 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductBaseDTO>, List<ProductBaseModel>>(dto);
         }
 
+        public List<AllGradesByCustomerIdModel> MapFromGetAllGradesByCustomerIdDTOToAllGradesByCustomerIdModel(List<GetAllGradesByCustomerIdDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigAllGradesByCustomerId).Map<List<GetAllGradesByCustomerIdDTO>, List<AllGradesByCustomerIdModel>>(dto);
+        }
     }
 }

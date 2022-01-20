@@ -27,5 +27,13 @@ namespace CustomerAnalyticSystem.BLL
             rep.UpdateCustomerById(id, firstName, lastName, TypeId);
         }
 
+        public AllGradesByCustomerIdModel GetAllGradesByCustomerId(int id)
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            var dto = rep.GetAllGradesByCustomerId(id);
+            var map = new MrMappi();
+            AllGradesByCustomerIdModel result = map.MapFromGetAllGradesByCustomerIdDTOToAllGradesByCustomerIdModel(dto);
+            return result;
+        }
     }
 }
