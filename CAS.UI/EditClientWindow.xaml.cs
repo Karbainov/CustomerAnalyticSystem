@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
+using CustomerAnalyticSystem.BLL;
 
 namespace CAS.UI
 {
@@ -19,9 +22,34 @@ namespace CAS.UI
     /// </summary>
     public partial class EditClientWindow : Window
     {
+        private Dictionary<CustomerTypeModel, int> customerTypesWithId = new Dictionary<CustomerTypeModel, int>();
+
         public EditClientWindow()
         {
             InitializeComponent();
+            customerTypesWithId = GetAllDictCustomerTypeWithId();
+            FillCustomerTypeComboBox(customerTypesWithId);
+        }
+
+        private Dictionary<CustomerTypeModel, int> GetAllDictCustomerTypeWithId()
+        {
+            Dictionary<CustomerTypeModel, int> customerTypesAndId = new Dictionary<CustomerTypeModel, int>();
+            CustomerTypeCustomerCommentService serve = new CustomerTypeCustomerCommentService();
+            List<CustomerTypeModel> customerModels = serve.GetAllCustomerTypeModel();
+
+            foreach (CustomerTypeModel customerTypeModel in customerModels)
+            {
+                customerTypesAndId.Add(customerTypeModel, customerTypeModel.Id);
+            }
+            return customerTypesAndId;
+        }
+
+        private void FillCustomerTypeComboBox(Dictionary<CustomerTypeModel, int> dict)
+        {
+            foreach(KeyValuePair<CustomerTypeModel, int> pair in dict)
+            {
+                ComboBoxEditTypeOfClient.Items.Add(pair.Key.Name);
+            }
         }
     }
 }
