@@ -179,6 +179,7 @@
     <Build Include="dbo\Stored Procedures\GetNumberOfTagsInOrderByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllProductsByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllProductsWithGroups.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GetAllTagsByProductId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />

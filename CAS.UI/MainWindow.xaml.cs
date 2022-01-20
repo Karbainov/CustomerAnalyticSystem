@@ -66,7 +66,7 @@ namespace CAS.UI
             }
         }
 
-        private void FillingComboBoxGroups()
+        public void FillingComboBoxGroups()
         {
             var groups = new ProductTagGroupService();
             var listGroups = groups.GetAllGroups();
@@ -133,7 +133,6 @@ namespace CAS.UI
             FillingListViewProducts();
         }
 
-
         private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
         {
             AddClientWindow addClientWindow = new AddClientWindow(this);
@@ -142,7 +141,8 @@ namespace CAS.UI
 
         private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
         {
-            EditProductWindow editProductWindow = new EditProductWindow(this);
+            ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
+            EditProductWindow editProductWindow = new EditProductWindow(this, product);
             editProductWindow.Show();
         }
 

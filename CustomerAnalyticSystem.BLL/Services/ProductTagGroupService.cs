@@ -62,5 +62,14 @@ namespace CustomerAnalyticSystem.BLL.Services
             var service = new ProductTagGroupRepository();
             service.DeleteProductById(id);
         }
+
+        public List<TagModel> GetAllTagsByProductId(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllTagsByProductId(id);
+            List<TagModel> result = map.MapFromTagDTOToTagModel(dto);
+            return result;
+        }
     }
 }
