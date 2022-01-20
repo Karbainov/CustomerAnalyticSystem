@@ -180,6 +180,8 @@
     <Build Include="dbo\Stored Procedures\AGetAllGradesByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllPreferencesInfoByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\AllMarksInCheckByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\CountAllTagsInOrders.sql" />
+    <Build Include="dbo\Stored Procedures\CountAllProductsInOrders.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
