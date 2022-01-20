@@ -23,12 +23,17 @@ namespace CustomerAnalyticSystem.BLL
             var config = new MapperConfigs();
             return new Mapper(config.ConfigAllGroupsWithProducts).Map<List<GroupsWithProductsDTO>, List<GroupsWithProductsModel>>(dto);
         }
-        public CustomerModel MapCustomerInfoDTOToCustomerModel(CustomerInfoDTO DTO)
+        public CustomerInfoModel MapCustomerInfoDTOToCustomerModel(CustomerInfoDTO DTO)
         {
             var mapConfig = new MapperConfigs();
-            return new Mapper(mapConfig.ConfFromCustomerInfoDTOToCustomerModel).Map<CustomerInfoDTO, CustomerModel>(DTO);
+            return new Mapper(mapConfig.ConfFromCustomerInfoDTOToCustomerModel).Map<CustomerInfoDTO, CustomerInfoModel>(DTO);
         }
 
+        public List<CustomerInfoModel> MapListCustomerDTOToListCustomerModel(List<CustomerInfoDTO> list)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromCustomerInfoDTOToCustomerinfoModel).Map<List<CustomerInfoDTO>, List<CustomerInfoModel>>(list);
+        }
         public List<OrderBaseModel> MapBaseOrder(List<OrderDTO> dto)
         {
             var config = new MapperConfigs();
@@ -46,6 +51,8 @@ namespace CustomerAnalyticSystem.BLL
             var config = new MapperConfigs();
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductBaseDTO>, List<ProductBaseModel>>(dto);
         }
-
+    
     }
+
+
 }
