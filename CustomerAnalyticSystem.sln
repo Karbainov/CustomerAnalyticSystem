@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAnalyticSystem.BLL"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempProject", "TempProject\TempProject.csproj", "{999F9677-5250-47E4-9A68-E121C1B5176E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAnalyticSystem.UI", "CustomerAnalyticSystem.UI\CustomerAnalyticSystem.UI.csproj", "{4B78ABFE-CE46-40E9-8096-37BDDC06390B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAS.UI", "CAS.UI\CAS.UI.csproj", "{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAS.UI", "CAS.UI\CAS.UI.csproj", "{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +37,6 @@ Global
 		{999F9677-5250-47E4-9A68-E121C1B5176E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{999F9677-5250-47E4-9A68-E121C1B5176E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{999F9677-5250-47E4-9A68-E121C1B5176E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B78ABFE-CE46-40E9-8096-37BDDC06390B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B78ABFE-CE46-40E9-8096-37BDDC06390B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B78ABFE-CE46-40E9-8096-37BDDC06390B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B78ABFE-CE46-40E9-8096-37BDDC06390B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
