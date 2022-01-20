@@ -16,7 +16,7 @@ namespace CustomerAnalyticSystem.BLL.Services
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
             var dto = service.GetAllGradesByProductId(id);
-            List<GradesByProductIdModel> result = map.MapGroupsWithProducts(dto);
+            List<GradesByProductIdModel> result = map.MapFromGradesBaseDTOToGradesBaseModel(dto);
             return result;
         }
     }

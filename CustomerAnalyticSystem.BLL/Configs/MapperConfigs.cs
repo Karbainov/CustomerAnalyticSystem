@@ -57,9 +57,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
         public MapperConfiguration ConfigGradesByProductId = new MapperConfiguration(cfg =>
         {
             cfg.CreateMap<GetAllGradesByProductIdDTO, GradesByProductIdModel>();
-            cfg.CreateMap<GradeDTO, GradeBaseModel>()
-            .ForMember(dest => dest.Value, act => act.MapFrom(src => src.Value));
-
+            cfg.CreateMap<GradeDTO, GradeBaseModel>();
         }
             );
 
