@@ -40,13 +40,13 @@ namespace CustomerAnalyticSystem.DAL
 
         }
 
-        public List<GetAllGradesByProductIdDTO> GetAllGradesByProductId(int id)
+        public List<GradeDTO> GetAllGradesByProductId(int id)
         {
-            List<GetAllGradesByProductIdDTO> productGradesDTOs = new List<GetAllGradesByProductIdDTO>();
+            List<GradeDTO> productGradesDTOs = new List<GradeDTO>();
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                productGradesDTOs = connection.Query<GetAllGradesByProductIdDTO>(Queries.GetAllGradesByProductId, new { id },
+                productGradesDTOs = connection.Query<GradeDTO>(Queries.GetAllGradesByProductId, new { id },
                     commandType: CommandType.StoredProcedure).ToList();
             }
             return productGradesDTOs;

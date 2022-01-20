@@ -11,12 +11,12 @@ namespace CustomerAnalyticSystem.BLL.Services
 {
     public class GradePreferencesService
     {
-        public List<GradesByProductIdModel> GetAllGradesByProductId(int id)
+        public List<GradeBaseModel> GetAllGradesByProductId(int id)
         {
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
             var dto = service.GetAllGradesByProductId(id);
-            List<GradesByProductIdModel> result = map.MapFromGradesBaseDTOToGradesBaseModel(dto);
+            List<GradeBaseModel> result = map.MapFromGradesBaseDTOToGradesBaseModel(dto);
             return result;
         }
     }

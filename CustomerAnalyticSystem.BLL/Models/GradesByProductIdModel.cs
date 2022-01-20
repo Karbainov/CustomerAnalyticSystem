@@ -8,7 +8,7 @@ namespace CustomerAnalyticSystem.BLL.Models
 {
     public class GradesByProductIdModel
     {
-        public int ProductName { get; set; }
+        public int Id { get; set; }
         public List<GradeBaseModel> Value { get; set; }
     }
 }
