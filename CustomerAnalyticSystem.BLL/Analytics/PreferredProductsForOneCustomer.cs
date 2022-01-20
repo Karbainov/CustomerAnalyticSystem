@@ -35,7 +35,6 @@ namespace CustomerAnalyticSystem.BLL.Analytics
             Dictionary<int, GradePrefModel> products = new();
             foreach(var c in Preferences.CustomerGrades)
             {
-                //var temp = new Mapper(config).Map<GradePrefModel, ProductPrefModel>(c);
                 products.Add(c.Id, c);
             }
             foreach(var c in Preferences.Products)
@@ -56,6 +55,15 @@ namespace CustomerAnalyticSystem.BLL.Analytics
 
         public void CheckForTag()
         {
+            MapperConfiguration config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<TagPrefModel, GradePrefModel>();
+            });
+            foreach(var c in Preferences.TagGrades)
+            {
+
+            }
+            List<int> curTagMarks = new();
 
         }
 
