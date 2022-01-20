@@ -164,12 +164,10 @@ namespace CustomerAnalyticSystem.DAL
             return customer;
         }
 
-        // починить SRP?        !!!!!
         public List<CustomerInfoDTO> GetAllCustomerInfoDTO()
         {
-            List<CustomerInfoDTO> customers = new List<CustomerInfoDTO>();
-            int tempId = 0;
-            int curCustomer = -1;
+            Dictionary<int, CustomerInfoDTO> customersDict = new Dictionary<int, CustomerInfoDTO>();
+            int curCustomerId = 0;
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
@@ -177,23 +175,20 @@ namespace CustomerAnalyticSystem.DAL
                     Queries.GetAllCustomerWithContactAndContactType
                     ,(customerInfo, contact) =>
                     {
-                        if (tempId != customerInfo.Id)
+                        if (curCustomerId != customerInfo.Id)
                         {
-                            customers.Add(customerInfo);
-                            curCustomer++;
-                            customers[curCustomer].Contacts = new List<ContactWithContactTypeNameDTO>();
-                            customers[curCustomer].Comments = new List<CommentDTO>();
-                            tempId = customerInfo.Id;
+                            customersDict.Add(customerInfo.Id, customerInfo);
+                            curCustomerId = customerInfo.Id;
+                            customersDict[curCustomerId].Contacts = new List<ContactWithContactTypeNameDTO>();
+                            customersDict[curCustomerId].Comments = new List<CommentDTO>();
                         }
 
-                        customers[curCustomer].Contacts.Add(contact);
-                        return customers[curCustomer];
+                        customersDict[curCustomerId].Contacts.Add(contact);
+                        return customersDict[curCustomerId];
                     }
                     , splitOn: "Id"
                     , commandType: CommandType.StoredProcedure);
             }
-
-            int curCustomerId = 0;
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
@@ -201,13 +196,7 @@ namespace CustomerAnalyticSystem.DAL
                     Queries.GetAllSortedComments
                     , (comment, obj) =>
                      {
-                         foreach (CustomerInfoDTO cust in customers)
-                         {
-                             if(comment.CustomerId == cust.Id)
-                             {
-                                 cust.Comments.Add(comment);
-                             }
-                         }
+                         customersDict[comment.CustomerId].Comments.Add(comment);
 
                          return comment;
                      }
@@ -215,7 +204,7 @@ namespace CustomerAnalyticSystem.DAL
                     , commandType: CommandType.StoredProcedure);
             }
 
-                return customers;
+                return customersDict.Values.ToList();
         }
 
         public List<TagMarksDTO> GetAllMarksOfTagByCustomerId(int id)
