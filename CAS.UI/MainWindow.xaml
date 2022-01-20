@@ -74,7 +74,7 @@
                     </Grid>
                     <StackPanel Grid.Column="0" Margin="0,0,0,411">
                         <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75"/>
-                        <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75"/>
+                        <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75" Click="ButtonOpenWindowOfEditingClient_Click"/>
                         <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75"/>
                     </StackPanel>
                 </Grid>

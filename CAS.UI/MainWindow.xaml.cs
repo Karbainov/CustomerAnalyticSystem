@@ -54,5 +54,11 @@ namespace CAS.UI
                 ListViewClients.Items.Add(pair.Value);
             }
         }
+
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+        {
+            EditClientWindow editClientWindow = new EditClientWindow(this);
+            editClientWindow.Show();
+        }
     }
 }

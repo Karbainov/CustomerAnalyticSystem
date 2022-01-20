@@ -23,12 +23,15 @@ namespace CAS.UI
     public partial class EditClientWindow : Window
     {
         private Dictionary<CustomerTypeModel, int> customerTypesWithId = new Dictionary<CustomerTypeModel, int>();
+        private MainWindow _mainWindow;
 
-        public EditClientWindow()
+        public EditClientWindow(MainWindow mainWindow)
         {
             InitializeComponent();
             customerTypesWithId = GetAllDictCustomerTypeWithId();
             FillCustomerTypeComboBox(customerTypesWithId);
+            _mainWindow = mainWindow;
+            _mainWindow.IsEnabled = false;
         }
 
         private Dictionary<CustomerTypeModel, int> GetAllDictCustomerTypeWithId()
