@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
     public class ContactDTO
-    {
+    {//try
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public int ContactTypeId { get; set; }
