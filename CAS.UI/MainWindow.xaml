@@ -110,7 +110,7 @@
                                     <GridViewColumn Header="Id товара"  DisplayMemberBinding="{Binding Id}" />
                                     <GridViewColumn Header="Группа"  DisplayMemberBinding="{Binding GroupName}"/>
                                     <GridViewColumn Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
-                                    <GridViewColumn Header="Описание"  DisplayMemberBinding="{Binding Descrintion}"/>
+                                    <GridViewColumn Header="Описание"  DisplayMemberBinding="{Binding Description}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
