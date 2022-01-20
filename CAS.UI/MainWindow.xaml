@@ -64,8 +64,8 @@
                                     <GridViewColumn Width="135" Header="Тип клиента" DisplayMemberBinding="{Binding Name}" />
                                     <GridViewColumn Width="135" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
                                     <GridViewColumn Width="135" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
-                                    <GridViewColumn Width="135" Header="Номер телефона"/>
-                                    <GridViewColumn Width="135" Header ="e-mail"/>
+                                    <GridViewColumn Width="135" Header="Номер телефона" DisplayMemberBinding="{Binding Contacts[0]}"/>
+                                    <GridViewColumn Width="135" Header ="e-mail" DisplayMemberBinding="{Binding Contacts[0]}"/>
                                     <GridViewColumn Width="135" Header="Комментарий"/>
                                 </GridView>
                             </ListView.View>

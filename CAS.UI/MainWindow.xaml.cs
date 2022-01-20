@@ -23,10 +23,18 @@ namespace CAS.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+
         public MainWindow()
         {
             InitializeComponent();
 
+            customersDict = GetDictCustomerInfoModelWithId();
+            FillCustomerStackPanel(customersDict);
+        }
+
+        private Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
+        {
             CustomerService customerService = new CustomerService();
             List<CustomerInfoModel> customers = customerService.GetAllCustomerInfoModels();
 
@@ -35,7 +43,15 @@ namespace CAS.UI
             foreach (CustomerInfoModel customer in customers)
             {
                 customersDict.Add(customer.Id, customer);
-                ListViewClients.Items.Add(customer);
+            }
+            return customersDict;
+        }
+
+        private void FillCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        {
+            foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
+            {
+                ListViewClients.Items.Add(pair.Value);
             }
         }
     }

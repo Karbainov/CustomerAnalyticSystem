@@ -198,7 +198,7 @@ namespace CustomerAnalyticSystem.DAL
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query<CommentDTO, object, CommentDTO>(
-                    Queries.GetAllComment
+                    Queries.GetAllSortedComments
                     , (comment, obj) =>
                      {
                          foreach (CustomerInfoDTO cust in customers)
