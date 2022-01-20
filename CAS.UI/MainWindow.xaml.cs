@@ -145,5 +145,15 @@ namespace CAS.UI
             EditProductWindow editProductWindow = new EditProductWindow(this);
             editProductWindow.Show();
         }
+
+        private void ButtonViewAllProducts_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxTags.SelectedIndex != -1 || ComboBoxGroups.SelectedIndex != -1)
+            {
+                ComboBoxGroups.SelectedIndex = -1;
+                ComboBoxTags.SelectedIndex = -1;
+            }
+            FillingListViewProducts();
+        }
     }
 }
