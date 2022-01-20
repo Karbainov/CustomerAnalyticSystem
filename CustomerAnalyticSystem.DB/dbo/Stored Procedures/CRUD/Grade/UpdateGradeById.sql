@@ -7,3 +7,4 @@ as
 update dbo.[Grade]
 set ProductId=@ProductId, CustomerId=@CustomerId, Value=@Value
 where Id=@Id
+return @Id

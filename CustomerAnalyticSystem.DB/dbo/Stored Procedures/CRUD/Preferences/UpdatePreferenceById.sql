@@ -9,3 +9,4 @@ as
 update dbo.[Preferences]
 set ProductId=@ProductId, CustomerId=@CustomerId, TagId=@TagId, GroupId=@GroupId, IsInterested=@IsInterested
 where Id=@Id
+return @Id

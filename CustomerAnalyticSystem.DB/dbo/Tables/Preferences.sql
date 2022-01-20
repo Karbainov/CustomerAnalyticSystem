@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Preferences]
 (
-	Id integer identity primary key,
+	[Id] integer identity primary key,
 	[ProductId] integer NULL,
 	[CustomerId] integer NOT NULL,
 	[TagId] integer NOT NULL,

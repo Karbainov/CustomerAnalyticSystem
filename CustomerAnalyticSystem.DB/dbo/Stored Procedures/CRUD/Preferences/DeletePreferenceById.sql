@@ -3,3 +3,4 @@
 as
 delete from dbo.[Preferences]
 where Id=@Id
+return @Id

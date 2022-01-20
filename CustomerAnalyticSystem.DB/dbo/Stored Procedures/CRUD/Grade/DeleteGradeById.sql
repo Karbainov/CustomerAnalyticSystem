@@ -3,3 +3,4 @@
 as
 delete from dbo.[Grade]
 where Id=@Id
+return @Id
