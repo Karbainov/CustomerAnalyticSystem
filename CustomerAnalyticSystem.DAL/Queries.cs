@@ -9,9 +9,6 @@ namespace CustomerAnalyticSystem.DAL
     public class Queries
     {
 
-        // еще нет груп, продукт
-
-
         #region customer
         public const string GetAllCustomer = "GetAllCustomer";
         public const string GetCustomerById = "GetCustomerById";
@@ -103,7 +100,7 @@ namespace CustomerAnalyticSystem.DAL
         #region product
         public const string AddProduct = "AddProduct";
         public const string DeleteProductById = "DeleteProductById";
-        public const string GetAllProducts = "GetAllProducts";
+        public const string GetAllProduct = "GetAllProduct";
         public const string GetProductById = "GetProductById";
         public const string UpdateProductById = "UpdateProductById";
         #endregion
