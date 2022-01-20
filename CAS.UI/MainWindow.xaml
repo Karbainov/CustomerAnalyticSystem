@@ -117,7 +117,7 @@
                     </Grid>
                     <StackPanel Grid.Column="0">
                         <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75"/>
-                        <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75"/>
+                        <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75" Click="ButtonOpenWindowOfProductEditing_Click"/>
                         <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75"/>
                         <Label Content="Поиск товаров по тэгу"/>
                         <ComboBox x:Name="ComboBoxTags" SelectionChanged="ComboBoxTags_SelectionChanged" />

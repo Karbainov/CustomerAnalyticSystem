@@ -19,9 +19,13 @@ namespace CAS.UI
     /// </summary>
     public partial class EditProductWindow : Window
     {
-        public EditProductWindow()
+        private MainWindow _mainWindow;
+        public EditProductWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+            _mainWindow.IsEnabled = false;
         }
+
     }
 }

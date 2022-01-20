@@ -134,5 +134,11 @@ namespace CAS.UI
             AddClientWindow addClientWindow = new AddClientWindow(this);
             addClientWindow.Show();
         }
+
+        private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
+        {
+            EditProductWindow editProductWindow = new EditProductWindow(this);
+            editProductWindow.Show();
+        }
     }
 }
