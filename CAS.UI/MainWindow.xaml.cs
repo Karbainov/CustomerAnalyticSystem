@@ -155,5 +155,15 @@ namespace CAS.UI
             }
             FillingListViewProducts();
         }
+
+        private void ButtonFastProductDelete_Click(object sender, RoutedEventArgs e)
+        {
+            ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
+            int id = actual.Id;
+            var products = new ProductTagGroupService();
+            products.DeleteProductById(id);
+            FillingListViewProducts();
+        }
+
     }
 }

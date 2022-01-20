@@ -27,5 +27,10 @@ namespace CAS.UI
             _mainWindow.IsEnabled = false;
         }
 
+        private void FillingEditProductWindow()
+        {
+
+        }
+
     }
 }

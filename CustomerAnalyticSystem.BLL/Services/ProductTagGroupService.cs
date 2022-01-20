@@ -55,5 +55,12 @@ namespace CustomerAnalyticSystem.BLL.Services
             List<GroupBaseModel> result = map.MapFromGroupBaseDTOToGroupBaseModel(dto);
             return result;
         }
+
+        public void DeleteProductById(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteProductById(id);
+        }
     }
 }
