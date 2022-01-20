@@ -80,7 +80,7 @@ namespace CAS.UI
         {
             ListViewProducts.Items.Clear();
 
-            if (ComboBoxTags.SelectedIndex != -1)
+            if (ComboBoxTags.SelectedIndex > -1)
             {
                 string tag = ComboBoxTags.SelectedItem.ToString();
                 int id;
@@ -92,18 +92,18 @@ namespace CAS.UI
                     ListViewProducts.Items.Add(p);
                 }
             }
-            else if (ComboBoxGroups.SelectedIndex != -1)
-            {
-                string group = ComboBoxGroups.SelectedItem.ToString();
-                int id;
-                GroupsIdAndGroups.TryGetValue(group, out id);
-                var products = new ProductTagGroupService();
-                var listProducts = products.GetAllProductsByGroupId(id);
-                foreach (var p in listProducts)
-                {
-                    ListViewProducts.Items.Add(p);
-                }
-            }
+            //else if (ComboBoxGroups.SelectedIndex > -1)
+            //{
+            //    string group = ComboBoxGroups.SelectedItem.ToString();
+            //    int id;
+            //    GroupsIdAndGroups.TryGetValue(group, out id);
+            //    var products = new ProductTagGroupService();
+            //    var listProducts = products.GetAllProductsByGroupId(id);
+            //    foreach (var p in listProducts)
+            //    {
+            //        ListViewProducts.Items.Add(p);
+            //    }
+            //}
             else
             {
                 var products = new ProductTagGroupService();
