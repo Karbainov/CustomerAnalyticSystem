@@ -18,10 +18,10 @@ namespace CustomerAnalyticSystem.BLL
 
         public List<ProductPrefModel> Products { get; set; }
         public List<GroupPrefModel> Groups { get; set; }
-        public List<TagPrefModel> Tags { get; set; }
+        public List<TagPrefModel> Tags { get; set; }//ПРЕФЫ ТЕГОВ
 
-        public List<GradePrefModel> CustomerGrades { get; set; }
-        public List<CustomerTagGradesModel> TagGrades { get; set; }
+        public List<GradePrefModel> CustomerGrades { get; set; }//ОЦЕНКАТОВАРА
+        public List<CustomerTagGradesModel> TagGrades { get; set; }//ОЦЕНКА ТЕГОВ
 
 
         //public PreferencesByCustomerIdModel(string firstName, string lastName)
@@ -48,7 +48,7 @@ namespace CustomerAnalyticSystem.BLL
         {
             for (int i = 0; i + 1 < CustomerGrades.Count; i++)
             {
-                if (CustomerGrades[i].ProductId == CustomerGrades[i + 1].ProductId)
+                if (CustomerGrades[i].Id == CustomerGrades[i + 1].Id)
                 {
                     CustomerGrades.Remove(CustomerGrades[i]);
                 }

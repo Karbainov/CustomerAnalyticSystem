@@ -22,8 +22,11 @@ namespace TempProject
 
             PreferencesGradesByCustomerIdService test = new();
             kekis = test.GetCustomerPreferences(1);
-            int d = 2;
             kekis.ClearPrevGrades();
+
+            PreferredProductsForOneCustomer cucus = new(kekis);
+            cucus.CheckForTag();
+            cucus.CheckProductMark();
             //AllPreferencesAndGradeInfoByCustomerIdDTO qwe = new();
             //GradePreferencesRepository www = new();
             //qwe = www.Logic(1);

@@ -76,8 +76,6 @@ namespace CustomerAnalyticSystem.BLL.Configs
             //cfg.CreateMap<AbstractPreferenceDTO, PreferencesBaseAbstractModel>()
             //.Include<GroupForPrefDTO, PreferencesBaseAbstractModel>();
         }
-
-
         );
     }
 }
