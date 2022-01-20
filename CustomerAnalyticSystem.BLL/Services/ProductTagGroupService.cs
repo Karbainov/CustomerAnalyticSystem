@@ -29,12 +29,30 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
+        public List<ProductBaseModel> GetAllProductsByGroupId(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllProductsByGroupId(id);
+            List<ProductBaseModel> result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            return result;
+        }
+
         public List<ProductBaseModel> GetAllProducts()
         {
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
             var dto = service.GetAllProducts();
             List<ProductBaseModel> result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            return result;
+        }
+
+        public List<GroupBaseModel> GetAllGroups()
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllGroup();
+            List<GroupBaseModel> result = map.MapFromGroupBaseDTOToGroupBaseModel(dto);
             return result;
         }
     }

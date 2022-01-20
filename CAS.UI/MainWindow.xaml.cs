@@ -24,12 +24,25 @@ namespace CAS.UI
     public partial class MainWindow : Window
     {
         Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
+        Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
+
         public MainWindow()
         {
             InitializeComponent();
             FillingDictTags();
             FillingComboBoxTags();
             FillingListViewProducts();
+            //ComboBoxGroups
+        }
+
+        private void FillingDictGroups()
+        {
+            var service = new ProductTagGroupService();
+            var groupList = service.GetAllGroups();
+            foreach (var g in groupList)
+            {
+                GroupsIdAndGroups.Add(g.Name, g.Id);
+            }
         }
 
         private void FillingDictTags()
@@ -48,7 +61,17 @@ namespace CAS.UI
             var listTags = tags.GetAllTags();
             foreach (var t in listTags)
             {
-                ComboBoxTags.Items.Add(t);
+                ComboBoxTags.Items.Add(t.Name);
+            }
+        }
+
+        private void FillingComboBoxGroups()
+        {
+            var groups = new ProductTagGroupService();
+            var listGroups = groups.GetAllGroups();
+            foreach (var g in listGroups)
+            {
+                ComboBoxGroups.Items.Add(g.Name);
             }
         }
 
@@ -58,11 +81,25 @@ namespace CAS.UI
 
             if (ComboBoxTags.SelectedIndex != -1)
             {
+                ComboBoxGroups.SelectedIndex = -1;
                 string tag = ComboBoxTags.SelectedItem.ToString();
                 int id;
                 TagsIdAndTags.TryGetValue(tag, out id);
                 var products = new ProductTagGroupService();
                 var listProducts = products.GetAllProductsByTagId(id);
+                foreach (var p in listProducts)
+                {
+                    ListViewProducts.Items.Add(p);
+                }
+            }
+            else if (ComboBoxGroups.SelectedIndex != -1)
+            {
+                ComboBoxTags.SelectedIndex = -1;
+                string group = ComboBoxGroups.SelectedItem.ToString();
+                int id;
+                GroupsIdAndGroups.TryGetValue(group, out id);
+                var products = new ProductTagGroupService();
+                var listProducts = products.GetAllProductsByGroupId(id);
                 foreach (var p in listProducts)
                 {
                     ListViewProducts.Items.Add(p);
@@ -80,6 +117,12 @@ namespace CAS.UI
         }
 
         private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            FillingListViewProducts();
+        }
+
+        private void ComboBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FillingListViewProducts();
         }
