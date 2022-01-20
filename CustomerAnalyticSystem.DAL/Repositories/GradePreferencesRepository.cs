@@ -146,7 +146,7 @@ namespace CustomerAnalyticSystem.DAL
                     , splitOn: "Id"
                     );
             }
-            return null;
+            return customerPreferences;
         }
     }
 }

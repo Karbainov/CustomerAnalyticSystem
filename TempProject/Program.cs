@@ -31,7 +31,8 @@ namespace TempProject
             //foreach (var p in (List<AllOrderInfoByOrderId>)products)
             //{
             //    Console.WriteLine((AllOrderInfoByOrderId)p);
-            //}
+            //}+		[2]	{CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.TagForPrefDTO}	CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.AbstractPreferenceDTO {CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.TagForPrefDTO}
+
 
             //List<CustomerAnalyticSystem.DAL.DTOs.ProductDTO> products;
             //string query = "EXEC GetAllProduct";
