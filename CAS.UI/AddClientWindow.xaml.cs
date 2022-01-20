@@ -19,9 +19,12 @@ namespace CAS.UI
     /// </summary>
     public partial class AddClientWindow : Window
     {
-        public AddClientWindow()
+        private MainWindow _mainWindow;
+        public AddClientWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+            _mainWindow.IsEnabled = false;
         }
     }
 }

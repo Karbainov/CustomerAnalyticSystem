@@ -51,7 +51,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
 
         public MapperConfiguration ConfigBaseProduct = new MapperConfiguration(cfg =>
         {
-            cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
+            cfg.CreateMap<ProductsWithGroupsDTO, ProductBaseModel>();
         });
 
         public MapperConfiguration ConfigBaseGroup = new MapperConfiguration(cfg =>

@@ -73,7 +73,7 @@
                         </ListView>
                     </Grid>
                     <StackPanel Grid.Column="0" Margin="0,0,0,411">
-                        <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75"/>
+                        <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75" Click="ButtonOpenWindowOfAddingClient_Click"/>
                         <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75"/>
                         <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75"/>
                     </StackPanel>
@@ -108,7 +108,7 @@
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Id товара"  DisplayMemberBinding="{Binding Id}" />
-                                    <GridViewColumn Header="Группа"  DisplayMemberBinding="{Binding GroupId}"/>
+                                    <GridViewColumn Header="Группа"  DisplayMemberBinding="{Binding GroupName}"/>
                                     <GridViewColumn Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
                                     <GridViewColumn Header="Описание"  DisplayMemberBinding="{Binding Descrintion}"/>
                                 </GridView>
@@ -120,7 +120,7 @@
                         <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75"/>
                         <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75"/>
                         <Label Content="Поиск товаров по тэгу"/>
-                        <ComboBox x:Name="ComboBoxTags" />
+                        <ComboBox x:Name="ComboBoxTags" SelectionChanged="ComboBoxTags_SelectionChanged" />
                         <Label Content="Поиск товаров по группе"/>
                         <ComboBox x:Name="ComboBoxGroups" SelectionChanged="ComboBoxGroups_SelectionChanged" />
                     </StackPanel>

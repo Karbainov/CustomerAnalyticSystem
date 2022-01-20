@@ -32,12 +32,21 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public List<ProductBaseDTO> GetAllProducts()
+        public List<ProductBaseDTO> GetAllProduct()
         {
             string connectionString = ConnectionString.Connection;
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                     return connection.Query<ProductBaseDTO>(Queries.GetAllProduct, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public List<ProductsWithGroupsDTO> GetAllProductsWithGroups()
+        {
+            string connectionString = ConnectionString.Connection;
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                    return connection.Query<ProductsWithGroupsDTO>(Queries.GetAllProductsWithGroups, commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
@@ -101,15 +110,13 @@ namespace CustomerAnalyticSystem.DAL
                 connection.Query(Queries.DeleteTagById, new { id }, commandType: CommandType.StoredProcedure);
             }
         }
-        public List<ProductBaseDTO> GetAllProductsByTag(int id)
+        public List<ProductsWithGroupsDTO> GetAllProductsByTag(int id)
         {
-            List<ProductBaseDTO> productDTOs = new List<ProductBaseDTO>();
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                productDTOs = connection.Query<ProductBaseDTO>(Queries.GetAllProductsByTag, new { id }, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<ProductsWithGroupsDTO>(Queries.GetAllProductsByTag, new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
-            return productDTOs;
         }
 
         public List<GroupsWithProductsDTO> GetAllGroupsWithProducts()
@@ -274,12 +281,12 @@ namespace CustomerAnalyticSystem.DAL
         }
         #endregion
 
-        public List<ProductBaseDTO> GetAllProductsByGroupId(int id)
+        public List<ProductsWithGroupsDTO> GetAllProductsByGroupId(int id)
         {
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                return connection.QuerySingle<List<ProductBaseDTO>>(Queries.GetAllProductsByGroupId, new {id}
+                return connection.Query<ProductsWithGroupsDTO>(Queries.GetAllProductsByGroupId, new {id}
                 , commandType: CommandType.StoredProcedure).ToList();
             }
         }

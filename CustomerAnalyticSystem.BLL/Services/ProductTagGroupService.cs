@@ -25,7 +25,7 @@ namespace CustomerAnalyticSystem.BLL.Services
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
             var dto = service.GetAllProductsByTag(id);
-            List<ProductBaseModel> result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
         }
 
@@ -34,7 +34,7 @@ namespace CustomerAnalyticSystem.BLL.Services
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
             var dto = service.GetAllProductsByGroupId(id);
-            List<ProductBaseModel> result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
         }
 
@@ -42,8 +42,8 @@ namespace CustomerAnalyticSystem.BLL.Services
         {
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
-            var dto = service.GetAllProducts();
-            List<ProductBaseModel> result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            var dto = service.GetAllProductsWithGroups();
+            var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
         }
 
