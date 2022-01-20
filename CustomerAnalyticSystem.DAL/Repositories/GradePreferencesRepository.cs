@@ -110,15 +110,16 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public AllPreferencesInfoByCustomerIdDTO Logic (int id)
+        #region logic
+        public AllPreferencesAndGradeInfoByCustomerIdDTO Logic (int id)
         {
             int i = 0;
             string connectionString = ConnectionString.Connection;
-            AllPreferencesInfoByCustomerIdDTO customerPreferences = null;
+            AllPreferencesAndGradeInfoByCustomerIdDTO customerPreferences = null;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query<AllPreferencesInfoByCustomerIdDTO, ProductForPrefDTO, TagForPrefDTO
-                    , GroupForPrefDTO, AllPreferencesInfoByCustomerIdDTO>("GetAllPreferencesInfoByCustomerId",
+                connection.Query<AllPreferencesAndGradeInfoByCustomerIdDTO, ProductForPrefDTO, TagForPrefDTO
+                    , GroupForPrefDTO, AllPreferencesAndGradeInfoByCustomerIdDTO>("GetAllPreferencesInfoByCustomerId",
                     (customer, product, tag, group) =>
                     {
                         if (customerPreferences == null)
@@ -146,7 +147,21 @@ namespace CustomerAnalyticSystem.DAL
                     , splitOn: "Id"
                     );
             }
+            customerPreferences.Grades = new();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                customerPreferences.Grades = connection.Query<GradeInfoByCustomerIdDTO>("AGetAllGradesByCustomerId"
+                    , new { id = id }, commandType: CommandType.StoredProcedure).ToList();
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                customerPreferences.TagGrades = connection.Query<GradeInfoByCustomerIdForTagsDTO>("GetAllTagsWithMarksByCustomerId"
+                    , new { id = id }, commandType: CommandType.StoredProcedure).ToList();
+            }
             return customerPreferences;
         }
+        #endregion
+
     }
 }

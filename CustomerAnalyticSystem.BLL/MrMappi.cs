@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using AutoMapper;
 using System.Threading.Tasks;
+using CustomerAnalyticSystem.BLL.Analytics;
 using CustomerAnalyticSystem.BLL.Configs;
 
 namespace CustomerAnalyticSystem.BLL
@@ -47,5 +48,12 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductBaseDTO>, List<ProductBaseModel>>(dto);
         }
 
+        public PreferencesByCustomerIdModel MapFromPreferences (AllPreferencesAndGradeInfoByCustomerIdDTO dto)
+        {
+            var config = new MapperConfigs();
+            PreferencesByCustomerIdModel qwe = new Mapper(config.ConfigCustomerPreferencesAndGrades)
+                .Map<AllPreferencesAndGradeInfoByCustomerIdDTO,PreferencesByCustomerIdModel>(dto);
+            return qwe;
+        }
     }
 }
