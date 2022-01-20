@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomerAnalyticSystem.DAL.DTOs
+namespace CustomerAnalyticSystem.BLL.Models
 {
-    public class GetAllGradesByProductIdDTO
+    class GradesByProductIdModel
     {
-        public int GradeId { get; set; }
+        public int ProductName { get; set; }
         public int Value { get; set; }
     }
 }

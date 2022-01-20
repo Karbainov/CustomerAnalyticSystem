@@ -11,7 +11,7 @@ using System.Data;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    internal class GradePreferencesRepository
+    public class GradePreferencesRepository
     {
         public List<GradeDTO> GetAllGrades()
         {
