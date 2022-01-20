@@ -9,15 +9,16 @@ namespace CustomerAnalyticSystem.DAL
     public class Queries
     {
 
-        // еще нет коммент, чек, груп, продукт
+        // еще нет груп, продукт
 
 
         #region customer
-        public const string GetAllCustomer = "GetAllCustomer";
+        public const string GetAllCustomers = "GetAllCustomer";
         public const string GetCustomerById = "GetCustomerById";
         public const string AddCustomer = "AddCustomer";
         public const string UpdateCustomerById = "UpdateCustomerById";
         public const string DeleteCustomerById = "DropCustomerById";
+        public const string GetAllCustomerWithContactAndContactType = "GetAllCustomerWithContactAndContactType";
         #endregion
 
         #region preferences
@@ -100,6 +101,22 @@ namespace CustomerAnalyticSystem.DAL
         public const string DeleteGroupById = "DeleteGroupById";
         #endregion
 
+        #region comment
+        public const string GetCommentById = "GetCommentById";
+        public const string GetAllComment = "GetAllComment";
+        public const string AddComment = "AddComment";
+        public const string DeleteComment = "DeleteComment";
+        public const string UpdateComment = "UpdateComment";
+        #endregion
+
+        #region check
+        public const string GetCheckById = "GetCheckById";
+        public const string GetAllCheck = "GetAllCheck";
+        public const string AddCheck = "AddCheck";
+        public const string DeleteCheck = "DeleteCheck";
+        public const string UpdateCheck = "UpdateCheck";
+        #endregion
+
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";
         public const string GetAllContactByCustomerId = "GetAllContactByCustomerId";
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
@@ -113,6 +130,6 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllGroupsWithProduct = "GetAllGroupsWithProducts";
         public const string GetNumberOfTagsInOrderByCustomerId = "GetNumberOfTagsInOrderByCustomerId";
 
-
+        public const string GetAllSortedComments = "GetAllSortedComments";
     }
 }

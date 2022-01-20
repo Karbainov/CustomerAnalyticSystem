@@ -12,19 +12,37 @@ namespace CustomerAnalyticSystem.BLL.Configs
     public class MapperConfigs
     {
 
+        public MapperConfiguration ConfFromCustomerInfoDTOToCustomerinfoModel = new MapperConfiguration(
+            conf =>
+            {
+                 conf.CreateMap<CustomerInfoDTO, CustomerInfoModel>();
+                 conf.CreateMap<ContactWithContactTypeNameDTO, ContactModel>()
+                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, act => act.MapFrom(src => src.ContactTypeName))
+                .ForMember(dest => dest.Value, act => act.MapFrom(src => src.Value));
+                 conf.CreateMap<CommentDTO, CommentModel>()
+                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
+            });
+
         public MapperConfiguration ConfFromCustomerInfoDTOToCustomerModel = new MapperConfiguration(
            conf =>
            {
-               conf.CreateMap<CustomerInfoDTO, CustomerModel>();
+               conf.CreateMap<CustomerInfoDTO, CustomerInfoModel>();
                conf.CreateMap<ContactWithContactTypeNameDTO, ContactModel>()
                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
-               .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
+               .ForMember(dest => dest.Name, act => act.MapFrom(src => src.ContactTypeName))
                .ForMember(dest => dest.Value, act => act.MapFrom(src => src.Value));
                conf.CreateMap<CommentDTO, CommentModel>()
                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
-           }
-           );
+           });
+
+        public MapperConfiguration ConfFromCustomerDTOToCustomerModel = new MapperConfiguration(
+            conf => 
+            {
+                conf.CreateMap<CustomerDTO, CustomerModel>();
+            });
 
         public MapperConfiguration configOrderInfo = new MapperConfiguration(cfg =>
         {
@@ -35,11 +53,30 @@ namespace CustomerAnalyticSystem.BLL.Configs
         });
 
         public MapperConfiguration ConfigAllGroupsWithProducts = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<GroupsWithProductsDTO, GroupsWithProductsModel>();
-                cfg.CreateMap<ProductBaseDTO, ProductBaseModel>().ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description));
-            }
+              {
+                  cfg.CreateMap<GroupsWithProductsDTO, GroupsWithProductsModel>();
+                  cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
+                  //cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();
+                  cfg.CreateMap<OrderBaseModel, OrderDTO>();
+                  cfg.CreateMap<OrderDTO, OrderBaseModel>();
+              }
             );
+
+        public MapperConfiguration ConfigBaseTag = new MapperConfiguration(cfg =>
+       {
+           cfg.CreateMap<TagDTO, TagModel>();
+       });
+
+        public MapperConfiguration ConfigBaseProduct = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
+        });
+        //public MapperConfiguration ConfigForBaseOrderModel = new MapperConfiguration(cfg =>
+        //{
+        //    cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();
+        //    cfg.CreateMap<OrderBaseModel, OrderDTO>().ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
+        //    .ForMember(dest => dest.Date, act => act.MapFrom(src => src.Date)).ForMember(dest => dest.Cost, act => act.MapFrom(src => src.Cost))
+        //    .ForMember(dest => dest.CustomerId, act => act.MapFrom(src => src.CustomerId)).ForMember(dest => dest.StatusId, act => act.MapFrom(src => src.StatusId));
+        //});
     }
 }
