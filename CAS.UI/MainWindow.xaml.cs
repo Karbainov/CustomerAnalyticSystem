@@ -117,16 +117,21 @@ namespace CAS.UI
 
         private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxGroups.SelectedIndex = -1;
+            if (ComboBoxTags.SelectedIndex != -1)
+            {
+                ComboBoxGroups.SelectedIndex = -1;
+            }
             FillingListViewProducts();
         }
 
         private void ComboBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxTags.SelectedIndex = -1;
+            if (ComboBoxGroups.SelectedIndex != -1)
+            {
+                ComboBoxTags.SelectedIndex = -1;
+            }         
             FillingListViewProducts();
         }
-
 
 
         private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
