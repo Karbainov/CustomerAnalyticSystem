@@ -9,8 +9,4 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="4.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CustomerAnalyticSystem.DB\CustomerAnalyticSystem.DB.sqlproj" />
-  </ItemGroup>
-
 </Project>

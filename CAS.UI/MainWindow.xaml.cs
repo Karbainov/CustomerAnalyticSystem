@@ -30,9 +30,10 @@ namespace CAS.UI
         {
             InitializeComponent();
             FillingDictTags();
+            FillingDictGroups();
             FillingComboBoxTags();
+            FillingComboBoxGroups();
             FillingListViewProducts();
-            //ComboBoxGroups
         }
 
         private void FillingDictGroups()
@@ -81,7 +82,6 @@ namespace CAS.UI
 
             if (ComboBoxTags.SelectedIndex != -1)
             {
-                ComboBoxGroups.SelectedIndex = -1;
                 string tag = ComboBoxTags.SelectedItem.ToString();
                 int id;
                 TagsIdAndTags.TryGetValue(tag, out id);
@@ -94,7 +94,6 @@ namespace CAS.UI
             }
             else if (ComboBoxGroups.SelectedIndex != -1)
             {
-                ComboBoxTags.SelectedIndex = -1;
                 string group = ComboBoxGroups.SelectedItem.ToString();
                 int id;
                 GroupsIdAndGroups.TryGetValue(group, out id);
@@ -118,12 +117,13 @@ namespace CAS.UI
 
         private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ComboBoxGroups.SelectedIndex = -1;
             FillingListViewProducts();
         }
 
         private void ComboBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ComboBoxTags.SelectedIndex = -1;
             FillingListViewProducts();
         }
     }

@@ -12,10 +12,10 @@ namespace CustomerAnalyticSystem.BLL.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Id} {Name} {Description}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{Id} {Name} {Description}";
+        //}
 
     }
 

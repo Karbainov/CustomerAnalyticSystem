@@ -37,7 +37,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
-                    return connection.Query<ProductBaseDTO>(Queries.GetAllProducts, commandType: CommandType.StoredProcedure).ToList();
+                    return connection.Query<ProductBaseDTO>(Queries.GetAllProduct, commandType: CommandType.StoredProcedure).ToList();
             }
         }
 

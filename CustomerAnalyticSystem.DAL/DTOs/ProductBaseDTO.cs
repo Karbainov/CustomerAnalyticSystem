@@ -15,12 +15,12 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         public int GroupId { get; set; }
 
 
-        public override string ToString()
-        {
-            string s = "";
-            s += Id + " " + Name + " " + Description + " " + GroupId;
-            return s;
-        }
+        //public override string ToString()
+        //{
+        //    string s = "";
+        //    s += Id + " " + Name + " " + Description + " " + GroupId;
+        //    return s;
+        //}
     }
     
 }
