@@ -9,9 +9,6 @@ namespace CustomerAnalyticSystem.DAL
     public class Queries
     {
 
-        // еще нет груп, продукт
-
-
         #region customer
         public const string GetAllCustomer = "GetAllCustomer";
         public const string GetCustomerById = "GetCustomerById";

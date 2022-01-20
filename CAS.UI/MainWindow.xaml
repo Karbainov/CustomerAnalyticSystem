@@ -107,11 +107,10 @@
                         <ListView x:Name="ListViewProducts" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0" Grid.Column="1">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID товара" Width="162"/>
-                                    <GridViewColumn Header="Группа" Width="162"/>
-                                    <GridViewColumn Header="Наименование" Width="162"/>
-                                    <GridViewColumn Header="Описание товара" Width="162"/>
-                                    <GridViewColumn Header="Остаток" Width="162"/>
+                                    <GridViewColumn Header="Id товара"  DisplayMemberBinding="{Binding Id}" />
+                                    <GridViewColumn Header="Группа"  DisplayMemberBinding="{Binding GroupId}"/>
+                                    <GridViewColumn Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Описание"  DisplayMemberBinding="{Binding Descrintion}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
