@@ -88,41 +88,24 @@
             </TabItem>
             <TabItem Header="Orders">
                 <Grid Background="#FFE5E5E5">
-                    <ListView x:Name="Orders" d:ItemsSource="{d:SampleData ItemCount=4}" ItemsSource="{Binding Effects}" SelectedIndex="0" SelectionChanged="ListViewLoans_SelectionChanged" 
-                              FontSize="12" FontFamily="Bahnschrift SemiLight" FontStretch="Normal" FontStyle="Normal" FontWeight="Heavy" 
-                              IsSynchronizedWithCurrentItem="True" SelectionMode="Single" BorderBrush="#89EF0101" BorderThickness="0,0,0,0" 
-                              Background="White" Foreground="#DD0F9ECE" Margin="265,0,0,0">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                                <Setter Property="Width" Value="auto" />
-                                <Setter Property="BorderBrush" Value="LightGray" />
-                                <Setter Property="BorderThickness" Value="0,0,0,1" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="№"  DisplayMemberBinding="{Binding Id}" />
-                                <GridViewColumn Header="Имя клиента"  DisplayMemberBinding="{Binding FirstName}"/>
-                                <GridViewColumn Header="Фамилия клиента"  DisplayMemberBinding="{Binding LastName}"/>
-                                <GridViewColumn Header="Дата создания"  DisplayMemberBinding="{Binding Date}" />
-                                <GridViewColumn Header="Статус"  DisplayMemberBinding="{Binding Status}"/>
-                                <GridViewColumn Header="Сумма"  DisplayMemberBinding="{Binding Amount}"/>
-                                <GridViewColumn Header="Оценка"  DisplayMemberBinding="{Binding Mark}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    <Button Content="Новый заказ" HorizontalAlignment="Left" Margin="161,71,0,0" VerticalAlignment="Top" IsCancel="True"/>
-                    <Button Content="Открыть" HorizontalAlignment="Left" Margin="89,118,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Статус заказа" HorizontalAlignment="Left" Margin="78,147,0,0" VerticalAlignment="Top"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="78,173,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="TextBoxOrderId" HorizontalAlignment="Left" Margin="50,47,0,0" Text="write id" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
+                    <Button x:Name="ButtonAccept" Content="GetAllOrders" HorizontalAlignment="Left" Margin="466,376,0,0" VerticalAlignment="Top" Width="120" Click="ButtonAccept_Click" Height="20"/>
+                    <TextBox x:Name="TextBoxInformationAboutOrder" HorizontalAlignment="Left" Margin="50,0,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="165"/>
+                    <StackPanel x:Name="StackPanelAllOrders" Grid.Column="1" Background="#FFFBC8C8"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="zalupakonia">
+            <TabItem Header="CUSTOMERSBIAAAAAD">
                 <Grid Background="#FFE5E5E5">
-                    <StackPanel x:Name="StackPanelAllCustomers" Margin="0,28,596,0" Background="#FFFFD7D7"/>
-                    <Label x:Name="LabelCustomer" Content="Все клиенты тутава" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="198" Background="#FFFFA4A4"/>
-                    <Button x:Name="ButtonAddCustomer" Content="Добавить клиента" HorizontalAlignment="Left" Margin="203,28,0,0" VerticalAlignment="Top" Height="40" Width="104"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="143*"/>
+                        <ColumnDefinition Width="651*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="99,148,0,0" VerticalAlignment="Top" Height="180" Width="358" Grid.ColumnSpan="2"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="20,43,0,0" VerticalAlignment="Top" Width="716" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
         </TabControl>

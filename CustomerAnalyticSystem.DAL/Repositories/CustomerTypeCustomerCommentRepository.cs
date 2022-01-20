@@ -230,5 +230,49 @@ namespace CustomerAnalyticSystem.DAL
             return customerPreferenceDTOs;
         }
 
+        public List<CommentDTO> GetAllComment()
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<CommentDTO>(Queries.GetAllComment, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public CommentDTO GetCommentById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.QuerySingle<CommentDTO>(Queries.GetCommentById, new { id },
+                commandType: CommandType.StoredProcedure);
+            }
+
+        }
+
+        public void AddComment(int CustomerId, string Value)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CommentDTO>(Queries.AddComment, new { CustomerId, Value },
+                commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteComment(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CommentDTO>(Queries.DeleteComment, new { id },
+                commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateComment(int id, int CustomerId, string Value)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CommentDTO>(Queries.UpdateComment, new { id, CustomerId, Value },
+                commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

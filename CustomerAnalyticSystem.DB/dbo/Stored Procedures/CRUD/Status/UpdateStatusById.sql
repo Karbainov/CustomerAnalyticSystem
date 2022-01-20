@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateStatusById]
 	@Id integer, 
-	@Name nvarchar(255)
+	@Name nvarchar(30)
 AS
 	update dbo.[Status]
 	set Name = @Name
 	where Id= @Id
-RETURN 0
+RETURN @Id
