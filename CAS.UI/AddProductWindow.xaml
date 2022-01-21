@@ -67,7 +67,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonAddProduct" Content="Добавить продукт" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30"/>
+            <Button x:Name="ButtonAddProduct" Content="Добавить продукт" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Click="ButtonAddProduct_Click"/>
         </Grid>
 
     </Grid>

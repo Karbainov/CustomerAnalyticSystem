@@ -116,7 +116,7 @@
                         </ListView>
                     </Grid>
                     <StackPanel Grid.Column="0">
-                        <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75"/>
+                        <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75" Click="ButtonOpenWindowOfProductAdding_Click"/>
                         <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75" Click="ButtonOpenWindowOfProductEditing_Click"/>
                         <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75" Click="ButtonFastProductDelete_Click"/>
                         <Label Content="Поиск товаров по тэгу"/>
