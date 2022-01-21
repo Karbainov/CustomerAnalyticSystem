@@ -60,7 +60,11 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseGroup).Map<List<GroupBaseDTO>, List<GroupBaseModel>>(dto);
         }
 
-        
+        public List<OrderBaseModel> MapFromOrderDTOToOrderBaseModel(List<OrderDTO> DTO)
+        {
+            var mapConfig = new MapperConfigs();
+            return new Mapper(mapConfig.ConfFromOrderDTOToOrderBaseModel).Map<List<OrderDTO>, List<OrderBaseModel>>(DTO);
+        }
 
     }
 }

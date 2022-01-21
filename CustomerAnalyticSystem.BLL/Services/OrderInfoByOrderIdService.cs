@@ -19,5 +19,15 @@ namespace CustomerAnalyticSystem.BLL.Services
             OrderInfoByOrderIdModel result = map.MapOrderInfoByOrderId(dto);
             return result;
         }
+
+
+        public List<OrderBaseModel> GetAllOrders()
+        {
+            MrMappi map = new();
+            var service = new OrderCheckStatusRepository();
+            var dto = service.GetAllOrders();
+            List<OrderBaseModel> result = map.MapFromOrderDTOToOrderBaseModel(dto);
+            return result;
+        }
     }
 }
