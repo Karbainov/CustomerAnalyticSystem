@@ -27,6 +27,7 @@ namespace CAS.UI
         public AddProductWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            FillingComboBoxTagsForAddProduct();
             FillingEditProductWindowComboBoxGroups();
             _mainWindow = mainWindow;
         }
@@ -41,6 +42,16 @@ namespace CAS.UI
             }
         }
 
+        private void FillingComboBoxTagsForAddProduct()
+        {
+            var tags = new ProductTagGroupService();
+            var listTags = tags.GetAllTags();
+            foreach (var t in listTags)
+            {
+                ComboBoxTagsForAddProduct.Items.Add(t.Name);
+            }
+        }
+
         private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)
         {
 
@@ -49,12 +60,30 @@ namespace CAS.UI
             product.Description = TextBoxProductDescriptionAddWndw.Text;
             product.GroupName = ComboBoxProductGroupAddWndw.SelectedItem.ToString();
             string group = ComboBoxProductGroupAddWndw.SelectedItem.ToString();
-            int id = 0;
+            int id = -1;
             _mainWindow.GroupsIdAndGroups.TryGetValue(group, out id);
             ProductTagGroupService service = new ProductTagGroupService();
             service.AddProduct(product.Name, product.Description, id);
             _mainWindow.FillingListViewProducts();
+            foreach (var item in ListViewTagsAddWndw.Items)
+            {
+                string tag = item.ToString();
+                int id1 = -1;
+                _mainWindow.TagsIdAndTags.TryGetValue(tag, out id1);
+                ProductTagGroupService service1 = new ProductTagGroupService();
+                int count = _mainWindow.ListViewProducts.Items.Count;
+                int index = _mainWindow.ListViewProducts.SelectedIndex = count - 1;
+                ProductBaseModel newProduct = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
+                service.AddProductTag(newProduct.Id, id1);
+            }
+
             this.Close();
+        }
+
+        private void ButtonAddTag_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewTagsAddWndw.Items.Add(ComboBoxTagsForAddProduct.SelectedItem.ToString());
+            
         }
     }
 }

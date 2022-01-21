@@ -296,8 +296,17 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                return connection.Query <TagDTO>(Queries.GetAllTagsByProductId, new { id}
+                return connection.Query<TagDTO>(Queries.GetAllTagsByProductId, new { id }
                 , commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+        public void DeleteProduct_TagByTagIdAndProductId(int idP, int idT)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.DeleteProduct_TagByTagIdAndProductId, new { idP, idT }
+                , commandType: CommandType.StoredProcedure);
             }
         }
     }

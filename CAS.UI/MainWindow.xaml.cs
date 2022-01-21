@@ -26,6 +26,7 @@ namespace CAS.UI
         public Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
 
+
         public MainWindow()
         {
             InitializeComponent();

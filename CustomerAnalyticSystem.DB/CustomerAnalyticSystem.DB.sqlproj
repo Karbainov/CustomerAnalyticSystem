@@ -180,6 +180,7 @@
     <Build Include="dbo\Stored Procedures\GetAllProductsByGroupId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllProductsWithGroups.sql" />
     <Build Include="dbo\Stored Procedures\CRUD\GetAllTagsByProductId.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteProduct_TagByTagIdAndProductId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />

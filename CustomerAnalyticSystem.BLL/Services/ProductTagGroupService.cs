@@ -77,6 +77,27 @@ namespace CustomerAnalyticSystem.BLL.Services
             service.DeleteProductById(id);
         }
 
+        public void UpdateProductTag(int id, int productId, int tagId)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.UpdateProduct_TagById(id, productId, tagId);
+        }
+
+        public void AddProductTag(int productId, int tagId)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.AddProduct_Tag(productId, tagId);
+        }
+
+        public void DeleteProductTag(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteProduct_TagById(id);
+        }
+
         public List<TagModel> GetAllTagsByProductId(int id)
         {
             MrMappi map = new();
@@ -84,6 +105,13 @@ namespace CustomerAnalyticSystem.BLL.Services
             var dto = service.GetAllTagsByProductId(id);
             List<TagModel> result = map.MapFromTagDTOToTagModel(dto);
             return result;
+        }
+
+        public void DeleteProduct_TagByTagIdAndProductId(int idP, int idT)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteProduct_TagByTagIdAndProductId(idP, idT);
         }
     }
 }

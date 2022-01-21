@@ -42,23 +42,21 @@
         </Grid>
         <Grid Margin="0,317,0,0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="125*"/>
-                <ColumnDefinition Width="130*"/>
+                <ColumnDefinition Width="255*"/>
                 <ColumnDefinition Width="124*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
-                <Button x:Name="ButtonAddTagEditWndw" Content="Добавить тэг" Height="auto"/>
-                <Button x:Name="ButtonEditTagEditWndw" Content="Редактировать тэг" Height="auto"/>
-                <Button x:Name="ButtonDeleteTagEditWndw" Content="Удалить тэг" Height="auto"/>
-            </StackPanel>
-            <ListView x:Name="ListViewTagsEditWndw" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView x:Name="ListViewTagsEditWndw" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Margin="231,0,0,0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBox x:Name="TextBoxRenameTagEditWndw" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="57" BorderBrush="#FF2C3F76"/>
+            <Button x:Name="ButtonEditAddTag" Content="+" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Click="ButtonEditAddTag_Click" Width="18"/>
+            <Button x:Name="ButtonEditDeleteTag" Content="-" HorizontalAlignment="Left" Margin="206,58,0,0" VerticalAlignment="Top" Width="14" Click="ButtonEditDeleteTag_Click"/>
+            <ComboBox x:Name="ComboBoxEditWindowTags" Margin="10,32,94,48"/>
+            <Label Content="Добавить тэг продукту" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="186"/>
+            <Label Content="Выберите тэг в списке, чтобы удалить его" HorizontalAlignment="Left" Margin="5,58,0,0" VerticalAlignment="Top" FontSize="10"/>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>

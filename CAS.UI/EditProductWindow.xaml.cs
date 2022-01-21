@@ -32,15 +32,12 @@ namespace CAS.UI
             _mainWindow = mainWindow;
            // _mainWindow.IsEnabled = false;
             FillingEditProductWindowComboBoxGroups();
+            FillingComboBoxTagsForEdditProduct();
+            FillingListViewTagsEditWndw();
             FindGroupProduct(_product);
             TextBoxProductNameEditWndw.Text = product.Name;
             TextBoxProductDescriptionEditWndw.Text = product.Description;
-            var tags = new ProductTagGroupService();
-            var listTags = tags.GetAllTagsByProductId(product.Id);
-            foreach (var t in listTags)
-            {
-                ListViewTagsEditWndw.Items.Add(t);
-            }
+
         }
 
         private void FillingEditProductWindowComboBoxGroups()
@@ -74,12 +71,58 @@ namespace CAS.UI
             _product.Description = TextBoxProductDescriptionEditWndw.Text;
             _product.GroupName = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
             string group = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
-            int id = 0;
+            int id = -1;
             _mainWindow.GroupsIdAndGroups.TryGetValue(group, out id);
             ProductTagGroupService product = new ProductTagGroupService();
             product.UpdateProductById(_product.Id, _product.Name, _product.Description, id);
             _mainWindow.FillingListViewProducts();
             this.Close();
+        }
+
+        private void FillingListViewTagsEditWndw()
+        {
+            ListViewTagsEditWndw.Items.Clear();
+            ProductBaseModel product = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
+            var tags = new ProductTagGroupService();
+            var listTags = tags.GetAllTagsByProductId(product.Id);
+            foreach (var t in listTags)
+            {
+                ListViewTagsEditWndw.Items.Add(t.Name);
+            }
+        }
+
+        private void ButtonEditAddTag_Click(object sender, RoutedEventArgs e)
+        {
+            ProductBaseModel product = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
+            var tags = new ProductTagGroupService();
+            int id = -1;
+            string tag = ComboBoxEditWindowTags.SelectedItem.ToString();
+            _mainWindow.TagsIdAndTags.TryGetValue(tag, out id);
+            tags.AddProductTag(product.Id, id);
+            FillingListViewTagsEditWndw();
+        }
+
+
+        private void FillingComboBoxTagsForEdditProduct()
+        {
+            var tags = new ProductTagGroupService();
+            var listTags = tags.GetAllTags();
+            foreach (var t in listTags)
+            {
+                ComboBoxEditWindowTags.Items.Add(t.Name);
+            }
+        }
+
+        private void ButtonEditDeleteTag_Click(object sender, RoutedEventArgs e)
+        {
+            string tag = ListViewTagsEditWndw.SelectedItem.ToString();
+            int id = -1;
+            _mainWindow.TagsIdAndTags.TryGetValue(tag, out id);
+            ProductBaseModel product = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
+            var tag2 = new ProductTagGroupService();
+            tag2.DeleteProduct_TagByTagIdAndProductId(product.Id, id);
+            FillingListViewTagsEditWndw();
+
         }
     }
 }
