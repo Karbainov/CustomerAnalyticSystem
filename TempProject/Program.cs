@@ -38,7 +38,8 @@ namespace TempProject
             lol.FillTags();
             lol.GetListOfAllTagsInProduct();
             lol.GetListOfAllGroupsInProduct();
-
+            lol.PutAllCheckByOrders();
+            lol.FindAllBestsellers();
 
             int r = 0;
             //AllPreferencesAndGradeInfoByCustomerIdDTO qwe = new();

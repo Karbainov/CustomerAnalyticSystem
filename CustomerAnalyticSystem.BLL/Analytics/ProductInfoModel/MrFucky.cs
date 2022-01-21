@@ -12,12 +12,21 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
     public class MrFucky
     {
         private StackModel Info;
+
+        //словарь рекомендаций
         public Dictionary<int,ItemToRecommend> Products { get; set; }
         public Dictionary<int, ItemToRecommend> Groups { get; set; }
         public Dictionary<int, ItemToRecommend> Tags { get; set; }
+
+
+        //словарь который соотносит все теги с продуктом и группы с продуктом
         public Dictionary<int,List<int>> TagsByProductId { get; set; }
         public Dictionary<int, List<int>> GroupsByProductId { get; set; }
-        public Dictionary<int, List<int>> CheckInOrders { get; set; }
+
+        //словарь соотносит айди чека с ордером
+        public Dictionary<int, List<int>> ChecksInOrder { get; set; }
+        public Dictionary<int, int> CheckProduct { get; set; }
+
         public int AmountOfOrders { get; set; }
 
         public MrFucky(StackModel allLists)
@@ -106,26 +115,55 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
         public void PutAllCheckByOrders()
         {
-            CheckInOrders = new();
+            ChecksInOrder = new();
+            foreach (var check in Info.Checks)
+            {
+                if (ChecksInOrder.ContainsKey(check.OrderId) == false)
+                {
+                    ChecksInOrder.Add(check.OrderId, new());
+                }
+                ChecksInOrder[check.OrderId].Add(check.Id);
+            }
+        }
+        public void BoundCheckProduct()
+        {
+            CheckProduct = new();
             foreach(var check in Info.Checks)
             {
-                if (CheckInOrders.ContainsKey(check.OrderId) == false)
-                {
-                    CheckInOrders.Add(check.OrderId, new());
-                }
-                CheckInOrders[check.OrderId].Add(check.)
+                CheckProduct.Add(check.Id, check.ProductId);
             }
         }
         #endregion
+
+        private bool IsContains(int id, int prodId)
+        {
+            List<int> oneOrder;
+
+            if (ChecksInOrder.ContainsKey(id) == false)
+            {
+                return false;
+            }
+            for(int i = 0; i < ChecksInOrder[id].Count; i++)
+            {
+                oneOrder = ChecksInOrder[id];
+                if(CheckProduct[oneOrder[i]] == prodId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public void FindAllBestsellers()
         {
-            foreach(var product in Info.Products)
+            BoundCheckProduct();
+
+            foreach (var order in Info.Orders)
             {
-                foreach(var order in Info.Orders)
+                foreach(var prod in Products)
                 {
-                    foreach(var checkPos in Info.Checks)
+                    if (IsContains(order.Id, prod.Key))
                     {
-                        if()
+                        prod.Value.Percent++;
                     }
                 }
             }
