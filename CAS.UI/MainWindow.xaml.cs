@@ -39,26 +39,57 @@ namespace CustomerAnalyticSystem.UI
             FillingListViewProducts();
 
             customersDict = GetDictCustomerInfoModelWithId();
-            FillCustomerStackPanel(customersDict);
-        }
+            FillingCustomerStackPanel(customersDict);
+        }   
 
-        private void FillingDictGroups()
+        
+
+        private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var service = new ProductTagGroupService();
-            var groupList = service.GetAllGroups();
-            foreach (var g in groupList)
+            if (ComboBoxTags.SelectedIndex != -1)
             {
-                GroupsIdAndGroups.Add(g.Name, g.Id);
+                ComboBoxGroups.SelectedIndex = -1;
             }
+            FillingListViewProducts();
         }
 
-        private void FillingDictTags()
+        private void ComboBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var service = new ProductTagGroupService();
-            var tagList = service.GetAllTags();
-            foreach (var t in tagList)
+            if (ComboBoxGroups.SelectedIndex != -1)
             {
-                TagsIdAndTags.Add(t.Name, t.Id);
+                ComboBoxTags.SelectedIndex = -1;
+            }         
+            FillingListViewProducts();
+        }  
+
+        private void ButtonViewAllProducts_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxTags.SelectedIndex != -1 || ComboBoxGroups.SelectedIndex != -1)
+            {
+                ComboBoxGroups.SelectedIndex = -1;
+                ComboBoxTags.SelectedIndex = -1;
+            }
+            FillingListViewProducts();
+        }
+
+        private void ButtonFastProductDelete_Click(object sender, RoutedEventArgs e)
+        {
+            //это должно работать, если будет работать удаление
+            //ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
+            //int id = actual.Id;
+            //var products = new ProductTagGroupService();
+            //products.DeleteProductById(id);
+            //FillingListViewProducts();
+        }
+
+
+
+        #region filling
+        private void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        {
+            foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
+            {
+                ListViewClients.Items.Add(pair.Value);
             }
         }
 
@@ -121,63 +152,10 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ComboBoxTags.SelectedIndex != -1)
-            {
-                ComboBoxGroups.SelectedIndex = -1;
-            }
-            FillingListViewProducts();
-        }
+        #endregion
 
-        private void ComboBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ComboBoxGroups.SelectedIndex != -1)
-            {
-                ComboBoxTags.SelectedIndex = -1;
-            }         
-            FillingListViewProducts();
-        }
 
-        private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
-        {
-            AddClientWindow addClientWindow = new AddClientWindow(this);
-            addClientWindow.Show();
-        }
-
-        private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
-        {
-            ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
-            EditProductWindow editProductWindow = new EditProductWindow(this, product);
-            editProductWindow.Show();
-        }
-
-        private void ButtonViewAllProducts_Click(object sender, RoutedEventArgs e)
-        {
-            if (ComboBoxTags.SelectedIndex != -1 || ComboBoxGroups.SelectedIndex != -1)
-            {
-                ComboBoxGroups.SelectedIndex = -1;
-                ComboBoxTags.SelectedIndex = -1;
-            }
-            FillingListViewProducts();
-        }
-
-        private void ButtonFastProductDelete_Click(object sender, RoutedEventArgs e)
-        {
-            //это должно работать, если будет работать удаление
-            //ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
-            //int id = actual.Id;
-            //var products = new ProductTagGroupService();
-            //products.DeleteProductById(id);
-            //FillingListViewProducts();
-        }
-
-        private void ButtonOpenWindowOfProductAdding_Click(object sender, RoutedEventArgs e)
-        {
-            AddProductWindow addProductWindow = new AddProductWindow(this);
-            addProductWindow.Show();
-        }
-
+        #region dictionary
         private Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
         {
             CustomerService customerService = new CustomerService();
@@ -192,19 +170,29 @@ namespace CustomerAnalyticSystem.UI
             return customersDict;
         }
 
-        private void FillCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        private void FillingDictGroups()
         {
-            foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
+            var service = new ProductTagGroupService();
+            var groupList = service.GetAllGroups();
+            foreach (var g in groupList)
             {
-                ListViewClients.Items.Add(pair.Value);
+                GroupsIdAndGroups.Add(g.Name, g.Id);
             }
         }
-        #region Open pop-up wndws
-        private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
+
+        private void FillingDictTags()
         {
-            AddClientWindow addClientWindow = new AddClientWindow(this);
-            addClientWindow.Show();
+            var service = new ProductTagGroupService();
+            var tagList = service.GetAllTags();
+            foreach (var t in tagList)
+            {
+                TagsIdAndTags.Add(t.Name, t.Id);
+            }
         }
+        #endregion
+
+
+        #region Open pop-up wndws
 
         private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
@@ -225,18 +213,25 @@ namespace CustomerAnalyticSystem.UI
             editOrderWindow.Show();
         }
 
-
         private void ButtonOpenWindowOfProductAdding_Click(object sender, RoutedEventArgs e)
         {
             AddProductWindow addProductWindow = new AddProductWindow(this);
             addProductWindow.Show();
         }
 
+        private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClientWindow addClientWindow = new AddClientWindow(this);
+            addClientWindow.Show();
+        }
+
         private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
         {
-            EditProductWindow editProductWindow = new EditProductWindow(this);
+            ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
+            EditProductWindow editProductWindow = new EditProductWindow(this, product);
             editProductWindow.Show();
         }
+
         #endregion
     }
 }

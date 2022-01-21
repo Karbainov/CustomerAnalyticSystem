@@ -20,6 +20,7 @@ namespace CustomerAnalyticSystem.UI
         MainWindow _mainWindow;
         public AddOrderWindow(MainWindow mainWindow)
         {
+            _mainWindow = mainWindow;
             InitializeComponent();
         }
     }

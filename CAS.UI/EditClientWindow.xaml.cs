@@ -22,6 +22,7 @@ namespace CustomerAnalyticSystem.UI
         MainWindow _mainWindow;
         public EditClientWindow(MainWindow mainWindow)
         {
+            _mainWindow = mainWindow;
             InitializeComponent();
         }
     }
