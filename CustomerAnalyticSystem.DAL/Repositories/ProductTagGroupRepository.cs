@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 
 
 namespace CustomerAnalyticSystem.DAL
@@ -222,6 +223,28 @@ namespace CustomerAnalyticSystem.DAL
                 connection.Query(Queries.AddGroup, new { Name = newGroup.Name, description = newGroup.Description }
                 , commandType: CommandType.StoredProcedure);
             }
+        }
+        #endregion
+
+        #region LogicProduct
+        public List<CountTagsInAllOrdersDTO> GetTagPopularity()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<CountTagsInAllOrdersDTO>(Queries.CountAllTagsInOrders, commandType: CommandType.StoredProcedure).ToList();
+            }
+
+        }
+
+        public List<CountProductsInAllOrdersDTO> GetProductPopularity()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<CountProductsInAllOrdersDTO>(Queries.CountAllProductsInOrders, commandType: CommandType.StoredProcedure).ToList();
+            }
+
         }
         #endregion
     }

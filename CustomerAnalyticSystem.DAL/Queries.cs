@@ -130,5 +130,11 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetNumberOfTagsInOrderByCustomerId = "GetNumberOfTagsInOrderByCustomerId";
 
 
+        #region Logic
+        public const string CountAllTagsInOrders = "CountAllTagsInOrders";
+        public const string CountAllProductsInOrders = "CountAllProductsInOrders";
+        #endregion
+
+
     }
 }

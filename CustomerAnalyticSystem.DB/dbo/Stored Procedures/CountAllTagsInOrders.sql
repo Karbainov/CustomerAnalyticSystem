@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[CountAllTagsWithOrders]
+﻿CREATE PROCEDURE [dbo].[CountAllTagsInOrders]
 AS
 	select PT.TagId,T.[Name] as "TagName", COUNT (O.Id) as 'Number' from [dbo].[Order] as O
 	join [dbo].[Check] as C
