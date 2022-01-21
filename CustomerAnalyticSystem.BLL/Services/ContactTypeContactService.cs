@@ -20,6 +20,12 @@ namespace CustomerAnalyticSystem.BLL.Services
             return map.MapFromContactTypeDTOToContactTypeModel(DTO);
         }
 
+        public void AddContact(ContactBaseModel contact)
+        {
+            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            rep.AddContact(contact.CustomerId, contact.ContactTypeId, contact.Value);
+        }
+
         public void UpdateContact (int id, int customerId, int contactTypeId, string value)
         {
             ContactTypeContactRepository rep = new ContactTypeContactRepository();

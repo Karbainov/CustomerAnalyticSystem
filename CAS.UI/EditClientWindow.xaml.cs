@@ -149,5 +149,17 @@ namespace CustomerAnalyticSystem.UI
         {
             _mainWindow.IsEnabled = true;
         }
+
+        private void ButtonAddContactEditClientWndw_Click(object sender, RoutedEventArgs e)
+        {
+            ContactTypeContactService contactService = new ContactTypeContactService();
+            ContactBaseModel model = new ContactBaseModel()
+            {
+                CustomerId = _customer.Id,
+                ContactTypeId = ((ContactTypeModel)ComboBoxContactType.SelectedItem).Id,
+                Value = TextBoxContact.Text
+            };
+            contactService.AddContact(model);
+        }
     }
 }
