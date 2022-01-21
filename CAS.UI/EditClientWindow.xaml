@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CAS.UI"
         mc:Ignorable="d"
-        Title="Редактор карты клиента" Height="750" Width="500">
+        Title="Редактор карты клиента" Height="750" Width="500" Closed="Window_Close" Closing="Window_Close">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="314*"/>
@@ -39,9 +39,9 @@
                     <RowDefinition/>
 
                 </Grid.RowDefinitions>
-                <ComboBox x:Name="ComboBoxAddTypeOfClient" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="300" Grid.Row="0" Margin="0,0,0,0"/>
-                <TextBox x:Name="TextBoxAddClientSurname"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.Row="1" HorizontalAlignment="Center" Width="300" Margin="0,0,0,0"/>
-                <TextBox x:Name="TextBoxAddClientName" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="300" Grid.Row="2" Margin="0,0,0,0"/>
+                <ComboBox x:Name="ComboBoxEditTypeOfClient" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="300" Grid.Row="0" Margin="0,0,0,0"/>
+                <TextBox x:Name="TextBoxEditClientSurname"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.Row="1" HorizontalAlignment="Center" Width="300" Margin="0,0,0,0"/>
+                <TextBox x:Name="TextBoxEditClientName" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="300" Grid.Row="2" Margin="0,0,0,0"/>
                 <TextBox x:Name="TextBoxAddClientMail" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="300" Grid.Row="3" Margin="0,0,0,0"/>
             </Grid>
 
@@ -111,7 +111,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonSaveChanges" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="0"/>
+            <Button x:Name="ButtonSaveChanges" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="0" Click="ButtonSaveChangesOfEditingClient_Click"/>
             <Button x:Name="ButtonDeleteClientCard" Content="Удалить карту клиента" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1"/>
         </Grid>
 
