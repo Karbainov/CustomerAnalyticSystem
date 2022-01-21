@@ -172,7 +172,7 @@
                         <Label Content="Поиск товаров по группе"/>
                         <ComboBox x:Name="ComboBoxGroups" SelectionChanged="ComboBoxGroups_SelectionChanged" />
                         <Label Content="" Height="15"/>
-                        <Button x:Name="ButtonEditGroups" Content="Редактировать группы"/>
+                        <Button x:Name="ButtonEditGroups" Content="Редактировать группы" Click="ButtonEditGroups_Click"/>
                         <Label Content="" Height="15"/>
                     </StackPanel>
 

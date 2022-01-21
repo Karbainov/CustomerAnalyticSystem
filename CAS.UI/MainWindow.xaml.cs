@@ -98,7 +98,7 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void FillingComboBoxGroups()
+        public void FillingComboBoxGroups()
         {
             ComboBoxGroups.Items.Clear();
             var groups = new ProductTagGroupService();
@@ -168,6 +168,7 @@ namespace CustomerAnalyticSystem.UI
 
         public void FillingDictGroups()
         {
+            GroupsIdAndGroups.Clear();
             var service = new ProductTagGroupService();
             var groupList = service.GetAllGroups();
             foreach (var g in groupList)
@@ -178,6 +179,7 @@ namespace CustomerAnalyticSystem.UI
 
         public void FillingDictTags()
         {
+            TagsIdAndTags.Clear();
             var service = new ProductTagGroupService();
             var tagList = service.GetAllTags();
             foreach (var t in tagList)
@@ -231,6 +233,11 @@ namespace CustomerAnalyticSystem.UI
         {
             EditTagsWindow editTagsWindow = new EditTagsWindow(this);
             editTagsWindow.Show();
+        }
+        private void ButtonEditGroups_Click(object sender, RoutedEventArgs e)
+        {
+            EditGroupsWindow editGroupsWindow = new EditGroupsWindow(this);
+            editGroupsWindow.Show();
         }
 
         #endregion
