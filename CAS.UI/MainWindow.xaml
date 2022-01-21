@@ -8,7 +8,7 @@
         Title="CustomerAnalyticSystem ©" Height="768" Width="1040">
     <Grid>
         <TabControl TabStripPlacement="Top">
-            <TabItem Header="Клиенты" Width="340">
+            <TabItem Header="Клиенты" Width="340" Height="45">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="207*"/>
