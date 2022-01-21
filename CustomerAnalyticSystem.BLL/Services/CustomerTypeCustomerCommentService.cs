@@ -20,6 +20,19 @@ namespace CustomerAnalyticSystem.BLL
 
             return result;
         }
+
+        public List<CustomerTypeModel> GetAllCustomerTypeModel()
+        {
+            List<CustomerTypeModel> customerTypes = new List<CustomerTypeModel>();
+
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            List<CustomerTypeDTO> DTOs = rep.GetAllCustomerType();
+            MrMappi map = new MrMappi();
+            customerTypes = map.MapCustomerTypeDTOToCustomerTypeModel(DTOs);
+
+            return customerTypes;
+        }
+
         //public CustomerModel GetCustomerModel(int id)
         //{
         //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();

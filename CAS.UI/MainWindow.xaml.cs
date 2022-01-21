@@ -70,12 +70,11 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonFastProductDelete_Click(object sender, RoutedEventArgs e)
         {
-            //это должно работать, если будет работать удаление
-            //ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
-            //int id = actual.Id;
-            //var products = new ProductTagGroupService();
-            //products.DeleteProductById(id);
-            //FillingListViewProducts();
+            ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
+            int id = actual.Id;
+            var products = new ProductTagGroupService();
+            products.DeleteProductById(id);
+            FillingListViewProducts();
         }
 
 
@@ -243,5 +242,24 @@ namespace CustomerAnalyticSystem.UI
 
         #endregion
 
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClients.SelectedIndex > -1)
+            {
+                EditClientWindow editClientWindow = new EditClientWindow(this, (CustomerInfoModel)ListViewClients.SelectedItem);
+                editClientWindow.Show();
+            }
+        }
+
+        private void ButtonFastClientDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClients.SelectedIndex > -1)
+            {
+                CustomerService serve = new CustomerService();
+                serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
+                customersDict = GetDictCustomerInfoModelWithId();
+                FillCustomerStackPanel(customersDict);
+            }
+        }
     }
 }

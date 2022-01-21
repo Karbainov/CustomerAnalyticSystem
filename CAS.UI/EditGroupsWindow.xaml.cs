@@ -27,7 +27,6 @@ namespace CustomerAnalyticSystem.UI
             _mainWindow = mainWindow;
             InitializeComponent();
             FillingListViewEditGroupsWndw();
-            //ListViewEditGroupsWndw
         }
 
         private void FillingListViewEditGroupsWndw()
@@ -69,20 +68,19 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonDeleteGroup_Click(object sender, RoutedEventArgs e)
         {
-            //if (ListViewEditGroupsWndw.SelectedItem != null)
-            //{
-            //    это могло бы работать, но нет
-            //    int id = -1;
-            //    _mainWindow.GroupsIdAndGroups.TryGetValue(ListViewEditGroupsWndw.SelectedItem.ToString(), out id);
-            //    var group = new ProductTagGroupService();
-            //    group.DeleteGroupById(id);
-            //    _mainWindow.FillingComboBoxGroups();
-            //    FillingListViewEditGroupsWndw();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Выберите тэг для удаления");
-            //}
+            if (ListViewEditGroupsWndw.SelectedItem != null)
+            {
+                int id = _mainWindow.GroupsIdAndGroups[((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name];
+                var group = new ProductTagGroupService();
+                group.DeleteGroupById(id);
+                _mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
+                _mainWindow.FillingComboBoxGroups();
+                FillingListViewEditGroupsWndw();
+            }
+            else
+            {
+                MessageBox.Show("Выберите группу для удаления");
+            }
         }
 
         private void ButtonEditGroup_Click(object sender, RoutedEventArgs e)
