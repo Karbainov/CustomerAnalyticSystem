@@ -8,6 +8,8 @@ using CustomerAnalyticSystem.DAL.DTOs;
 using CustomerAnalyticSystem.BLL.Analytics;
 using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 using AutoMapper;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
 
 namespace CustomerAnalyticSystem.BLL.Configs
 {
@@ -93,6 +95,17 @@ namespace CustomerAnalyticSystem.BLL.Configs
             cfg.CreateMap<GradeInfoByCustomerIdForTagsDTO, CustomerTagGradesModel>();
         }
         );
+        public MapperConfiguration ConfigStack = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<StackDTO,StackModel>();
+            cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
+            cfg.CreateMap<TagDTO, TagModel>();
+            cfg.CreateMap<GroupBaseDTO, GroupBaseModel>();
+            cfg.CreateMap<Product_TagDTO, ProductTagBaseModel>();
+            cfg.CreateMap<OrderDTO, OrderBaseModel>();
+            cfg.CreateMap<CheckDTO, CheckBaseModel>();
+            cfg.CreateMap<GradeDTO, GradeBaseModel>();
+        });
     }
 }
 //Mapper.CreateMap<BaseModel, DataDestination>().IncludeAllDerived()

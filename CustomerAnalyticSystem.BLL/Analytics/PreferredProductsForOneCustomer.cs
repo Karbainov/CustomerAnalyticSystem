@@ -14,10 +14,13 @@ namespace CustomerAnalyticSystem.BLL.Analytics
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        private PreferencesByCustomerIdModel Preferences { get; set; }
         public List <GradePrefModel> TrueMarkForProduct { get; set; }
         public List <GradePrefModel> TrueMarkForTag { get; set; }
         public List <GroupPrefModel> GroupPreferences { get; set; }
+
+
+
+        private PreferencesByCustomerIdModel Preferences { get; set; }
 
         // public List<TagPrefModel> Tags - ТЕГИПРЕФЫ
         // public List<CustomerTagGradesModel> TagGrades ТЕГИОЦЕНКИ
@@ -27,6 +30,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics
             Product = 1,
             Tag = 2
         }
+
         public PreferredProductsForOneCustomer(PreferencesByCustomerIdModel preferences)
         {
             CustomerId = preferences.Id;
@@ -34,6 +38,8 @@ namespace CustomerAnalyticSystem.BLL.Analytics
             LastName = preferences.LastName;
             Preferences = preferences;
             GroupPreferences = preferences.Groups;
+            CheckForTag();
+            CheckProductMark();
         }
 
         public void CheckProductMark ()
@@ -66,8 +72,6 @@ namespace CustomerAnalyticSystem.BLL.Analytics
             TrueMarkForProduct = products.Values.ToList();
         }
 
-        // public List<TagPrefModel> Tags - ТЕГИПРЕФЫ
-        // public List<CustomerTagGradesModel> TagGrades ТЕГИОЦЕНКИ
 
         private int GetWeightedAverageMark(object allMarksList, int id, ProductTag productOrTag)
         {
@@ -81,9 +85,13 @@ namespace CustomerAnalyticSystem.BLL.Analytics
                     if (allMarks[i].Id == id)
                     {
                         if (allMarks[i].Mark > 10)
+                        {
                             allMarks[i].Mark = 10;
+                        }
                         if (allMarks[i].Mark < 0)
+                        {
                             allMarks[i].Mark = 0;
+                        }
                         allGrades.Add(allMarks[i].Mark);
                     }
                     i++;

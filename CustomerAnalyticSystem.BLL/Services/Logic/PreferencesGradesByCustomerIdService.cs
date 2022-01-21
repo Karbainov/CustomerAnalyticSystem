@@ -14,9 +14,9 @@ namespace CustomerAnalyticSystem.BLL.Services.Logic
         {
             MrMappi map = new();
             var service = new GradePreferencesRepository();
-            var dto = service.Logic(id).SortToProductGroupTag();
+            var dto = service.GetAllCustomerPreferencesAndGrades(id).SortToProductGroupTag();
             PreferencesByCustomerIdModel result = map.MapFromPreferences(dto);
-                return result;
+            return result;
         }
     }
 }

@@ -10,6 +10,7 @@ using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 using CustomerAnalyticSystem.BLL.Analytics;
 using CustomerAnalyticSystem.BLL;
 using CustomerAnalyticSystem.BLL.Services.Logic;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace TempProject
 {
@@ -19,15 +20,27 @@ namespace TempProject
         {
 
 
-            PreferencesByCustomerIdModel kekis;
+            //PreferencesByCustomerIdModel kekis;
 
-            PreferencesGradesByCustomerIdService test = new();
-            kekis = test.GetCustomerPreferences(1);
-            kekis.ClearPrevGrades();
+            //PreferencesGradesByCustomerIdService test = new();
+            //kekis = test.GetCustomerPreferences(1);
+            //kekis.ClearPrevGrades();
 
-            PreferredProductsForOneCustomer cucus = new(kekis);
-            cucus.CheckForTag();
-            cucus.CheckProductMark();
+            //PreferredProductsForOneCustomer cucus = new(kekis);
+
+
+            StackModel eww;
+            ProductTagGroupService we = new();
+            eww = we.GetAllInfoAboutAll();
+            MrFucky lol = new(eww);
+            lol.FillProducts();
+            lol.FillGroups();
+            lol.FillTags();
+            lol.GetListOfAllTagsInProduct();
+            lol.GetListOfAllGroupsInProduct();
+
+
+            int r = 0;
             //AllPreferencesAndGradeInfoByCustomerIdDTO qwe = new();
             //GradePreferencesRepository www = new();
             //qwe = www.Logic(1);

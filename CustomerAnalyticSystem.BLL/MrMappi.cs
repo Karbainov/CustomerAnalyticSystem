@@ -8,6 +8,9 @@ using AutoMapper;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.BLL.Analytics;
 using CustomerAnalyticSystem.BLL.Configs;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace CustomerAnalyticSystem.BLL
 {
@@ -56,9 +59,15 @@ namespace CustomerAnalyticSystem.BLL
         public PreferencesByCustomerIdModel MapFromPreferences (AllPreferencesAndGradeInfoByCustomerIdDTO dto)
         {
             var config = new MapperConfigs();
-            PreferencesByCustomerIdModel qwe = new Mapper(config.ConfigCustomerPreferencesAndGrades)
+            PreferencesByCustomerIdModel result = new Mapper(config.ConfigCustomerPreferencesAndGrades)
                 .Map<AllPreferencesAndGradeInfoByCustomerIdDTO,PreferencesByCustomerIdModel>(dto);
-            return qwe;
+            return result;
+        }
+        public StackModel GetAllInfoForProductAnalise (StackDTO dto)
+        {
+            var config = new MapperConfigs();
+            StackModel result = new Mapper(config.ConfigStack).Map<StackDTO, StackModel>(dto);
+            return result;
         }
     }
 

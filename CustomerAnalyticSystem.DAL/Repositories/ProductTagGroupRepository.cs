@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
 
 
 namespace CustomerAnalyticSystem.DAL
@@ -226,6 +227,15 @@ namespace CustomerAnalyticSystem.DAL
         }
         #endregion
 
+        public List<ProductBaseDTO> GetAllProduct()
+        {
+            string connectionString = ConnectionString.Connection;
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                    return connection.Query<ProductBaseDTO>(Queries.GetAllProduct, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
         #region LogicProduct
         public List<CountTagsInAllOrdersDTO> GetTagPopularity()
         {
@@ -245,6 +255,22 @@ namespace CustomerAnalyticSystem.DAL
                 return connection.Query<CountProductsInAllOrdersDTO>(Queries.CountAllProductsInOrders, commandType: CommandType.StoredProcedure).ToList();
             }
 
+        }
+
+        public StackDTO GetAllInfo()
+        {
+            StackDTO result = new();
+            var tmp = new OrderCheckStatusRepository();
+            var tmp2 = new GradePreferencesRepository();
+
+            result.Groups = GetAllGroup();
+            result.Tags = GetAllTags();
+            result.Product_Tag = GetAllProduct_Tag();
+            result.Products = GetAllProduct();
+            result.Orders = tmp.GetAllOrders();
+            result.Checks = tmp.GetAllCheck();
+            result.Grades = tmp2.GetAllGrades();
+            return result;
         }
         #endregion
     }

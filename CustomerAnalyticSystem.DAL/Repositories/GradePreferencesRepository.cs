@@ -111,7 +111,7 @@ namespace CustomerAnalyticSystem.DAL
         }
 
         #region logic
-        public AllPreferencesAndGradeInfoByCustomerIdDTO Logic (int id)
+        public AllPreferencesAndGradeInfoByCustomerIdDTO GetAllCustomerPreferencesAndGrades (int id)
         {
             int i = 0;
             string connectionString = ConnectionString.Connection;
