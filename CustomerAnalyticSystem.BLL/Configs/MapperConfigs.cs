@@ -12,7 +12,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
     public class MapperConfigs
     {
 
-        public MapperConfiguration ConfFromCustomerInfoDTOToCustomerinfoModel = new MapperConfiguration(
+        public MapperConfiguration ConfFromCustomerInfoDTOToCustomerinfoModel { get; private set; } = new MapperConfiguration(
             conf =>
             {
                 conf.CreateMap<CustomerInfoDTO, CustomerInfoModel>();
@@ -25,7 +25,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
             });
 
-        public MapperConfiguration ConfFromCustomerInfoDTOToCustomerModel = new MapperConfiguration(
+        public MapperConfiguration ConfFromCustomerInfoDTOToCustomerModel { get; private set; } = new MapperConfiguration(
            conf =>
            {
                conf.CreateMap<CustomerInfoDTO, CustomerInfoModel>();
@@ -44,13 +44,13 @@ namespace CustomerAnalyticSystem.BLL.Configs
                     conf.CreateMap<CustomerTypeDTO, CustomerTypeModel>();
                 });
 
-        public MapperConfiguration ConfFromCustomerDTOToCustomerModel = new MapperConfiguration(
+        public MapperConfiguration ConfFromCustomerDTOToCustomerModel { get; private set; } = new MapperConfiguration(
             conf => 
             {
                 conf.CreateMap<CustomerDTO, CustomerModel>();
             });
 
-        public MapperConfiguration configOrderInfo = new MapperConfiguration(cfg =>
+        public MapperConfiguration configOrderInfo { get; private set; } = new MapperConfiguration(cfg =>
         {
             cfg.CreateMap<AllOrderInfoByOrderId, OrderInfoByOrderIdModel>();
             cfg.CreateMap<CheckDTO, CheckBaseModel>().
@@ -58,7 +58,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
             ForMember(dest => dest.Amount, act => act.MapFrom(src => src.Amount)).ForMember(dest => dest.ProductId, act => act.MapFrom(src => src.ProductId));
         });
 
-        public MapperConfiguration ConfigAllGroupsWithProducts = new MapperConfiguration(cfg =>
+        public MapperConfiguration ConfigAllGroupsWithProducts { get; private set; } = new MapperConfiguration(cfg =>
               {
                   cfg.CreateMap<GroupsWithProductsDTO, GroupsWithProductsModel>();
                   cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
@@ -68,17 +68,17 @@ namespace CustomerAnalyticSystem.BLL.Configs
               }
             );
 
-        public MapperConfiguration ConfigBaseTag = new MapperConfiguration(cfg =>
+        public MapperConfiguration ConfigBaseTag { get; private set; } = new MapperConfiguration(cfg =>
        {
            cfg.CreateMap<TagDTO, TagModel>();
        });
 
-        public MapperConfiguration ConfigBaseProduct = new MapperConfiguration(cfg =>
+        public MapperConfiguration ConfigBaseProduct { get; private set; } = new MapperConfiguration(cfg =>
         {
             cfg.CreateMap<ProductsWithGroupsDTO, ProductBaseModel>();
         });
 
-        public MapperConfiguration ConfigBaseGroup = new MapperConfiguration(cfg =>
+        public MapperConfiguration ConfigBaseGroup { get; private set; } = new MapperConfiguration(cfg =>
         {
             cfg.CreateMap<GroupBaseDTO, GroupBaseModel>();
         });
