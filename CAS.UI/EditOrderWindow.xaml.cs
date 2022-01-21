@@ -12,15 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CAS.UI
+namespace CustomerAnalyticSystem.UI
 {
     /// <summary>
     /// Interaction logic for EditOrderWindow.xaml
     /// </summary>
     public partial class EditOrderWindow : Window
     {
-        public EditOrderWindow()
+        MainWindow _mainWindow;
+        public EditOrderWindow(MainWindow mainWindow)
         {
+            _mainWindow = mainWindow;
             InitializeComponent();
         }
     }

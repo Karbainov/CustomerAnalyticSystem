@@ -12,14 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CAS.UI
+namespace CustomerAnalyticSystem.UI
 {
     /// <summary>
     /// Interaction logic for ClientWindow.xaml
     /// </summary>
     public partial class AddClientWindow : Window
     {
-        public AddClientWindow()
+        MainWindow _mainWindow;
+        public AddClientWindow(MainWindow mainWindow)
         {
             InitializeComponent();
         }
