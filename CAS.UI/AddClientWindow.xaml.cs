@@ -19,10 +19,12 @@ namespace CustomerAnalyticSystem.UI
     /// </summary>
     public partial class AddClientWindow : Window
     {
-        MainWindow _mainWindow;
+        private MainWindow _mainWindow;
         public AddClientWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+            _mainWindow.IsEnabled = false;
         }
     }
 }

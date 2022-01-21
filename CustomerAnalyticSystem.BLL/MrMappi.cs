@@ -52,13 +52,21 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseTag).Map<List<TagDTO>, List<TagModel>>(dto);
         }
 
-        public List<ProductBaseModel> MapFromProductBaseDTOToProductBaseModel(List<ProductBaseDTO> dto)
+        public List<ProductBaseModel> MapFromProductBaseDTOToProductBaseModel(List<ProductsWithGroupsDTO> dto)
         {
             var config = new MapperConfigs();
-            return new Mapper(config.ConfigBaseProduct).Map<List<ProductBaseDTO>, List<ProductBaseModel>>(dto);
+            return new Mapper(config.ConfigBaseProduct).Map<List<ProductsWithGroupsDTO>, List<ProductBaseModel>>(dto);
         }
     
+    
+
+        public List<GroupBaseModel> MapFromGroupBaseDTOToGroupBaseModel(List<GroupBaseDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigBaseGroup).Map<List<GroupBaseDTO>, List<GroupBaseModel>>(dto);
+        }
+
+        
+
     }
-
-
 }

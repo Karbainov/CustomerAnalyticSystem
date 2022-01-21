@@ -130,14 +130,11 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID клиента" Width="101"/>
-                                    <GridViewColumn Header="Приоритет" Width="101"/>
-                                    <GridViewColumn Header="Тип клиента" Width="101"/>
-                                    <GridViewColumn Header="Фамилия" Width="101"/>
-                                    <GridViewColumn Header="Имя" Width="101"/>
-                                    <GridViewColumn Header="Номер телефона" Width="101"/>
-                                    <GridViewColumn Header="e-mail" Width="101"/>
-                                    <GridViewColumn Header="Комментарий" Width="101"/>                                    
+                                    <GridViewColumn Width="112" Header="ID клиента"/>
+                                    <GridViewColumn Header="Приоритет" Width="162"/>
+                                    <GridViewColumn Width="162" Header="Тип клиента"/>
+                                    <GridViewColumn Width="212" Header="Фамилия"/>
+                                    <GridViewColumn Width="162" Header="Имя"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -152,11 +149,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID товара" Width="162"/>
-                                    <GridViewColumn Header="Группа" Width="162"/>
-                                    <GridViewColumn Header="Наименование" Width="162"/>
-                                    <GridViewColumn Header="Описание товара" Width="162"/>
-                                    <GridViewColumn Header="Остаток" Width="162"/>
+                                    <GridViewColumn Width="102" Header="Id товара"  DisplayMemberBinding="{Binding Id}" />
+                                    <GridViewColumn Width="202" Header="Группа"  DisplayMemberBinding="{Binding GroupName}"/>
+                                    <GridViewColumn Width="202" Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="302" Header="Описание"  DisplayMemberBinding="{Binding Description}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -164,7 +160,13 @@
                     <StackPanel Grid.Column="0">
                         <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75" Click="ButtonOpenWindowOfProductAdding_Click"/>
                         <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75" Click="ButtonOpenWindowOfProductEditing_Click"/>
-                        <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75"/>
+                        <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75" Click="ButtonFastProductDelete_Click"/>
+                        <Label Content="Поиск товаров по тэгу"/>
+                        <ComboBox x:Name="ComboBoxTags" SelectionChanged="ComboBoxTags_SelectionChanged" />
+                        <Label Content="Поиск товаров по группе"/>
+                        <ComboBox x:Name="ComboBoxGroups" SelectionChanged="ComboBoxGroups_SelectionChanged" />
+                        <Label Content="" Height="15"/>
+                        <Button x:Name="ButtonViewAllProducts" Content="Показать все товары" Click="ButtonViewAllProducts_Click"/>
                     </StackPanel>
 
                 </Grid>

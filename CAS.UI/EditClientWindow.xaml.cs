@@ -28,6 +28,7 @@ namespace CustomerAnalyticSystem.UI
 
         public EditClientWindow(MainWindow mainWindow, CustomerInfoModel customer)
         {
+            _mainWindow = mainWindow;
             InitializeComponent();
             customerTypesWithId = GetAllDictCustomerTypeWithId();
             FillCustomerTypeComboBox(customerTypesWithId);
