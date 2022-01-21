@@ -34,6 +34,15 @@ namespace CustomerAnalyticSystem.DAL
             return type;
         }
 
+        public List<CustomerDTO> GetAllCustomers()
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<CustomerDTO>(Queries.GetAllCustomers
+                    , commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
         public CustomerDTO GetCustomerById(int id)
         {
             CustomerDTO customer = null;
@@ -116,30 +125,86 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
+        public CustomerInfoDTO GetCustomerByIdWithCustomerType(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.QuerySingle<CustomerInfoDTO>(Queries.GetCustomerByIdWithCustomerType, new { id }
+                , commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<CommentDTO> GetAllCommentByCustomerId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<CommentDTO>(Queries.GetAllCommentByCustomerId, new { id }
+                , commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public List<ContactWithContactTypeNameDTO> GetAllContactByCustomerId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<ContactWithContactTypeNameDTO>(Queries.GetAllContactByCustomerId,
+                    new { id }
+                    ,commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
         public CustomerInfoDTO GetCustomerInfoService(int id)
         {
             CustomerInfoDTO customer = new();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customer = connection.QuerySingle<CustomerInfoDTO>(Queries.GetCustomerByIdWithCustomerType, new { id }
-                , commandType: CommandType.StoredProcedure);
-            }
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customer.Comments = connection.Query<CommentDTO>(Queries.GetAllCommentByCustomerId, new { id }
-                , commandType: CommandType.StoredProcedure).ToList();
-            }
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
-            {
-                customer.Contacts = connection.Query<ContactWithContactTypeNameDTO>(Queries.GetAllContactByCustomerId,
-                    new { id },
-                    commandType: CommandType.StoredProcedure).ToList();
-            }
+            customer = GetCustomerByIdWithCustomerType(id);
+            customer.Comments = GetAllCommentByCustomerId(id);
+            customer.Contacts = GetAllContactByCustomerId(id);
 
             return customer;
+        }
+
+        public List<CustomerInfoDTO> GetAllCustomerInfoDTO()
+        {
+            Dictionary<int, CustomerInfoDTO> customersDict = new Dictionary<int, CustomerInfoDTO>();
+            int curCustomerId = 0;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query<CustomerInfoDTO, ContactWithContactTypeNameDTO, CustomerInfoDTO>(
+                    Queries.GetAllCustomerWithContactAndContactType
+                    ,(customerInfo, contact) =>
+                    {
+                        if (curCustomerId != customerInfo.Id)
+                        {
+                            customersDict.Add(customerInfo.Id, customerInfo);
+                            curCustomerId = customerInfo.Id;
+                            customersDict[curCustomerId].Contacts = new List<ContactWithContactTypeNameDTO>();
+                            customersDict[curCustomerId].Comments = new List<CommentDTO>();
+                        }
+
+                        customersDict[curCustomerId].Contacts.Add(contact);
+                        return customersDict[curCustomerId];
+                    }
+                    , splitOn: "Id"
+                    , commandType: CommandType.StoredProcedure);
+            }
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.Query<CommentDTO, object, CommentDTO>(
+                    Queries.GetAllSortedComments
+                    , (comment, obj) =>
+                     {
+                         customersDict[comment.CustomerId].Comments.Add(comment);
+
+                         return comment;
+                     }
+                     , splitOn: "TempId"
+                    , commandType: CommandType.StoredProcedure);
+            }
+
+                return customersDict.Values.ToList();
         }
 
         public List<TagMarksDTO> GetAllMarksOfTagByCustomerId(int id)
@@ -165,7 +230,49 @@ namespace CustomerAnalyticSystem.DAL
             return customerPreferenceDTOs;
         }
 
+        public List<CommentDTO> GetAllComment()
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<CommentDTO>(Queries.GetAllComment, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
 
+        public CommentDTO GetCommentById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.QuerySingle<CommentDTO>(Queries.GetCommentById, new { id },
+                commandType: CommandType.StoredProcedure);
+            }
 
+        }
+
+        public void AddComment(int CustomerId, string Value)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CommentDTO>(Queries.AddComment, new { CustomerId, Value },
+                commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeleteComment(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CommentDTO>(Queries.DeleteComment, new { id },
+                commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateComment(int id, int CustomerId, string Value)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                connection.QuerySingle<CommentDTO>(Queries.UpdateComment, new { id, CustomerId, Value },
+                commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

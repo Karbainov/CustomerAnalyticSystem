@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomerAnalyticSystem.BLL;
 
-namespace CAS.UI
+namespace CustomerAnalyticSystem.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,6 +27,8 @@ namespace CAS.UI
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
 
 
+        private Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +37,9 @@ namespace CAS.UI
             FillingComboBoxTags();
             FillingComboBoxGroups();
             FillingListViewProducts();
+
+            customersDict = GetDictCustomerInfoModelWithId();
+            FillCustomerStackPanel(customersDict);
         }
 
         private void FillingDictGroups()
@@ -172,5 +177,66 @@ namespace CAS.UI
             AddProductWindow addProductWindow = new AddProductWindow(this);
             addProductWindow.Show();
         }
+
+        private Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
+        {
+            CustomerService customerService = new CustomerService();
+            List<CustomerInfoModel> customers = customerService.GetAllCustomerInfoModels();
+
+            Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+
+            foreach (CustomerInfoModel customer in customers)
+            {
+                customersDict.Add(customer.Id, customer);
+            }
+            return customersDict;
+        }
+
+        private void FillCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        {
+            foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
+            {
+                ListViewClients.Items.Add(pair.Value);
+            }
+        }
+        #region Open pop-up wndws
+        private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClientWindow addClientWindow = new AddClientWindow(this);
+            addClientWindow.Show();
+        }
+
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+        {
+            EditClientWindow editClientWindow = new EditClientWindow(this);
+            editClientWindow.Show();
+        }
+
+        private void ButtonOpenAddOrderWndw_Click(object sender, RoutedEventArgs e)
+        {
+            AddOrderWindow addOrderWindow = new AddOrderWindow(this);
+            addOrderWindow.Show();
+
+        }
+
+        private void ButtonOpenEditOrderWndw_Click(object sender, RoutedEventArgs e)
+        {
+            EditOrderWindow editOrderWindow = new EditOrderWindow(this);
+            editOrderWindow.Show();
+        }
+
+
+        private void ButtonOpenWindowOfProductAdding_Click(object sender, RoutedEventArgs e)
+        {
+            AddProductWindow addProductWindow = new AddProductWindow(this);
+            addProductWindow.Show();
+        }
+
+        private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
+        {
+            EditProductWindow editProductWindow = new EditProductWindow(this);
+            editProductWindow.Show();
+        }
+        #endregion
     }
 }

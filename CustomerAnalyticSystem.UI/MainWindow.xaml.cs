@@ -30,6 +30,16 @@ namespace CustomerAnalyticSystem.UI
             FillingDictTags();
             FillingComboBoxTags();
             FillingListViewProducts();
+            CustomerService custServe = new CustomerService();
+            List<CustomerModel> customers = custServe.GetAllCustomerModels();
+
+            //foreach (CustomerModel customer in customers)
+            //{
+            //    Button btn = new Button();
+            //    btn.Name = Convert.ToString("qwe" + customer.Id);
+            //    btn.Content = $"{customer.LastName} {customer.FirstName}";
+            //    StackPanelAllCustomers.Children.Add(btn);
+            //}
         }
 
 

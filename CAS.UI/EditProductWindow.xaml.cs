@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomerAnalyticSystem.BLL;
 
-namespace CAS.UI
+namespace CustomerAnalyticSystem.UI
 {
     /// <summary>
     /// Interaction logic for EditProductWindow.xaml

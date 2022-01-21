@@ -9,7 +9,7 @@ using CustomerAnalyticSystem.DAL.DTOs;
 
 namespace CustomerAnalyticSystem.BLL
 {
-    public class CustomerTypeCustomerCommentService
+    public class CustomerService
     {
         public CustomerInfoModel GetCustomerModel(int id)
         {
@@ -20,30 +20,20 @@ namespace CustomerAnalyticSystem.BLL
 
             return result;
         }
-        //public CustomerModel GetCustomerModel(int id)
-        //{
-        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-        //    CustomerInfoDTO DTO = rep.GetCustomerInfoService(id);
-        //    MrMappi map = new MrMappi();
-        //    CustomerModel result = map.MapCustomerInfoDTOToCustomerModel(DTO);
+
+        public List<CustomerInfoModel> GetAllCustomerInfoModels()
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            List<CustomerInfoDTO> customers = rep.GetAllCustomerInfoDTO();
+            var map = new MrMappi();
+
+            return map.MapListCustomerDTOToListCustomerModel(customers);
+        }
 
         public void UpdateCustomer(int id, string firstName, string lastName, int TypeId = 1)
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             rep.UpdateCustomerById(id, firstName, lastName, TypeId);
         }
-
-        //public void UpdateComment(int id, int customerId, string text)
-        //{
-        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-        //    rep.UpdateComment(id, customerId, text);
-        //}
-
-        //public void DeleteComment(int id)
-        //{
-        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-        //    rep.DeleteComment(id);
-        //}
-
     }
 }

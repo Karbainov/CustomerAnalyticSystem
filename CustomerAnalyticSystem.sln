@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAnalyticSystem.BLL"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempProject", "TempProject\TempProject.csproj", "{999F9677-5250-47E4-9A68-E121C1B5176E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAS.UI", "CAS.UI\CAS.UI.csproj", "{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAnalyticSystem.UI", "CAS.UI\CustomerAnalyticSystem.UI.csproj", "{9067B6F3-8A6B-4A29-827F-88DF4D6D60C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
