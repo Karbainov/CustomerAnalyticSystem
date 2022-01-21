@@ -38,6 +38,12 @@ namespace CustomerAnalyticSystem.BLL.Configs
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
            });
 
+        public MapperConfiguration ConfFromCustomerTypeDTOToCustomerTypeModel = new MapperConfiguration(
+                conf =>
+                {
+                    conf.CreateMap<CustomerTypeDTO, CustomerTypeModel>();
+                });
+
         public MapperConfiguration ConfFromCustomerDTOToCustomerModel { get; private set; } = new MapperConfiguration(
             conf => 
             {
@@ -76,6 +82,8 @@ namespace CustomerAnalyticSystem.BLL.Configs
         {
             cfg.CreateMap<GroupBaseDTO, GroupBaseModel>();
         });
+
+
         //public MapperConfiguration ConfigForBaseOrderModel = new MapperConfiguration(cfg =>
         //{
         //    cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();

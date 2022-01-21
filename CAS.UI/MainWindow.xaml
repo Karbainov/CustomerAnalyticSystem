@@ -93,11 +93,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="162" Header="ID клиента"/>
-                                    <GridViewColumn Width="162" Header="Тип клиента"/>
-                                    <GridViewColumn Width="162" Header="Фамилия"/>
-                                    <GridViewColumn Width="162" Header="Имя"/>
-                                    <GridViewColumn Width="162" Header ="e-mail"/>                                    
+                                    <GridViewColumn Width="115" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Width="115" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="115" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="115" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -105,7 +104,7 @@
                     <StackPanel Grid.Column="0" Margin="0,0,0,411">
                         <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75" Click="ButtonOpenWindowOfAddingClient_Click"/>
                         <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75" Click="ButtonOpenWindowOfEditingClient_Click"/>
-                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75"/>
+                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75" Click="ButtonFastClientDelete_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
