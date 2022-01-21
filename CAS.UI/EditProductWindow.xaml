@@ -65,7 +65,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonSaveChangesOfProductEditing" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="0"/>
+            <Button x:Name="ButtonSaveChangesOfProductEditing" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="0" Click="ButtonSaveChangesOfProductEditing_Click"/>
             <Button x:Name="ButtonDeleteProduct" Content="Удалить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1"/>
         </Grid>
 

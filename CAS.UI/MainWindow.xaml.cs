@@ -23,8 +23,8 @@ namespace CAS.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
-        Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
+        public Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
+        public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
 
         public MainWindow()
         {
@@ -66,7 +66,7 @@ namespace CAS.UI
             }
         }
 
-        public void FillingComboBoxGroups()
+        private void FillingComboBoxGroups()
         {
             var groups = new ProductTagGroupService();
             var listGroups = groups.GetAllGroups();
@@ -76,7 +76,7 @@ namespace CAS.UI
             }
         }
 
-        private void FillingListViewProducts()
+        public void FillingListViewProducts()
         {
             ListViewProducts.Items.Clear();
 

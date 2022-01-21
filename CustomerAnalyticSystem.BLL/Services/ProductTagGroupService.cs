@@ -20,6 +20,13 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
+        public void UpdateProductById(int id, string name, string description, int groupId)//ProductBaseModel product)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.UpdateProductById(id, name, description, groupId);
+        }
+
         public List <ProductBaseModel> GetAllProductsByTagId(int id)
         {
             MrMappi map = new();

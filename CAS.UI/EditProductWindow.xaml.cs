@@ -30,7 +30,7 @@ namespace CAS.UI
             InitializeComponent();
             _product = product;
             _mainWindow = mainWindow;
-            _mainWindow.IsEnabled = false;
+           // _mainWindow.IsEnabled = false;
             FillingEditProductWindowComboBoxGroups();
             FindGroupProduct(_product);
             TextBoxProductNameEditWndw.Text = product.Name;
@@ -57,10 +57,10 @@ namespace CAS.UI
         {
             int selected = 0;
             int count = ComboBoxProductGroupEditWndw.Items.Count;
-            for (int i = 0; (i <= (count - 1)); i++)
+            for (int i = 0; i <= (count - 1); i++)
             {
                 ComboBoxProductGroupEditWndw.SelectedIndex = i;
-                if ((string)(ComboBoxProductGroupEditWndw.SelectedValue) == product.GroupName)
+                if ((string)ComboBoxProductGroupEditWndw.SelectedValue == product.GroupName)
                 {
                     selected = i;
                 }
@@ -68,6 +68,18 @@ namespace CAS.UI
             ComboBoxProductGroupEditWndw.SelectedIndex = selected;
         }
 
-
+        private void ButtonSaveChangesOfProductEditing_Click(object sender, RoutedEventArgs e)
+        {
+            _product.Name = TextBoxProductNameEditWndw.Text;
+            _product.Description = TextBoxProductDescriptionEditWndw.Text;
+            _product.GroupName = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
+            string group = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
+            int id = 0;
+            _mainWindow.GroupsIdAndGroups.TryGetValue(group, out id);
+            ProductTagGroupService product = new ProductTagGroupService();
+            product.UpdateProductById(_product.Id, _product.Name, _product.Description, id);
+            _mainWindow.FillingListViewProducts();
+            this.Close();
+        }
     }
 }
