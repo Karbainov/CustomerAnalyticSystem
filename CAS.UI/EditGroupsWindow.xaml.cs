@@ -70,7 +70,7 @@ namespace CustomerAnalyticSystem.UI
         {
             if (ListViewEditGroupsWndw.SelectedItem != null)
             {
-                int id = _mainWindow.GroupsIdAndGroups[ListViewEditGroupsWndw.SelectedItem.ToString()];
+                int id = _mainWindow.GroupsIdAndGroups[((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name];
                 var group = new ProductTagGroupService();
                 group.DeleteGroupById(id);
                 _mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
