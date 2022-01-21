@@ -12,14 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CAS.UI
+namespace CustomerAnalyticSystem.UI
 {
     /// <summary>
     /// Interaction logic for EditProductWindow.xaml
     /// </summary>
     public partial class EditProductWindow : Window
     {
-        public EditProductWindow()
+        MainWindow _mainWindow;
+        public EditProductWindow(MainWindow mainWindow)
         {
             InitializeComponent();
         }

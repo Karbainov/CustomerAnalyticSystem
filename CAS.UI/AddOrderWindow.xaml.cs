@@ -12,12 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CAS.UI
+namespace CustomerAnalyticSystem.UI
 {
     
     public partial class AddOrderWindow : Window
     {
-        public AddOrderWindow()
+        MainWindow _mainWindow;
+        public AddOrderWindow(MainWindow mainWindow)
         {
             InitializeComponent();
         }

@@ -16,7 +16,7 @@ using CustomerAnalyticSystem.BLL;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
 
-namespace CAS.UI
+namespace CustomerAnalyticSystem.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -54,5 +54,44 @@ namespace CAS.UI
                 ListViewClients.Items.Add(pair.Value);
             }
         }
+        #region Open pop-up wndws
+        private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClientWindow addClientWindow = new AddClientWindow(this);
+            addClientWindow.Show();
+        }
+
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+        {
+            EditClientWindow editClientWindow = new EditClientWindow(this);
+            editClientWindow.Show();
+        }
+
+        private void ButtonOpenAddOrderWndw_Click(object sender, RoutedEventArgs e)
+        {
+            AddOrderWindow addOrderWindow = new AddOrderWindow(this);
+            addOrderWindow.Show();
+
+        }
+
+        private void ButtonOpenEditOrderWndw_Click(object sender, RoutedEventArgs e)
+        {
+            EditOrderWindow editOrderWindow = new EditOrderWindow(this);
+            editOrderWindow.Show();
+        }
+
+
+        private void ButtonOpenWindowOfProductAdding_Click(object sender, RoutedEventArgs e)
+        {
+            AddProductWindow addProductWindow = new AddProductWindow(this);
+            addProductWindow.Show();
+        }
+
+        private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
+        {
+            EditProductWindow editProductWindow = new EditProductWindow(this);
+            editProductWindow.Show();
+        }
+        #endregion
     }
 }
