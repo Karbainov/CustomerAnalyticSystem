@@ -121,8 +121,7 @@ namespace CustomerAnalyticSystem.UI
             ProductBaseModel product = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
             var tag2 = new ProductTagGroupService();
             tag2.DeleteProduct_TagByTagIdAndProductId(product.Id, id);
-            FillingListViewTagsEditWndw();
-            
+            FillingListViewTagsEditWndw();          
         }
     }
 }
