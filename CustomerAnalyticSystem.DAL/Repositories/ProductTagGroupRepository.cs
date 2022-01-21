@@ -110,6 +110,34 @@ namespace CustomerAnalyticSystem.DAL
                 connection.Query(Queries.DeleteTagById, new { id }, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public TagDTO GetTagById(int id)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.QuerySingle<TagDTO>(Queries.GetTagById, new { id}, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void UpdateTagById(int id, string name)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.UpdateTagById, new { id, name}, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void AddTag(string name)
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query(Queries.AddTag, new { name}, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public List<ProductsWithGroupsDTO> GetAllProductsByTag(int id)
         {
             string connectionString = ConnectionString.Connection;
