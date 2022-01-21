@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,11 +37,11 @@ namespace CustomerAnalyticSystem.UI
             _customer = customer;
             customerTypesWithId = GetAllDictCustomerTypeWithId();
             FillDictContactModelWitId();
-            FillCustomerTypeComboBox(customerTypesWithId);
+            GetAllDictContactType();
             FillComboBoxContactType(contactTypesWithId);
+            FillCustomerTypeComboBox(customerTypesWithId);
             FillListViewContactContactType(contactModelWitId);
             FillCustomerInfo(_customer);
-            GetAllDictContactType();
         }
 
         private Dictionary<CustomerTypeModel, int> GetAllDictCustomerTypeWithId()
