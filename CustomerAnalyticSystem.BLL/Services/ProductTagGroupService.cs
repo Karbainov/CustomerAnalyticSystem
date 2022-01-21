@@ -22,6 +22,36 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
+        public void UpdateTagById(int id, string name)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.UpdateTagById(id, name);
+        }
+
+        public void DeleteTagById(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteTagById(id);
+        }
+
+        public void AddTag(string name)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.AddTag(name);
+        }
+
+        //public TagModel GetTagById(int id)
+        //{
+        //    MrMappi map = new();
+        //    var service = new ProductTagGroupRepository();
+        //    var dto = service.GetTagById(id);
+        //    TagModel result = map.MapFromTagDTOToTagModel(dto);
+        //    return result;
+        //}
+
         #endregion
 
         #region product crud
@@ -54,6 +84,16 @@ namespace CustomerAnalyticSystem.BLL.Services
             var service = new ProductTagGroupRepository();
             service.DeleteProductById(id);
         }
+
+        //public ProductBaseDTO GetProductById(int id)
+        //{
+        //    MrMappi map = new();
+        //    var service = new ProductTagGroupRepository();
+        //    service.GetProductById(id);
+        //    var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+        //    return result;
+        //}
+
         #endregion     
 
         #region group crud
@@ -65,6 +105,36 @@ namespace CustomerAnalyticSystem.BLL.Services
             List<GroupBaseModel> result = map.MapFromGroupBaseDTOToGroupBaseModel(dto);
             return result;
         }
+
+        public void UpdateGroupById(int id, string name, string description)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.UpdateGroupById(id, name, description);
+        }
+
+        public void AddGroup(string name, string description)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.AddGroup(name, description);
+        }
+
+        public void DeleteGroupById(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteGroupById(id);
+        }
+
+        //public ProductBaseDTO GetGroupById(int id)
+        //{
+        //    MrMappi map = new();
+        //    var service = new ProductTagGroupRepository();
+        //    service.GeGroupById(id);
+        //    var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+        //    return result;
+        //}
 
         #endregion
 
@@ -125,6 +195,15 @@ namespace CustomerAnalyticSystem.BLL.Services
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
             service.DeleteProduct_TagByTagIdAndProductId(idP, idT);
+        }
+
+        public List<GroupsWithProductsModel> GetAllGroupsWithProducts()
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllGroupsWithProducts();
+            List<GroupsWithProductsModel> result = map.MapGroupsWithProducts(dto);
+            return result;
         }
     }
 }

@@ -25,9 +25,8 @@ namespace CustomerAnalyticSystem.UI
     {
         public Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
-
-
         private Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+
 
         public MainWindow()
         {
@@ -37,12 +36,9 @@ namespace CustomerAnalyticSystem.UI
             FillingComboBoxTags();
             FillingComboBoxGroups();
             FillingListViewProducts();
-
             customersDict = GetDictCustomerInfoModelWithId();
             FillingCustomerStackPanel(customersDict);
         }   
-
-        
 
         private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -74,14 +70,12 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonFastProductDelete_Click(object sender, RoutedEventArgs e)
         {
-            //это должно работать, если будет работать удаление
-            //ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
-            //int id = actual.Id;
-            //var products = new ProductTagGroupService();
-            //products.DeleteProductById(id);
-            //FillingListViewProducts();
+            ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
+            int id = actual.Id;
+            var products = new ProductTagGroupService();
+            products.DeleteProductById(id);
+            FillingListViewProducts();
         }
-
 
 
         #region filling
@@ -93,8 +87,9 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void FillingComboBoxTags()
+        public void FillingComboBoxTags()
         {
+            ComboBoxTags.Items.Clear();
             var tags = new ProductTagGroupService();
             var listTags = tags.GetAllTags();
             foreach (var t in listTags)
@@ -103,8 +98,9 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void FillingComboBoxGroups()
+        public void FillingComboBoxGroups()
         {
+            ComboBoxGroups.Items.Clear();
             var groups = new ProductTagGroupService();
             var listGroups = groups.GetAllGroups();
             foreach (var g in listGroups)
@@ -170,8 +166,9 @@ namespace CustomerAnalyticSystem.UI
             return customersDict;
         }
 
-        private void FillingDictGroups()
+        public void FillingDictGroups()
         {
+            GroupsIdAndGroups.Clear();
             var service = new ProductTagGroupService();
             var groupList = service.GetAllGroups();
             foreach (var g in groupList)
@@ -180,8 +177,9 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void FillingDictTags()
+        public void FillingDictTags()
         {
+            TagsIdAndTags.Clear();
             var service = new ProductTagGroupService();
             var tagList = service.GetAllTags();
             foreach (var t in tagList)
@@ -230,6 +228,16 @@ namespace CustomerAnalyticSystem.UI
             ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
             EditProductWindow editProductWindow = new EditProductWindow(this, product);
             editProductWindow.Show();
+        }
+        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+        {
+            EditTagsWindow editTagsWindow = new EditTagsWindow(this);
+            editTagsWindow.Show();
+        }
+        private void ButtonEditGroups_Click(object sender, RoutedEventArgs e)
+        {
+            EditGroupsWindow editGroupsWindow = new EditGroupsWindow(this);
+            editGroupsWindow.Show();
         }
 
         #endregion

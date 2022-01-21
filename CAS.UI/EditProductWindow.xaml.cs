@@ -24,7 +24,7 @@ namespace CustomerAnalyticSystem.UI
     public partial class EditProductWindow : Window
     {
         private MainWindow _mainWindow;
-        private ProductBaseModel _product;
+        private ProductBaseModel _product = null;
         public EditProductWindow(MainWindow mainWindow, ProductBaseModel product)
         {
             InitializeComponent();
@@ -34,57 +34,51 @@ namespace CustomerAnalyticSystem.UI
             FillingEditProductWindowComboBoxGroups();
             FillingComboBoxTagsForEdditProduct();
             FillingListViewTagsEditWndw();
-            FindGroupProduct(_product);
             TextBoxProductNameEditWndw.Text = product.Name;
             TextBoxProductDescriptionEditWndw.Text = product.Description;
-
         }
 
         private void FillingEditProductWindowComboBoxGroups()
         {
             var groups = new ProductTagGroupService();
             var listGroups = groups.GetAllGroups();
+            int i = 0;
             foreach (var g in listGroups)
             {
+                i++;
                 ComboBoxProductGroupEditWndw.Items.Add(g.Name);
-            }
-        }
-
-        private void FindGroupProduct(ProductBaseModel product)
-        {
-            int selected = 0;
-            int count = ComboBoxProductGroupEditWndw.Items.Count;
-            for (int i = 0; i <= (count - 1); i++)
-            {
-                ComboBoxProductGroupEditWndw.SelectedIndex = i;
-                if ((string)ComboBoxProductGroupEditWndw.SelectedValue == product.GroupName)
+                if (g.Name == _product.GroupName)
                 {
-                    selected = i;
+                    ComboBoxProductGroupEditWndw.SelectedIndex = i;
                 }
             }
-            ComboBoxProductGroupEditWndw.SelectedIndex = selected;
         }
 
         private void ButtonSaveChangesOfProductEditing_Click(object sender, RoutedEventArgs e)
         {
-            _product.Name = TextBoxProductNameEditWndw.Text;
-            _product.Description = TextBoxProductDescriptionEditWndw.Text;
-            _product.GroupName = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
-            string group = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
-            int id = -1;
-            _mainWindow.GroupsIdAndGroups.TryGetValue(group, out id);
-            ProductTagGroupService product = new ProductTagGroupService();
-            product.UpdateProductById(_product.Id, _product.Name, _product.Description, id);
-            _mainWindow.FillingListViewProducts();
-            this.Close();
+            if (TextBoxProductNameEditWndw.Text != String.Empty && ComboBoxProductGroupEditWndw.SelectedIndex != -1)
+            {
+                _product.Name = TextBoxProductNameEditWndw.Text;
+                _product.Description = TextBoxProductDescriptionEditWndw.Text;
+                _product.GroupName = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
+                string group = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
+                int id = _mainWindow.GroupsIdAndGroups[group];
+                ProductTagGroupService product = new ProductTagGroupService();
+                product.UpdateProductById(_product.Id, _product.Name, _product.Description, id);
+                _mainWindow.FillingListViewProducts();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Введите информацию о продукте");
+            }
         }
 
         private void FillingListViewTagsEditWndw()
         {
             ListViewTagsEditWndw.Items.Clear();
-            ProductBaseModel product = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
             var tags = new ProductTagGroupService();
-            var listTags = tags.GetAllTagsByProductId(product.Id);
+            var listTags = tags.GetAllTagsByProductId(_product.Id);
             foreach (var t in listTags)
             {
                 ListViewTagsEditWndw.Items.Add(t.Name);
@@ -93,15 +87,19 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonEditAddTag_Click(object sender, RoutedEventArgs e)
         {
-            ProductBaseModel product = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
-            var tags = new ProductTagGroupService();
-            int id = -1;
-            string tag = ComboBoxEditWindowTags.SelectedItem.ToString();
-            _mainWindow.TagsIdAndTags.TryGetValue(tag, out id);
-            tags.AddProductTag(product.Id, id);
-            FillingListViewTagsEditWndw();
+            if (ComboBoxEditWindowTags.SelectedIndex != -1)
+            {
+                var tags = new ProductTagGroupService();
+                string tag = ComboBoxEditWindowTags.SelectedItem.ToString();
+                int id = _mainWindow.TagsIdAndTags[tag];
+                tags.AddProductTag(_product.Id, id);
+                FillingListViewTagsEditWndw();
+            }
+            else
+            {
+                MessageBox.Show("Не выбран тэг для добавления");
+            }
         }
-
 
         private void FillingComboBoxTagsForEdditProduct()
         {
@@ -115,13 +113,18 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonEditDeleteTag_Click(object sender, RoutedEventArgs e)
         {
-            string tag = ListViewTagsEditWndw.SelectedItem.ToString();
-            int id = -1;
-            _mainWindow.TagsIdAndTags.TryGetValue(tag, out id);
-            ProductBaseModel product = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
-            var tag2 = new ProductTagGroupService();
-            tag2.DeleteProduct_TagByTagIdAndProductId(product.Id, id);
-            FillingListViewTagsEditWndw();          
+            if (ListViewTagsEditWndw.SelectedItem != null)
+            {
+                string tag = ListViewTagsEditWndw.SelectedItem.ToString();
+                int id = _mainWindow.TagsIdAndTags[tag];
+                var tag2 = new ProductTagGroupService();
+                tag2.DeleteProduct_TagByTagIdAndProductId(_product.Id, id);
+                FillingListViewTagsEditWndw();
+            }
+            else
+            {
+                MessageBox.Show("Не выбран тэг для удаления");
+            }
         }
     }
 }
