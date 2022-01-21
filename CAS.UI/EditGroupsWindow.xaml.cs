@@ -92,16 +92,18 @@ namespace CustomerAnalyticSystem.UI
                 if (_mainWindow.GroupsIdAndGroups.ContainsKey(TextBoxNewGroup.Text) == false)
                 {
                     int id = -1;
-                    _mainWindow.GroupsIdAndGroups.TryGetValue(ListViewEditGroupsWndw.SelectedItem.ToString(), out id);
+                    GroupBaseModel model = (GroupBaseModel)ListViewEditGroupsWndw.SelectedItem;
+                    _mainWindow.GroupsIdAndGroups.TryGetValue(model.Name, out id);
                     var group = new ProductTagGroupService();
                     group.UpdateGroupById(id, TextBoxEditGroup.Text, TextBoxDescription.Text);
                     _mainWindow.FillingDictGroups();
-                    //_mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
-                    //_mainWindow.GroupsIdAndGroups.Add(TextBoxEditGroup.Text, id);
                     _mainWindow.FillingComboBoxGroups();
                     FillingListViewEditGroupsWndw();
                     TextBoxEditGroup.Text = "";
                     TextBoxDescription.Text = "";
+
+                    //_mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
+                    //_mainWindow.GroupsIdAndGroups.Add(TextBoxEditGroup.Text, id);
                 }
                 else
                 {
