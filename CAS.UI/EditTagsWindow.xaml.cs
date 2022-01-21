@@ -54,7 +54,6 @@ namespace CustomerAnalyticSystem.UI
                     FillingListViewEditTagsWndw();
                     _mainWindow.FillingDictTags();
                     TextBoxNewTag.Text = "";
-
                 }
                 else
                 {
@@ -91,15 +90,21 @@ namespace CustomerAnalyticSystem.UI
             {
                 if (_mainWindow.TagsIdAndTags.ContainsKey(TextBoxNewTag.Text) == false)
                 {
-                    int id = -1;
-                    _mainWindow.TagsIdAndTags.TryGetValue(ListViewEditTagsWndw.SelectedItem.ToString(), out id);
-                    var tag = new ProductTagGroupService();
-                    tag.UpdateTagById(id, TextBoxEditTag.Text);
-                    _mainWindow.TagsIdAndTags.Remove(ListViewEditTagsWndw.SelectedItem.ToString());
-                    _mainWindow.TagsIdAndTags.Add(TextBoxEditTag.Text, id);
-                    _mainWindow.FillingComboBoxTags();
-                    FillingListViewEditTagsWndw();
-                    TextBoxEditTag.Text = "";
+                    if (TextBoxEditTag.Text != String.Empty)
+                    {
+                        int id = _mainWindow.TagsIdAndTags[ListViewEditTagsWndw.SelectedItem.ToString()];
+                        var tag = new ProductTagGroupService();
+                        tag.UpdateTagById(id, TextBoxEditTag.Text);
+                        _mainWindow.TagsIdAndTags.Remove(ListViewEditTagsWndw.SelectedItem.ToString());
+                        _mainWindow.TagsIdAndTags.Add(TextBoxEditTag.Text, id);
+                        _mainWindow.FillingComboBoxTags();
+                        FillingListViewEditTagsWndw();
+                        TextBoxEditTag.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введите наименование тэга для редактирования");
+                    }
                 }
                 else
                 {

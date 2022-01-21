@@ -33,11 +33,11 @@ namespace CustomerAnalyticSystem.UI
         private void FillingListViewEditGroupsWndw()
         {
             ListViewEditGroupsWndw.Items.Clear();
-            var Groups = new ProductTagGroupService();
-            var listGroups = Groups.GetAllGroups();
-            foreach (var t in listGroups)
+            var groups = new ProductTagGroupService();
+            var listGroups = groups.GetAllGroups();
+            foreach (var g in listGroups)
             {
-                ListViewEditGroupsWndw.Items.Add(t);
+                ListViewEditGroupsWndw.Items.Add(g);
             }
 
         }
@@ -91,19 +91,24 @@ namespace CustomerAnalyticSystem.UI
             {
                 if (_mainWindow.GroupsIdAndGroups.ContainsKey(TextBoxNewGroup.Text) == false)
                 {
-                    int id = -1;
-                    GroupBaseModel model = (GroupBaseModel)ListViewEditGroupsWndw.SelectedItem;
-                    _mainWindow.GroupsIdAndGroups.TryGetValue(model.Name, out id);
-                    var group = new ProductTagGroupService();
-                    group.UpdateGroupById(id, TextBoxEditGroup.Text, TextBoxDescription.Text);
-                    _mainWindow.FillingDictGroups();
-                    _mainWindow.FillingComboBoxGroups();
-                    FillingListViewEditGroupsWndw();
-                    TextBoxEditGroup.Text = "";
-                    TextBoxDescription.Text = "";
+                    if (TextBoxEditGroup.Text != String.Empty)
+                    {
+                        GroupBaseModel model = (GroupBaseModel)ListViewEditGroupsWndw.SelectedItem;
+                        int id = _mainWindow.GroupsIdAndGroups[model.Name];
+                        var group = new ProductTagGroupService();
+                        group.UpdateGroupById(id, TextBoxEditGroup.Text, TextBoxDescription.Text);
+                        _mainWindow.GroupsIdAndGroups.Remove(model.Name);
+                        _mainWindow.GroupsIdAndGroups.Add(TextBoxEditGroup.Text, id);
+                        _mainWindow.FillingComboBoxGroups();
+                        FillingListViewEditGroupsWndw();
+                        TextBoxEditGroup.Text = "";
+                        TextBoxDescription.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введите наименование группы для редактирования");
+                    }
 
-                    //_mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
-                    //_mainWindow.GroupsIdAndGroups.Add(TextBoxEditGroup.Text, id);
                 }
                 else
                 {

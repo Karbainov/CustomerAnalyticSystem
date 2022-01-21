@@ -27,6 +27,7 @@ namespace CustomerAnalyticSystem.UI
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
         private Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
 
+
         public MainWindow()
         {
             InitializeComponent();
