@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[DeletePreferenceById]
 	@Id integer
 as
-delete from dbo.[Preferences]
+update dbo.[Preferences]
+set IsDeleted = 1
 where Id=@Id

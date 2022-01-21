@@ -6,4 +6,5 @@
 	on PT.ProductId = P.Id and PT.TagId = @Id
 	inner join dbo.[Group] as G
 	on G.Id = P.GroupId
+	where P.IsDeleted = 0 and PT.IsDeleted = 0 and G.IsDeleted = 0
 RETURN 0
