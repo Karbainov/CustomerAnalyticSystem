@@ -24,14 +24,17 @@ namespace CAS.UI
     {
         private Dictionary<CustomerTypeModel, int> customerTypesWithId = new Dictionary<CustomerTypeModel, int>();
         private MainWindow _mainWindow;
+        private CustomerInfoModel _customer;
 
-        public EditClientWindow(MainWindow mainWindow)
+        public EditClientWindow(MainWindow mainWindow, CustomerInfoModel customer)
         {
             InitializeComponent();
             customerTypesWithId = GetAllDictCustomerTypeWithId();
             FillCustomerTypeComboBox(customerTypesWithId);
             _mainWindow = mainWindow;
             _mainWindow.IsEnabled = false;
+            _customer = customer;
+            FillCustomerInfo(_customer);
         }
 
         private Dictionary<CustomerTypeModel, int> GetAllDictCustomerTypeWithId()
@@ -53,6 +56,14 @@ namespace CAS.UI
             {
                 ComboBoxEditTypeOfClient.Items.Add(pair.Key.Name);
             }
+        }
+
+        private void FillCustomerInfo(CustomerInfoModel customer)
+        {
+            ComboBoxEditTypeOfClient.SelectedItem = _customer.Name;
+            TextBoxEditClientSurname.Text = customer.LastName;
+            TextBoxEditClientName.Text = customer.FirstName;
+
         }
     }
 }

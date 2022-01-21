@@ -57,7 +57,7 @@ namespace CAS.UI
 
         private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
-            EditClientWindow editClientWindow = new EditClientWindow(this);
+            EditClientWindow editClientWindow = new EditClientWindow(this, (CustomerInfoModel)ListViewClients.SelectedItem);
             editClientWindow.Show();
         }
     }
