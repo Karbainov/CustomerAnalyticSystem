@@ -70,12 +70,11 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonFastProductDelete_Click(object sender, RoutedEventArgs e)
         {
-            //это должно работать, если будет работать удаление
-            //ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
-            //int id = actual.Id;
-            //var products = new ProductTagGroupService();
-            //products.DeleteProductById(id);
-            //FillingListViewProducts();
+            ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
+            int id = actual.Id;
+            var products = new ProductTagGroupService();
+            products.DeleteProductById(id);
+            FillingListViewProducts();
         }
 
 

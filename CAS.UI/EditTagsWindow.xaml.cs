@@ -68,20 +68,19 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonDeleteTag_Click(object sender, RoutedEventArgs e)
         {
-            //if (ListViewEditTagsWndw.SelectedItem != null)
-            //{
-            //    это могло бы работать, но нет
-            //    int id = -1;
-            //    _mainWindow.TagsIdAndTags.TryGetValue(ListViewEditTagsWndw.SelectedItem.ToString(), out id);
-            //    var tag = new ProductTagGroupService();
-            //    tag.DeleteTagById(id);
-            //    _mainWindow.FillingComboBoxTags();
-            //    FillingListViewEditTagsWndw();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Выберите тэг для удаления");
-            //}
+            if (ListViewEditTagsWndw.SelectedItem != null)
+            {
+                int id = _mainWindow.TagsIdAndTags[ListViewEditTagsWndw.SelectedItem.ToString()];
+                var tag = new ProductTagGroupService();
+                tag.DeleteTagById(id);
+                _mainWindow.TagsIdAndTags.Remove(ListViewEditTagsWndw.SelectedItem.ToString());
+                _mainWindow.FillingComboBoxTags();
+                FillingListViewEditTagsWndw();       
+            }
+            else
+            {
+                MessageBox.Show("Выберите тэг для удаления");
+            }
         }
 
         private void ButtonEditTag_Click(object sender, RoutedEventArgs e)
