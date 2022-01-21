@@ -25,8 +25,6 @@ namespace CustomerAnalyticSystem.UI
     {
         public Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
-
-
         private Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
 
         public MainWindow()
@@ -37,12 +35,9 @@ namespace CustomerAnalyticSystem.UI
             FillingComboBoxTags();
             FillingComboBoxGroups();
             FillingListViewProducts();
-
             customersDict = GetDictCustomerInfoModelWithId();
             FillingCustomerStackPanel(customersDict);
         }   
-
-        
 
         private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -83,7 +78,6 @@ namespace CustomerAnalyticSystem.UI
         }
 
 
-
         #region filling
         private void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
         {
@@ -93,8 +87,9 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void FillingComboBoxTags()
+        public void FillingComboBoxTags()
         {
+            ComboBoxTags.Items.Clear();
             var tags = new ProductTagGroupService();
             var listTags = tags.GetAllTags();
             foreach (var t in listTags)
@@ -105,6 +100,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillingComboBoxGroups()
         {
+            ComboBoxGroups.Items.Clear();
             var groups = new ProductTagGroupService();
             var listGroups = groups.GetAllGroups();
             foreach (var g in listGroups)
@@ -170,7 +166,7 @@ namespace CustomerAnalyticSystem.UI
             return customersDict;
         }
 
-        private void FillingDictGroups()
+        public void FillingDictGroups()
         {
             var service = new ProductTagGroupService();
             var groupList = service.GetAllGroups();
@@ -180,7 +176,7 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void FillingDictTags()
+        public void FillingDictTags()
         {
             var service = new ProductTagGroupService();
             var tagList = service.GetAllTags();
@@ -231,7 +227,13 @@ namespace CustomerAnalyticSystem.UI
             EditProductWindow editProductWindow = new EditProductWindow(this, product);
             editProductWindow.Show();
         }
+        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+        {
+            EditTagsWindow editTagsWindow = new EditTagsWindow(this);
+            editTagsWindow.Show();
+        }
 
         #endregion
+
     }
 }
