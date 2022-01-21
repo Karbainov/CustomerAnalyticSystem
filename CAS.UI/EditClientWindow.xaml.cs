@@ -152,14 +152,19 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonAddContactEditClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            ContactTypeContactService contactService = new ContactTypeContactService();
-            ContactBaseModel model = new ContactBaseModel()
+            if (TextBoxContact.Text != "" && ComboBoxContactType.SelectedIndex > -1)
             {
-                CustomerId = _customer.Id,
-                ContactTypeId = ((ContactTypeModel)ComboBoxContactType.SelectedItem).Id,
-                Value = TextBoxContact.Text
-            };
-            contactService.AddContact(model);
+                ContactTypeContactService contactService = new ContactTypeContactService();
+                ContactBaseModel model = new ContactBaseModel()
+                {
+                    CustomerId = _customer.Id,
+                    ContactTypeId = ComboBoxContactType.SelectedItem.Key,
+                    Value = TextBoxContact.Text
+                };
+                contactService.AddContact(model);
+                FillDictContactModelWitId();
+                FillListViewContactContactType(contactModelWitId);
+            }
         }
     }
 }
