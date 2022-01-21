@@ -177,6 +177,10 @@
     <Build Include="dbo\Stored Procedures\CRUD\Preferences\UpdatePreferenceById.sql" />
     <Build Include="dbo\Stored Procedures\GetCustomersWithPreferenceByProductId.sql" />
     <Build Include="dbo\Stored Procedures\GetNumberOfTagsInOrderByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllProductsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllProductsWithGroups.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GetAllTagsByProductId.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteProduct_TagByTagIdAndProductId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCustomerWithContactAndContactType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllSortedComments.sql" />
   </ItemGroup>

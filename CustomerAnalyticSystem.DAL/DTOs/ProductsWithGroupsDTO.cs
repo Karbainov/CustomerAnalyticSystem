@@ -4,16 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomerAnalyticSystem.BLL.Models
+namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    public class TagModel
+    public class ProductsWithGroupsDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Name}";
-        }
+        public string Description { get; set; }
+        public string GroupName { get; set; }
     }
 }

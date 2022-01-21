@@ -108,7 +108,23 @@
                     <ComboBox HorizontalAlignment="Left" Margin="20,43,0,0" VerticalAlignment="Top" Width="716" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="TabItem" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="54">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="215,121,0,0" VerticalAlignment="Top"/>
+                    <ListView x:Name="ListViewProducts" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0" Margin="5,10,5,193">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Группа" Width="202" DisplayMemberBinding="{Binding GroupId}"/>
+                                <GridViewColumn Header="Наименование" Width="202" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Описание товара" Width="202" DisplayMemberBinding="{Binding Description}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ComboBox x:Name="ComboBoxTags" HorizontalAlignment="Left" Margin="244,277,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxTags_SelectionChanged"/>
+                </Grid>
+            </TabItem>
         </TabControl>
+        
 
     </Grid>
 
