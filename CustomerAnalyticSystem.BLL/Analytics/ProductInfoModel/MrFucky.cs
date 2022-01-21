@@ -14,7 +14,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         private StackModel Info;
 
         //словарь рекомендаций
-        public Dictionary<int,ItemToRecommend> Products { get; set; }
+        public Dictionary<int,ItemToRecommend> Products { get; set; }//+
         public Dictionary<int, ItemToRecommend> Groups { get; set; }
         public Dictionary<int, ItemToRecommend> Tags { get; set; }
 
@@ -46,7 +46,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         });
 
         #region fill sht
-        public void FillProducts()
+        public void FillProducts()// все продукты
         {
             foreach(var product in Info.Products)
             {
@@ -58,7 +58,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 }
             }
         }
-        public void FillGroups()
+        public void FillGroups()//все группы
         {
             foreach(var group in Info.Groups)
             {
@@ -72,7 +72,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             }
         }
 
-        public void FillTags()
+        public void FillTags()//заполняет все теги
         {
             foreach (var tag in Info.Tags)
             {
@@ -87,7 +87,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         #endregion
 
         #region связка продуктов
-        public void GetListOfAllTagsInProduct() 
+        public void GetListOfAllTagsInProduct() //связывает теги в группы
         {
             TagsByProductId = new();
             foreach(var c in Info.Product_Tag)
@@ -100,7 +100,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             }
         }
 
-        public void GetListOfAllGroupsInProduct()
+        public void GetListOfAllGroupsInProduct()//связывает продукты в группы
         {
             GroupsByProductId = new();
             foreach (var product in Info.Products)
@@ -113,7 +113,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             }
         }
 
-        public void PutAllCheckByOrders()
+        public void PutAllCheckByOrders()// связывает все чеки с ордерами
         {
             ChecksInOrder = new();
             foreach (var check in Info.Checks)
@@ -125,7 +125,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 ChecksInOrder[check.OrderId].Add(check.Id);
             }
         }
-        public void BoundCheckProduct()
+        public void BoundCheckProduct()// связывает айди чека с айдипродукта
         {
             CheckProduct = new();
             foreach(var check in Info.Checks)
@@ -135,7 +135,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
         #endregion
 
-        private bool IsContains(int id, int prodId)
+        private bool IsContains(int id, int prodId)//проверка на появление продукта в заказе (по чеку)
         {
             List<int> oneOrder;
 
@@ -153,7 +153,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             }
             return false;
         }
-        public void FindAllBestsellers()
+        public void FindAllBestsellers()//количество появления продукта в каждом заказе
         {
             BoundCheckProduct();
 
