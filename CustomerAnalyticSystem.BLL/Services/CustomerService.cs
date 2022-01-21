@@ -35,5 +35,11 @@ namespace CustomerAnalyticSystem.BLL
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             rep.UpdateCustomerById(customer.Id, customer.FirstName, customer.LastName, customer.TypeId);
         }
+
+        public void DeleteCustomerById(int id)
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            rep.DeleteCustomerById(id);
+        }
     }
 }

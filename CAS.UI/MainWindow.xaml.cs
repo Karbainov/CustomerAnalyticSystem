@@ -64,5 +64,16 @@ namespace CAS.UI
                 editClientWindow.Show();
             }
         }
+
+        private void ButtonFastClientDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClients.SelectedIndex > -1)
+            {
+                CustomerService serve = new CustomerService();
+                serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
+                customersDict = GetDictCustomerInfoModelWithId();
+                FillCustomerStackPanel(customersDict);
+            }
+        }
     }
 }
