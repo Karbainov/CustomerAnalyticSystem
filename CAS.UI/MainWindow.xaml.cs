@@ -192,12 +192,6 @@ namespace CustomerAnalyticSystem.UI
 
         #region Open pop-up wndws
 
-        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
-        {
-            EditClientWindow editClientWindow = new EditClientWindow(this);
-            editClientWindow.Show();
-        }
-
         private void ButtonOpenAddOrderWndw_Click(object sender, RoutedEventArgs e)
         {
             AddOrderWindow addOrderWindow = new AddOrderWindow(this);
@@ -258,7 +252,7 @@ namespace CustomerAnalyticSystem.UI
                 CustomerService serve = new CustomerService();
                 serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
                 customersDict = GetDictCustomerInfoModelWithId();
-                FillCustomerStackPanel(customersDict);
+                FillingCustomerStackPanel(customersDict);
             }
         }
     }
