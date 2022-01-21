@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerAnalyticSystem.UI"
         mc:Ignorable="d"
-        Title="EditTagsWindow" Height="316" Width="495">
+        Title="Редактор тэгов" Height="300" Width="300">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64*"/>            
+            <RowDefinition Height="139*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="ListViewEditTagsWndw" d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="BorderBrush" Value="LightGray" />
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Тэги" Width="300"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="TextBoxNewTag" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="100" Grid.Column="0" Height="20" Margin="0,0,0,20"/>
+            <Button x:Name="ButtonAddTag" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="ButtonAddTag_Click" Margin="0,0,0,7" Width="90" Height="20"/>
+            <TextBox x:Name="TextBoxEditTag" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Width="100" Grid.Column="1" GotFocus="TextBoxEditTag_GotFocus" Height="20" Margin="0,0,0,20"/>
+            <Button x:Name="ButtonEditTag" Content="Редактировать" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Click="ButtonEditTag_Click" Grid.Column="1" Margin="0,0,0,7" Width="90"/>
+
+        </Grid>
+        <Button x:Name="ButtonDeleteTag" Content="Удалить" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="ButtonDeleteTag_Click"  Width="90" Height="20" Grid.Row="3"/>
+    </Grid>
+
+
+    <!--<Grid>
         <Label Content="Добавить новый тэг" HorizontalAlignment="Left" Margin="4,164,0,0" VerticalAlignment="Top"/>
         <ListView x:Name="ListViewEditTagsWndw" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,247,141">
             <ListView.View>
@@ -23,5 +59,5 @@
         <TextBox x:Name="TextBoxEditTag" HorizontalAlignment="Left" Margin="314,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" GotFocus="TextBoxEditTag_GotFocus"/>
         <Button x:Name="ButtonEditTag" Content="Редактировать" HorizontalAlignment="Left" Margin="359,150,0,0" VerticalAlignment="Top" Click="ButtonEditTag_Click"/>
 
-    </Grid>
+    </Grid>-->
 </Window>
