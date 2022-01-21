@@ -122,7 +122,7 @@ namespace CAS.UI
             var tag2 = new ProductTagGroupService();
             tag2.DeleteProduct_TagByTagIdAndProductId(product.Id, id);
             FillingListViewTagsEditWndw();
-
+            
         }
     }
 }

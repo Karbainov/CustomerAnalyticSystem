@@ -305,7 +305,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query(Queries.DeleteProduct_TagByTagIdAndProductId, new { idP, idT }
+                connection.Query(Queries.DeleteProduct_TagByTagIdAndProductId, new { IdProduct = idP, Id = idT }
                 , commandType: CommandType.StoredProcedure);
             }
         }
