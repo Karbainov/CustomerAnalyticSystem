@@ -30,10 +30,16 @@ namespace CustomerAnalyticSystem.BLL
             return map.MapListCustomerDTOToListCustomerModel(customers);
         }
 
-        public void UpdateCustomer(int id, string firstName, string lastName, int TypeId = 1)
+        public void UpdateCustomer(CustomerInfoModel customer)
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-            rep.UpdateCustomerById(id, firstName, lastName, TypeId);
+            rep.UpdateCustomerById(customer.Id, customer.FirstName, customer.LastName, customer.TypeId);
+        }
+
+        public void DeleteCustomerById(int id)
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            rep.DeleteCustomerById(id);
         }
     }
 }

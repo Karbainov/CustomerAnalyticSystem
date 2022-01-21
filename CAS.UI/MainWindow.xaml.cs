@@ -233,5 +233,25 @@ namespace CustomerAnalyticSystem.UI
         }
 
         #endregion
+
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClients.SelectedIndex > -1)
+            {
+                EditClientWindow editClientWindow = new EditClientWindow(this, (CustomerInfoModel)ListViewClients.SelectedItem);
+                editClientWindow.Show();
+            }
+        }
+
+        private void ButtonFastClientDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClients.SelectedIndex > -1)
+            {
+                CustomerService serve = new CustomerService();
+                serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
+                customersDict = GetDictCustomerInfoModelWithId();
+                FillCustomerStackPanel(customersDict);
+            }
+        }
     }
 }
