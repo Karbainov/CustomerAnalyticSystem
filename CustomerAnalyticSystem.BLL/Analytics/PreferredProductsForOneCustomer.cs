@@ -14,76 +14,105 @@ namespace CustomerAnalyticSystem.BLL.Analytics
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Description { get; set; }
-        public PreferencesByCustomerIdModel Preferences { get; set; }
+        private PreferencesByCustomerIdModel Preferences { get; set; }
         public List <GradePrefModel> TrueMarkForProduct { get; set; }
         public List <GradePrefModel> TrueMarkForTag { get; set; }
+        public List <GroupPrefModel> GroupPreferences { get; set; }
 
         // public List<TagPrefModel> Tags - ТЕГИПРЕФЫ
         // public List<CustomerTagGradesModel> TagGrades ТЕГИОЦЕНКИ
 
+        enum ProductTag
+        {
+            Product = 1,
+            Tag = 2
+        }
         public PreferredProductsForOneCustomer(PreferencesByCustomerIdModel preferences)
         {
             CustomerId = preferences.Id;
             FirstName = preferences.FirstName;
             LastName = preferences.LastName;
             Preferences = preferences;
+            GroupPreferences = preferences.Groups;
         }
 
         public void CheckProductMark ()
         {
-            MapperConfiguration config = new MapperConfiguration(cfg =>
+            MapperConfiguration configProduct = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<ProductPrefModel, GradePrefModel>();
+               
             });
             Dictionary<int, GradePrefModel> products = new();
-            foreach(var c in Preferences.CustomerGrades)
-            {
-                products.Add(c.Id, c);
-            }
             foreach(var c in Preferences.Products)
             {
-                var temp = new Mapper(config).Map<ProductPrefModel, GradePrefModel>(c);
-                if (products.ContainsKey(c.Id) == true)
+                var temp = new Mapper(configProduct).Map<ProductPrefModel, GradePrefModel>(c);
+                if (c.IsInterested == false)
                 {
-                    products.Add(temp.Id, temp);
-                    if (c.IsInterested == true)
-                        temp.Value = 11;
-                    else
-                        temp.Value = -1;
+                    temp.Value = -1;
                 }
                 else
+                    temp.Value = 11;
+                products.Add(temp.Id, temp);
+            }
+            foreach (var c in Preferences.CustomerGrades)
+            {
+                if (products.ContainsKey(c.Id) == false)
                 {
-                    products.Add(temp.Id, temp);
+                    c.Value = GetWeightedAverageMark(Preferences.CustomerGrades, c.Id, ProductTag.Product);
+                    products.Add(c.Id, c);
                 }
             }
             TrueMarkForProduct = products.Values.ToList();
         }
+
         // public List<TagPrefModel> Tags - ТЕГИПРЕФЫ
         // public List<CustomerTagGradesModel> TagGrades ТЕГИОЦЕНКИ
 
-        private int GetWeightedAverageMark(List <CustomerTagGradesModel> allMarks, int id)
+        private int GetWeightedAverageMark(object allMarksList, int id, ProductTag productOrTag)
         {
             int i = 0;
-            List<int> allTagGrades = new();
-            while (i < allMarks.Count)
+            List<int> allGrades = new();
+            if(productOrTag is ProductTag.Tag)
             {
-                if (allMarks[i].Id == id)
+                List<CustomerTagGradesModel> allMarks = (List<CustomerTagGradesModel>)allMarksList;
+                while (i < allMarks.Count)
                 {
-                    if (allMarks[i].Mark > 10)
-                        allMarks[i].Mark = 10;
-                    if (allMarks[i].Mark < 0)
-                        allMarks[i].Mark = 0;
-                    allTagGrades.Add(allMarks[i].Mark);
+                    if (allMarks[i].Id == id)
+                    {
+                        if (allMarks[i].Mark > 10)
+                            allMarks[i].Mark = 10;
+                        if (allMarks[i].Mark < 0)
+                            allMarks[i].Mark = 0;
+                        allGrades.Add(allMarks[i].Mark);
+                    }
+                    i++;
                 }
-                i++;
             }
-            if (allTagGrades.Count == 2)
-                return (allTagGrades[0] + allTagGrades[1]) / 2;
-            else if (allTagGrades.Count == 1)
-                return allTagGrades[0];
-            return allTagGrades[allTagGrades.Count / 2];
+            else
+            {
+                List<GradePrefModel> allMarks = (List<GradePrefModel>)allMarksList;
+                while (i < allMarks.Count)
+                {
+                    if (allMarks[i].Id == id)
+                    {
+                        if (allMarks[i].Value > 10)
+                            allMarks[i].Value = 10;
+                        if (allMarks[i].Value < 0)
+                            allMarks[i].Value = 0;
+                        allGrades.Add(allMarks[i].Value);
+                    }
+                    i++;
+                }
+            }
+            if (allGrades.Count == 2)
+                return (allGrades[0] + allGrades[1]) / 2;
+            else if (allGrades.Count == 1)
+                return allGrades[0];
+            return allGrades[allGrades.Count / 2];
         }
+
+
         public MapperConfiguration configTagPrefModel = new MapperConfiguration(cfg =>
         {
             cfg.CreateMap<TagPrefModel, GradePrefModel>();
@@ -91,6 +120,8 @@ namespace CustomerAnalyticSystem.BLL.Analytics
         public MapperConfiguration configCustomerTagGradesModel = new MapperConfiguration(cfg =>
             cfg.CreateMap<CustomerTagGradesModel, GradePrefModel>().ForMember(dest => dest.Value, act => act.MapFrom(src => src.Mark))
         );
+
+
         public void CheckForTag()
         {
             TrueMarkForTag = new();
@@ -109,7 +140,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics
             {
                 if (tages.ContainsKey(c.Id) == false)
                 {
-                    c.Mark = GetWeightedAverageMark(Preferences.TagGrades, c.Id);
+                    c.Mark = GetWeightedAverageMark(Preferences.TagGrades, c.Id, ProductTag.Tag);
                 }
                 var temp = new Mapper(configCustomerTagGradesModel).Map<CustomerTagGradesModel, GradePrefModel>(c);
                 if (tages.ContainsKey(temp.Id) == false)

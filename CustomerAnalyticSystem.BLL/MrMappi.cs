@@ -53,8 +53,6 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductBaseDTO>, List<ProductBaseModel>>(dto);
         }
     
-    }
-
         public PreferencesByCustomerIdModel MapFromPreferences (AllPreferencesAndGradeInfoByCustomerIdDTO dto)
         {
             var config = new MapperConfigs();
@@ -63,4 +61,5 @@ namespace CustomerAnalyticSystem.BLL
             return qwe;
         }
     }
-}
+
+    }

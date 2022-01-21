@@ -89,10 +89,8 @@ namespace CustomerAnalyticSystem.BLL.Configs
             cfg.CreateMap<GroupForPrefDTO, GroupPrefModel>();
             cfg.CreateMap<TagForPrefDTO, TagPrefModel>();
             cfg.CreateMap<ProductForPrefDTO, ProductPrefModel>();
-            cfg.CreateMap<GradeInfoByCustomerIdDTO, GradePrefModel>();
+            cfg.CreateMap<GradeInfoByCustomerIdDTO, GradePrefModel>().ForMember(dest => dest.Id, act => act.MapFrom(src => src.ProductId));
             cfg.CreateMap<GradeInfoByCustomerIdForTagsDTO, CustomerTagGradesModel>();
-            //cfg.CreateMap<AbstractPreferenceDTO, PreferencesBaseAbstractModel>()
-            //.Include<GroupForPrefDTO, PreferencesBaseAbstractModel>();
         }
         );
     }
