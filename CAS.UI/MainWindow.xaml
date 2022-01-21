@@ -61,10 +61,10 @@
                         <ListView x:Name="ListViewClients" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="115" Header="ID клиента"/>
-                                    <GridViewColumn Width="115" Header="Тип клиента"/>
-                                    <GridViewColumn Width="115" Header="Фамилия"/>
-                                    <GridViewColumn Width="115" Header="Имя"/>
+                                    <GridViewColumn Width="115" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Width="115" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="115" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="115" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                                     <GridViewColumn Width="115" Header="Номер телефона"/>
                                     <GridViewColumn Width="115" Header ="e-mail"/>
                                     <GridViewColumn Width="115" Header="Комментарий"/>

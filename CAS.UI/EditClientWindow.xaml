@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CAS.UI"
         mc:Ignorable="d"
-        Title="Редактор карты клиента" Height="419" Width="379">
+        Title="Редактор карты клиента" Height="419" Width="379" Closing="Window_Close" Closed="Window_Close">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="187*"/>
@@ -55,7 +55,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonSaveChangesOfEditingClient" Content="Сохранить изменения" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
+            <Button x:Name="ButtonSaveChangesOfEditingClient" Content="Сохранить изменения" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30" Click="ButtonSaveChangesOfEditingClient_Click"/>
             <Button x:Name="ButtonDeleteClient" Content="Удалить карту клиента" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
         </Grid>
 

@@ -60,10 +60,43 @@ namespace CAS.UI
 
         private void FillCustomerInfo(CustomerInfoModel customer)
         {
-            ComboBoxEditTypeOfClient.SelectedItem = _customer.Name;
-            TextBoxEditClientSurname.Text = customer.LastName;
-            TextBoxEditClientName.Text = customer.FirstName;
+                ComboBoxEditTypeOfClient.SelectedItem = customer.Name;
+                TextBoxEditClientSurname.Text = customer.LastName;
+                TextBoxEditClientName.Text = customer.FirstName;
+        }
 
+        // пока не понимаю как обновить комментарии и контакты
+        private void ButtonSaveChangesOfEditingClient_Click(object sender, RoutedEventArgs e)
+        {
+            int typeId = 0;
+            foreach (KeyValuePair<CustomerTypeModel, int> pair in customerTypesWithId)
+            {
+                if (pair.Key.Name == ComboBoxEditTypeOfClient.Text)
+                {
+                    typeId = pair.Key.Id;
+                }
+            }
+
+            var customer = new CustomerInfoModel()
+            {
+                Id = _customer.Id,
+                FirstName = TextBoxEditClientName.Text,
+                LastName = TextBoxEditClientSurname.Text,
+                TypeId = typeId,
+                Name = ComboBoxEditTypeOfClient.Text,
+            };
+
+            CustomerService serve = new CustomerService();
+            serve.UpdateCustomer(customer);
+            this.Close();
+            _mainWindow.customersDict = _mainWindow.GetDictCustomerInfoModelWithId();
+            _mainWindow.FillCustomerStackPanel(_mainWindow.customersDict);
+            _mainWindow.IsEnabled = true;
+        }
+
+        private void Window_Close(object sender, EventArgs e)
+        {
+            _mainWindow.IsEnabled = true;
         }
     }
 }

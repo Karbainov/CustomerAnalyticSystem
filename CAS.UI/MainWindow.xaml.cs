@@ -23,7 +23,7 @@ namespace CAS.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+        public Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
 
         public MainWindow()
         {
@@ -33,7 +33,7 @@ namespace CAS.UI
             FillCustomerStackPanel(customersDict);
         }
 
-        private Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
+        public Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
         {
             CustomerService customerService = new CustomerService();
             List<CustomerInfoModel> customers = customerService.GetAllCustomerInfoModels();
@@ -47,8 +47,9 @@ namespace CAS.UI
             return customersDict;
         }
 
-        private void FillCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        public void FillCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
         {
+            ListViewClients.Items.Clear();
             foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
             {
                 ListViewClients.Items.Add(pair.Value);
@@ -57,8 +58,11 @@ namespace CAS.UI
 
         private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
-            EditClientWindow editClientWindow = new EditClientWindow(this, (CustomerInfoModel)ListViewClients.SelectedItem);
-            editClientWindow.Show();
+            if (ListViewClients.SelectedIndex > -1)
+            {
+                EditClientWindow editClientWindow = new EditClientWindow(this, (CustomerInfoModel)ListViewClients.SelectedItem);
+                editClientWindow.Show();
+            }
         }
     }
 }
