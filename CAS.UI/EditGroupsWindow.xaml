@@ -14,7 +14,7 @@
             <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="ListViewEditTagsWndw" d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="2" >
+        <ListView x:Name="ListViewEditGroupsWndw" d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="2" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
