@@ -28,8 +28,6 @@ namespace CustomerAnalyticSystem.BLL.Analytics
             FirstName = preferences.FirstName;
             LastName = preferences.LastName;
             Preferences = preferences;
-            //TrueMarkForTag = preferences.TagGrades;
-            //TrueMark = new;
         }
 
         public void CheckProductMark ()
@@ -49,7 +47,10 @@ namespace CustomerAnalyticSystem.BLL.Analytics
                 if (products.ContainsKey(c.Id) == true)
                 {
                     products.Add(temp.Id, temp);
-                    products[temp.Id].Value = 11;
+                    if (c.IsInterested == true)
+                        temp.Value = 11;
+                    else
+                        temp.Value = -1;
                 }
                 else
                 {
