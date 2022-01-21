@@ -57,6 +57,20 @@ namespace CustomerAnalyticSystem.BLL
             var config = new MapperConfigs();
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductBaseDTO>, List<ProductBaseModel>>(dto);
         }
+
+        public List<ContactTypeModel> MapFromContactTypeDTOToContactTypeModel(List<ContactTypeDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromContactTypeDTOToContactTypeModel)
+                .Map<List<ContactTypeDTO>, List<ContactTypeModel>>(dto);
+        }
+
+        public List<ContactModel> MapFromContactWithContactTypeNameDTOToContactModel(List<ContactWithContactTypeNameDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfContactWithContactTypeDTOToContactModel)
+                .Map<List<ContactWithContactTypeNameDTO>, List<ContactModel>>(dto);
+        }
     
     }
 

@@ -38,6 +38,20 @@ namespace CustomerAnalyticSystem.BLL.Configs
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
            });
 
+        public MapperConfiguration ConfContactWithContactTypeDTOToContactModel { get; private set; } = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<ContactWithContactTypeNameDTO, ContactModel>()
+                .ForMember(dest => dest.Name, act => act.MapFrom(src => src.ContactTypeName));
+            });
+        
+
+        public MapperConfiguration ConfFromContactTypeDTOToContactTypeModel { get; private set; } = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<ContactTypeDTO, ContactTypeModel>();
+            });
+
         public MapperConfiguration ConfFromCustomerTypeDTOToCustomerTypeModel = new MapperConfiguration(
                 conf =>
                 {

@@ -52,7 +52,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="0">
+            <ListView x:Name="ListViewContactContactType" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="0">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -104,7 +104,7 @@
             <Button x:Name="ButtonDeleteContactEditClientWndw" Content="Удалить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="85,0,0,0" Width="70"/>
             <Button x:Name="ButtonAddCommentEditClientWndw" Content="Добавить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Margin="0,0,85,0" Width="70"/>
             <Button x:Name="ButtonDeleteCommentEditClientWndw" Content="Удалить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Margin="85,0,0,0" Width="70"/>
-            <ComboBox HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Width="60" Margin="32,0,0,0" Height="20"/>
+            <ComboBox x:Name="ComboBoxContactType" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Width="60" Margin="32,0,0,0" Height="20" ItemsSource="{Binding contactTypesWithId}" DisplayMemberPath="Value"/>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>

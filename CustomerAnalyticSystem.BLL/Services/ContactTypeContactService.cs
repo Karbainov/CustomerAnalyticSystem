@@ -11,6 +11,15 @@ namespace CustomerAnalyticSystem.BLL.Services
 {
     public class ContactTypeContactService
     {
+
+        public List<ContactTypeModel> GetAllContactTypeModel()
+        {
+            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            List<ContactTypeDTO> DTO = rep.GetAllContactType();
+            MrMappi map = new MrMappi();
+            return map.MapFromContactTypeDTOToContactTypeModel(DTO);
+        }
+
         public void UpdateContact (int id, int customerId, int contactTypeId, string value)
         {
             ContactTypeContactRepository rep = new ContactTypeContactRepository();
@@ -33,6 +42,15 @@ namespace CustomerAnalyticSystem.BLL.Services
         {
             ContactTypeContactRepository rep = new ContactTypeContactRepository();
             rep.DeleteContactType(id);
+        }
+
+        public List<ContactModel> GetAllContactModelByCustomerId(int id)
+        {
+            List<ContactModel> contacts = new List<ContactModel>();
+            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            var DTOs = rep.GetAllContactWithContactTypeByCustomerId(id);
+            MrMappi map = new MrMappi();
+            return map.MapFromContactWithContactTypeNameDTOToContactModel(DTOs);
         }
     }
 }

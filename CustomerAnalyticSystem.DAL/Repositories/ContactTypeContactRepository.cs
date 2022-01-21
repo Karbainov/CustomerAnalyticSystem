@@ -105,5 +105,15 @@ namespace CustomerAnalyticSystem.DAL
                 connection.QuerySingle<ContactTypeDTO>(Queries.UpdateContactType, new { id, Name }, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public List<ContactWithContactTypeNameDTO> GetAllContactWithContactTypeByCustomerId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<ContactWithContactTypeNameDTO>(Queries.GetAllContactWithContactTypeByCustomerId
+                    , new { id }
+                    , commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
     }
 }

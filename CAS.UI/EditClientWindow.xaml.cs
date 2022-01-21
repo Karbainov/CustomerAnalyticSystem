@@ -22,6 +22,8 @@ namespace CustomerAnalyticSystem.UI
     /// </summary>
     public partial class EditClientWindow : Window
     {
+        public Dictionary<int, ContactTypeModel> contactTypesWithId = new Dictionary<int, ContactTypeModel>();
+        Dictionary<int, ContactModel> contactModelWitId = new Dictionary<int, ContactModel>();
         private Dictionary<CustomerTypeModel, int> customerTypesWithId = new Dictionary<CustomerTypeModel, int>();
         private MainWindow _mainWindow;
         private CustomerInfoModel _customer;
@@ -29,12 +31,16 @@ namespace CustomerAnalyticSystem.UI
         public EditClientWindow(MainWindow mainWindow, CustomerInfoModel customer)
         {
             InitializeComponent();
-            customerTypesWithId = GetAllDictCustomerTypeWithId();
-            FillCustomerTypeComboBox(customerTypesWithId);
             _mainWindow = mainWindow;
             _mainWindow.IsEnabled = false;
             _customer = customer;
+            customerTypesWithId = GetAllDictCustomerTypeWithId();
+            FillDictContactModelWitId();
+            FillCustomerTypeComboBox(customerTypesWithId);
+            FillComboBoxContactType(contactTypesWithId);
+            FillListViewContactContactType(contactModelWitId);
             FillCustomerInfo(_customer);
+            GetAllDictContactType();
         }
 
         private Dictionary<CustomerTypeModel, int> GetAllDictCustomerTypeWithId()
@@ -48,6 +54,27 @@ namespace CustomerAnalyticSystem.UI
                 customerTypesAndId.Add(customerTypeModel, customerTypeModel.Id);
             }
             return customerTypesAndId;
+        }
+
+        private void GetAllDictContactType()
+        {
+            ContactTypeContactService serve = new ContactTypeContactService();
+            List<ContactTypeModel> contactTypes = serve.GetAllContactTypeModel();
+
+            foreach(ContactTypeModel contactType in contactTypes)
+            {
+                contactTypesWithId.Add(contactType.Id, contactType);
+            }
+        }
+
+        private void FillComboBoxContactType(Dictionary<int, ContactTypeModel> dict)
+        {
+            ComboBoxContactType.Items.Clear();
+
+            foreach (KeyValuePair<int, ContactTypeModel> pair in dict)
+            {
+                ComboBoxContactType.Items.Add(pair);
+            }
         }
 
         private void FillCustomerTypeComboBox(Dictionary<CustomerTypeModel, int> dict)
@@ -64,6 +91,29 @@ namespace CustomerAnalyticSystem.UI
                 TextBoxEditClientSurname.Text = customer.LastName;
                 TextBoxEditClientName.Text = customer.FirstName;
         }
+
+        //GetAllContactModelByCustomerId
+        //ListViewContactContactType
+
+        private void FillDictContactModelWitId()
+        {
+            ContactTypeContactService serve = new ContactTypeContactService();
+            List<ContactModel> contactModels = serve.GetAllContactModelByCustomerId(_customer.Id);
+
+            foreach(ContactModel model in contactModels)
+            {
+                contactModelWitId.Add(model.Id, model);
+            }
+        }
+
+        private void FillListViewContactContactType(Dictionary<int, ContactModel> dict)
+        {
+            foreach (KeyValuePair<int, ContactModel> pair in dict)
+            {
+                ListViewContactContactType.Items.Add(pair);
+            }
+        }
+
 
         // пока не понимаю как обновить комментарии и контакты
         private void ButtonSaveChangesOfEditingClient_Click(object sender, RoutedEventArgs e)
