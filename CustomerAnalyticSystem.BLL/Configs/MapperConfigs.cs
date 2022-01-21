@@ -14,19 +14,37 @@ namespace CustomerAnalyticSystem.BLL.Configs
     public class MapperConfigs
     {
 
+        public MapperConfiguration ConfFromCustomerInfoDTOToCustomerinfoModel = new MapperConfiguration(
+            conf =>
+            {
+                 conf.CreateMap<CustomerInfoDTO, CustomerInfoModel>();
+                 conf.CreateMap<ContactWithContactTypeNameDTO, ContactModel>()
+                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, act => act.MapFrom(src => src.ContactTypeName))
+                .ForMember(dest => dest.Value, act => act.MapFrom(src => src.Value));
+                 conf.CreateMap<CommentDTO, CommentModel>()
+                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
+            });
+
         public MapperConfiguration ConfFromCustomerInfoDTOToCustomerModel = new MapperConfiguration(
            conf =>
            {
-               conf.CreateMap<CustomerInfoDTO, CustomerModel>();
+               conf.CreateMap<CustomerInfoDTO, CustomerInfoModel>();
                conf.CreateMap<ContactWithContactTypeNameDTO, ContactModel>()
                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
-               .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
+               .ForMember(dest => dest.Name, act => act.MapFrom(src => src.ContactTypeName))
                .ForMember(dest => dest.Value, act => act.MapFrom(src => src.Value));
                conf.CreateMap<CommentDTO, CommentModel>()
                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
-           }
-           );
+           });
+
+        public MapperConfiguration ConfFromCustomerDTOToCustomerModel = new MapperConfiguration(
+            conf => 
+            {
+                conf.CreateMap<CustomerDTO, CustomerModel>();
+            });
 
         public MapperConfiguration configOrderInfo = new MapperConfiguration(cfg =>
         {

@@ -1,0 +1,236 @@
+﻿<Window x:Class="CustomerAnalyticSystem.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CAS.UI"
+        mc:Ignorable="d"
+        Title="CustomerAnalyticSystem ©" Height="768" Width="1040">
+    <Grid>
+        <TabControl TabStripPlacement="Top">
+            <TabItem Header="Клиенты" Width="340">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="207*"/>
+                        <ColumnDefinition Width="811*">
+
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="74*"/>
+                            <RowDefinition Height="31*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ListView x:Name="ListViewFavoriteProductsOfChosenClient" Grid.Column="0" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        <Setter Property="Width" Value="auto" />
+                                        <Setter Property="BorderBrush" Value="LightGray" />
+                                        <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="200" Header="Любимые продукты"/>
+                                        <GridViewColumn Width="auto" Header="Статистика"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <ListView x:Name="ListViewFavoriteTagsOfChosenClient" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        <Setter Property="Width" Value="auto" />
+                                        <Setter Property="BorderBrush" Value="LightGray" />
+                                        <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="200" Header="Любимые тэги"/>
+                                        <GridViewColumn Width="auto" Header="Статистика"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <ListView x:Name="ListViewFavoriteGroupsOfChosenClient" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        <Setter Property="Width" Value="auto" />
+                                        <Setter Property="BorderBrush" Value="LightGray" />
+                                        <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="200" Header="Любимые группы"/>
+                                        <GridViewColumn Width="auto" Header="Статистика"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+
+
+                        </Grid>
+                        <ListView x:Name="ListViewClients" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Width" Value="auto" />
+                                    <Setter Property="BorderBrush" Value="LightGray" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="162" Header="ID клиента"/>
+                                    <GridViewColumn Width="162" Header="Тип клиента"/>
+                                    <GridViewColumn Width="162" Header="Фамилия"/>
+                                    <GridViewColumn Width="162" Header="Имя"/>
+                                    <GridViewColumn Width="162" Header ="e-mail"/>                                    
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <StackPanel Grid.Column="0" Margin="0,0,0,411">
+                        <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75" Click="ButtonOpenWindowOfAddingClient_Click"/>
+                        <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75" Click="ButtonOpenWindowOfEditingClient_Click"/>
+                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Товары" Width="340">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="207*"/>
+                        <ColumnDefinition Width="811*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="74*"/>
+                            <RowDefinition Height="31*"/>
+                        </Grid.RowDefinitions>
+                        <ListView x:Name="ListViewInterestedClients" Grid.Row="1" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Width" Value="auto" />
+                                    <Setter Property="BorderBrush" Value="LightGray" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID клиента" Width="101"/>
+                                    <GridViewColumn Header="Приоритет" Width="101"/>
+                                    <GridViewColumn Header="Тип клиента" Width="101"/>
+                                    <GridViewColumn Header="Фамилия" Width="101"/>
+                                    <GridViewColumn Header="Имя" Width="101"/>
+                                    <GridViewColumn Header="Номер телефона" Width="101"/>
+                                    <GridViewColumn Header="e-mail" Width="101"/>
+                                    <GridViewColumn Header="Комментарий" Width="101"/>                                    
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ListView x:Name="ListViewProducts" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0" Grid.Column="1">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Width" Value="auto" />
+                                    <Setter Property="BorderBrush" Value="LightGray" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID товара" Width="162"/>
+                                    <GridViewColumn Header="Группа" Width="162"/>
+                                    <GridViewColumn Header="Наименование" Width="162"/>
+                                    <GridViewColumn Header="Описание товара" Width="162"/>
+                                    <GridViewColumn Header="Остаток" Width="162"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <StackPanel Grid.Column="0">
+                        <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75" Click="ButtonOpenWindowOfProductAdding_Click"/>
+                        <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75" Click="ButtonOpenWindowOfProductEditing_Click"/>
+                        <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75"/>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Заказы" Width="340">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="207*"/>
+                        <ColumnDefinition Width="811*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <Button x:Name="ButtonOpenAddOrderWndw" Content="Добавить заказ" Height="75" Click="ButtonOpenAddOrderWndw_Click"/>
+                        <Button x:Name="ButtonOpenEditOrderWndw" Content="Редактировать заказ" Height="75" Click="ButtonOpenEditOrderWndw_Click"/>
+                        <Button x:Name="ButtonFastOrderDelete" Content="Удалить заказ" Height="75"/>
+                    </StackPanel>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ListView Grid.Column="1" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Width" Value="auto" />
+                                    <Setter Property="BorderBrush" Value="LightGray" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID заказа" Width="162"/>
+                                    <GridViewColumn Header="Дата заказа" Width="162"/>
+                                    <GridViewColumn Header="Клиент" Width="162"/>
+                                    <GridViewColumn Header="Статус" Width="162"/>
+                                    <GridViewColumn Header="Сумма заказа" Width="162"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ListView Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Width" Value="auto" />
+                                    <Setter Property="BorderBrush" Value="LightGray" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID заказа" Width="135"/>
+                                    <GridViewColumn Header="ID товара" Width="135"/>
+                                    <GridViewColumn Header="Наименование товара" Width="135"/>
+                                    <GridViewColumn Header="Количество" Width="135"/>
+                                    <GridViewColumn Header="Стоимость" Width="135"/>
+                                    <GridViewColumn Header="Оценка" Width="135"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+    </Grid>
+</Window>

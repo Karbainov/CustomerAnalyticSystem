@@ -182,6 +182,8 @@
     <Build Include="dbo\Stored Procedures\AllMarksInCheckByCustomerId.sql" />
     <Build Include="dbo\Stored Procedures\CountAllTagsInOrders.sql" />
     <Build Include="dbo\Stored Procedures\CountAllProductsInOrders.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCustomerWithContactAndContactType.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllSortedComments.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />
