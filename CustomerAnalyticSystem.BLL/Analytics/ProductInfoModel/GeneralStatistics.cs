@@ -272,14 +272,15 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         {
             BoundCheckProduct();
 
-            List<int> isContainTag = new();
-            List<int> isContainGroup = Groups.Keys.ToList();
+            List<int> isContainTag;
+            List<int> isContainGroup;
 
             foreach (var order in Info.Orders)
             {
+                isContainGroup = Groups.Keys.ToList();
+                isContainTag = Tags.Keys.ToList();
                 foreach (var prod in Products)
                 {
-                    isContainTag = Tags.Keys.ToList();
                     if (IsContains(order.Id, prod.Key))
                     {
                         prod.Value.Percent++;

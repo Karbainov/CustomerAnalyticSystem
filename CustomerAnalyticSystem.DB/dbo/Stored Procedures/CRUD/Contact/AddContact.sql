@@ -4,5 +4,5 @@
 	@Value nvarchar(255)
 	as
 	insert dbo.[Contact] 
-	values (@CustomerId , @ContactTypeId , @Value)
+	values (@CustomerId , @ContactTypeId , @Value, 0)
 RETURN 0
