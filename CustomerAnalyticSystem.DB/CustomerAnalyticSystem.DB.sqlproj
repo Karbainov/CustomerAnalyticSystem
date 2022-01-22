@@ -185,6 +185,7 @@
     <Build Include="dbo\Stored Procedures\GetAllSortedComments.sql" />
     <Build Include="dbo\Stored Procedures\GetOrderModel.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrdersByStatusId.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteOrderModelById.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />

@@ -27,7 +27,7 @@ namespace CustomerAnalyticSystem.UI
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
         public Dictionary<string, int> StatusIdAndStatus = new Dictionary<string, int>();
         public Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
-
+        public Dictionary<int, OrderBaseModel> orderDict = new Dictionary<int, OrderBaseModel>();
 
         public MainWindow()
         {
@@ -113,21 +113,24 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (ListViewOrders.SelectedIndex > -1)
-            {
-                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewClients.SelectedItem).Id}?",
-                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                {
-                    //удаление
-                }
-            }
-            else
-            {
-                MessageBox.Show("Выберите заказ");
-            }
-        }
+        //private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (ListViewOrders.SelectedIndex > -1)
+        //    {
+        //        if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewClients.SelectedItem).Id}?",
+        //           "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+        //        {
+        //            OrderCheckStatusService serve = new OrderCheckStatusService();
+        //            serve.DeleteOrderById(((CustomerInfoModel)ListViewOrders.SelectedItem).Id);
+        //            orderDict = GetDictCustomerInfoModelWithId();
+        //            FillingCustomerStackPanel(customersDict);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Выберите заказ");
+        //    }
+        //}
 
         #region filling
         public void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
@@ -274,6 +277,20 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
+        //public Dictionary<int, CustomerInfoModel> GetDictGetOrderById()
+        //{
+        //    var orderService = new OrderCheckStatusService();
+        //    List<CustomerInfoModel> customers = orderService.GetAllOrdersByStatusId();
+
+        //    Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+
+        //    foreach (CustomerInfoModel customer in customers)
+        //    {
+        //        customersDict.Add(customer.Id, customer);
+        //    }
+        //    return customersDict;
+        //}
+
         #endregion
 
         #region Open pop-up wndws
@@ -324,7 +341,8 @@ namespace CustomerAnalyticSystem.UI
                 MessageBox.Show("Выберите продукт для редактирования");
 
             }
-        }
+        }
+
         private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
         {
             EditTagsWindow editTagsWindow = new EditTagsWindow(this);
@@ -336,14 +354,16 @@ namespace CustomerAnalyticSystem.UI
             EditGroupsWindow editGroupsWindow = new EditGroupsWindow(this);
             editGroupsWindow.Show();
         }
-        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewClients.SelectedIndex > -1)
             {
                 EditClientWindow editClientWindow = new EditClientWindow(this, (CustomerInfoModel)ListViewClients.SelectedItem);
                 editClientWindow.Show();
             }
-        }
+        }
+
     #endregion
 
 

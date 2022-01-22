@@ -32,6 +32,11 @@ namespace CustomerAnalyticSystem.BLL.Services
             rep.DeleteCheck(id);
         }
 
+        public void DeleteOrderById(int id)
+        {
+            OrderCheckStatusRepository rep = new OrderCheckStatusRepository();
+            rep.DeleteOrderById(id);
+        }
 
         public List<OrderBaseModel> GetBaseOrderModel()
         {

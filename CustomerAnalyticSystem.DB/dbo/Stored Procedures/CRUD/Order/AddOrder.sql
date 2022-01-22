@@ -2,8 +2,10 @@
 	@CustomerId integer, 
 	@Date nvarchar(10), 
 	@StatusId integer,
-	@Cost integer
+	
+@FirstName nvarchar(50),
+@LastName nvarchar(50),@Cost integer
 AS
 	insert dbo.[Order]
-	values (@CustomerId, @Date, @StatusId, @Cost)
+	values (@CustomerId,@FirstName,@LastName, @Date, @StatusId, @Cost)
 
