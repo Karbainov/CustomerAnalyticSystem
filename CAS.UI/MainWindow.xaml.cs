@@ -25,6 +25,7 @@ namespace CustomerAnalyticSystem.UI
     {
         public Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
+        public Dictionary<string, int> StatusIdAndStatus = new Dictionary<string, int>();
         public Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
 
 
@@ -39,6 +40,8 @@ namespace CustomerAnalyticSystem.UI
             FillingListViewOrders();
             customersDict = GetDictCustomerInfoModelWithId();
             FillingCustomerStackPanel(customersDict);
+
+            //ComboBoxStatus
         }
 
         private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -89,6 +92,41 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
+        private void ButtonFastClientDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClients.SelectedIndex > -1)
+            {
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить клиента " +
+                    $"{((CustomerInfoModel)ListViewClients.SelectedItem).FirstName} {((CustomerInfoModel)ListViewClients.SelectedItem).LastName}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    CustomerService serve = new CustomerService();
+                    serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
+                    customersDict = GetDictCustomerInfoModelWithId();
+                    FillingCustomerStackPanel(customersDict);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя");
+            }
+        }
+
+        private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewOrders.SelectedIndex > -1)
+            {
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewClients.SelectedItem).Id}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    //удаление
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите заказ");
+            }
+        }
 
         #region filling
         public void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
@@ -171,7 +209,6 @@ namespace CustomerAnalyticSystem.UI
         }
     #endregion
 
-
         #region dictionary
         public Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
         {
@@ -208,8 +245,19 @@ namespace CustomerAnalyticSystem.UI
                 TagsIdAndTags.Add(t.Name, t.Id);
             }
         }
-        #endregion
 
+        public void FillingDictStatus()
+        {
+            StatusIdAndStatus.Clear();
+            var service = new OrderCheckStatusService();
+            var statusList = service.GetAllStatus();
+            foreach (var s in statusList)
+            {
+                StatusIdAndStatus.Add(s.Name, s.Id);
+            }
+        }
+
+        #endregion
 
         #region Open pop-up wndws
 
@@ -283,40 +331,5 @@ namespace CustomerAnalyticSystem.UI
         #endregion
 
 
-        private void ButtonFastClientDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (ListViewClients.SelectedIndex > -1)
-            {
-                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить клиента " +
-                    $"{((CustomerInfoModel)ListViewClients.SelectedItem).FirstName} {((CustomerInfoModel)ListViewClients.SelectedItem).LastName}?",
-                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                {
-                    CustomerService serve = new CustomerService();
-                    serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
-                    customersDict = GetDictCustomerInfoModelWithId();
-                    FillingCustomerStackPanel(customersDict);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Выберите пользователя");
-            }
-        }
-
-        private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (ListViewOrders.SelectedIndex > -1)
-            {
-                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewClients.SelectedItem).Id}?",
-                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                {
-                    //удаление
-                }
-            }
-            else
-            {
-                MessageBox.Show("Выберите заказ");
-            }
-        }
     }
 }

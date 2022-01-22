@@ -45,7 +45,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
                 });
 
         public MapperConfiguration ConfFromCustomerDTOToCustomerModel { get; private set; } = new MapperConfiguration(
-            conf => 
+            conf =>
             {
                 conf.CreateMap<CustomerDTO, CustomerModel>();
             });
@@ -94,11 +94,15 @@ namespace CustomerAnalyticSystem.BLL.Configs
 
 
 
-        public MapperConfiguration ConfFromOrderDTOToOrderBaseModel = new MapperConfiguration(
+        public MapperConfiguration ConfFromOrderDTOToOrderBaseModel { get; private set; } = new MapperConfiguration(
             conf =>
             {
                 conf.CreateMap<GetOrderModelDTO, OrderBaseModel>();
             });
 
+        public MapperConfiguration ConfigStatus { get; private set; } = new MapperConfiguration(conf =>
+         {
+             conf.CreateMap<StatusDTO, StatusModel>();
+         });
     }
 }

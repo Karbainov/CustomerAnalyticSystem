@@ -187,6 +187,8 @@
                         <Button x:Name="ButtonOpenAddOrderWndw" Content="Добавить заказ" Height="75" Click="ButtonOpenAddOrderWndw_Click"/>
                         <Button x:Name="ButtonOpenEditOrderWndw" Content="Редактировать заказ" Height="75" Click="ButtonOpenEditOrderWndw_Click"/>
                         <Button x:Name="ButtonFastOrderDelete" Content="Удалить заказ" Height="75" Click="ButtonFastOrderDelete_Click"/>
+                        <Label Content="Поиск заказа по статусу"/>
+                        <ComboBox x:Name="ComboBoxStatus" />
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>

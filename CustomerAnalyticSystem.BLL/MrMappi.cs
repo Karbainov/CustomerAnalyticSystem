@@ -72,5 +72,11 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(mapConfig.ConfFromOrderDTOToOrderBaseModel).Map<List<OrderDTO>, List<OrderBaseModel>>(DTO);
         }
 
+        public List<StatusModel> MapFromStatus (List<StatusDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigStatus).Map<List<StatusDTO>, List<StatusModel>>(dto);
+        }
+
     }
 }
