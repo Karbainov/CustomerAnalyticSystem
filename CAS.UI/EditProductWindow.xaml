@@ -61,7 +61,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="ButtonSaveChangesOfProductEditing" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Row="2" Click="ButtonSaveChangesOfProductEditing_Click"/>
-        <Button x:Name="ButtonDeleteProduct" Content="Удалить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1" Grid.Row="2"/>
+        <Button x:Name="ButtonDeleteProduct" Content="Удалить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1" Grid.Row="2" Click="ButtonDeleteProduct_Click"/>
     </Grid>
 
 

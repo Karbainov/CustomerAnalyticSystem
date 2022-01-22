@@ -30,7 +30,6 @@ namespace CustomerAnalyticSystem.UI
             InitializeComponent();
             _product = product;
             _mainWindow = mainWindow;
-           // _mainWindow.IsEnabled = false;
             FillingEditProductWindowComboBoxGroups();
             FillingComboBoxTagsForEdditProduct();
             FillingListViewTagsEditWndw();
@@ -124,6 +123,17 @@ namespace CustomerAnalyticSystem.UI
             else
             {
                 MessageBox.Show("Не выбран тэг для удаления");
+            }
+        }
+
+        private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить {_product.Name}?",
+               "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var products = new ProductTagGroupService();
+                products.DeleteProductById(_product.Id);
+                _mainWindow.FillingListViewProducts();
             }
         }
     }

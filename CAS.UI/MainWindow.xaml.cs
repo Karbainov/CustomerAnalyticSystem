@@ -25,7 +25,7 @@ namespace CustomerAnalyticSystem.UI
     {
         public Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
-        private Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+        public Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
 
 
         public MainWindow()
@@ -38,7 +38,7 @@ namespace CustomerAnalyticSystem.UI
             FillingListViewProducts();
             customersDict = GetDictCustomerInfoModelWithId();
             FillingCustomerStackPanel(customersDict);
-        }   
+        }
 
         private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -54,9 +54,9 @@ namespace CustomerAnalyticSystem.UI
             if (ComboBoxGroups.SelectedIndex != -1)
             {
                 ComboBoxTags.SelectedIndex = -1;
-            }         
+            }
             FillingListViewProducts();
-        }  
+        }
 
         private void ButtonViewAllProducts_Click(object sender, RoutedEventArgs e)
         {
@@ -70,16 +70,27 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonFastProductDelete_Click(object sender, RoutedEventArgs e)
         {
-            ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
-            int id = actual.Id;
-            var products = new ProductTagGroupService();
-            products.DeleteProductById(id);
-            FillingListViewProducts();
+            if (ListViewProducts.SelectedIndex > -1)
+            {
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить {((ProductBaseModel)ListViewProducts.SelectedItem).Name}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
+                    int id = actual.Id;
+                    var products = new ProductTagGroupService();
+                    products.DeleteProductById(id);
+                    FillingListViewProducts();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите продукт");
+            }
         }
 
 
         #region filling
-        private void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        public void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
         {
             foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
             {
@@ -152,7 +163,7 @@ namespace CustomerAnalyticSystem.UI
 
 
         #region dictionary
-        private Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
+        public Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
         {
             CustomerService customerService = new CustomerService();
             List<CustomerInfoModel> customers = customerService.GetAllCustomerInfoModels();
@@ -201,8 +212,15 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonOpenEditOrderWndw_Click(object sender, RoutedEventArgs e)
         {
-            EditOrderWindow editOrderWindow = new EditOrderWindow(this);
-            editOrderWindow.Show();
+            if (ListViewOrders.SelectedIndex > -1)
+            {
+                EditOrderWindow editOrderWindow = new EditOrderWindow(this);
+                editOrderWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Выберите заказ");
+            }
         }
 
         private void ButtonOpenWindowOfProductAdding_Click(object sender, RoutedEventArgs e)
@@ -219,22 +237,29 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
         {
-            ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
-            EditProductWindow editProductWindow = new EditProductWindow(this, product);
-            editProductWindow.Show();
+            if (ListViewProducts.SelectedIndex > -1)
+            {
+                ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
+                EditProductWindow editProductWindow = new EditProductWindow(this, product);
+                editProductWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Выберите продукт для редактирования");
+            }
         }
+
         private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
         {
             EditTagsWindow editTagsWindow = new EditTagsWindow(this);
             editTagsWindow.Show();
         }
+
         private void ButtonEditGroups_Click(object sender, RoutedEventArgs e)
         {
             EditGroupsWindow editGroupsWindow = new EditGroupsWindow(this);
             editGroupsWindow.Show();
         }
-
-        #endregion
 
         private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
@@ -245,14 +270,42 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
+        #endregion
+
+
         private void ButtonFastClientDelete_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewClients.SelectedIndex > -1)
             {
-                CustomerService serve = new CustomerService();
-                serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
-                customersDict = GetDictCustomerInfoModelWithId();
-                FillingCustomerStackPanel(customersDict);
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить клиента " +
+                    $"{((CustomerInfoModel)ListViewClients.SelectedItem).FirstName} {((CustomerInfoModel)ListViewClients.SelectedItem).LastName}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    CustomerService serve = new CustomerService();
+                    serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
+                    customersDict = GetDictCustomerInfoModelWithId();
+                    FillingCustomerStackPanel(customersDict);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя");
+            }
+        }
+
+        private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewOrders.SelectedIndex > -1)
+            {
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewClients.SelectedItem).Id}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    //удаление
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите заказ");
             }
         }
     }
