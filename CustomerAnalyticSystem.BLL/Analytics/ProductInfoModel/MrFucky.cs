@@ -11,6 +11,14 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
     public class MrFucky
     {
+
+        private enum IsContain { Contain = -555};
+        private enum ConvertToPercent 
+        {
+            product = 1,
+            group = 2,
+            tag = 3
+        };
         private StackModel Info;
 
         //словарь рекомендаций
@@ -20,7 +28,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
 
         //словарь который соотносит все теги с продуктом и группы с продуктом
-        public Dictionary<int,List<int>> TagsByProductId { get; set; }
+        public Dictionary<int,List<int>> ProductsByTagId { get; set; }//key = tagId value = product Ids
         public Dictionary<int, List<int>> GroupsByProductId { get; set; }
 
         //словарь соотносит айди чека с ордером
@@ -89,14 +97,14 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         #region связка продуктов
         public void GetListOfAllTagsInProduct() //связывает теги в группы
         {
-            TagsByProductId = new();
+            ProductsByTagId = new();
             foreach(var c in Info.Product_Tag)
             {
-                if (TagsByProductId.ContainsKey(c.TagId) == false)
+                if (ProductsByTagId.ContainsKey(c.TagId) == false)
                 {
-                    TagsByProductId.Add(c.TagId, new());
+                    ProductsByTagId.Add(c.TagId, new());
                 }
-                TagsByProductId[c.TagId].Add(c.ProductId);
+                ProductsByTagId[c.TagId].Add(c.ProductId);
             }
         }
 
@@ -153,20 +161,141 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             }
             return false;
         }
-        public void FindAllBestsellers()//количество появления продукта в каждом заказе
+        private void ConvertToPercents(ConvertToPercent type)
         {
-            BoundCheckProduct();
-
-            foreach (var order in Info.Orders)
+            if (type is ConvertToPercent.product)
             {
                 foreach(var prod in Products)
                 {
-                    if (IsContains(order.Id, prod.Key))
+                    prod.Value.Percent = (prod.Value.Percent * 100) / AmountOfOrders;
+                }
+            }
+            else if (type is ConvertToPercent.group)
+            {
+                foreach (var group in Groups)
+                {
+                    group.Value.Percent = (group.Value.Percent * 100) / AmountOfOrders;
+                }
+            }
+            else if (type is ConvertToPercent.tag)
+            {
+                foreach (var tag in Tags)
+                {
+                    tag.Value.Percent = (tag.Value.Percent * 100) / AmountOfOrders;
+                }
+            }
+        }
+        private int GetMark(int productId, List<GradeBaseModel> grades, int curIndex)
+        {
+            List<int> allProductGrades = new();
+            while (curIndex < grades.Count && grades[curIndex].ProductId == productId)
+            {
+                allProductGrades.Add(grades[curIndex].Value);
+                curIndex++;
+            }
+            if (allProductGrades.Count == 1)
+            {
+                Products[productId].AverageMark = allProductGrades[0];
+            }
+            else if (allProductGrades.Count > 1)
+            {
+                Products[productId].AverageMark = allProductGrades[allProductGrades.Count / 2];
+            }
+            return curIndex;
+        }
+        private void AvgGrade()
+        {
+            List<GradeBaseModel> temp = Info.Grades;
+            temp.Sort();
+            int cnt = 0;
+            int gradeIndex = 0;
+            ItemToRecommend tempw;
+            while(cnt < Products.Count)
+            {
+                tempw = Products.Values.ElementAt(cnt);
+                gradeIndex = GetMark(tempw.Id, temp, gradeIndex);
+                if (gradeIndex >= temp.Count)
+                {
+                    return;
+                }
+                cnt++;
+            }
+        }
+
+        public void ComparingTagAndProduct(List<int> tags, int prodId)
+        {
+            foreach(var c in Info.Product_Tag)
+            {
+                for(int i = 0; i < tags.Count; i++)
+                {
+                    if (c.ProductId == prodId && c.TagId == tags[i])
                     {
-                        prod.Value.Percent++;
+                        tags[i] = ((int)IsContain.Contain);
                     }
                 }
             }
         }
+        public void ComparingGroupAndProduct(List<int> groups, int prodId)
+        {
+            foreach(var c in Info.Products)
+            {
+                for(int i = 0; i < groups.Count; i++)
+                {
+                    if (c.Id == prodId && c.GroupId == groups[i])
+                    {
+                        groups[i] = ((int)IsContain.Contain);
+                    }
+                }
+            }
+        }
+        public void GetPopularityGroup(List<int> groups)
+        {
+            for(int i = 0; i < groups.Count; i++)
+            {
+                if (groups[i] == ((int)IsContain.Contain))
+                {
+                    Groups.Values.ElementAt(i).Percent++;
+                }
+            }
+        }
+        public void GetPopularityTag(List <int> tags)
+        {
+            for(int i = 0; i < tags.Count; i++)
+            {
+                if(tags[i] == -555)
+                {
+                    Tags.Values.ElementAt(i).Percent++;
+                }
+            }
+        }
+        public void FindAllBestsellers()//количество появления продукта в каждом заказе
+        {
+            BoundCheckProduct();
+
+            List<int> isContainTag = new();
+            List<int> isContainGroup = Groups.Keys.ToList();
+
+            foreach (var order in Info.Orders)
+            {
+                foreach (var prod in Products)
+                {
+                    isContainTag = Tags.Keys.ToList();
+                    if (IsContains(order.Id, prod.Key))
+                    {
+                        prod.Value.Percent++;
+                        ComparingTagAndProduct(isContainTag, prod.Key);
+                        ComparingGroupAndProduct(isContainGroup, prod.Key);
+                    }
+                }
+                GetPopularityGroup(isContainGroup);
+                GetPopularityTag(isContainTag);
+            }
+            AvgGrade();
+            ConvertToPercents(ConvertToPercent.product);
+            ConvertToPercents(ConvertToPercent.group);
+            ConvertToPercents(ConvertToPercent.tag);
+        }
+
+        
     }
 }
