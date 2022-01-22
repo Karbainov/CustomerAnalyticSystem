@@ -122,7 +122,6 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateCheck = "UpdateCheck";
         #endregion
 
-        public const string GetAllProduct = "GetAllProduct";
 
 
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";

@@ -32,7 +32,7 @@ namespace TempProject
             StackModel eww;
             ProductTagGroupService we = new();
             eww = we.GetAllInfoAboutAll();
-            MrFucky lol = new(eww);
+            GeneralStatistics lol = new(eww);
             lol.FillProducts();
             lol.FillGroups();
             lol.FillTags();

@@ -9,7 +9,7 @@ using CustomerAnalyticSystem.BLL.Models;
 
 namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
-    public class MrFucky
+    public class GeneralStatistics
     {
 
         private enum IsContain { Contain = -555};
@@ -37,7 +37,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
         public int AmountOfOrders { get; set; }
 
-        public MrFucky(StackModel allLists)
+        public GeneralStatistics(StackModel allLists)
         {
             Info = allLists;
             Products = new();

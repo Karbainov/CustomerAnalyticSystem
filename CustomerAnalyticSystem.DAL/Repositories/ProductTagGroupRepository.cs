@@ -34,14 +34,7 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public List<ProductBaseDTO> GetAllProduct()
-        {
-            string connectionString = ConnectionString.Connection;
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                    return connection.Query<ProductBaseDTO>(Queries.GetAllProduct, commandType: CommandType.StoredProcedure).ToList();
-            }
-        }
+
 
         public List<ProductsWithGroupsDTO> GetAllProductsWithGroups()
         {
