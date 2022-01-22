@@ -192,13 +192,14 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="326*"/>
                             <ColumnDefinition Width="35*"/>
-                            <ColumnDefinition Width="463*"/>
+                            <ColumnDefinition Width="311*"/>
+                            <ColumnDefinition Width="152*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ListView x:Name="ListViewOrders" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3">
+                        <ListView x:Name="ListViewOrders" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" SelectionChanged="ListViewOrders_SelectionChanged">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -212,12 +213,13 @@
                                     <GridViewColumn Width="102" Header="Id заказа"  DisplayMemberBinding="{Binding Id}" />
                                     <GridViewColumn Width="202" Header="Дата"  DisplayMemberBinding="{Binding Date}"/>
                                     <GridViewColumn Width="202" Header="Id клиента"  DisplayMemberBinding="{Binding CustomerId}"/>
-                                    <GridViewColumn Width="302" Header="Статус"  DisplayMemberBinding="{Binding Status}"/>
+                                    <GridViewColumn Width="202" Header="Имя клиента"  DisplayMemberBinding="{Binding FirstName}"/>
+                                    <GridViewColumn Width="202" Header="Фамилия клиента"  DisplayMemberBinding="{Binding LastName}"/><GridViewColumn Width="302" Header="Статус"  DisplayMemberBinding="{Binding Status}"/>
                                     <GridViewColumn Width="302" Header="Сумма"  DisplayMemberBinding="{Binding Cost}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="0,362,0,0" Grid.RowSpan="2">
+                        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Margin="0,362,0,0" Grid.RowSpan="2">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />

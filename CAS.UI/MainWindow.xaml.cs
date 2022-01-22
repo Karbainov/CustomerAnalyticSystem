@@ -170,10 +170,17 @@ namespace CustomerAnalyticSystem.UI
             }
         }
     #endregion
+<<<<<<< Updated upstream
 
 
         #region dictionary
         public Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
+=======
+
+
+    #region dictionary
+    private Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
+>>>>>>> Stashed changes
         {
             CustomerService customerService = new CustomerService();
             List<CustomerInfoModel> customers = customerService.GetAllCustomerInfoModels();
@@ -247,6 +254,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< Updated upstream
             if (ListViewProducts.SelectedIndex > -1)
             {
                 ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
@@ -318,5 +326,18 @@ namespace CustomerAnalyticSystem.UI
                 MessageBox.Show("Выберите заказ");
             }
         }
+=======
+            ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
+            EditProductWindow editProductWindow = new EditProductWindow(this, product);
+            editProductWindow.Show();
+        }
+
+        #endregion
+
+        private void ListViewOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+>>>>>>> Stashed changes
     }
 }
