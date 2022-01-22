@@ -24,7 +24,7 @@ namespace CustomerAnalyticSystem.UI
     public partial class EditClientWindow : Window
     {
         public Dictionary<int, ContactTypeModel> contactTypesWithId = new Dictionary<int, ContactTypeModel>();
-        Dictionary<int, ContactModel> contactModelWitId = new Dictionary<int, ContactModel>();
+        Dictionary<ContactModel, int> contactModelWitId = new Dictionary<ContactModel, int>();
         private Dictionary<CustomerTypeModel, int> customerTypesWithId = new Dictionary<CustomerTypeModel, int>();
         private MainWindow _mainWindow;
         private CustomerInfoModel _customer;
@@ -103,13 +103,13 @@ namespace CustomerAnalyticSystem.UI
 
             foreach(ContactModel model in contactModels)
             {
-                contactModelWitId.Add(model.Id, model);
+                contactModelWitId.Add(model, model.Id);
             }
         }
 
-        private void FillListViewContactContactType(Dictionary<int, ContactModel> dict)
+        private void FillListViewContactContactType(Dictionary<ContactModel, int> dict)
         {
-            foreach (KeyValuePair<int, ContactModel> pair in dict)
+            foreach (KeyValuePair<ContactModel, int> pair in dict)
             {
                 ListViewContactContactType.Items.Add(pair);
             }

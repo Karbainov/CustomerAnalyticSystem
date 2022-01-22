@@ -39,7 +39,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactDTO>(Queries.AddContact
+                connection.Query(Queries.AddContact
                     , new { CustomerId, ContactTypeId, Value }
                     , commandType: CommandType.StoredProcedure);
             }
@@ -87,7 +87,9 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactTypeDTO>(Queries.AddContactType, new { Name }, commandType: CommandType.StoredProcedure);
+                connection.QuerySingle<ContactTypeDTO>(Queries.AddContactType
+                    , new { Name }
+                    , commandType: CommandType.StoredProcedure);
             }
         }
 

@@ -63,8 +63,8 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="125" Header="Тип контакта" DisplayMemberBinding="{Binding Value.Name}"/>
-                        <GridViewColumn Width="125" Header="Контакт" DisplayMemberBinding="{Binding Value.Value}"/>
+                        <GridViewColumn Width="125" Header="Тип контакта" DisplayMemberBinding="{Binding Key.Name}"/>
+                        <GridViewColumn Width="125" Header="Контакт" DisplayMemberBinding="{Binding Key.Value}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

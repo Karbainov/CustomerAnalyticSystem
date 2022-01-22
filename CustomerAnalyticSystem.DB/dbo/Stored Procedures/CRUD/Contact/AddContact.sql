@@ -1,10 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[AddContact]
 	@CustomerId integer,
 	@ContactTypeId integer,
-	@Value nvarchar(255),
-	@IsDeleted bit = 0
+	@Value nvarchar(255)
 as
-	insert dbo.[Contact] 
-	values (@CustomerId , @ContactTypeId , @Value, @IsDeleted)
-RETURN 0
-RETURN 0
+	insert [dbo].[Contact] 
+	values (@CustomerId , @ContactTypeId , @Value, 0)
+return 0
