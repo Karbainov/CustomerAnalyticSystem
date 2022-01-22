@@ -21,6 +21,9 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public Dictionary<int, ItemToRecommend> GroupsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> TagsRecommends { get; set; }
 
+        public Dictionary<int, List<int>> AllOneProductMarks { get; set; }//держит для каждого продукта список оценок кастомера
+
+        public Dictionary<int, int> ProductAvgGrade { get; set; }//key = prId, val = avgGrade
         public ConcreteCustomer(GeneralStatistics info, CustomerInfoModel customer)
         {
             InfoToAnalise = info;
@@ -31,7 +34,10 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             GroupsRecommends = info.Groups;
             TagsRecommends = info.Tags;
         }
+        public ConcreteCustomer()
+        {
 
+        }
         //private int GetAverageMark(List<int> marks)
         //{
         //    if ()
@@ -39,21 +45,23 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         //        //нижний метод делает словарь ключ ИД продукта - велью - все оценки продукта
         //        //может переделать на айди кастомера
         //}
+
+        public int GetAvgProductMark(List<int> marks)
+        {
+            if (marks.Count == 1)
+                return marks[0];
+            else if (marks.Count == 2)
+                return (marks[0] + marks[1]) / 2;
+            else
+                return marks[marks.Count / 2];
+        }
         public void AvgMarkForEveryProduct()
         {
-            //Dictionary<int, List<int>> allProductMarks = new();
-            //foreach(var grade in InfoToAnalise.Info.Grades)
-            //{
-            //    if (allProductMarks.ContainsKey(grade.ProductId) == false)
-            //    {
-            //        allProductMarks[grade.ProductId] = new();
-            //    }
-            //    allProductMarks[grade.ProductId].Add(grade.Value);
-            //}
-            //for (int i = 0; i < allProductMarks.Count; i++)
-            //{
-            //    int avgMark = 
-            //}
+            ProductAvgGrade = new();
+            foreach(var c in AllOneProductMarks)
+            {
+                ProductAvgGrade.Add(c.Key, GetAvgProductMark(c.Value));
+            }
         }
 
     }

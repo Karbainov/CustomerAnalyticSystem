@@ -46,6 +46,12 @@ namespace CustomerAnalyticSystem.BLL
             rep.UpdateCustomerById(id, firstName, lastName, TypeId);
         }
 
+
+        public List<CustomerDTO> GetAllCustomers()
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+           return rep.GetAllCustomers();
+        }
         //public void UpdateComment(int id, int customerId, string text)
         //{
         //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();

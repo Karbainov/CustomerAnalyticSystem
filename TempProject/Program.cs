@@ -11,6 +11,7 @@ using CustomerAnalyticSystem.BLL.Analytics;
 using CustomerAnalyticSystem.BLL;
 using CustomerAnalyticSystem.BLL.Services.Logic;
 using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
+using AutoMapper;
 
 namespace TempProject
 {
@@ -19,6 +20,11 @@ namespace TempProject
         static void Main(string[] args)
         {
 
+            MapperConfiguration config = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<CustomerDTO, CustomerInfoModel>();
+            });
 
             //PreferencesByCustomerIdModel kekis;
 
@@ -27,15 +33,29 @@ namespace TempProject
             //kekis.ClearPrevGrades();
 
             //PreferredProductsForOneCustomer cucus = new(kekis);
+            GeneralStatistics stat = new();
+            stat.MakeStatistics();
 
-
-            StackModel eww;
-            ProductTagGroupService we = new();
-            eww = we.GetAllInfoAboutAll();
-            GeneralStatistics lol = new();
-            lol.MakeStatistics();
+            //completed
+   
 
             int r = 0;
+            //worked on
+            //должно лежать в блл говне
+            List<CustomerInfoModel> Custs = new();
+            CustomerTypeCustomerCommentService w = new();
+            List<CustomerDTO> we = w.GetAllCustomers();
+            Custs = new Mapper(config).Map<List<CustomerDTO>, List<CustomerInfoModel>>(we);
+            //должно лежать в блл говне
+
+
+            AllCustomersPreferences test = new(stat, Custs);
+            test.FillBaseCustomerInfo();
+            test.AvgMarkForEveryProduct();
+            foreach(var c in test.Customers)
+            {
+                c.Value.AvgMarkForEveryProduct();
+            }
             //AllPreferencesAndGradeInfoByCustomerIdDTO qwe = new();
             //GradePreferencesRepository www = new();
             //qwe = www.Logic(1);
