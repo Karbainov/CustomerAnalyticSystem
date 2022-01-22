@@ -140,5 +140,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string DeleteProduct_TagByTagIdAndProductId = "DeleteProduct_TagByTagIdAndProductId";
 
         public const string GetAllSortedComments = "GetAllSortedComments";
+
+        public const string GetOrderModel = "GetOrderModel";
     }
 }

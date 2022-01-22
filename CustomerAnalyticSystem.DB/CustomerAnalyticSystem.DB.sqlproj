@@ -183,6 +183,7 @@
     <Build Include="dbo\Stored Procedures\DeleteProduct_TagByTagIdAndProductId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCustomerWithContactAndContactType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllSortedComments.sql" />
+    <Build Include="dbo\Stored Procedures\GetOrderModel.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />

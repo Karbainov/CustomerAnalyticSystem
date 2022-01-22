@@ -37,6 +37,7 @@ namespace CustomerAnalyticSystem.UI
             FillingComboBoxTags();
             FillingComboBoxGroups();
             FillingListViewProducts();
+            FillingListViewOrders();
 
             customersDict = GetDictCustomerInfoModelWithId();
             FillingCustomerStackPanel(customersDict);
@@ -152,11 +153,20 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        #endregion
+        public void FillingListViewOrders()
+        {
+            var orders = new OrderCheckStatusService();
+            var listOrders = orders.GetBaseOrderModel();
+            foreach (var p in listOrders)
+            {
+                ListViewOrders.Items.Add(p);
+            }
+        }
+    #endregion
 
 
-        #region dictionary
-        private Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
+    #region dictionary
+    private Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
         {
             CustomerService customerService = new CustomerService();
             List<CustomerInfoModel> customers = customerService.GetAllCustomerInfoModels();

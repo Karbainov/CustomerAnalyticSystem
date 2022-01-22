@@ -206,6 +206,18 @@ namespace CustomerAnalyticSystem.DAL
             }
             return customersOrderDTOs;
         }
+
+
+        public List<GetOrderModelDTO> GetOrderModel()
+        {
+            List<GetOrderModelDTO> orderModel = new List<GetOrderModelDTO>();
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                orderModel = connection.Query<GetOrderModelDTO>(Queries.GetOrderModel,
+                     commandType: CommandType.StoredProcedure).ToList();
+            }
+            return orderModel;
+        }
     }
 }
 

@@ -89,7 +89,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
         public MapperConfiguration ConfFromOrderDTOToOrderBaseModel = new MapperConfiguration(
             conf =>
             {
-                conf.CreateMap<OrderDTO, OrderBaseModel>();
+                conf.CreateMap<GetOrderModelDTO, OrderBaseModel>();
             });
 
     }

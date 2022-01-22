@@ -97,7 +97,7 @@
                                     <GridViewColumn Width="162" Header="Тип клиента"/>
                                     <GridViewColumn Width="162" Header="Фамилия"/>
                                     <GridViewColumn Width="162" Header="Имя"/>
-                                    <GridViewColumn Width="162" Header ="e-mail"/>                                    
+                                    <GridViewColumn Width="162" Header ="e-mail"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -184,11 +184,16 @@
                         <Button x:Name="ButtonFastOrderDelete" Content="Удалить заказ" Height="75"/>
                     </StackPanel>
                     <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="326*"/>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="463*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ListView Grid.Column="1" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView x:Name="ListViewOrders" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -199,15 +204,15 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID заказа" Width="162"/>
-                                    <GridViewColumn Header="Дата заказа" Width="162"/>
-                                    <GridViewColumn Header="Клиент" Width="162"/>
-                                    <GridViewColumn Header="Статус" Width="162"/>
-                                    <GridViewColumn Header="Сумма заказа" Width="162"/>
+                                    <GridViewColumn Width="102" Header="Id заказа"  DisplayMemberBinding="{Binding Id}" />
+                                    <GridViewColumn Width="202" Header="Дата"  DisplayMemberBinding="{Binding Date}"/>
+                                    <GridViewColumn Width="202" Header="Id клиента"  DisplayMemberBinding="{Binding CustomerId}"/>
+                                    <GridViewColumn Width="302" Header="Статус"  DisplayMemberBinding="{Binding Status}"/>
+                                    <GridViewColumn Width="302" Header="Сумма"  DisplayMemberBinding="{Binding Cost}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <ListView Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="0,362,0,0" Grid.RowSpan="2">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
