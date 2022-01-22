@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using CustomerAnalyticSystem.BLL.Models;
-
+using CustomerAnalyticSystem.BLL.Services;
 
 namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
@@ -37,15 +37,28 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
         public int AmountOfOrders { get; set; }
 
-        public GeneralStatistics(StackModel allLists)
+        public GeneralStatistics()
         {
+
+            StackModel allLists;
+            ProductTagGroupService dtos = new();
+            allLists = dtos.GetAllInfoAboutAll();
             Info = allLists;
             Products = new();
             Groups = new();
             Tags = new();
             AmountOfOrders = Info.Orders.Count;
         }
-
+        public void MakeStatistics()
+        {
+            FillProducts();
+            FillGroups();
+            FillTags();
+            GetListOfAllTagsInProduct();
+            GetListOfAllGroupsInProduct();
+            PutAllCheckByOrders();
+            FindAllBestsellers();
+        }
         public MapperConfiguration configuration = new(cfg =>
         {
             cfg.CreateMap<ProductBaseModel,ItemToRecommend>();

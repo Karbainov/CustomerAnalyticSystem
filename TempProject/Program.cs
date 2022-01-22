@@ -32,14 +32,8 @@ namespace TempProject
             StackModel eww;
             ProductTagGroupService we = new();
             eww = we.GetAllInfoAboutAll();
-            GeneralStatistics lol = new(eww);
-            lol.FillProducts();
-            lol.FillGroups();
-            lol.FillTags();
-            lol.GetListOfAllTagsInProduct();
-            lol.GetListOfAllGroupsInProduct();
-            lol.PutAllCheckByOrders();
-            lol.FindAllBestsellers();
+            GeneralStatistics lol = new();
+            lol.MakeStatistics();
 
             int r = 0;
             //AllPreferencesAndGradeInfoByCustomerIdDTO qwe = new();
