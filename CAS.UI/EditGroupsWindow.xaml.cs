@@ -32,13 +32,10 @@ namespace CustomerAnalyticSystem.UI
         private void FillingListViewEditGroupsWndw()
         {
             ListViewEditGroupsWndw.Items.Clear();
-            var groups = new ProductTagGroupService();
-            var listGroups = groups.GetAllGroups();
-            foreach (var g in listGroups)
+            foreach (string g in _mainWindow.GroupsIdAndGroups.Keys)
             {
                 ListViewEditGroupsWndw.Items.Add(g);
             }
-
         }
 
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
@@ -51,7 +48,10 @@ namespace CustomerAnalyticSystem.UI
                     group.AddGroup(TextBoxNewGroup.Text, TextBoxDescription.Text);
                     _mainWindow.FillingComboBoxGroups();
                     FillingListViewEditGroupsWndw();
-                    _mainWindow.FillingDictGroups();
+                    int count = ListViewEditGroupsWndw.Items.Count;
+                    ListViewEditGroupsWndw.SelectedIndex = count;
+                    GroupBaseModel newGroup = ((GroupBaseModel)ListViewEditGroupsWndw.SelectedItem);
+                    _mainWindow.TagsIdAndTags.Add(TextBoxNewGroup.Text, newGroup.Id);
                     TextBoxNewGroup.Text = "";
                     TextBoxDescription.Text = "";
                 }

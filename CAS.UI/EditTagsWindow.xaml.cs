@@ -33,9 +33,7 @@ namespace CustomerAnalyticSystem.UI
         private void FillingListViewEditTagsWndw()
         {
             ListViewEditTagsWndw.Items.Clear();
-            var tags = new ProductTagGroupService();
-            var listTags = tags.GetAllTags();
-            foreach (var t in listTags)
+            foreach (var t in _mainWindow.stat.Tags.Values)
             {
                 ListViewEditTagsWndw.Items.Add(t.Name);
             }
@@ -52,7 +50,10 @@ namespace CustomerAnalyticSystem.UI
                     tag.AddTag(TextBoxNewTag.Text);
                     _mainWindow.FillingComboBoxTags();
                     FillingListViewEditTagsWndw();
-                    _mainWindow.FillingDictTags();
+                    int count = ListViewEditTagsWndw.Items.Count;
+                    ListViewEditTagsWndw.SelectedIndex = count;
+                    TagModel newTag = ((TagModel)ListViewEditTagsWndw.SelectedItem);
+                    _mainWindow.TagsIdAndTags.Add(TextBoxNewTag.Text, newTag.Id);
                     TextBoxNewTag.Text = "";
                 }
                 else

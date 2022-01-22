@@ -28,11 +28,14 @@ namespace CustomerAnalyticSystem.UI
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
         public Dictionary<string, int> StatusIdAndStatus = new Dictionary<string, int>();
         public Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+        public GeneralStatistics stat = new();
 
 
         public MainWindow()
         {
             InitializeComponent();
+
+            stat.MakeStatistics();
 
             FillingDictTags();
             FillingDictGroups();
@@ -255,8 +258,7 @@ namespace CustomerAnalyticSystem.UI
         public void FillingListViewLogic()
         {
             ListViewLogic.Items.Clear();
-            GeneralStatistics stat = new();
-            stat.MakeStatistics();
+            
             if (ComboBoxAnalitic.SelectedIndex == 0)
             {
                 foreach (var val in stat.Products.Values)
