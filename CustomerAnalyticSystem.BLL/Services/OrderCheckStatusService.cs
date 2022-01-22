@@ -50,6 +50,14 @@ namespace CustomerAnalyticSystem.BLL.Services
             List<StatusModel> result = map.MapFromStatus(dto);
             return result;
         }
+        public List<OrderBaseModel> GetAllOrdersByStatusId(int id)
+        {
+            MrMappi map = new();
+            var service = new OrderCheckStatusRepository();
+            var dto = service.GetAllOrdersByStatusId(id);
+            List<OrderBaseModel> result = map.MapFromOrderDTOToOrderBaseModel(dto);
+            return result;
+        }
 
 
 

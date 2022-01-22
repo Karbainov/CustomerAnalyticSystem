@@ -142,5 +142,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllSortedComments = "GetAllSortedComments";
 
         public const string GetOrderModel = "GetOrderModel";
+
+        public const string GetAllOrdersByStatusId = "GetAllOrdersByStatusId";
     }
 }

@@ -210,13 +210,20 @@ namespace CustomerAnalyticSystem.DAL
 
         public List<GetOrderModelDTO> GetOrderModel()
         {
-            List<GetOrderModelDTO> orderModel = new List<GetOrderModelDTO>();
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                orderModel = connection.Query<GetOrderModelDTO>(Queries.GetOrderModel,
+                return connection.Query<GetOrderModelDTO>(Queries.GetOrderModel,
                      commandType: CommandType.StoredProcedure).ToList();
             }
-            return orderModel;
+        }
+
+        public List<GetOrderModelDTO> GetAllOrdersByStatusId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<GetOrderModelDTO>(Queries.GetAllOrdersByStatusId, new { id},
+                     commandType: CommandType.StoredProcedure).ToList();
+            }
         }
     }
 }

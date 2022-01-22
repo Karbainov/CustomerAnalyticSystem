@@ -34,6 +34,8 @@ namespace CustomerAnalyticSystem.UI
             InitializeComponent();
             FillingDictTags();
             FillingDictGroups();
+            FillingDictStatus();
+            FillingComboBoxStatus();
             FillingComboBoxTags();
             FillingComboBoxGroups();
             FillingListViewProducts();
@@ -137,25 +139,30 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
+        public void FillingComboBoxStatus()
+        {
+            ComboBoxStatus.Items.Clear();
+            foreach (string Key in StatusIdAndStatus.Keys)
+            {
+                ComboBoxStatus.Items.Add(Key);
+            }
+        }
+
         public void FillingComboBoxTags()
         {
-            ComboBoxTags.Items.Clear();
-            var tags = new ProductTagGroupService();
-            var listTags = tags.GetAllTags();
-            foreach (var t in listTags)
+            ComboBoxTags.Items.Clear();;
+            foreach (string Key in TagsIdAndTags.Keys)
             {
-                ComboBoxTags.Items.Add(t.Name);
+                ComboBoxTags.Items.Add(Key);
             }
         }
 
         public void FillingComboBoxGroups()
         {
             ComboBoxGroups.Items.Clear();
-            var groups = new ProductTagGroupService();
-            var listGroups = groups.GetAllGroups();
-            foreach (var g in listGroups)
+            foreach (string Key in GroupsIdAndGroups.Keys)
             {
-                ComboBoxGroups.Items.Add(g.Name);
+                ComboBoxGroups.Items.Add(Key);
             }
         }
 
@@ -165,9 +172,7 @@ namespace CustomerAnalyticSystem.UI
 
             if (ComboBoxTags.SelectedIndex > -1)
             {
-                string tag = ComboBoxTags.SelectedItem.ToString();
-                int id;
-                TagsIdAndTags.TryGetValue(tag, out id);
+                int id = TagsIdAndTags[ComboBoxTags.SelectedItem.ToString()];
                 var products = new ProductTagGroupService();
                 var listProducts = products.GetAllProductsByTagId(id);
                 foreach (var p in listProducts)
@@ -177,9 +182,7 @@ namespace CustomerAnalyticSystem.UI
             }
             else if (ComboBoxGroups.SelectedIndex > -1)
             {
-                string group = ComboBoxGroups.SelectedItem.ToString();
-                int id;
-                GroupsIdAndGroups.TryGetValue(group, out id);
+                int id = GroupsIdAndGroups[ComboBoxGroups.SelectedItem.ToString()];
                 var products = new ProductTagGroupService();
                 var listProducts = products.GetAllProductsByGroupId(id);
                 foreach (var p in listProducts)
@@ -200,13 +203,28 @@ namespace CustomerAnalyticSystem.UI
 
         public void FillingListViewOrders()
         {
-            var orders = new OrderCheckStatusService();
-            var listOrders = orders.GetBaseOrderModel();
-            foreach (var p in listOrders)
+            ListViewOrders.Items.Clear();
+            if (ComboBoxStatus.SelectedIndex > -1)
             {
-                ListViewOrders.Items.Add(p);
+                var orders = new OrderCheckStatusService();
+                int id = StatusIdAndStatus[ComboBoxStatus.SelectedItem.ToString()];
+                var listOrders = orders.GetAllOrdersByStatusId(id);
+                foreach (var p in listOrders)
+                {
+                    ListViewOrders.Items.Add(p);
+                }
+            }
+            else
+            {
+                var orders = new OrderCheckStatusService();
+                var listOrders = orders.GetBaseOrderModel();
+                foreach (var p in listOrders)
+                {
+                    ListViewOrders.Items.Add(p);
+                }
             }
         }
+
     #endregion
 
         #region dictionary
@@ -328,8 +346,18 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
+
         #endregion
 
+        private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillingListViewOrders();
+        }
 
+        private void ButtonViewAllOrders_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxStatus.SelectedIndex = -1;
+            FillingListViewOrders();
+        }
     }
 }

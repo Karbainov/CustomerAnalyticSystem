@@ -11,7 +11,7 @@ namespace CustomerAnalyticSystem.BLL.Services
 {
     public class OrderInfoByOrderIdService
     {
-        public OrderInfoByOrderIdModel GetOrderInfoByOrderId (int id)
+        public OrderInfoByOrderIdModel GetOrderInfoByOrderId(int id)
         {
             MrMappi map = new();
             var service = new OrderCheckStatusRepository();
@@ -21,13 +21,5 @@ namespace CustomerAnalyticSystem.BLL.Services
         }
 
 
-        public List<OrderBaseModel> GetAllOrders()
-        {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
-            var dto = service.GetAllOrders();
-            List<OrderBaseModel> result = map.MapFromOrderDTOToOrderBaseModel(dto);
-            return result;
-        }
     }
 }
