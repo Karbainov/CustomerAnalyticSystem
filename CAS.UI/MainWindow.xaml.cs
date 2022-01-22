@@ -43,7 +43,6 @@ namespace CustomerAnalyticSystem.UI
             customersDict = GetDictCustomerInfoModelWithId();
             FillingCustomerStackPanel(customersDict);
 
-            //ComboBoxStatus
         }
 
         private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -326,12 +325,7 @@ namespace CustomerAnalyticSystem.UI
 
             }
         }
-
-       
-
-    #endregion
-
-    private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
         {
             EditTagsWindow editTagsWindow = new EditTagsWindow(this);
             editTagsWindow.Show();
@@ -342,17 +336,16 @@ namespace CustomerAnalyticSystem.UI
             EditGroupsWindow editGroupsWindow = new EditGroupsWindow(this);
             editGroupsWindow.Show();
         }
-
-        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewClients.SelectedIndex > -1)
             {
                 EditClientWindow editClientWindow = new EditClientWindow(this, (CustomerInfoModel)ListViewClients.SelectedItem);
                 editClientWindow.Show();
             }
-        }
+        }
+    #endregion
 
-       
 
         private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -364,13 +357,6 @@ namespace CustomerAnalyticSystem.UI
             ComboBoxStatus.SelectedIndex = -1;
             FillingListViewOrders();
         }
-
-           
-
-        private void ListViewOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
     }
 }
