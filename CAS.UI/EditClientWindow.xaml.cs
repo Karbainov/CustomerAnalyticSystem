@@ -158,7 +158,7 @@ namespace CustomerAnalyticSystem.UI
                 ContactBaseModel model = new ContactBaseModel()
                 {
                     CustomerId = _customer.Id,
-                    ContactTypeId = ComboBoxContactType.SelectedItem.Key,
+                    ContactTypeId = (contactTypesWithId.Values.ToList())[ComboBoxContactType.SelectedIndex].Id,
                     Value = TextBoxContact.Text
                 };
                 contactService.AddContact(model);

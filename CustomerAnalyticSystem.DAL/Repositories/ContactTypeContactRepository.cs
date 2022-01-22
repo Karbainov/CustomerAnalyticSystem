@@ -39,8 +39,9 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactDTO>(Queries.AddContact, new { CustomerId, ContactTypeId, Value },
-                commandType: CommandType.StoredProcedure);
+                connection.QuerySingle<ContactDTO>(Queries.AddContact
+                    , new { CustomerId, ContactTypeId, Value }
+                    , commandType: CommandType.StoredProcedure);
             }
         }
 
