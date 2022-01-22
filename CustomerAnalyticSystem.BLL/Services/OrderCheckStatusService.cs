@@ -19,5 +19,18 @@ namespace CustomerAnalyticSystem.BLL.Services
             List<OrderBaseModel> result = map.MapBaseOrder(dto);
             return result;
         }
+
+        public void UpdateCheck (int id, int productId, int orderId, int amount, int mark)
+        {
+            OrderCheckStatusRepository rep = new OrderCheckStatusRepository();
+            rep.UpdateCheck(id, productId, orderId, amount, mark);
+        }
+
+        public void DeleteCheck(int id)
+        {
+            OrderCheckStatusRepository rep = new OrderCheckStatusRepository();
+            rep.DeleteCheck(id);
+        }
+
     }
 }

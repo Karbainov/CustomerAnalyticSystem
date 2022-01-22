@@ -20,6 +20,19 @@ namespace CustomerAnalyticSystem.BLL
 
             return result;
         }
+
+        public List<CustomerTypeModel> GetAllCustomerTypeModel()
+        {
+            List<CustomerTypeModel> customerTypes = new List<CustomerTypeModel>();
+
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            List<CustomerTypeDTO> DTOs = rep.GetAllCustomerType();
+            MrMappi map = new MrMappi();
+            customerTypes = map.MapCustomerTypeDTOToCustomerTypeModel(DTOs);
+
+            return customerTypes;
+        }
+
         //public CustomerModel GetCustomerModel(int id)
         //{
         //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
@@ -32,6 +45,18 @@ namespace CustomerAnalyticSystem.BLL
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             rep.UpdateCustomerById(id, firstName, lastName, TypeId);
         }
+
+        //public void UpdateComment(int id, int customerId, string text)
+        //{
+        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+        //    rep.UpdateComment(id, customerId, text);
+        //}
+
+        //public void DeleteComment(int id)
+        //{
+        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+        //    rep.DeleteComment(id);
+        //}
 
     }
 }

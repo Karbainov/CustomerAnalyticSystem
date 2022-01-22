@@ -12,5 +12,6 @@ AS
 	on Prod.[GroupId] = G.Id
 	join [dbo].[Status] as S
 	on S.Id = O.StatusId
-	WHERE  C.OrderId = @Id
+	WHERE  C.OrderId = @Id and O.IsDeleted = 0 and C.IsDeleted = 0 and Cust.IsDeleted = 0 
+	and Prod.IsDeleted = 0 and G.IsDeleted = 0 and S.IsDeleted = 0
 RETURN @Id

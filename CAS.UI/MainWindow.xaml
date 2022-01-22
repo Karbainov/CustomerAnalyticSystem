@@ -8,7 +8,7 @@
         Title="CustomerAnalyticSystem ©" Height="768" Width="1040">
     <Grid>
         <TabControl TabStripPlacement="Top">
-            <TabItem Header="Клиенты" Width="340">
+            <TabItem Header="Клиенты" Width="340" Height="45">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="207*"/>
@@ -93,11 +93,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="162" Header="ID клиента"/>
-                                    <GridViewColumn Width="162" Header="Тип клиента"/>
-                                    <GridViewColumn Width="162" Header="Фамилия"/>
-                                    <GridViewColumn Width="162" Header="Имя"/>
-                                    <GridViewColumn Width="162" Header ="e-mail"/>                                    
+                                    <GridViewColumn Width="115" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Width="115" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="115" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="115" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -105,7 +104,7 @@
                     <StackPanel Grid.Column="0" Margin="0,0,0,411">
                         <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75" Click="ButtonOpenWindowOfAddingClient_Click"/>
                         <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75" Click="ButtonOpenWindowOfEditingClient_Click"/>
-                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75"/>
+                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75" Click="ButtonFastClientDelete_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -131,14 +130,11 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID клиента" Width="101"/>
-                                    <GridViewColumn Header="Приоритет" Width="101"/>
-                                    <GridViewColumn Header="Тип клиента" Width="101"/>
-                                    <GridViewColumn Header="Фамилия" Width="101"/>
-                                    <GridViewColumn Header="Имя" Width="101"/>
-                                    <GridViewColumn Header="Номер телефона" Width="101"/>
-                                    <GridViewColumn Header="e-mail" Width="101"/>
-                                    <GridViewColumn Header="Комментарий" Width="101"/>                                    
+                                    <GridViewColumn Width="112" Header="ID клиента"/>
+                                    <GridViewColumn Header="Приоритет" Width="162"/>
+                                    <GridViewColumn Width="162" Header="Тип клиента"/>
+                                    <GridViewColumn Width="212" Header="Фамилия"/>
+                                    <GridViewColumn Width="162" Header="Имя"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -153,11 +149,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID товара" Width="162"/>
-                                    <GridViewColumn Header="Группа" Width="162"/>
-                                    <GridViewColumn Header="Наименование" Width="162"/>
-                                    <GridViewColumn Header="Описание товара" Width="162"/>
-                                    <GridViewColumn Header="Остаток" Width="162"/>
+                                    <GridViewColumn Width="102" Header="Id товара"  DisplayMemberBinding="{Binding Id}" />
+                                    <GridViewColumn Width="202" Header="Группа"  DisplayMemberBinding="{Binding GroupName}"/>
+                                    <GridViewColumn Width="202" Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="302" Header="Описание"  DisplayMemberBinding="{Binding Description}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -165,7 +160,19 @@
                     <StackPanel Grid.Column="0">
                         <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75" Click="ButtonOpenWindowOfProductAdding_Click"/>
                         <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75" Click="ButtonOpenWindowOfProductEditing_Click"/>
-                        <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75"/>
+                        <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75" Click="ButtonFastProductDelete_Click"/>
+                        <Button x:Name="ButtonViewAllProducts" Content="Показать все товары" Height="75" Click="ButtonViewAllProducts_Click"/>
+                        <Label Content="" Height="15"/>
+                        <Label Content="Поиск товаров по тэгу"/>
+                        <ComboBox x:Name="ComboBoxTags" SelectionChanged="ComboBoxTags_SelectionChanged" />
+                        <Label Content="" Height="15"/>
+                        <Button x:Name="ButtonEditTags" Content="Редактировать тэги" Click="ButtonEditTags_Click"/>
+                        <Label Content="" Height="15"/>
+                        <Label Content="Поиск товаров по группе"/>
+                        <ComboBox x:Name="ComboBoxGroups" SelectionChanged="ComboBoxGroups_SelectionChanged" />
+                        <Label Content="" Height="15"/>
+                        <Button x:Name="ButtonEditGroups" Content="Редактировать группы" Click="ButtonEditGroups_Click"/>
+                        <Label Content="" Height="15"/>
                     </StackPanel>
 
                 </Grid>

@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[DropCustomerById]
 	@Id integer
 AS
-	delete from [dbo].[Customer] 
+update [dbo].[Customer] 
+set IsDeleted = 1
 	where Id = @Id
 	return @Id
