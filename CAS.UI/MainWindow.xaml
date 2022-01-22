@@ -213,12 +213,13 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="102" Header="Id заказа"  DisplayMemberBinding="{Binding Id}" />
-                                    <GridViewColumn Width="202" Header="Дата"  DisplayMemberBinding="{Binding Date}"/>
-                                    <GridViewColumn Width="202" Header="Id клиента"  DisplayMemberBinding="{Binding CustomerId}"/>
-                                    <GridViewColumn Width="202" Header="Имя клиента"  DisplayMemberBinding="{Binding FirstName}"/>
-                                    <GridViewColumn Width="202" Header="Фамилия клиента"  DisplayMemberBinding="{Binding LastName}"/><GridViewColumn Width="302" Header="Статус"  DisplayMemberBinding="{Binding Status}"/>
-                                    <GridViewColumn Width="302" Header="Сумма"  DisplayMemberBinding="{Binding Cost}"/>
+                                    <GridViewColumn Width="80" Header="№ заказа"  DisplayMemberBinding="{Binding Id}" />
+                                    <GridViewColumn Width="130" Header="Дата"  DisplayMemberBinding="{Binding Date}"/>
+                                    <GridViewColumn Width="80" Header="№ клиента"  DisplayMemberBinding="{Binding CustomerId}"/>
+                                    <GridViewColumn Width="130" Header="Имя клиента"  DisplayMemberBinding="{Binding FirstName}"/>
+                                    <GridViewColumn Width="130" Header="Фамилия клиента"  DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="130" Header="Статус"  DisplayMemberBinding="{Binding Status}"/>
+                                    <GridViewColumn Width="130" Header="Сумма"  DisplayMemberBinding="{Binding Cost}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
