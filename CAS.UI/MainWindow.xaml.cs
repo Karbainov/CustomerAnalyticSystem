@@ -32,15 +32,18 @@ namespace CustomerAnalyticSystem.UI
         public MainWindow()
         {
             InitializeComponent();
+
             FillingDictTags();
             FillingDictGroups();
             FillingDictStatus();
+            customersDict = GetDictCustomerInfoModelWithId();
+
             FillingComboBoxStatus();
             FillingComboBoxTags();
             FillingComboBoxGroups();
+
             FillingListViewProducts();
             FillingListViewOrders();
-            customersDict = GetDictCustomerInfoModelWithId();
             FillingCustomerStackPanel(customersDict);
 
         }
@@ -357,6 +360,7 @@ namespace CustomerAnalyticSystem.UI
             ComboBoxStatus.SelectedIndex = -1;
             FillingListViewOrders();
         }
+
 
     }
 }
