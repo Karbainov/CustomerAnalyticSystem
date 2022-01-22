@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateCommentById]
 	@Id integer,
 	@CustomerId integer, /*надо ли?*/
-	@Text varchar(255)
+	@Text nvarchar(255)
 as
 	update [dbo].[Comment]
 	set CustomerId=@CustomerId, /*надо ли?*/
