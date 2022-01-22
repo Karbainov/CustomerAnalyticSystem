@@ -313,6 +313,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
         {
+
             if (ListViewProducts.SelectedIndex > -1)
             {
                 ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
@@ -322,10 +323,15 @@ namespace CustomerAnalyticSystem.UI
             else
             {
                 MessageBox.Show("Выберите продукт для редактирования");
-            }
-        }
 
-        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+            }
+        }
+
+       
+
+    #endregion
+
+    private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
         {
             EditTagsWindow editTagsWindow = new EditTagsWindow(this);
             editTagsWindow.Show();
@@ -346,8 +352,7 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-
-        #endregion
+       
 
         private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -359,5 +364,14 @@ namespace CustomerAnalyticSystem.UI
             ComboBoxStatus.SelectedIndex = -1;
             FillingListViewOrders();
         }
+
+           
+
+        private void ListViewOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
     }
 }
+
