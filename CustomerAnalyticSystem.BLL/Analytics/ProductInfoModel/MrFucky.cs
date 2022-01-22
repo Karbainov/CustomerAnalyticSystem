@@ -19,7 +19,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             group = 2,
             tag = 3
         };
-        private StackModel Info;
+        public StackModel Info;
 
         //словарь рекомендаций
         public Dictionary<int,ItemToRecommend> Products { get; set; }//+
@@ -295,7 +295,5 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             ConvertToPercents(ConvertToPercent.group);
             ConvertToPercents(ConvertToPercent.tag);
         }
-
-        
     }
 }
