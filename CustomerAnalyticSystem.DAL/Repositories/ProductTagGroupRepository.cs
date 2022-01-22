@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
 
 
 namespace CustomerAnalyticSystem.DAL
@@ -32,14 +34,7 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public List<ProductBaseDTO> GetAllProduct()
-        {
-            string connectionString = ConnectionString.Connection;
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                    return connection.Query<ProductBaseDTO>(Queries.GetAllProduct, commandType: CommandType.StoredProcedure).ToList();
-            }
-        }
+
 
         public List<ProductsWithGroupsDTO> GetAllProductsWithGroups()
         {
@@ -306,6 +301,53 @@ namespace CustomerAnalyticSystem.DAL
                 connection.Query(Queries.AddGroup, new { Name = newGroup.Name, description = newGroup.Description }
                 , commandType: CommandType.StoredProcedure);
             }
+        }
+        #endregion
+
+        public List<ProductBaseDTO> GetAllProduct()
+        {
+            string connectionString = ConnectionString.Connection;
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                    return connection.Query<ProductBaseDTO>(Queries.GetAllProduct, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        #region LogicProduct
+        public List<CountTagsInAllOrdersDTO> GetTagPopularity()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<CountTagsInAllOrdersDTO>(Queries.CountAllTagsInOrders, commandType: CommandType.StoredProcedure).ToList();
+            }
+
+        }
+
+        public List<CountProductsInAllOrdersDTO> GetProductPopularity()
+        {
+            string connectionString = ConnectionString.Connection;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<CountProductsInAllOrdersDTO>(Queries.CountAllProductsInOrders, commandType: CommandType.StoredProcedure).ToList();
+            }
+
+        }
+
+        public StackDTO GetAllInfo()
+        {
+            StackDTO result = new();
+            var tmp = new OrderCheckStatusRepository();
+            var tmp2 = new GradePreferencesRepository();
+
+            result.Groups = GetAllGroup();
+            result.Tags = GetAllTags();
+            result.Product_Tag = GetAllProduct_Tag();
+            result.Products = GetAllProduct();
+            result.Orders = tmp.GetAllOrders();
+            result.Checks = tmp.GetAllCheck();
+            result.Grades = tmp2.GetAllGrades();
+            return result;
         }
         #endregion
 

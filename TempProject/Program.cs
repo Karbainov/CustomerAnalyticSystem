@@ -6,6 +6,11 @@ using System.Collections;
 using System.Linq;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
+using CustomerAnalyticSystem.BLL.Analytics;
+using CustomerAnalyticSystem.BLL;
+using CustomerAnalyticSystem.BLL.Services.Logic;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace TempProject
 {
@@ -13,8 +18,28 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            var group = new ProductTagGroupService();
-            group.UpdateGroupById(10, "hjgfdsa", "TextBoxDescription.Text");
+
+
+            //PreferencesByCustomerIdModel kekis;
+
+            //PreferencesGradesByCustomerIdService test = new();
+            //kekis = test.GetCustomerPreferences(1);
+            //kekis.ClearPrevGrades();
+
+            //PreferredProductsForOneCustomer cucus = new(kekis);
+
+
+            StackModel eww;
+            ProductTagGroupService we = new();
+            eww = we.GetAllInfoAboutAll();
+            GeneralStatistics lol = new();
+            lol.MakeStatistics();
+
+            int r = 0;
+            //AllPreferencesAndGradeInfoByCustomerIdDTO qwe = new();
+            //GradePreferencesRepository www = new();
+            //qwe = www.Logic(1);
+            //qwe.SortToProductGroupTag();
         }
     }
 }

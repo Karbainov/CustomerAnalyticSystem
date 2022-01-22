@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.BLL.Analytics;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 using AutoMapper;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
 
 namespace CustomerAnalyticSystem.BLL.Configs
 {
@@ -91,6 +95,30 @@ namespace CustomerAnalyticSystem.BLL.Configs
         //    .ForMember(dest => dest.Date, act => act.MapFrom(src => src.Date)).ForMember(dest => dest.Cost, act => act.MapFrom(src => src.Cost))
         //    .ForMember(dest => dest.CustomerId, act => act.MapFrom(src => src.CustomerId)).ForMember(dest => dest.StatusId, act => act.MapFrom(src => src.StatusId));
         //});
+        public MapperConfiguration ConfigCustomerPreferencesAndGrades = new MapperConfiguration(cfg =>
+        {
+
+            cfg.CreateMap<AllPreferencesAndGradeInfoByCustomerIdDTO, PreferencesByCustomerIdModel>()
+            .ForMember(dest => dest.CustomerGrades, act => act.MapFrom(src => src.Grades));
+
+            cfg.CreateMap<GroupForPrefDTO, GroupPrefModel>();
+            cfg.CreateMap<TagForPrefDTO, TagPrefModel>();
+            cfg.CreateMap<ProductForPrefDTO, ProductPrefModel>();
+            cfg.CreateMap<GradeInfoByCustomerIdDTO, GradePrefModel>().ForMember(dest => dest.Id, act => act.MapFrom(src => src.ProductId));
+            cfg.CreateMap<GradeInfoByCustomerIdForTagsDTO, CustomerTagGradesModel>();
+        }
+        );
+        public MapperConfiguration ConfigStack = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<StackDTO,StackModel>();
+            cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
+            cfg.CreateMap<TagDTO, TagModel>();
+            cfg.CreateMap<GroupBaseDTO, GroupBaseModel>();
+            cfg.CreateMap<Product_TagDTO, ProductTagBaseModel>();
+            cfg.CreateMap<OrderDTO, OrderBaseModel>();
+            cfg.CreateMap<CheckDTO, CheckBaseModel>();
+            cfg.CreateMap<GradeDTO, GradeBaseModel>();
+        });
 
 
 
@@ -106,3 +134,6 @@ namespace CustomerAnalyticSystem.BLL.Configs
          });
     }
 }
+//Mapper.CreateMap<BaseModel, DataDestination>().IncludeAllDerived()
+//Mapper.CreateMap<Car, DataDestination>();
+//Mapper.CreateMap<Camper, DataDestination>();

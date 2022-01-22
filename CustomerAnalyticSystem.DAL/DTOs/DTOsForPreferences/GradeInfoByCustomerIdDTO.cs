@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomerAnalyticSystem.DAL.DTOs
+namespace CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences
 {
-    public class GradeDTO
+    public class GradeInfoByCustomerIdDTO
     {
-        public int Id { get; set; }
         public int ProductId { get; set; }
-        public int CustomerId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public int Value { get; set; }
-        
     }
 }

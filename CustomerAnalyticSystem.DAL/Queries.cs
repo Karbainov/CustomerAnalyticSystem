@@ -122,6 +122,8 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateCheck = "UpdateCheck";
         #endregion
 
+
+
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";
         public const string GetAllContactByCustomerId = "GetAllContactByCustomerId";
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
@@ -144,5 +146,12 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetOrderModel = "GetOrderModel";
 
         public const string GetAllOrdersByStatusId = "GetAllOrdersByStatusId";
+
+        #region Logic
+        public const string CountAllTagsInOrders = "CountAllTagsInOrders";
+        public const string CountAllProductsInOrders = "CountAllProductsInOrders";
+        #endregion
+
+
     }
 }

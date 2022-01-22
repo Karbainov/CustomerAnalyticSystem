@@ -6,7 +6,11 @@ using System.Linq;
 using System.Text;
 using AutoMapper;
 using System.Threading.Tasks;
+using CustomerAnalyticSystem.BLL.Analytics;
 using CustomerAnalyticSystem.BLL.Configs;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace CustomerAnalyticSystem.BLL
 {
@@ -58,6 +62,19 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductsWithGroupsDTO>, List<ProductBaseModel>>(dto);
         }
     
+        public PreferencesByCustomerIdModel MapFromPreferences (AllPreferencesAndGradeInfoByCustomerIdDTO dto)
+        {
+            var config = new MapperConfigs();
+            PreferencesByCustomerIdModel result = new Mapper(config.ConfigCustomerPreferencesAndGrades)
+                .Map<AllPreferencesAndGradeInfoByCustomerIdDTO,PreferencesByCustomerIdModel>(dto);
+            return result;
+        }
+        public StackModel GetAllInfoForProductAnalise (StackDTO dto)
+        {
+            var config = new MapperConfigs();
+            StackModel result = new Mapper(config.ConfigStack).Map<StackDTO, StackModel>(dto);
+            return result;
+        }
     
 
         public List<GroupBaseModel> MapFromGroupBaseDTOToGroupBaseModel(List<GroupBaseDTO> dto)
@@ -79,4 +96,5 @@ namespace CustomerAnalyticSystem.BLL
         }
 
     }
+
 }
