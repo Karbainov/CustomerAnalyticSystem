@@ -4,5 +4,6 @@
 	[Name] nvarchar (50) NOT NULL,
 	[Description] nvarchar (255) NULL,
 	[GroupId] int NOT NULL,
-	Foreign key ([GroupId]) references [Group]([Id])
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
+    Foreign key ([GroupId]) references [Group]([Id])
 )

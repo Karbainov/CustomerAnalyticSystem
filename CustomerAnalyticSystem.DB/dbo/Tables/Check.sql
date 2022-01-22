@@ -5,6 +5,7 @@
 	[OrderId] integer NOT NULL,
 	[Amount] integer NOT NULL,
 	[Mark] integer NULL,
-	Foreign key (ProductId) references [Product] (Id),
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
+    Foreign key (ProductId) references [Product] (Id),
 	Foreign key (OrderId) references [Order] (Id)
 )

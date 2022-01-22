@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[DeleteGradeById]
 	@Id integer
 as
-delete from dbo.[Grade]
+update dbo.[Grade]
+set IsDeleted = 1
 where Id=@Id

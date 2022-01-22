@@ -8,7 +8,7 @@
         Title="CustomerAnalyticSystem ©" Height="768" Width="1040">
     <Grid>
         <TabControl TabStripPlacement="Top">
-            <TabItem Header="Клиенты" Width="340">
+            <TabItem Header="Клиенты" Width="340" Height="45">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="207*"/>
@@ -93,11 +93,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="162" Header="ID клиента"/>
-                                    <GridViewColumn Width="162" Header="Тип клиента"/>
-                                    <GridViewColumn Width="162" Header="Фамилия"/>
-                                    <GridViewColumn Width="162" Header="Имя"/>
-                                    <GridViewColumn Width="162" Header ="e-mail"/>
+                                    <GridViewColumn Width="115" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Width="115" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="115" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="115" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -105,7 +104,7 @@
                     <StackPanel Grid.Column="0" Margin="0,0,0,411">
                         <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75" Click="ButtonOpenWindowOfAddingClient_Click"/>
                         <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75" Click="ButtonOpenWindowOfEditingClient_Click"/>
-                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75"/>
+                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75" Click="ButtonFastClientDelete_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -162,12 +161,18 @@
                         <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75" Click="ButtonOpenWindowOfProductAdding_Click"/>
                         <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75" Click="ButtonOpenWindowOfProductEditing_Click"/>
                         <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75" Click="ButtonFastProductDelete_Click"/>
+                        <Button x:Name="ButtonViewAllProducts" Content="Показать все товары" Height="75" Click="ButtonViewAllProducts_Click"/>
+                        <Label Content="" Height="15"/>
                         <Label Content="Поиск товаров по тэгу"/>
                         <ComboBox x:Name="ComboBoxTags" SelectionChanged="ComboBoxTags_SelectionChanged" />
+                        <Label Content="" Height="15"/>
+                        <Button x:Name="ButtonEditTags" Content="Редактировать тэги" Click="ButtonEditTags_Click"/>
+                        <Label Content="" Height="15"/>
                         <Label Content="Поиск товаров по группе"/>
                         <ComboBox x:Name="ComboBoxGroups" SelectionChanged="ComboBoxGroups_SelectionChanged" />
                         <Label Content="" Height="15"/>
-                        <Button x:Name="ButtonViewAllProducts" Content="Показать все товары" Click="ButtonViewAllProducts_Click"/>
+                        <Button x:Name="ButtonEditGroups" Content="Редактировать группы" Click="ButtonEditGroups_Click"/>
+                        <Label Content="" Height="15"/>
                     </StackPanel>
 
                 </Grid>
@@ -181,7 +186,7 @@
                     <StackPanel>
                         <Button x:Name="ButtonOpenAddOrderWndw" Content="Добавить заказ" Height="75" Click="ButtonOpenAddOrderWndw_Click"/>
                         <Button x:Name="ButtonOpenEditOrderWndw" Content="Редактировать заказ" Height="75" Click="ButtonOpenEditOrderWndw_Click"/>
-                        <Button x:Name="ButtonFastOrderDelete" Content="Удалить заказ" Height="75"/>
+                        <Button x:Name="ButtonFastOrderDelete" Content="Удалить заказ" Height="75" Click="ButtonFastOrderDelete_Click"/>
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>

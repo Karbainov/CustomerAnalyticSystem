@@ -6,7 +6,8 @@
 	[TagId] integer NULL,
 	[GroupId] integer NULL,
 	[IsInterested] bit NOT NULL,
-	Foreign key ([ProductId]) references [Product] (Id),
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
+    Foreign key ([ProductId]) references [Product] (Id),
 	Foreign key ([CustomerId]) references [Customer] (Id),
 	Foreign key (TagId) references [Tag] (Id),
 	Foreign key (GroupId) references [Group] (Id)

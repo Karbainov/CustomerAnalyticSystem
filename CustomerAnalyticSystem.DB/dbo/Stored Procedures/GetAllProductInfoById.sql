@@ -11,5 +11,5 @@ join [dbo].[Order] as O
 on C.OrderId = O.Id
 join [dbo].[Customer] as Cus
 on Cus.Id = O.CustomerId
-where P.Id=@Id
+where P.Id=@Id and P.IsDeleted = 0 and G.IsDeleted = 0 and C.IsDeleted = 0 and O.IsDeleted = 0 and Cus.IsDeleted = 0
 RETURN @Id

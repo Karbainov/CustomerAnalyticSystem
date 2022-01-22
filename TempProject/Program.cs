@@ -13,8 +13,8 @@ namespace TempProject
     {
         static void Main(string[] args)
         {
-            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-            List<CustomerInfoDTO> c = rep.GetAllCustomerInfoDTO();
+            var group = new ProductTagGroupService();
+            group.UpdateGroupById(10, "hjgfdsa", "TextBoxDescription.Text");
         }
     }
 }

@@ -5,6 +5,7 @@
 	Date NVARCHAR(10) NOT NULL,
 	StatusId integer NOT NULL,
 	Cost integer NOT NULL,
-	Foreign key (StatusId) references [Status] (Id),
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
+    Foreign key (StatusId) references [Status] (Id),
 	Foreign key (CustomerId) references [Customer] (Id)
 )
