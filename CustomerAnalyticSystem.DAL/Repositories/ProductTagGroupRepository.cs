@@ -21,7 +21,8 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query(Queries.AddProduct, new { Name = name, description = description, groupId = groupId }, commandType: CommandType.StoredProcedure);
+                connection.Query(Queries.AddProduct, new { Name = name, Description = description, GroupId = groupId}
+                , commandType: CommandType.StoredProcedure);
             }
         }
 

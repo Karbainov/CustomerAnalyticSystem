@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomerAnalyticSystem.BLL;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -41,6 +42,7 @@ namespace CustomerAnalyticSystem.UI
             FillingComboBoxStatus();
             FillingComboBoxTags();
             FillingComboBoxGroups();
+            FillingComboBoxAnalitic();
 
             FillingListViewProducts();
             FillingListViewOrders();
@@ -130,6 +132,22 @@ namespace CustomerAnalyticSystem.UI
             {
                 MessageBox.Show("Выберите заказ");
             }
+        }
+
+        private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillingListViewOrders();
+        }
+
+        private void ButtonViewAllOrders_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxStatus.SelectedIndex = -1;
+            FillingListViewOrders();
+        }
+
+        private void ComboBoxAnalitic_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillingListViewLogic();
         }
 
         #region filling
@@ -227,7 +245,43 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-    #endregion
+        public void FillingComboBoxAnalitic()
+        {
+            ComboBoxAnalitic.Items.Add("Товары");
+            ComboBoxAnalitic.Items.Add("Группы");
+            ComboBoxAnalitic.Items.Add("Тэги");
+        }
+
+        public void FillingListViewLogic()
+        {
+            ListViewLogic.Items.Clear();
+            GeneralStatistics stat = new();
+            stat.MakeStatistics();
+            if (ComboBoxAnalitic.SelectedIndex == 0)
+            {
+                foreach (var val in stat.Products.Values)
+                {
+                    ListViewLogic.Items.Add(val);
+                }
+            }
+            else if (ComboBoxAnalitic.SelectedIndex == 1)
+            {
+                foreach (var val in stat.Groups.Values)
+                {
+                    ListViewLogic.Items.Add(val);
+                }
+            }
+            else if (ComboBoxAnalitic.SelectedIndex == 2)
+            {
+                foreach (var val in stat.Tags.Values)
+                {
+                    ListViewLogic.Items.Add(val);
+                }
+            }
+
+        }
+
+        #endregion
 
         #region dictionary
         public Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
@@ -348,18 +402,6 @@ namespace CustomerAnalyticSystem.UI
             }
         }
     #endregion
-
-
-        private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            FillingListViewOrders();
-        }
-
-        private void ButtonViewAllOrders_Click(object sender, RoutedEventArgs e)
-        {
-            ComboBoxStatus.SelectedIndex = -1;
-            FillingListViewOrders();
-        }
 
 
     }

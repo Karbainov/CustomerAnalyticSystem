@@ -2,6 +2,6 @@
 	@CustomerId integer,
 	@Text nvarchar(255)
 as
-	insert into [dbo].[Comment] ([CustomerId],[Text])
+	insert into [dbo].[Comment] 
 	values 
-	(@CustomerId, @Text)
+	(@CustomerId, @Text, 0)

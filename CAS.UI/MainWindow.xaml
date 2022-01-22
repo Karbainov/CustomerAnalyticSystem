@@ -8,7 +8,7 @@
         Title="CustomerAnalyticSystem ©" Height="768" Width="1040">
     <Grid>
         <TabControl TabStripPlacement="Top">
-            <TabItem Header="Клиенты" Width="340" Height="45">
+            <TabItem Header="Клиенты" Width="255" Height="45">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="207*"/>
@@ -108,7 +108,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Товары" Width="340">
+            <TabItem Header="Товары" Width="255">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="207*"/>
@@ -177,7 +177,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Заказы" Width="340">
+            <TabItem Header="Заказы" Width="255">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="207*"/>
@@ -202,7 +202,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ListView x:Name="ListViewOrders" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" SelectionChanged="ListViewOrders_SelectionChanged">
+                        <ListView x:Name="ListViewOrders" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -245,6 +245,30 @@
                         </ListView>
                     </Grid>
 
+                </Grid>
+            </TabItem>
+            <TabItem Header="Аналитика склада" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="255">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="47,49,0,0" VerticalAlignment="Top"/>
+                    <ListView x:Name="ListViewLogic" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0" Margin="0,0,0,158">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="Width" Value="auto" />
+                                <Setter Property="BorderBrush" Value="LightGray" />
+                                <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="102" Header="№"  DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Width="202" Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Width="202" Header="Процентр пристствия в заказах"  DisplayMemberBinding="{Binding Percent}"/>
+                                <GridViewColumn Width="302" Header="Средняя оценка"  DisplayMemberBinding="{Binding AverageMark}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ComboBox x:Name="ComboBoxAnalitic" HorizontalAlignment="Left" Margin="61,524,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxAnalitic_SelectionChanged"/>
                 </Grid>
             </TabItem>
         </TabControl>
