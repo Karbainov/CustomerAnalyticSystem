@@ -139,6 +139,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ListViewOrders.SelectedIndex = -1;
             FillingListViewOrders();
         }
 
@@ -152,6 +153,15 @@ namespace CustomerAnalyticSystem.UI
         private void ComboBoxAnalitic_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FillingListViewLogic();
+        }
+
+        private void ListViewOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListViewOrders.SelectedIndex > -1)
+            {
+                FillingListViewCheck();
+            }
+
         }
 
         #region filling
@@ -421,10 +431,6 @@ namespace CustomerAnalyticSystem.UI
 
         #endregion
 
-        private void ListViewOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            FillingListViewCheck();
-        }
     }
 }
 
