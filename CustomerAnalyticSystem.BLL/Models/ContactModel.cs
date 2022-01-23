@@ -10,5 +10,19 @@
         {
             return $"{Name} {Value}";
         }
+
+        public override bool Equals(object obj)
+        {
+            if (Id != ((ContactModel)obj).Id
+                || Value != ((ContactModel)obj).Value
+                || Name != ((ContactModel)obj).Name)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

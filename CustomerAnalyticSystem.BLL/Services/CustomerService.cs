@@ -1,12 +1,31 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL.RepInterfaces;
 using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL
 {
     public class CustomerService
     {
+
+        protected ICustomerRepository _rep = new CustomerTypeCustomerCommentRepository();
+
+        public CustomerService(ICustomerRepository rep = null)
+        {
+            if (rep is not null)
+            {
+                _rep = rep;
+            }
+        }
+
+        public List<CustomerTypeModel> GetAllCustomerTypeModel()
+        {
+            List<CustomerTypeDTO> DTOs = _rep.GetAllCustomerType();
+            MrMappi map = new MrMappi();
+            return map.MapCustomerTypeDTOToCustomerTypeModel(DTOs);
+        }
+
         public void AddCustomer(CustomerModel model)
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
@@ -27,8 +46,7 @@ namespace CustomerAnalyticSystem.BLL
 
         public List<CustomerInfoModel> GetAllCustomerInfoModels()
         {
-            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-            List<CustomerInfoDTO> customers = rep.GetAllCustomerInfoDTO();
+            List<CustomerInfoDTO> customers = _rep.GetAllCustomerInfoDTO();
             var map = new MrMappi();
 
             return map.MapListCustomerDTOToListCustomerModel(customers);
