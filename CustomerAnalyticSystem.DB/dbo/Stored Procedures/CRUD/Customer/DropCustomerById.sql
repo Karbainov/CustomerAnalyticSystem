@@ -4,4 +4,10 @@ AS
 update [dbo].[Customer] 
 set IsDeleted = 1
 	where Id = @Id
-	return @Id
+update [dbo].[Contact]
+set IsDeleted = 1
+	where Id = @Id
+update [dbo].[Comment]
+set IsDeleted = 1
+	where Id = @Id
+return @Id

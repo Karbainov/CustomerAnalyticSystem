@@ -11,6 +11,14 @@ namespace CustomerAnalyticSystem.BLL
 {
     public class CustomerService
     {
+        public void AddCustomer(CustomerModel model)
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            MrMappi map = new MrMappi();
+            CustomerDTO customer = map.MapFromCustomerModelToCustomerDTO(model);
+            rep.AddCustomer(customer);
+        }
+
         public CustomerInfoModel GetCustomerModel(int id)
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
@@ -40,6 +48,26 @@ namespace CustomerAnalyticSystem.BLL
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             rep.DeleteCustomerById(id);
+        }
+
+        public void AddCommentByCustomerId(int customerId, CommentModel model)
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            rep.AddComment(customerId, model.Text);
+        }
+
+        public void DeleteCommentById(int id)
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            rep.DeleteComment(id);
+        }
+
+        public List<CommentModel> GetAllCommentByCustomerId(int id)
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            List<CommentDTO> coments = rep.GetAllCommentByCustomerId(id);
+            var map = new MrMappi();
+            return map.MapFromCommentDTOToCommentModel(coments);
         }
     }
 }
