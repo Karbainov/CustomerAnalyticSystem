@@ -5,22 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
-using CustomerAnalyticSystem.DAL.DTOs;
 using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
 using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
+using CustomerAnalyticSystem.DAL.RepInterfaces;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
     public class ProductTagGroupService
     {
+        protected IProductTagGroupRepository _rep = new ProductTagGroupRepository();
+
+        public ProductTagGroupService(IProductTagGroupRepository rep = null)
+        {
+            if (rep is not null)
+            {
+                _rep = rep;
+            }
+        }
 
         #region tag crud
         public List<TagModel> GetAllTags()
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            var dto = service.GetAllTags();
+            var dto = _rep.GetAllTags();
             List<TagModel> result = map.MapFromTagDTOToTagModel(dto);
             return result;
         }
@@ -28,55 +36,40 @@ namespace CustomerAnalyticSystem.BLL.Services
         public void UpdateTagById(int id, string name)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.UpdateTagById(id, name);
+            _rep.UpdateTagById(id, name);
         }
 
         public void DeleteTagById(int id)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.DeleteTagById(id);
+            _rep.DeleteTagById(id);
         }
 
         public void AddTag(string name)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.AddTag(name);
-        }
-
-        //public TagModel GetTagById(int id)
-        //{
-        //    MrMappi map = new();
-        //    var service = new ProductTagGroupRepository();
-        //    var dto = service.GetTagById(id);
-        //    TagModel result = map.MapFromTagDTOToTagModel(dto);
-        //    return result;
-        //}
+            _rep.AddTag(name);
+        }       
 
         #endregion
 
         #region product crud
-        public void UpdateProductById(int id, string name, string description, int groupId)//ProductBaseModel product)
+        public void UpdateProductById(int id, string name, string description, int groupId)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.UpdateProductById(id, name, description, groupId);
+            _rep.UpdateProductById(id, name, description, groupId);
         }
 
         public void AddProduct(string name, string description, int groupId)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.AddProduct(name, description, groupId);
+            _rep.AddProduct(name, description, groupId);
         }
 
         public List<ProductBaseModel> GetAllProducts()
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            var dto = service.GetAllProductsWithGroups();
+            var dto = _rep.GetAllProductsWithGroups();
             var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
         }
@@ -84,18 +77,8 @@ namespace CustomerAnalyticSystem.BLL.Services
         public void DeleteProductById(int id)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.DeleteProductById(id);
+            _rep.DeleteProductById(id);
         }
-
-        //public ProductBaseDTO GetProductById(int id)
-        //{
-        //    MrMappi map = new();
-        //    var service = new ProductTagGroupRepository();
-        //    service.GetProductById(id);
-        //    var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
-        //    return result;
-        //}
 
         #endregion     
 
@@ -103,8 +86,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         public List<GroupBaseModel> GetAllGroups()
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            var dto = service.GetAllGroup();
+            var dto = _rep.GetAllGroup();
             List<GroupBaseModel> result = map.MapFromGroupBaseDTOToGroupBaseModel(dto);
             return result;
         }
@@ -112,32 +94,20 @@ namespace CustomerAnalyticSystem.BLL.Services
         public void UpdateGroupById(int id, string name, string description)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.UpdateGroupById(id, name, description);
+            _rep.UpdateGroupById(id, name, description);
         }
 
         public void AddGroup(string name, string description)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.AddGroup(name, description);
+            _rep.AddGroup(name, description);
         }
 
         public void DeleteGroupById(int id)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.DeleteGroupById(id);
+            _rep.DeleteGroupById(id);
         }
-
-        //public ProductBaseDTO GetGroupById(int id)
-        //{
-        //    MrMappi map = new();
-        //    var service = new ProductTagGroupRepository();
-        //    service.GeGroupById(id);
-        //    var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
-        //    return result;
-        //}
 
         #endregion
 
@@ -146,22 +116,19 @@ namespace CustomerAnalyticSystem.BLL.Services
         public void UpdateProductTag(int id, int productId, int tagId)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.UpdateProduct_TagById(id, productId, tagId);
+            _rep.UpdateProduct_TagById(id, productId, tagId);
         }
 
         public void AddProductTag(int productId, int tagId)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.AddProduct_Tag(productId, tagId);
+            _rep.AddProduct_Tag(productId, tagId);
         }
 
         public void DeleteProductTag(int id)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.DeleteProduct_TagById(id);
+            _rep.DeleteProduct_TagById(id);
         }
 
         #endregion
@@ -169,8 +136,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         public List<ProductBaseModel> GetAllProductsByTagId(int id)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            var dto = service.GetAllProductsByTag(id);
+            var dto = _rep.GetAllProductsByTag(id);
             var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
         }
@@ -178,8 +144,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         public List<ProductBaseModel> GetAllProductsByGroupId(int id)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            var dto = service.GetAllProductsByGroupId(id);
+            var dto = _rep.GetAllProductsByGroupId(id);
             var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
         }
@@ -187,8 +152,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         public List<TagModel> GetAllTagsByProductId(int id)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            var dto = service.GetAllTagsByProductId(id);
+            var dto = _rep.GetAllTagsByProductId(id);
             List<TagModel> result = map.MapFromTagDTOToTagModel(dto);
             return result;
         }
@@ -196,15 +160,13 @@ namespace CustomerAnalyticSystem.BLL.Services
         public void DeleteProduct_TagByTagIdAndProductId(int idP, int idT)
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            service.DeleteProduct_TagByTagIdAndProductId(idP, idT);
+            _rep.DeleteProduct_TagByTagIdAndProductId(idP, idT);
         }
 
         public List<GroupsWithProductsModel> GetAllGroupsWithProducts()
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            var dto = service.GetAllGroupsWithProducts();
+            var dto = _rep.GetAllGroupsWithProducts();
             List<GroupsWithProductsModel> result = map.MapGroupsWithProducts(dto);
             return result;
         }
@@ -212,8 +174,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         public StackModel GetAllInfoAboutAll ()
         {
             MrMappi map = new();
-            var service = new ProductTagGroupRepository();
-            var dto = service.GetAllInfo();
+            var dto = _rep.GetAllInfo();
             StackModel result = map.GetAllInfoForProductAnalise(dto);
             return result;
         }

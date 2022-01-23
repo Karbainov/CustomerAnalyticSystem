@@ -37,10 +37,10 @@ namespace CustomerAnalyticSystem.UI
             var listTags = tags.GetAllTags();
             foreach (var t in listTags)
             {
-                ListViewEditTagsWndw.Items.Add(t.Name);
+                ListViewEditTagsWndw.Items.Add(t);
             }
-
         }
+    
 
         private void ButtonAddTag_Click(object sender, RoutedEventArgs e)
         {
@@ -52,7 +52,10 @@ namespace CustomerAnalyticSystem.UI
                     tag.AddTag(TextBoxNewTag.Text);
                     _mainWindow.FillingComboBoxTags();
                     FillingListViewEditTagsWndw();
-                    _mainWindow.FillingDictTags();
+                    int count = ListViewEditTagsWndw.Items.Count;
+                    ListViewEditTagsWndw.SelectedIndex = count - 1;
+                    TagModel newTag = ((TagModel)ListViewEditTagsWndw.SelectedItem);
+                    _mainWindow.TagsIdAndTags.Add(newTag.Name, newTag.Id);
                     TextBoxNewTag.Text = "";
                 }
                 else
@@ -70,9 +73,10 @@ namespace CustomerAnalyticSystem.UI
         {
             if (ListViewEditTagsWndw.SelectedItem != null)
             {
-                int id = _mainWindow.TagsIdAndTags[ListViewEditTagsWndw.SelectedItem.ToString()];
-                var tag = new ProductTagGroupService();
-                tag.DeleteTagById(id);
+                var tag = ((TagModel)ListViewEditTagsWndw.SelectedItem);
+                int id = _mainWindow.TagsIdAndTags[tag.Name];
+                var tag1 = new ProductTagGroupService();
+                tag1.DeleteTagById(id);
                 _mainWindow.TagsIdAndTags.Remove(ListViewEditTagsWndw.SelectedItem.ToString());
                 _mainWindow.FillingComboBoxTags();
                 FillingListViewEditTagsWndw();       
@@ -91,7 +95,7 @@ namespace CustomerAnalyticSystem.UI
                 {
                     if (TextBoxEditTag.Text != String.Empty)
                     {
-                        int id = _mainWindow.TagsIdAndTags[ListViewEditTagsWndw.SelectedItem.ToString()];
+                        int id = _mainWindow.TagsIdAndTags[((TagModel)ListViewEditTagsWndw.SelectedItem).Name];
                         var tag = new ProductTagGroupService();
                         tag.UpdateTagById(id, TextBoxEditTag.Text);
                         _mainWindow.TagsIdAndTags.Remove(ListViewEditTagsWndw.SelectedItem.ToString());
@@ -120,7 +124,7 @@ namespace CustomerAnalyticSystem.UI
         {
             if (ListViewEditTagsWndw.SelectedItem != null)
             {
-               TextBoxEditTag.Text = ListViewEditTagsWndw.SelectedItem.ToString();
+               TextBoxEditTag.Text = ((TagModel)ListViewEditTagsWndw.SelectedItem).Name;
             }
             else
             {

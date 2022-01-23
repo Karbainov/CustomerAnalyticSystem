@@ -3,6 +3,6 @@
   @FirstName nvarchar(50),
   @TypeId integer
 as
-  insert into [dbo].[Customer] (LastName, FirstName, TypeId)
+  insert into [dbo].[Customer] 
   values 
-  (@LastName, @FirstName, @TypeId)
+  (@LastName, @FirstName, @TypeId, 0)

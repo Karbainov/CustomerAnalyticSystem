@@ -25,10 +25,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="40"/>
-                    <GridViewColumn Header="Наименование" Width="90"/>
-                    <GridViewColumn Header="Количество" Width="90"/>
-                    <GridViewColumn Header="Стоимость" Width="90"/>
-                    <GridViewColumn Header="Оценка" Width="90"/>
+                    <GridViewColumn Header="Наименование" Width="120"/>
+                    <GridViewColumn Header="Количество" Width="120"/>
+                    <GridViewColumn Header="Оценка" Width="120"/>
                 
                 </GridView>
             </ListView.View>
@@ -47,7 +46,7 @@
                 </Grid.RowDefinitions>
                 <Label Content="Товар" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
                 <Label Content="Количество" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="1"/>
-                <Label Content="Цена единицы" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2"/>
+                <Label Content="Сумма заказа" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2"/>
                 <Label Content="Оценка" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="3"/>
             </Grid>
             <Grid Grid.Column="1">
@@ -57,10 +56,10 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ComboBox x:Name="ComboBoxChooseProductEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0"/>
-                <ComboBox x:Name="ComboBoxChooseMarkEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="3"/>
-                <TextBox x:Name="TextBoxAmountOfProductEditOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
-                <TextBox x:Name="TextBoxPriceOfUnitEditOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
+                <ComboBox x:Name="ComboBoxChooseProductEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0" Height="20"/>
+                <ComboBox x:Name="ComboBoxChooseMarkEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="3" Height="20"/>
+                <TextBox x:Name="TextBoxAmountOfProductEditOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20"/>
+                <TextBox x:Name="TextBoxPriceOfUnitEditOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
@@ -77,7 +76,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button x:Name="ButtonSaveChangesEditOrderWndw" Content="Сохранить изменения" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
-            <Button x:Name="ButtonDeleteOrderEditOrderWndw" Content="Удалить заказ" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
+            <Button x:Name="ButtonDeleteOrderEditOrderWndw" Content="Удалить заказ" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30" Click="ButtonDeleteOrderEditOrderWndw_Click"/>
         </Grid>
 
     </Grid>

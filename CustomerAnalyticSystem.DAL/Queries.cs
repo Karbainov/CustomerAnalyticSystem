@@ -110,7 +110,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetCommentById = "GetCommentById";
         public const string GetAllComment = "GetAllComment";
         public const string AddComment = "AddComment";
-        public const string DeleteComment = "DeleteComment";
+        public const string DeleteComment = "DeleteCommentById";
         public const string UpdateComment = "UpdateComment";
         #endregion
 
@@ -136,12 +136,15 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllOrdersByCustomerId = "GetAllOrdersByCustomerId";
         public const string GetAllGroupsWithProduct = "GetAllGroupsWithProducts";
         public const string GetNumberOfTagsInOrderByCustomerId = "GetNumberOfTagsInOrderByCustomerId";
+        public const string GetAllContactWithContactTypeByCustomerId = "GetAllContactWithContactTypeByCustomerId";
         public const string GetAllProductsByGroupId = "GetAllProductsByGroupId";
         public const string GetAllProductsWithGroups = "GetAllProductsWithGroups";
         public const string GetAllTagsByProductId = "GetAllTagsByProductId";
         public const string DeleteProduct_TagByTagIdAndProductId = "DeleteProduct_TagByTagIdAndProductId";
-
         public const string GetAllSortedComments = "GetAllSortedComments";
+        public const string GetOrderModel = "GetOrderModel";
+        public const string GetAllOrdersByStatusId = "GetAllOrdersByStatusId";
+        public const string GetCheckByOrderId = "GetCheckByOrderId";
 
         #region Logic
         public const string CountAllTagsInOrders = "CountAllTagsInOrders";

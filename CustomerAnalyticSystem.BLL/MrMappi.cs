@@ -16,6 +16,20 @@ namespace CustomerAnalyticSystem.BLL
 {
     public class MrMappi
     {
+
+        public CustomerDTO MapFromCustomerModelToCustomerDTO(CustomerModel model)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromCustomerModelToCustomerDTO)
+                .Map<CustomerModel, CustomerDTO>(model);
+        }
+        public List<CommentModel> MapFromCommentDTOToCommentModel(List<CommentDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromCommentDTOToCommentModel)
+                .Map<List<CommentDTO>, List<CommentModel>>(dto);
+        }
+
         public OrderInfoByOrderIdModel MapOrderInfoByOrderId(AllOrderInfoByOrderId dto)
         {
             var config = new MapperConfigs();
@@ -44,10 +58,10 @@ namespace CustomerAnalyticSystem.BLL
             var config = new MapperConfigs();
             return new Mapper(config.ConfFromCustomerInfoDTOToCustomerinfoModel).Map<List<CustomerInfoDTO>, List<CustomerInfoModel>>(list);
         }
-        public List<OrderBaseModel> MapBaseOrder(List<OrderDTO> dto)
+        public List<OrderBaseModel> MapBaseOrder(List<GetOrderModelDTO> dto)
         {
             var config = new MapperConfigs();
-            return new Mapper(config.ConfigAllGroupsWithProducts).Map<List<OrderDTO>,List<OrderBaseModel>>(dto);
+            return new Mapper(config.ConfFromOrderDTOToOrderBaseModel).Map<List<GetOrderModelDTO>,List<OrderBaseModel>>(dto);
         }
 
         public List<TagModel> MapFromTagDTOToTagModel(List<TagDTO> dto)
@@ -60,6 +74,20 @@ namespace CustomerAnalyticSystem.BLL
         {
             var config = new MapperConfigs();
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductsWithGroupsDTO>, List<ProductBaseModel>>(dto);
+        }
+
+        public List<ContactTypeModel> MapFromContactTypeDTOToContactTypeModel(List<ContactTypeDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromContactTypeDTOToContactTypeModel)
+                .Map<List<ContactTypeDTO>, List<ContactTypeModel>>(dto);
+        }
+
+        public List<ContactModel> MapFromContactWithContactTypeNameDTOToContactModel(List<ContactWithContactTypeNameDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfContactWithContactTypeDTOToContactModel)
+                .Map<List<ContactWithContactTypeNameDTO>, List<ContactModel>>(dto);
         }
     
         public PreferencesByCustomerIdModel MapFromPreferences (AllPreferencesAndGradeInfoByCustomerIdDTO dto)
@@ -83,12 +111,30 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseGroup).Map<List<GroupBaseDTO>, List<GroupBaseModel>>(dto);
         }
 
+        public List<OrderBaseModel> MapFromOrderDTOToOrderBaseModel(List<GetOrderModelDTO> DTO)
+        {
+            var mapConfig = new MapperConfigs();
+            return new Mapper(mapConfig.ConfFromOrderDTOToOrderBaseModel).Map<List<GetOrderModelDTO>
+               , List<OrderBaseModel>>(DTO);
+        }
         public List<PreferencesBaseModel> MapFromPreferencesDTOToPreferenceBaseModel(List<PreferencesDTO> dto)
         {
             var config = new MapperConfigs();
             return new Mapper(config.ConfigBasePreferences).Map<List<PreferencesDTO>, List<PreferencesBaseModel>>(dto);
         }
 
+        public List<StatusModel> MapFromStatus (List<StatusDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigStatus).Map<List<StatusDTO>, List<StatusModel>>(dto);
+        }
+
+        public List<CheckByOrderIdModel> MapCheckByOrderId(List<CheckByOrderIdDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigCheckByOrderIdDTOToCheckByOrderIdModel).Map<List<CheckByOrderIdDTO>
+               , List<CheckByOrderIdModel>>(dto);
+        }
     }
 
 }
