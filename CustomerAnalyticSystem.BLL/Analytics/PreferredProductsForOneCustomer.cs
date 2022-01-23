@@ -1,11 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.BLL.Analytics;
-using AutoMapper;
-using System.Threading;
 
 namespace CustomerAnalyticSystem.BLL.Analytics
 {
@@ -14,9 +9,9 @@ namespace CustomerAnalyticSystem.BLL.Analytics
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List <GradePrefModel> TrueMarkForProduct { get; set; }
-        public List <GradePrefModel> TrueMarkForTag { get; set; }
-        public List <GroupPrefModel> GroupPreferences { get; set; }
+        public List<GradePrefModel> TrueMarkForProduct { get; set; }
+        public List<GradePrefModel> TrueMarkForTag { get; set; }
+        public List<GroupPrefModel> GroupPreferences { get; set; }
 
 
 
@@ -42,15 +37,15 @@ namespace CustomerAnalyticSystem.BLL.Analytics
             CheckProductMark();
         }
 
-        public void CheckProductMark ()
+        public void CheckProductMark()
         {
             MapperConfiguration configProduct = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<ProductPrefModel, GradePrefModel>();
-               
+
             });
             Dictionary<int, GradePrefModel> products = new();
-            foreach(var c in Preferences.Products)
+            foreach (var c in Preferences.Products)
             {
                 var temp = new Mapper(configProduct).Map<ProductPrefModel, GradePrefModel>(c);
                 if (c.IsInterested == false)
@@ -77,7 +72,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics
         {
             int i = 0;
             List<int> allGrades = new();
-            if(productOrTag is ProductTag.Tag)
+            if (productOrTag is ProductTag.Tag)
             {
                 List<CustomerTagGradesModel> allMarks = (List<CustomerTagGradesModel>)allMarksList;
                 while (i < allMarks.Count)
@@ -134,7 +129,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics
         {
             TrueMarkForTag = new();
             Dictionary<int, GradePrefModel> tages = new();
-            foreach(var c in Preferences.Tags)
+            foreach (var c in Preferences.Tags)
             {
                 var temp = new Mapper(configTagPrefModel).Map<TagPrefModel, GradePrefModel>(c);
                 if (c.IsInterested == true)
@@ -144,7 +139,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics
                 TrueMarkForTag.Add(temp);
                 tages.Add(temp.Id, temp);
             }
-            foreach(var c in Preferences.TagGrades)
+            foreach (var c in Preferences.TagGrades)
             {
                 if (tages.ContainsKey(c.Id) == false)
                 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CustomerAnalyticSystem.DAL
+﻿namespace CustomerAnalyticSystem.DAL
 {
     public class Queries
     {
@@ -122,8 +116,6 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateCheck = "UpdateCheck";
         #endregion
 
-
-
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";
         public const string GetAllContactByCustomerId = "GetAllContactByCustomerId";
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
@@ -140,11 +132,11 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllProductsByGroupId = "GetAllProductsByGroupId";
         public const string GetAllProductsWithGroups = "GetAllProductsWithGroups";
         public const string GetAllTagsByProductId = "GetAllTagsByProductId";
-        public const string DeleteProduct_TagByTagIdAndProductId = "DeleteProduct_TagByTagIdAndProductId";
         public const string GetAllSortedComments = "GetAllSortedComments";
         public const string GetOrderModel = "GetOrderModel";
         public const string GetAllOrdersByStatusId = "GetAllOrdersByStatusId";
         public const string GetCheckByOrderId = "GetCheckByOrderId";
+        public const string DeleteProduct_TagByTagIdAndProductId = "DeleteProduct_TagByTagIdAndProductId";
 
         #region Logic
         public const string CountAllTagsInOrders = "CountAllTagsInOrders";

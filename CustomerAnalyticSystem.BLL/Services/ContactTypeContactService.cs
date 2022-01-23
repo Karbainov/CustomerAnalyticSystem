@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.BLL.Models;
+﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
+using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
@@ -26,19 +22,19 @@ namespace CustomerAnalyticSystem.BLL.Services
             rep.AddContact(contact.CustomerId, contact.ContactTypeId, contact.Value);
         }
 
-        public void UpdateContact (int id, int customerId, int contactTypeId, string value)
+        public void UpdateContact(int id, int customerId, int contactTypeId, string value)
         {
             ContactTypeContactRepository rep = new ContactTypeContactRepository();
             rep.UpdateContact(id, customerId, contactTypeId, value);
         }
 
-        public void DeleteContact (int id)
+        public void DeleteContact(int id)
         {
             ContactTypeContactRepository rep = new ContactTypeContactRepository();
             rep.DeleteContact(id);
         }
-        
-        public void UpdateContactType (int id, string name)
+
+        public void UpdateContactType(int id, string name)
         {
             ContactTypeContactRepository rep = new ContactTypeContactRepository();
             rep.UpdateContactType(id, name);

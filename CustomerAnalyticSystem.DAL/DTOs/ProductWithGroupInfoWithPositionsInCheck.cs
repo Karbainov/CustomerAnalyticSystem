@@ -1,9 +1,5 @@
-﻿using System;
+﻿using CustomerAnalyticSystem.DAL.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.DAL.Interfaces;
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
     class ProductWithGroupInfoWithPositionsInCheck : IBaseProduct

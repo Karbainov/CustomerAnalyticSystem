@@ -1,20 +1,11 @@
 ﻿
+using CustomerAnalyticSystem.BLL;
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using CustomerAnalyticSystem.BLL.Models;
-using CustomerAnalyticSystem.BLL.Services;
-using CustomerAnalyticSystem.BLL;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -66,7 +57,7 @@ namespace CustomerAnalyticSystem.UI
             ContactTypeContactService serve = new ContactTypeContactService();
             List<ContactTypeModel> contactTypes = serve.GetAllContactTypeModel();
 
-            foreach(ContactTypeModel contactType in contactTypes)
+            foreach (ContactTypeModel contactType in contactTypes)
             {
                 contactTypesWithId.Add(contactType.Id, contactType);
             }
@@ -106,7 +97,7 @@ namespace CustomerAnalyticSystem.UI
             return serve.GetAllContactModelByCustomerId(_customer.Id);
         }
 
-        private void FillListViewContactContactType(List<ContactModel> list )
+        private void FillListViewContactContactType(List<ContactModel> list)
         {
             ListViewContactContactType.Items.Clear();
             foreach (ContactModel model in list)
@@ -189,7 +180,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonAddCommentEditClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            if (TextBoxCommentText.Text != "" )
+            if (TextBoxCommentText.Text != "")
             {
                 CommentModel comment = new CommentModel()
                 {
@@ -208,7 +199,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonDeleteContactEditClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            
+
             var contactId = contactModels[ListViewContactContactType.SelectedIndex].Id;
             ContactTypeContactService serve = new ContactTypeContactService();
             serve.DeleteContact(contactId);

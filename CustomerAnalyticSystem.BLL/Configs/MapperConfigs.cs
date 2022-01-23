@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using CustomerAnalyticSystem.BLL.Analytics;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.BLL.Analytics;
 using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
-using AutoMapper;
-using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
 
 namespace CustomerAnalyticSystem.BLL.Configs
@@ -34,7 +29,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
             });
 
-        
+
         public MapperConfiguration ConfFromCustomerInfoDTOToCustomerinfoModel { get; private set; } = new MapperConfiguration(
             conf =>
             {
@@ -73,7 +68,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
                 conf.CreateMap<ContactWithContactTypeNameDTO, ContactModel>()
                 .ForMember(dest => dest.Name, act => act.MapFrom(src => src.ContactTypeName));
             });
-        
+
 
         public MapperConfiguration ConfFromContactTypeDTOToContactTypeModel { get; private set; } = new MapperConfiguration(
             conf =>
@@ -149,7 +144,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
         );
         public MapperConfiguration ConfigStack = new MapperConfiguration(cfg =>
         {
-            cfg.CreateMap<StackDTO,StackModel>();
+            cfg.CreateMap<StackDTO, StackModel>();
             cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
             cfg.CreateMap<TagDTO, TagModel>();
             cfg.CreateMap<GroupBaseDTO, GroupBaseModel>();

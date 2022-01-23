@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
     public class GeneralStatistics
     {
 
-        public enum IsContain { Contain = -555};
-        private enum ConvertToPercent 
+        public enum IsContain { Contain = -555 };
+        private enum ConvertToPercent
         {
             product = 1,
             group = 2,
@@ -22,13 +19,13 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public StackModel Info;
 
         //словарь рекомендаций
-        public Dictionary<int,ItemToRecommend> Products { get; set; }//+
+        public Dictionary<int, ItemToRecommend> Products { get; set; }//+
         public Dictionary<int, ItemToRecommend> Groups { get; set; }
         public Dictionary<int, ItemToRecommend> Tags { get; set; }
 
 
         //словарь который соотносит все теги с продуктом и группы с продуктом
-        public Dictionary<int,List<int>> ProductsByTagId { get; set; }//key = tagId value = product Ids
+        public Dictionary<int, List<int>> ProductsByTagId { get; set; }//key = tagId value = product Ids
         public Dictionary<int, List<int>> GroupsByProductId { get; set; }
 
         //словарь соотносит айди чека с ордером
@@ -62,7 +59,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
         public MapperConfiguration configuration = new(cfg =>
         {
-            cfg.CreateMap<ProductBaseModel,ItemToRecommend>();
+            cfg.CreateMap<ProductBaseModel, ItemToRecommend>();
             cfg.CreateMap<GroupBaseModel, ItemToRecommend>();
             cfg.CreateMap<TagModel, ItemToRecommend>();
         });
@@ -70,19 +67,19 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         #region fill sht
         public void FillProducts()// все продукты
         {
-            foreach(var product in Info.Products)
+            foreach (var product in Info.Products)
             {
                 if (Products.ContainsKey(product.Id) == false)
                 {
                     var map = new Mapper(configuration)
-                        .Map<ProductBaseModel,ItemToRecommend>(product);
+                        .Map<ProductBaseModel, ItemToRecommend>(product);
                     Products.Add(map.Id, map);
                 }
             }
         }
         public void FillGroups()//все группы
         {
-            foreach(var group in Info.Groups)
+            foreach (var group in Info.Groups)
             {
                 if (Groups.ContainsKey(group.Id) == false)
                 {
@@ -112,7 +109,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public void GetListOfAllTagsInProduct() //связывает теги в группы
         {
             ProductsByTagId = new();
-            foreach(var c in Info.Product_Tag)
+            foreach (var c in Info.Product_Tag)
             {
                 if (ProductsByTagId.ContainsKey(c.TagId) == false)
                 {
@@ -150,7 +147,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public void BoundCheckProduct()// связывает айди чека с айдипродукта
         {
             CheckProduct = new();
-            foreach(var check in Info.Checks)
+            foreach (var check in Info.Checks)
             {
                 CheckProduct.Add(check.Id, check.ProductId);
             }
@@ -165,10 +162,10 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             {
                 return false;
             }
-            for(int i = 0; i < ChecksInOrder[id].Count; i++)
+            for (int i = 0; i < ChecksInOrder[id].Count; i++)
             {
                 oneOrder = ChecksInOrder[id];
-                if(CheckProduct[oneOrder[i]] == prodId)
+                if (CheckProduct[oneOrder[i]] == prodId)
                 {
                     return true;
                 }
@@ -179,7 +176,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         {
             if (type is ConvertToPercent.product)
             {
-                foreach(var prod in Products)
+                foreach (var prod in Products)
                 {
                     prod.Value.Percent = (prod.Value.Percent * 100) / AmountOfOrders;
                 }
@@ -224,7 +221,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             int cnt = 0;
             int gradeIndex = 0;
             ItemToRecommend tempw;
-            while(cnt < Products.Count)
+            while (cnt < Products.Count)
             {
                 tempw = Products.Values.ElementAt(cnt);
                 gradeIndex = GetMark(tempw.Id, temp, gradeIndex);
@@ -238,9 +235,9 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
         public void ComparingTagAndProduct(List<int> tags, int prodId)
         {
-            foreach(var c in Info.Product_Tag)
+            foreach (var c in Info.Product_Tag)
             {
-                for(int i = 0; i < tags.Count; i++)
+                for (int i = 0; i < tags.Count; i++)
                 {
                     if (c.ProductId == prodId && c.TagId == tags[i])
                     {
@@ -251,9 +248,9 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
         public void ComparingGroupAndProduct(List<int> groups, int prodId)
         {
-            foreach(var c in Info.Products)
+            foreach (var c in Info.Products)
             {
-                for(int i = 0; i < groups.Count; i++)
+                for (int i = 0; i < groups.Count; i++)
                 {
                     if (c.Id == prodId && c.GroupId == groups[i])
                     {
@@ -264,7 +261,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
         public void GetPopularityGroup(List<int> groups)
         {
-            for(int i = 0; i < groups.Count; i++)
+            for (int i = 0; i < groups.Count; i++)
             {
                 if (groups[i] == ((int)IsContain.Contain))
                 {
@@ -272,12 +269,12 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 }
             }
         }
-        
-        public void GetPopularityTag(List <int> tags)
+
+        public void GetPopularityTag(List<int> tags)
         {
-            for(int i = 0; i < tags.Count; i++)
+            for (int i = 0; i < tags.Count; i++)
             {
-                if(tags[i] == ((int)IsContain.Contain))
+                if (tags[i] == ((int)IsContain.Contain))
                 {
                     Tags.Values.ElementAt(i).Percent++;
                 }

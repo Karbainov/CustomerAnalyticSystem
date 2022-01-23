@@ -2,11 +2,8 @@
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
 using CustomerAnalyticSystem.DAL.DTOs;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
@@ -43,7 +40,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             CustomerTypeCustomerCommentService w = new();
             List<CustomerDTO> we = w.GetAllCustomers();
             BaseCustomers = new Mapper(configuration).Map<List<CustomerDTO>, List<CustomerInfoModel>>(we);
-            
+
         }
         public void MakeStatisticksForCustomers()
         {
@@ -110,11 +107,11 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
         private void FillBaseCustomerInfo()//запускается первым делом чтобы не обосраться
         {
-            foreach(var customer in BaseCustomers)
+            foreach (var customer in BaseCustomers)
             {
                 ConcreteCustomer cust = new Mapper(configuration).Map<CustomerInfoModel, ConcreteCustomer>(customer);
                 cust.AllOneProductMarks = new();
-                Customers.Add(cust.Id,cust);
+                Customers.Add(cust.Id, cust);
                 Customers[cust.Id].IncludeStatistics(InfoToAnalise);
                 Customers[cust.Id].PreferenceByProductId = new();
                 Customers[cust.Id].PreferenceByGroupId = new();
@@ -144,11 +141,11 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         private void BoundGradeCustomer()
         {
             CustomerIdProductIdMark = new();
-            foreach(var grade in InfoToAnalise.Info.Grades)
+            foreach (var grade in InfoToAnalise.Info.Grades)
             {
                 if (CustomerIdProductIdMark.ContainsKey((grade.CustomerId, grade.ProductId)) == false)
                 {
-                    CustomerIdProductIdMark.Add((grade.CustomerId, grade.ProductId),new());
+                    CustomerIdProductIdMark.Add((grade.CustomerId, grade.ProductId), new());
                 }
                 CustomerIdProductIdMark[(grade.CustomerId, grade.ProductId)].Add(grade.Value);
             }
@@ -157,7 +154,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
         private void SortGrades()
         {
-            foreach(var c in CustomerIdProductIdMark)
+            foreach (var c in CustomerIdProductIdMark)
             {
                 int i = c.Value[1];
                 if (Customers.ContainsKey(c.Key.Item1))

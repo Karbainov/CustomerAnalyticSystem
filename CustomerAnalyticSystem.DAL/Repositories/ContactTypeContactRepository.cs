@@ -1,13 +1,9 @@
 ﻿using CustomerAnalyticSystem.DAL.DTOs;
-using System;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.DAL;
 using System.Data;
+using System.Linq;
 
 namespace CustomerAnalyticSystem.DAL
 {

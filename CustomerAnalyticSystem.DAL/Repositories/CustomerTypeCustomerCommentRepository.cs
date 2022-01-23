@@ -1,13 +1,9 @@
 ﻿using CustomerAnalyticSystem.DAL.DTOs;
-using System;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.DAL;
 using System.Data;
+using System.Linq;
 
 namespace CustomerAnalyticSystem.DAL
 {
@@ -18,7 +14,7 @@ namespace CustomerAnalyticSystem.DAL
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 return connection.Query<CustomerTypeDTO>(Queries.GetAllCustomerType
-                    ,commandType: CommandType.StoredProcedure).ToList();
+                    , commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
@@ -70,10 +66,10 @@ namespace CustomerAnalyticSystem.DAL
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query(Queries.UpdateCustomerTypeById
-                    , new { id,name}
-                    ,commandType: CommandType.StoredProcedure);
+                    , new { id, name }
+                    , commandType: CommandType.StoredProcedure);
             }
-        }            
+        }
 
         public void AddCustomer(CustomerDTO customer)
         {
@@ -94,14 +90,14 @@ namespace CustomerAnalyticSystem.DAL
                     , commandType: CommandType.StoredProcedure);
             }
         }
-        
+
         public void DeleteCustomerById(int id)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query(Queries.DeleteCustomerById
-                    ,new { id }
-                    ,commandType: CommandType.StoredProcedure);
+                    , new { id }
+                    , commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -110,8 +106,8 @@ namespace CustomerAnalyticSystem.DAL
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query(Queries.DeleteCustomerTypeById
-                    ,new { id }
-                    ,commandType: CommandType.StoredProcedure);
+                    , new { id }
+                    , commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -120,8 +116,8 @@ namespace CustomerAnalyticSystem.DAL
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query(Queries.AddCustomerType
-                    ,new { name }
-                    ,commandType: CommandType.StoredProcedure);
+                    , new { name }
+                    , commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -149,7 +145,7 @@ namespace CustomerAnalyticSystem.DAL
             {
                 return connection.Query<ContactWithContactTypeNameDTO>(Queries.GetAllContactByCustomerId,
                     new { id }
-                    ,commandType: CommandType.StoredProcedure).ToList();
+                    , commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
@@ -173,19 +169,19 @@ namespace CustomerAnalyticSystem.DAL
             {
                 connection.Query<CustomerInfoDTO, ContactWithContactTypeNameDTO, CustomerInfoDTO>(
                     Queries.GetAllCustomerWithContactAndContactType
-                    ,(customerInfo, contact) =>
-                    {
-                        if (curCustomerId != customerInfo.Id)
-                        {
-                            customersDict.Add(customerInfo.Id, customerInfo);
-                            curCustomerId = customerInfo.Id;
-                            customersDict[curCustomerId].Contacts = new List<ContactWithContactTypeNameDTO>();
-                            customersDict[curCustomerId].Comments = new List<CommentDTO>();
-                        }
+                    , (customerInfo, contact) =>
+                     {
+                         if (curCustomerId != customerInfo.Id)
+                         {
+                             customersDict.Add(customerInfo.Id, customerInfo);
+                             curCustomerId = customerInfo.Id;
+                             customersDict[curCustomerId].Contacts = new List<ContactWithContactTypeNameDTO>();
+                             customersDict[curCustomerId].Comments = new List<CommentDTO>();
+                         }
 
-                        customersDict[curCustomerId].Contacts.Add(contact);
-                        return customersDict[curCustomerId];
-                    }
+                         customersDict[curCustomerId].Contacts.Add(contact);
+                         return customersDict[curCustomerId];
+                     }
                     , splitOn: "Id"
                     , commandType: CommandType.StoredProcedure);
             }
@@ -198,7 +194,7 @@ namespace CustomerAnalyticSystem.DAL
                      {
                          if (customersDict.Count > 0)
                          {
-                            customersDict[comment.CustomerId].Comments.Add(comment);
+                             customersDict[comment.CustomerId].Comments.Add(comment);
                          }
                          return comment;
                      }
@@ -206,7 +202,7 @@ namespace CustomerAnalyticSystem.DAL
                     , commandType: CommandType.StoredProcedure);
             }
 
-                return customersDict.Values.ToList();
+            return customersDict.Values.ToList();
         }
 
         public List<TagMarksDTO> GetAllMarksOfTagByCustomerId(int id)

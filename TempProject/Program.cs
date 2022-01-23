@@ -1,17 +1,7 @@
-﻿using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL;
-using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using CustomerAnalyticSystem.BLL.Models;
-using CustomerAnalyticSystem.BLL.Services;
-using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
-using CustomerAnalyticSystem.BLL.Analytics;
-using CustomerAnalyticSystem.BLL;
-using CustomerAnalyticSystem.BLL.Services.Logic;
+﻿using AutoMapper;
 using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
-using AutoMapper;
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.DAL.DTOs;
 
 namespace TempProject
 {
@@ -37,7 +27,7 @@ namespace TempProject
             stat.MakeStatistics();
 
             //completed
-   
+
 
             int r = 0;
             //worked on

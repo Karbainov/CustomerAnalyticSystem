@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CustomerAnalyticSystem.DAL.DTOs
+﻿namespace CustomerAnalyticSystem.DAL.DTOs
 {
     public class GetNumberOfTagsInOrderByCustomerIdDTO
     {
-        
+
         public int TagId { get; set; }
         public int Number { get; set; }
     }
