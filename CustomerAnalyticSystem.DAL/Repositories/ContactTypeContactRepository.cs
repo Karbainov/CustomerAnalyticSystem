@@ -39,8 +39,9 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactDTO>(Queries.AddContact, new { CustomerId, ContactTypeId, Value },
-                commandType: CommandType.StoredProcedure);
+                connection.Query(Queries.AddContact
+                    , new { CustomerId, ContactTypeId, Value }
+                    , commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -48,7 +49,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactDTO>(Queries.DeleteContact, new { id },
+                connection.Query(Queries.DeleteContact, new { id },
                 commandType: CommandType.StoredProcedure);
             }
         }
@@ -86,7 +87,9 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactTypeDTO>(Queries.AddContactType, new { Name }, commandType: CommandType.StoredProcedure);
+                connection.QuerySingle<ContactTypeDTO>(Queries.AddContactType
+                    , new { Name }
+                    , commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -103,6 +106,17 @@ namespace CustomerAnalyticSystem.DAL
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.QuerySingle<ContactTypeDTO>(Queries.UpdateContactType, new { id, Name }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<ContactWithContactTypeNameDTO> GetAllContactWithContactTypeByCustomerId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query<ContactWithContactTypeNameDTO>(
+                    Queries.GetAllContactWithContactTypeByCustomerId
+                    , new { id }
+                    , commandType: CommandType.StoredProcedure).ToList();
             }
         }
     }

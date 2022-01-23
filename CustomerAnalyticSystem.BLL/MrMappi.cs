@@ -16,6 +16,20 @@ namespace CustomerAnalyticSystem.BLL
 {
     public class MrMappi
     {
+
+        public CustomerDTO MapFromCustomerModelToCustomerDTO(CustomerModel model)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromCustomerModelToCustomerDTO)
+                .Map<CustomerModel, CustomerDTO>(model);
+        }
+        public List<CommentModel> MapFromCommentDTOToCommentModel(List<CommentDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromCommentDTOToCommentModel)
+                .Map<List<CommentDTO>, List<CommentModel>>(dto);
+        }
+
         public OrderInfoByOrderIdModel MapOrderInfoByOrderId(AllOrderInfoByOrderId dto)
         {
             var config = new MapperConfigs();
@@ -60,6 +74,20 @@ namespace CustomerAnalyticSystem.BLL
         {
             var config = new MapperConfigs();
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductsWithGroupsDTO>, List<ProductBaseModel>>(dto);
+        }
+
+        public List<ContactTypeModel> MapFromContactTypeDTOToContactTypeModel(List<ContactTypeDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromContactTypeDTOToContactTypeModel)
+                .Map<List<ContactTypeDTO>, List<ContactTypeModel>>(dto);
+        }
+
+        public List<ContactModel> MapFromContactWithContactTypeNameDTOToContactModel(List<ContactWithContactTypeNameDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfContactWithContactTypeDTOToContactModel)
+                .Map<List<ContactWithContactTypeNameDTO>, List<ContactModel>>(dto);
         }
     
         public PreferencesByCustomerIdModel MapFromPreferences (AllPreferencesAndGradeInfoByCustomerIdDTO dto)
