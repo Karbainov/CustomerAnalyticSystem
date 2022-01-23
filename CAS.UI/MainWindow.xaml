@@ -246,9 +246,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Аналитика склада" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="255">
-                <Grid Background="#FFE5E5E5">
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="47,49,0,0" VerticalAlignment="Top"/>
-                    <ListView x:Name="ListViewLogic" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0" Margin="0,0,0,158">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="604*"/>
+                        <RowDefinition Height="95*"/>
+                    </Grid.RowDefinitions>
+
+                    <ListView x:Name="ListViewLogic" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -259,14 +263,14 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="102" Header="№"  DisplayMemberBinding="{Binding Id}" />
-                                <GridViewColumn Width="202" Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
-                                <GridViewColumn Width="202" Header="Процентр пристствия в заказах"  DisplayMemberBinding="{Binding Percent}"/>
-                                <GridViewColumn Width="302" Header="Средняя оценка"  DisplayMemberBinding="{Binding AverageMark}"/>
+                                <GridViewColumn Width="260" Header="№"  DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Width="260" Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Width="260" Header="Процентр пристствия в заказах"  DisplayMemberBinding="{Binding Percent}"/>
+                                <GridViewColumn Width="260" Header="Средняя оценка"  DisplayMemberBinding="{Binding AverageMark}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ComboBox x:Name="ComboBoxAnalitic" HorizontalAlignment="Left" Margin="61,524,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxAnalitic_SelectionChanged"/>
+                    <ComboBox x:Name="ComboBoxAnalitic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxAnalitic_SelectionChanged" Height="20" Grid.Row="1" Margin="50,20,0,0"/>
                 </Grid>
             </TabItem>
         </TabControl>
