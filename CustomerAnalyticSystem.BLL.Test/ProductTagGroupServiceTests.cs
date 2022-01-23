@@ -27,68 +27,104 @@ namespace CustomerAnalyticSystem.BLL.Test
             CollectionAssert.AreEqual(expected, actual);
         }
 
+        #endregion
 
+        #region group
+
+        [TestCaseSource(typeof(GetAllGroupsTestCaseSource))]
+        public void GetAllGroupTest(List<GroupBaseModel> expected, List<GroupBaseDTO> groupDTO)
+        {
+            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            mock.Setup((obj) => obj.GetAllGroup()).Returns(groupDTO);
+            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+
+            List<GroupBaseModel> actual = productTagGroupRepository.GetAllGroups();
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
 
         #endregion
 
         #region product
 
         [TestCaseSource(typeof(GetAllProductsTestCaseSource))]
-        public void GetAllProductsTest(List<TagModel> expected, List<TagDTO> tagDTO)
+        public void GetAllProductsTest(List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
         {
             Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
-            mock.Setup((obj) => obj.GetAllTags()).Returns(tagDTO);
+            mock.Setup((obj) => obj.GetAllProductsWithGroups()).Returns(productDTO);
             ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
 
-            List<TagModel> actual = productTagGroupRepository.GetAllTags();
+            List<ProductBaseModel> actual = productTagGroupRepository.GetAllProducts();
 
             CollectionAssert.AreEqual(expected, actual);
         }
 
         #endregion
 
-        #region product_tag
+        #region GetAllProductsByGroupId
 
-        [TestCaseSource(typeof(GetAllProductsTestCaseSource))]
-        public void GetAllProduct_TagTest(List<Product_TagModel> expected, List<Product_TagDTO> tagDTO)
+        [TestCaseSource(typeof(GetAllProductsByGroupIdTestCaseSource))]
+        public void GetAllProductsByGroupIdTest(int id, List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
         {
             Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
-            mock.Setup((obj) => obj.GetAllProduct_Tag()).Returns(tagDTO);
+            mock.Setup((obj) => obj.GetAllProductsByGroupId(id)).Returns(productDTO);
             ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
 
-            List<TagModel> actual = productTagGroupRepository.GetAllTags();
-
-            CollectionAssert.AreEqual(expected, actual);
-        }
-
-
-        #endregion
-
-        #region group
-
-        [TestCaseSource(typeof(GetAllProductsTestCaseSource))]
-        public void GetAllProductsTest(List<TagModel> expected, List<TagDTO> tagDTO)
-        {
-            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
-            mock.Setup((obj) => obj.GetAllTags()).Returns(tagDTO);
-            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
-
-            List<TagModel> actual = productTagGroupRepository.GetAllTags();
+            List<ProductBaseModel> actual = productTagGroupRepository.GetAllProductsByGroupId(id);
 
             CollectionAssert.AreEqual(expected, actual);
         }
 
         #endregion
 
+        #region  GetAllTagsByProductId
+
+        [TestCaseSource(typeof(GetAllTagsByProductIdTestCaseSource))]
+        public void GetAllTagsByProductIdTest(int id, List<TagModel> expected, List<TagDTO> tagDTO)
+        {
+            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            mock.Setup((obj) => obj.GetAllTagsByProductId(id)).Returns(tagDTO);
+            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+
+            List<TagModel> actual = productTagGroupRepository.GetAllTagsByProductId(id);
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        #endregion
+
+        #region GetAllProductsByTag
+
+        [TestCaseSource(typeof(GetAllProductsByTagTestCaseSource))]
+        public void GetAllProductsByTagTest(int id, List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
+        {
+            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            mock.Setup((obj) => obj.GetAllProductsByTag(id)).Returns(productDTO);
+            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+
+            List<ProductBaseModel> actual = productTagGroupRepository.GetAllProductsByTagId(id);
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        #endregion
+
+        #region GetAllProductsWithGroups
+
+        [TestCaseSource(typeof(GetAllProductsWithGroupsTestCaseSource))]
+        public void GetAllProductsWithGroupsTest(List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
+        {
+            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            mock.Setup((obj) => obj.GetAllProductsWithGroups()).Returns(productDTO);
+            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+
+            List<ProductBaseModel> actual = productTagGroupRepository.GetAllProducts();
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
 
 
-
-        //public List<ProductsWithGroupsDTO> GetAllProductsByGroupId(int id);
-        //public List<TagDTO> GetAllTagsByProductId(int id);
-        //public List<ProductsWithGroupsDTO> GetAllProductsByTag(int id);
-        //public List<ProductsWithGroupsDTO> GetAllProductsWithGroups();
-        //public List<GroupsWithProductsDTO> GetAllGroupsWithProducts();
-
+        #endregion
     }
 
 

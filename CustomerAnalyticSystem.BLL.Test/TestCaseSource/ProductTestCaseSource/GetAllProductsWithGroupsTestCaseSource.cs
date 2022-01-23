@@ -1,14 +1,19 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL.DTOs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.BLL.Test.TestCaseSource.ProductTestCaseSource
 {
-    public class GetAllProductsTestCaseSource : IEnumerable
+    public class GetAllProductsWithGroupsTestCaseSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
+
             List<ProductBaseModel> expected = new List<ProductBaseModel>()
             { new ProductBaseModel() { Id = 1, Name = "fjffjf", Description = "qwerty", GroupName = "ytrewq", GroupId = 6}
             , new ProductBaseModel() { Id = 3, Name = "qweqwe", Description = "qwertyAA", GroupName = "ytrewqAA", GroupId = 3 } };
@@ -35,7 +40,5 @@ namespace CustomerAnalyticSystem.BLL.Test.TestCaseSource.ProductTestCaseSource
 
             yield return new object[] { expected3, ProductsWithGroupsDTO3 };
         }
-
-
     }
 }
