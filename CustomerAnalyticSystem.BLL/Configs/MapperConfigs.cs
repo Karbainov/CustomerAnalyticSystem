@@ -119,6 +119,12 @@ namespace CustomerAnalyticSystem.BLL.Configs
             cfg.CreateMap<CheckDTO, CheckBaseModel>();
             cfg.CreateMap<GradeDTO, GradeBaseModel>();
         });
+
+
+        public MapperConfiguration ConfigBasePreferences { get; private set; } = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<PreferencesDTO, PreferencesBaseModel>();
+        });
     }
 }
 //Mapper.CreateMap<BaseModel, DataDestination>().IncludeAllDerived()

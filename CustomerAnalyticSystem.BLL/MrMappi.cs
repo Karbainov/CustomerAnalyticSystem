@@ -83,7 +83,11 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseGroup).Map<List<GroupBaseDTO>, List<GroupBaseModel>>(dto);
         }
 
-        
+        public List<PreferencesBaseModel> MapFromPreferencesDTOToPreferenceBaseModel(List<PreferencesDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigBasePreferences).Map<List<PreferencesDTO>, List<PreferencesBaseModel>>(dto);
+        }
 
     }
 

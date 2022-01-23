@@ -12,7 +12,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
     public class GeneralStatistics
     {
 
-        private enum IsContain { Contain = -555};
+        public enum IsContain { Contain = -555};
         private enum ConvertToPercent 
         {
             product = 1,
@@ -34,6 +34,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         //словарь соотносит айди чека с ордером
         public Dictionary<int, List<int>> ChecksInOrder { get; set; }
         public Dictionary<int, int> CheckProduct { get; set; }
+
 
         public int AmountOfOrders { get; set; }
 
@@ -156,7 +157,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
         #endregion
 
-        private bool IsContains(int id, int prodId)//проверка на появление продукта в заказе (по чеку)
+        internal bool IsContains(int id, int prodId)//проверка на появление продукта в заказе (по чеку)
         {
             List<int> oneOrder;
 
@@ -198,7 +199,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 }
             }
         }
-        private int GetMark(int productId, List<GradeBaseModel> grades, int curIndex)
+        internal int GetMark(int productId, List<GradeBaseModel> grades, int curIndex)
         {
             List<int> allProductGrades = new();
             while (curIndex < grades.Count && grades[curIndex].ProductId == productId)
@@ -271,11 +272,12 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 }
             }
         }
+        
         public void GetPopularityTag(List <int> tags)
         {
             for(int i = 0; i < tags.Count; i++)
             {
-                if(tags[i] == -555)
+                if(tags[i] == ((int)IsContain.Contain))
                 {
                     Tags.Values.ElementAt(i).Percent++;
                 }
