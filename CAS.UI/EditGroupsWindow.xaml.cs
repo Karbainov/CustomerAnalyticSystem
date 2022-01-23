@@ -32,7 +32,9 @@ namespace CustomerAnalyticSystem.UI
         private void FillingListViewEditGroupsWndw()
         {
             ListViewEditGroupsWndw.Items.Clear();
-            foreach (string g in _mainWindow.GroupsIdAndGroups.Keys)
+            var group = new ProductTagGroupService();
+            var groupList = group.GetAllGroups();
+            foreach (var g in groupList)
             {
                 ListViewEditGroupsWndw.Items.Add(g);
             }
@@ -49,9 +51,9 @@ namespace CustomerAnalyticSystem.UI
                     _mainWindow.FillingComboBoxGroups();
                     FillingListViewEditGroupsWndw();
                     int count = ListViewEditGroupsWndw.Items.Count;
-                    ListViewEditGroupsWndw.SelectedIndex = count;
+                    ListViewEditGroupsWndw.SelectedIndex = count - 1;
                     GroupBaseModel newGroup = ((GroupBaseModel)ListViewEditGroupsWndw.SelectedItem);
-                    _mainWindow.TagsIdAndTags.Add(TextBoxNewGroup.Text, newGroup.Id);
+                    _mainWindow.GroupsIdAndGroups.Add(TextBoxNewGroup.Text, newGroup.Id);
                     TextBoxNewGroup.Text = "";
                     TextBoxDescription.Text = "";
                 }
@@ -68,6 +70,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonDeleteGroup_Click(object sender, RoutedEventArgs e)
         {
+
             if (ListViewEditGroupsWndw.SelectedItem != null)
             {
                 int id = _mainWindow.GroupsIdAndGroups[((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name];
@@ -101,6 +104,7 @@ namespace CustomerAnalyticSystem.UI
                         FillingListViewEditGroupsWndw();
                         TextBoxEditGroup.Text = "";
                         TextBoxDescription.Text = "";
+                        _mainWindow.FillingListViewProducts();
                     }
                     else
                     {

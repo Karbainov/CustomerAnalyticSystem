@@ -34,17 +34,23 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillingEditProductWindowComboBoxGroups()
         {
-            foreach (string Key in _mainWindow.GroupsIdAndGroups.Keys)
+            var service = new ProductTagGroupService();
+            var groupList = service.GetAllGroups();
+            foreach (var g in groupList)
+            //foreach (string Key in _mainWindow.GroupsIdAndGroups.Keys)
             {
-                ComboBoxProductGroupAddWndw.Items.Add(Key);
+                ComboBoxProductGroupAddWndw.Items.Add(g.Name);
             }          
         }
 
         private void FillingComboBoxTagsForAddProduct()
         {
-            foreach (string Key in _mainWindow.TagsIdAndTags.Keys)
+            var service = new ProductTagGroupService();
+            var tagList = service.GetAllTags();
+            foreach (var t in tagList)
+            //foreach (string Key in _mainWindow.TagsIdAndTags.Keys)
             {
-                ComboBoxTagsForAddProduct.Items.Add(Key);
+                ComboBoxTagsForAddProduct.Items.Add(t.Name);
             }
         }
 
@@ -95,7 +101,22 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonAddTag_Click(object sender, RoutedEventArgs e)
         {
-            ListViewTagsAddWndw.Items.Add(ComboBoxTagsForAddProduct.SelectedItem.ToString());          
+            ListViewTagsAddWndw.Items.Add(ComboBoxTagsForAddProduct.SelectedItem.ToString());
+            ListViewTagsAddWndw.UpdateLayout();
+
+
+        }
+
+        private void ButtonDeleteTag_Click(object sender, RoutedEventArgs e)
+        {
+            if(ListViewTagsAddWndw.SelectedIndex > -1)
+            {
+                ListViewTagsAddWndw.Items.Remove(ListViewTagsAddWndw.SelectedItem);
+            }
+            else 
+            {
+                MessageBox.Show("Выберите тэг для удаления");
+            }
         }
     }
 }

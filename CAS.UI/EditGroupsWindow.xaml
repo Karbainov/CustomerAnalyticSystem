@@ -27,7 +27,8 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="120" Header="Группа"  DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Width="35" Header="№"  DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Width="100" Header="Группа"  DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Width="200" Header="Описание"  DisplayMemberBinding="{Binding Description}"/>
                 </GridView>
             </ListView.View>

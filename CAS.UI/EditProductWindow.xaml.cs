@@ -129,6 +129,7 @@ namespace CustomerAnalyticSystem.UI
                 var products = new ProductTagGroupService();
                 products.DeleteProductById(_product.Id);
                 _mainWindow.FillingListViewProducts();
+                this.Close();
             }
         }
     }
