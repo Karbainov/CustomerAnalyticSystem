@@ -1,20 +1,7 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CustomerAnalyticSystem.BLL;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -40,7 +27,7 @@ namespace CustomerAnalyticSystem.UI
                 ListViewEditTagsWndw.Items.Add(t);
             }
         }
-    
+
 
         private void ButtonAddTag_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +66,7 @@ namespace CustomerAnalyticSystem.UI
                 tag1.DeleteTagById(id);
                 _mainWindow.TagsIdAndTags.Remove(ListViewEditTagsWndw.SelectedItem.ToString());
                 _mainWindow.FillingComboBoxTags();
-                FillingListViewEditTagsWndw();       
+                FillingListViewEditTagsWndw();
             }
             else
             {
@@ -124,7 +111,7 @@ namespace CustomerAnalyticSystem.UI
         {
             if (ListViewEditTagsWndw.SelectedItem != null)
             {
-               TextBoxEditTag.Text = ((TagModel)ListViewEditTagsWndw.SelectedItem).Name;
+                TextBoxEditTag.Text = ((TagModel)ListViewEditTagsWndw.SelectedItem).Name;
             }
             else
             {

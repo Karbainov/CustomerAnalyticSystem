@@ -1,21 +1,10 @@
-﻿using CustomerAnalyticSystem.BLL.Models;
+﻿using CustomerAnalyticSystem.BLL;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
+using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CustomerAnalyticSystem.BLL;
-using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -185,7 +174,7 @@ namespace CustomerAnalyticSystem.UI
 
         public void FillingComboBoxTags()
         {
-            ComboBoxTags.Items.Clear();;
+            ComboBoxTags.Items.Clear(); ;
             foreach (string Key in TagsIdAndTags.Keys)
             {
                 ComboBoxTags.Items.Add(Key);
@@ -270,7 +259,7 @@ namespace CustomerAnalyticSystem.UI
         public void FillingListViewLogic()
         {
             ListViewLogic.Items.Clear();
-            
+
             if (ComboBoxAnalitic.SelectedIndex == 0)
             {
                 foreach (var val in stat.Products.Values)
@@ -301,7 +290,7 @@ namespace CustomerAnalyticSystem.UI
             var service = new OrderCheckStatusService();
             int orderId = ((OrderBaseModel)(ListViewOrders.SelectedItem)).Id;
             var check = service.GetCheckByOrderId(orderId);
-            foreach( var c in check)
+            foreach (var c in check)
             {
                 ListViewCheck.Items.Add(c);
             }

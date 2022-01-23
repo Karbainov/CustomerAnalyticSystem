@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CustomerAnalyticSystem.DAL.DTOs;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using CustomerAnalyticSystem.DAL;
-using CustomerAnalyticSystem.DAL.DTOs;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace CustomerAnalyticSystem.DAL
 {
@@ -44,7 +40,7 @@ namespace CustomerAnalyticSystem.DAL
             }
         }
 
-        public void DeleteOrderById(int id) 
+        public void DeleteOrderById(int id)
         {
 
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
@@ -117,7 +113,7 @@ namespace CustomerAnalyticSystem.DAL
 
 
         #region Group
-        public void AddGroup (string name, string description)
+        public void AddGroup(string name, string description)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
@@ -148,7 +144,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<CheckDTO>(Queries.AddCheck, new { ProductId, OrderId, Amount, Mark},
+                connection.QuerySingle<CheckDTO>(Queries.AddCheck, new { ProductId, OrderId, Amount, Mark },
                 commandType: CommandType.StoredProcedure);
             }
         }
@@ -221,7 +217,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                return connection.Query<GetOrderModelDTO>(Queries.GetAllOrdersByStatusId, new { id},
+                return connection.Query<GetOrderModelDTO>(Queries.GetAllOrdersByStatusId, new { id },
                      commandType: CommandType.StoredProcedure).ToList();
             }
         }
@@ -230,7 +226,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                return connection.Query < CheckByOrderIdDTO > (Queries.GetCheckByOrderId, new { id },
+                return connection.Query<CheckByOrderIdDTO>(Queries.GetCheckByOrderId, new { id },
                      commandType: CommandType.StoredProcedure).ToList();
             }
         }

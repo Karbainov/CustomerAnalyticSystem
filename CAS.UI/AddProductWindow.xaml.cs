@@ -1,20 +1,7 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CustomerAnalyticSystem.BLL;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -40,7 +27,7 @@ namespace CustomerAnalyticSystem.UI
             //foreach (string Key in _mainWindow.GroupsIdAndGroups.Keys)
             {
                 ComboBoxProductGroupAddWndw.Items.Add(g.Name);
-            }          
+            }
         }
 
         private void FillingComboBoxTagsForAddProduct()
@@ -109,11 +96,11 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonDeleteTag_Click(object sender, RoutedEventArgs e)
         {
-            if(ListViewTagsAddWndw.SelectedIndex > -1)
+            if (ListViewTagsAddWndw.SelectedIndex > -1)
             {
                 ListViewTagsAddWndw.Items.Remove(ListViewTagsAddWndw.SelectedItem);
             }
-            else 
+            else
             {
                 MessageBox.Show("Выберите тэг для удаления");
             }

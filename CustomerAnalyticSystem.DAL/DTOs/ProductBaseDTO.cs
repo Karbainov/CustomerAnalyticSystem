@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.DAL.Interfaces;
+﻿using CustomerAnalyticSystem.DAL.Interfaces;
 
 namespace CustomerAnalyticSystem.DAL.DTOs
 {
-    public class ProductBaseDTO: IBaseProduct
+    public class ProductBaseDTO : IBaseProduct
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -22,5 +17,5 @@ namespace CustomerAnalyticSystem.DAL.DTOs
         //    return s;
         //}
     }
-    
+
 }
