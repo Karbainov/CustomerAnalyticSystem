@@ -18,13 +18,13 @@ namespace CustomerAnalyticSystem.UI
         public Dictionary<string, int> StatusIdAndStatus = new Dictionary<string, int>();
         public List<CustomerInfoModel> customersList = new List<CustomerInfoModel>();
         public GeneralStatistics stat = new();
-
+        public Dictionary<int, OrderBaseModel> ordersDict = new Dictionary<int, OrderBaseModel>();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            stat.MakeStatistics();
+            //stat.MakeStatistics();
 
             FillingDictTags();
             FillingDictGroups();
@@ -114,10 +114,13 @@ namespace CustomerAnalyticSystem.UI
         {
             if (ListViewOrders.SelectedIndex > -1)
             {
-                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewClients.SelectedItem).Id}?",
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewOrders.SelectedItem).Id}?",
                    "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    //удаление
+                    OrderCheckStatusService serve = new OrderCheckStatusService();
+                    serve.DeleteOrderById(((OrderBaseModel)ListViewOrders.SelectedItem).Id);
+                    ordersDict = GetDictGetOrderById();
+                    FillingOrderStackPanel(ordersDict);
                 }
             }
             else
@@ -295,7 +298,15 @@ namespace CustomerAnalyticSystem.UI
                 ListViewCheck.Items.Add(c);
             }
         }
+        public void FillingOrderStackPanel(Dictionary<int, OrderBaseModel> dict)
+        {
+            ListViewOrders.Items.Clear();
 
+            foreach (KeyValuePair<int, OrderBaseModel> pair in dict)
+            {
+                ListViewOrders.Items.Add(pair.Value);
+            }
+        }
         #endregion
 
         #region dictionary
@@ -337,7 +348,19 @@ namespace CustomerAnalyticSystem.UI
                 StatusIdAndStatus.Add(s.Name, s.Id);
             }
         }
+        public Dictionary<int, OrderBaseModel> GetDictGetOrderById()
+        {
+            var orderService = new OrderCheckStatusService();
+            List<OrderBaseModel> orders = orderService.GetBaseOrderModel();
 
+            Dictionary<int, OrderBaseModel> ordersDict = new Dictionary<int, OrderBaseModel>();
+
+            foreach (OrderBaseModel order in orders)
+            {
+                ordersDict.Add(order.Id, order);
+            }
+            return ordersDict;
+        }
 
         #endregion
 
@@ -389,7 +412,8 @@ namespace CustomerAnalyticSystem.UI
                 MessageBox.Show("Выберите продукт для редактирования");
 
             }
-        }
+        }
+
         private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
         {
             EditTagsWindow editTagsWindow = new EditTagsWindow(this);
@@ -401,7 +425,8 @@ namespace CustomerAnalyticSystem.UI
             EditGroupsWindow editGroupsWindow = new EditGroupsWindow(this);
             editGroupsWindow.Show();
         }
-        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewClients.SelectedIndex > -1)
             {

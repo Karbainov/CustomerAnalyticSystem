@@ -85,7 +85,11 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
-
+        public void DeleteOrderById(int id)
+        {
+            OrderCheckStatusRepository rep = new OrderCheckStatusRepository();
+            rep.DeleteOrderById(id);
+        }
 
     }
 }
