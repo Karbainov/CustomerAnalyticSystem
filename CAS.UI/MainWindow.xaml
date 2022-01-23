@@ -246,8 +246,8 @@
             <TabItem Header="Аналитика склада" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="255">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="604*"/>
-                        <RowDefinition Height="95*"/>
+                        <RowDefinition Height="629*"/>
+                        <RowDefinition Height="70*"/>
                     </Grid.RowDefinitions>
 
                     <ListView x:Name="ListViewLogic" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0">
@@ -268,7 +268,16 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ComboBox x:Name="ComboBoxAnalitic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxAnalitic_SelectionChanged" Height="20" Grid.Row="1" Margin="50,20,0,0"/>
+
+                    <Grid Margin="0,609,0,0" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="41*"/>
+                            <ColumnDefinition Width="476*"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="ComboBoxAnalitic" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" 
+                              SelectionChanged="ComboBoxAnalitic_SelectionChanged" Height="20" Grid.Column="1"/>
+                        <Label Content="Фильтр" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="50"/>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
