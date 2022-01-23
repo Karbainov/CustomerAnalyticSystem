@@ -24,7 +24,6 @@ namespace TempProject
 
             //PreferredProductsForOneCustomer cucus = new(kekis);
             GeneralStatistics stat = new();
-            stat.MakeStatistics();
 
             //completed
 

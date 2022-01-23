@@ -34,9 +34,10 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             MainAnalytics = cust.InfoToAnalise;
             Tables = cust.InfoToAnalise.Info;
             Products = new();
+            MakeProductStatistics();
         }
 
-        public void MakeProductStatistics()
+        private void MakeProductStatistics()
         {
             GetListOfProducts();
             BoundCustomersAndProduct();
