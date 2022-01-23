@@ -11,7 +11,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
     public class AllProductsAnalytic
     {
 
-        public Dictionary<int, ConcreteProduct> Products { get; set; }
+        public Dictionary<int, ConcreteProduct> Products { get; set; }// ключ - айди продукта, три листа с группами тегами и продуктами
 
         public AllCustomersPreferences AllCustomers { get; set; }
         public StackModel Tables { get; set; }
