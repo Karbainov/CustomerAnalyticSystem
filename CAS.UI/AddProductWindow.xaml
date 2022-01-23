@@ -9,9 +9,9 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="199*"/>
-            <RowDefinition Height="125*" />
-            <RowDefinition Height="79*"/>
+            <RowDefinition Height="239*"/>
+            <RowDefinition Height="180*" />
+            <RowDefinition Height="65*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,9 +19,9 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="119*" />
+                <RowDefinition Height="134*" />
                 <RowDefinition Height="40*" />
-                <RowDefinition Height="80*" />
+                <RowDefinition Height="65*" />
 
             </Grid.RowDefinitions>
             <Label Content="Группа" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="48"/>
@@ -30,24 +30,30 @@
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="119*" />
+                <RowDefinition Height="134*" />
                 <RowDefinition Height="40*" />
-                <RowDefinition Height="80*" />
+                <RowDefinition Height="65*" />
 
             </Grid.RowDefinitions>
             <ComboBox x:Name="ComboBoxProductGroupAddWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="30"/>
             <TextBox x:Name="TextBoxProductNameAddWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="30"/>
             <TextBox x:Name="TextBoxProductDescriptionAddWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="55" BorderBrush="#FF2C3F76"/>
-            <Button x:Name="ButtonEditGoup" Content="Редактировать группы" HorizontalAlignment="Left" Margin="33,84,0,0" VerticalAlignment="Top" Click="ButtonEditGoup_Click" Width="135" Height="25"/>
+            <Button x:Name="ButtonEditGoup" Content="Редактировать группы" HorizontalAlignment="Left" Margin="32,95,0,0" VerticalAlignment="Top" Click="ButtonEditGoup_Click" Width="135" Height="25"/>
         </Grid>
-        <Grid  Grid.Row="1">
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-            <ComboBox x:Name="ComboBoxTagsForAddProduct" Width="140" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,45,0,0"/>
-            <Button x:Name="ButtonAddTag" Content="+" Margin="84,75,141,50" Click="ButtonAddTag_Click"/>
-            <Button x:Name="ButtonDeleteTag" Content="-" HorizontalAlignment="Right" Width="25" Margin="0,75,84,0" Click="ButtonDeleteTag_Click" Height="25" VerticalAlignment="Top"/>
-            <Label Content="Добавить тэг" Margin="0,10,0,114" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="ComboBoxTagsForAddProduct" Width="140" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+            <Button x:Name="ButtonAddTag" Content="+" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="ButtonAddTag_Click" Width="25" Height="25" Grid.Row="2" Margin="0,0,50,0"/>
+            <Button x:Name="ButtonDeleteTag" Content="-" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Click="ButtonDeleteTag_Click"  Height="25" Grid.Row="2" Margin="50,0,0,0"/>
+            <Label Content="Добавить тэг" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center"/>
         </Grid>
-        <ListView x:Name="ListViewTagsAddWndw" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="1" Margin="0,10,0,10" Width="200" HorizontalAlignment="Left">
+        <ListView x:Name="ListViewTagsAddWndw" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="1" Margin="0,10,0,20" Width="200" HorizontalAlignment="Left">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -61,8 +67,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ButtonAddProduct" Content="Добавить продукт" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50" Grid.Row="3" Click="ButtonAddProduct_Click" Margin="0,0,0,0"/>
-        <Button x:Name="ButtonEditTags" Content="Редактировать тэги" HorizontalAlignment="Center" Margin="0,115,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonEditTags_Click" Height="25" Width="120"/>
+        <Button x:Name="ButtonAddProduct" Content="Добавить продукт" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="50" Grid.Row="2" Click="ButtonAddProduct_Click" Margin="150,0,0,0"/>
+        <Button x:Name="ButtonEditTags" Content="Редактировать тэги" HorizontalAlignment="Center" Margin="0,135,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonEditTags_Click" Height="25" Width="120"/>
     </Grid>
 
 
