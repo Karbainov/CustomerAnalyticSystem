@@ -11,27 +11,25 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
     public class ConcreteCustomer
     {
-        public GeneralStatistics InfoToAnalise { get; set; }
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Name { get; set; }
-
-
         public Dictionary<int , ItemToRecommend> ProductsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> GroupsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> TagsRecommends { get; set; }
+        internal GeneralStatistics InfoToAnalise { get; set; }
 
 
-        public Dictionary<int, List<int>> AllOneProductMarks { get; set; }//держит для каждого продукта список оценок кастомера
-        public Dictionary<int, int> PreferenceByProductId { get; set; }//Ключ - айди продукта, велью его преф (-1 / 1)
-        public Dictionary<int, int> PreferenceByTagId { get; set; }
-        public Dictionary<int, int> PreferenceByGroupId { get; set; }
+        internal Dictionary<int, List<int>> AllOneProductMarks { get; set; }//держит для каждого продукта список оценок кастомера
+        internal Dictionary<int, int> PreferenceByProductId { get; set; }//Ключ - айди продукта, велью его преф (-1 / 1)
+        internal Dictionary<int, int> PreferenceByTagId { get; set; }
+        internal Dictionary<int, int> PreferenceByGroupId { get; set; }
 
 
-        public Dictionary<int, int> ProductPercent { get; set; }
-        public Dictionary<int, int> ProductAvgGrade { get; set; }//key = prId, val = avgGrade
-        public int AllcustomerOrders { get; set; }
+        internal Dictionary<int, int> ProductPercent { get; set; }
+        private Dictionary<int, int> ProductAvgGrade { get; set; }//key = prId, val = avgGrade
+        private int AllcustomerOrders { get; set; }
         public ConcreteCustomer(GeneralStatistics info, CustomerInfoModel customer)
         {
             InfoToAnalise = info;
@@ -43,8 +41,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             TagsRecommends = info.Tags;
         }
 
-
-        public void AllocatePlaceesForGroupsAndTags()
+        internal void AllocatePlaceesForGroupsAndTags()
         {
             List<GroupBaseModel> grps = InfoToAnalise.Info.Groups;
             foreach(var group in grps)
@@ -65,12 +62,12 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
            
         }
 
-        public void IncludeStatistics(GeneralStatistics stats)
+        internal void IncludeStatistics(GeneralStatistics stats)
         {
             InfoToAnalise = stats;
         }
 
-        public int GetAvgProductMark(List<int> marks)
+        private int GetAvgProductMark(List<int> marks)
         {
             if (marks.Count == 1)
                 return marks[0];
@@ -79,7 +76,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             else
                 return marks[marks.Count / 2];
         }
-        public void AvgMarkForEveryProduct()
+        internal void AvgMarkForEveryProduct()
         {
             ProductAvgGrade = new();
             foreach(var c in AllOneProductMarks)
@@ -87,7 +84,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 ProductAvgGrade.Add(c.Key, GetAvgProductMark(c.Value));
             }
         }
-        public void GetPopularityGroup(List<int> groups)
+        internal void GetPopularityGroup(List<int> groups)
         {
             for (int i = 0; i < groups.Count; i++)
             {
@@ -98,8 +95,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             }
         }
 
-
-        public void GetPopularityTag(List<int> tags)
+        internal void GetPopularityTag(List<int> tags)
         {
             for (int i = 0; i < tags.Count; i++)
             {
@@ -147,7 +143,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             SetValuesToCustomerPreferences();
         }
 
-        public void ClearEmptyItems()
+        private void ClearEmptyItems()
         {
             foreach (var tag in TagsRecommends)
             {
@@ -160,7 +156,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                     GroupsRecommends.Remove(grp.Key);
             }
         }
-        public void SetValuesToCustomerPreferences()
+        private void SetValuesToCustomerPreferences()
         {
             foreach(var group in PreferenceByGroupId)
             {
@@ -188,7 +184,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             ClearEmptyItems();
         }
 
-        public int AvgMarkForCurProd(List<int> prodMarks)
+        private int AvgMarkForCurProd(List<int> prodMarks)
         {
             if (prodMarks.Count == 1)
             {
@@ -203,7 +199,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 return (prodMarks[prodMarks.Count / 2]);
             }
         }
-        public void TakeAvgMarkForProduct()
+        private void TakeAvgMarkForProduct()
         {
             foreach (var prod in ProductsRecommends)
             {
@@ -226,7 +222,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             }
         }
 
-        public void GetAllCurrentCustomerOrders()
+        internal void GetAllCurrentCustomerOrders()
         {
             int cnt = 0;
             foreach(var order in InfoToAnalise.Info.Orders)
