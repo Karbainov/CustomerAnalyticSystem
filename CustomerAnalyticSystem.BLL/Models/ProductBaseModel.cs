@@ -13,5 +13,21 @@
             return $"{Id} {Name} {Description} {GroupName}";
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is not ProductBaseModel)
+            {
+                return false;
+            }
+
+            ProductBaseModel model = (ProductBaseModel)obj;
+
+            return
+                model.Id == Id
+                && model.Name == Name
+                && model.Description == Description
+                && model.GroupName == GroupName
+                && model.GroupId == GroupId;
+        }
     }
 }

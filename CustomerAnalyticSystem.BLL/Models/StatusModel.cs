@@ -15,5 +15,19 @@ namespace CustomerAnalyticSystem.BLL.Models
         {
             return $"{Name}";
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not StatusModel)
+            {
+                return false;
+            }
+
+            StatusModel model = (StatusModel)obj;
+
+            return
+                model.Id == Id
+                && model.Name == Name;
+        }
     }
 }
