@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomerAnalyticSystem.DAL;
 using System.Data;
-
+using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 namespace CustomerAnalyticSystem.DAL
 {
-    internal class GradePreferencesRepository
+    public class GradePreferencesRepository
     {
         public List<GradeDTO> GetAllGrades()
         {
@@ -108,5 +109,59 @@ namespace CustomerAnalyticSystem.DAL
                     new { id }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
+
+        #region logic
+        public AllPreferencesAndGradeInfoByCustomerIdDTO GetAllCustomerPreferencesAndGrades (int id)
+        {
+            int i = 0;
+            string connectionString = ConnectionString.Connection;
+            AllPreferencesAndGradeInfoByCustomerIdDTO customerPreferences = null;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Query<AllPreferencesAndGradeInfoByCustomerIdDTO, ProductForPrefDTO, TagForPrefDTO
+                    , GroupForPrefDTO, AllPreferencesAndGradeInfoByCustomerIdDTO>("GetAllPreferencesInfoByCustomerId",
+                    (customer, product, tag, group) =>
+                    {
+                        if (customerPreferences == null)
+                        {
+                            customerPreferences = customer;
+                            customerPreferences.Preferences = new();
+                        }
+                        if (product != null)
+                        {
+                            customerPreferences.Preferences.Add(product);
+                        }
+                        else if (group != null)
+                        {
+                            customerPreferences.Preferences.Add(group);
+                        }
+                        else if (tag != null)
+                        {
+                            customerPreferences.Preferences.Add(tag);
+                        }
+                        i++;
+                        return customerPreferences;
+                    }
+                    , new { id = id }
+                    , commandType: CommandType.StoredProcedure
+                    , splitOn: "Id"
+                    );
+            }
+            customerPreferences.Grades = new();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                customerPreferences.Grades = connection.Query<GradeInfoByCustomerIdDTO>("AGetAllGradesByCustomerId"
+                    , new { id = id }, commandType: CommandType.StoredProcedure).ToList();
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                customerPreferences.TagGrades = connection.Query<GradeInfoByCustomerIdForTagsDTO>("GetAllTagsWithMarksByCustomerId"
+                    , new { id = id }, commandType: CommandType.StoredProcedure).ToList();
+            }
+            return customerPreferences;
+        }
+        #endregion
+
     }
 }

@@ -112,7 +112,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button x:Name="ButtonSaveChanges" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="0" Click="ButtonSaveChangesOfEditingClient_Click"/>
-            <Button x:Name="ButtonDeleteClientCard" Content="Удалить карту клиента" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1"/>
+            <Button x:Name="ButtonDeleteClientCard" Content="Удалить карту клиента" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1" Click="ButtonDeleteClientCard_Click"/>
         </Grid>
 
 

@@ -9,9 +9,6 @@ namespace CustomerAnalyticSystem.DAL
     public class Queries
     {
 
-        // еще нет груп, продукт
-
-
         #region customer
         public const string GetAllCustomers = "GetAllCustomer";
         public const string GetCustomerById = "GetCustomerById";
@@ -101,6 +98,14 @@ namespace CustomerAnalyticSystem.DAL
         public const string DeleteGroupById = "DeleteGroupById";
         #endregion
 
+        #region product
+        public const string AddProduct = "AddProduct";
+        public const string DeleteProductById = "DeleteProductById";
+        public const string GetAllProduct = "GetAllProduct";
+        public const string GetProductById = "GetProductById";
+        public const string UpdateProductById = "UpdateProductById";
+        #endregion
+
         #region comment
         public const string GetCommentById = "GetCommentById";
         public const string GetAllComment = "GetAllComment";
@@ -117,6 +122,8 @@ namespace CustomerAnalyticSystem.DAL
         public const string UpdateCheck = "UpdateCheck";
         #endregion
 
+
+
         public const string GetAllCommentByCustomerId = "GetAllCommentByCustomerId";
         public const string GetAllContactByCustomerId = "GetAllContactByCustomerId";
         public const string GetCustomerByIdWithCustomerType = "GetCustomerByIdWithCustomerType";
@@ -130,7 +137,20 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllGroupsWithProduct = "GetAllGroupsWithProducts";
         public const string GetNumberOfTagsInOrderByCustomerId = "GetNumberOfTagsInOrderByCustomerId";
         public const string GetAllContactWithContactTypeByCustomerId = "GetAllContactWithContactTypeByCustomerId";
-
+        public const string GetAllProductsByGroupId = "GetAllProductsByGroupId";
+        public const string GetAllProductsWithGroups = "GetAllProductsWithGroups";
+        public const string GetAllTagsByProductId = "GetAllTagsByProductId";
+        public const string DeleteProduct_TagByTagIdAndProductId = "DeleteProduct_TagByTagIdAndProductId";
         public const string GetAllSortedComments = "GetAllSortedComments";
+        public const string GetOrderModel = "GetOrderModel";
+        public const string GetAllOrdersByStatusId = "GetAllOrdersByStatusId";
+        public const string GetCheckByOrderId = "GetCheckByOrderId";
+
+        #region Logic
+        public const string CountAllTagsInOrders = "CountAllTagsInOrders";
+        public const string CountAllProductsInOrders = "CountAllProductsInOrders";
+        #endregion
+
+
     }
 }

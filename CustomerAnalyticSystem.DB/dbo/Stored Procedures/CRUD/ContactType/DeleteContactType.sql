@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[DeleteContactType]
 	@Id integer
 as
-delete 
-from dbo.[ContactType]
-where Id = @Id
+update dbo.[ContactType]
+set IsDeleted = 1
+where Id = @Id 
 RETURN 0

@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[DeleteCheckById]
 	@Id integer
 as
-	delete [dbo].[Check]
+	update [dbo].[Check]
+	set IsDeleted = 1
 	where Id=@Id

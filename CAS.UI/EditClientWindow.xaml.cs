@@ -32,6 +32,7 @@ namespace CustomerAnalyticSystem.UI
 
         public EditClientWindow(MainWindow mainWindow, CustomerInfoModel customer)
         {
+            _mainWindow = mainWindow;
             InitializeComponent();
             _mainWindow = mainWindow;
             _mainWindow.IsEnabled = false;
@@ -83,7 +84,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillCustomerTypeComboBox(Dictionary<CustomerTypeModel, int> dict)
         {
-            foreach(KeyValuePair<CustomerTypeModel, int> pair in dict)
+            foreach (KeyValuePair<CustomerTypeModel, int> pair in dict)
             {
                 ComboBoxEditTypeOfClient.Items.Add(pair.Key.Name);
             }
@@ -91,9 +92,9 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillCustomerInfo(CustomerInfoModel customer)
         {
-                ComboBoxEditTypeOfClient.SelectedItem = customer.Name;
-                TextBoxEditClientSurname.Text = customer.LastName;
-                TextBoxEditClientName.Text = customer.FirstName;
+            ComboBoxEditTypeOfClient.SelectedItem = customer.Name;
+            TextBoxEditClientSurname.Text = customer.LastName;
+            TextBoxEditClientName.Text = customer.FirstName;
         }
 
         //GetAllContactModelByCustomerId
@@ -164,7 +165,7 @@ namespace CustomerAnalyticSystem.UI
             serve.UpdateCustomer(customer);
             this.Close();
             _mainWindow.customersDict = _mainWindow.GetDictCustomerInfoModelWithId();
-            _mainWindow.FillCustomerStackPanel(_mainWindow.customersDict);
+            _mainWindow.FillingCustomerStackPanel(_mainWindow.customersDict);
             _mainWindow.IsEnabled = true;
         }
 
@@ -231,6 +232,18 @@ namespace CustomerAnalyticSystem.UI
             serve.DeleteCommentById(commentId);
             _comments = GetCommentList();
             FillListViewComment(_comments);
+        }
+        }
+
+        private void ButtonDeleteClientCard_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить клиента " +
+                $"{((CustomerInfoModel)_mainWindow.ListViewClients.SelectedItem).FirstName} {((CustomerInfoModel)_mainWindow.ListViewClients.SelectedItem).LastName}?",
+               "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                //удааление
+            }
         }
     }
 }

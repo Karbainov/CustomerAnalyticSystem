@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
     public class ProductTagGroupService
     {
-        public List <TagModel> GetAllTags()
+
+        #region tag crud
+        public List<TagModel> GetAllTags()
         {
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
@@ -20,12 +25,196 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
-        public List <ProductBaseModel> GetAllProductsByTagId(int id)
+        public void UpdateTagById(int id, string name)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.UpdateTagById(id, name);
+        }
+
+        public void DeleteTagById(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteTagById(id);
+        }
+
+        public void AddTag(string name)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.AddTag(name);
+        }
+
+        //public TagModel GetTagById(int id)
+        //{
+        //    MrMappi map = new();
+        //    var service = new ProductTagGroupRepository();
+        //    var dto = service.GetTagById(id);
+        //    TagModel result = map.MapFromTagDTOToTagModel(dto);
+        //    return result;
+        //}
+
+        #endregion
+
+        #region product crud
+        public void UpdateProductById(int id, string name, string description, int groupId)//ProductBaseModel product)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.UpdateProductById(id, name, description, groupId);
+        }
+
+        public void AddProduct(string name, string description, int groupId)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.AddProduct(name, description, groupId);
+        }
+
+        public List<ProductBaseModel> GetAllProducts()
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllProductsWithGroups();
+            var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            return result;
+        }
+
+        public void DeleteProductById(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteProductById(id);
+        }
+
+        //public ProductBaseDTO GetProductById(int id)
+        //{
+        //    MrMappi map = new();
+        //    var service = new ProductTagGroupRepository();
+        //    service.GetProductById(id);
+        //    var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+        //    return result;
+        //}
+
+        #endregion     
+
+        #region group crud
+        public List<GroupBaseModel> GetAllGroups()
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllGroup();
+            List<GroupBaseModel> result = map.MapFromGroupBaseDTOToGroupBaseModel(dto);
+            return result;
+        }
+
+        public void UpdateGroupById(int id, string name, string description)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.UpdateGroupById(id, name, description);
+        }
+
+        public void AddGroup(string name, string description)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.AddGroup(name, description);
+        }
+
+        public void DeleteGroupById(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteGroupById(id);
+        }
+
+        //public ProductBaseDTO GetGroupById(int id)
+        //{
+        //    MrMappi map = new();
+        //    var service = new ProductTagGroupRepository();
+        //    service.GeGroupById(id);
+        //    var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+        //    return result;
+        //}
+
+        #endregion
+
+        #region product tag crud
+
+        public void UpdateProductTag(int id, int productId, int tagId)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.UpdateProduct_TagById(id, productId, tagId);
+        }
+
+        public void AddProductTag(int productId, int tagId)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.AddProduct_Tag(productId, tagId);
+        }
+
+        public void DeleteProductTag(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteProduct_TagById(id);
+        }
+
+        #endregion
+
+        public List<ProductBaseModel> GetAllProductsByTagId(int id)
         {
             MrMappi map = new();
             var service = new ProductTagGroupRepository();
             var dto = service.GetAllProductsByTag(id);
-            List<ProductBaseModel> result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            return result;
+        }
+
+        public List<ProductBaseModel> GetAllProductsByGroupId(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllProductsByGroupId(id);
+            var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
+            return result;
+        }
+
+        public List<TagModel> GetAllTagsByProductId(int id)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllTagsByProductId(id);
+            List<TagModel> result = map.MapFromTagDTOToTagModel(dto);
+            return result;
+        }
+
+        public void DeleteProduct_TagByTagIdAndProductId(int idP, int idT)
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            service.DeleteProduct_TagByTagIdAndProductId(idP, idT);
+        }
+
+        public List<GroupsWithProductsModel> GetAllGroupsWithProducts()
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllGroupsWithProducts();
+            List<GroupsWithProductsModel> result = map.MapGroupsWithProducts(dto);
+            return result;
+        }
+
+        public StackModel GetAllInfoAboutAll ()
+        {
+            MrMappi map = new();
+            var service = new ProductTagGroupRepository();
+            var dto = service.GetAllInfo();
+            StackModel result = map.GetAllInfoForProductAnalise(dto);
             return result;
         }
     }

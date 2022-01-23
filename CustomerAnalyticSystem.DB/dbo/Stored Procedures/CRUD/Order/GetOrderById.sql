@@ -2,5 +2,5 @@
 	@Id integer
 AS
 	select O.Id, O.CustomerID, O.Date, O.StatusID, O.Cost from dbo.[Order] as O
-	where Id = @Id
+	where Id = @Id and IsDeleted = 0
 RETURN @Id

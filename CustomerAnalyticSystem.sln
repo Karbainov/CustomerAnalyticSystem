@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32002.185
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CustomerAnalyticSystem.DB", "CustomerAnalyticSystem.DB\CustomerAnalyticSystem.DB.sqlproj", "{E47E056C-C867-4FF1-B7A0-8148F3A927C8}"
 EndProject

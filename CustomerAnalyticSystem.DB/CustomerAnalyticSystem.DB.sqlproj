@@ -177,8 +177,20 @@
     <Build Include="dbo\Stored Procedures\CRUD\Preferences\UpdatePreferenceById.sql" />
     <Build Include="dbo\Stored Procedures\GetCustomersWithPreferenceByProductId.sql" />
     <Build Include="dbo\Stored Procedures\GetNumberOfTagsInOrderByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\AGetAllGradesByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllPreferencesInfoByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\AllMarksInCheckByCustomerId.sql" />
+    <Build Include="dbo\Stored Procedures\CountAllTagsInOrders.sql" />
+    <Build Include="dbo\Stored Procedures\CountAllProductsInOrders.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllProductsByGroupId.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllProductsWithGroups.sql" />
+    <Build Include="dbo\Stored Procedures\CRUD\GetAllTagsByProductId.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteProduct_TagByTagIdAndProductId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCustomerWithContactAndContactType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllSortedComments.sql" />
+    <Build Include="dbo\Stored Procedures\GetOrderModel.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllOrdersByStatusId.sql" />
+    <Build Include="dbo\Stored Procedures\GetCheckByOrderId.sql" />
     <Build Include="dbo\Stored Procedures\GetAllContactWithContactTypeByCustomerId.sql" />
   </ItemGroup>
   <ItemGroup>

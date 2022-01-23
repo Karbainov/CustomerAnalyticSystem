@@ -3,4 +3,4 @@
 as
 	select C.[Id], C.[CustomerId], C.[Text]
 	from [dbo].[Comment] as C
-	where Id=@Id
+	where Id=@Id and C.IsDeleted = 0

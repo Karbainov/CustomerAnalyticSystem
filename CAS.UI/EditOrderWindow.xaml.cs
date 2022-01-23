@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
+using CustomerAnalyticSystem.BLL;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -24,6 +27,15 @@ namespace CustomerAnalyticSystem.UI
         {
             _mainWindow = mainWindow;
             InitializeComponent();
+        }
+
+        private void ButtonDeleteOrderEditOrderWndw_Click(object sender, RoutedEventArgs e)
+        {
+            if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)_mainWindow.ListViewClients.SelectedItem).Id}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                //удаление
+            }
         }
     }
 }

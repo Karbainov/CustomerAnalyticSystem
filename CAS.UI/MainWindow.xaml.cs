@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomerAnalyticSystem.BLL;
-using CustomerAnalyticSystem.BLL.Models;
-using CustomerAnalyticSystem.BLL.Services;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -23,16 +24,291 @@ namespace CustomerAnalyticSystem.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
+        public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
+        public Dictionary<string, int> StatusIdAndStatus = new Dictionary<string, int>();
         public Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+        public GeneralStatistics stat = new();
+
 
         public MainWindow()
         {
             InitializeComponent();
 
+            stat.MakeStatistics();
+
+            FillingDictTags();
+            FillingDictGroups();
+            FillingDictStatus();
             customersDict = GetDictCustomerInfoModelWithId();
-            FillCustomerStackPanel(customersDict);
+
+            FillingComboBoxStatus();
+            FillingComboBoxTags();
+            FillingComboBoxGroups();
+            FillingComboBoxAnalitic();
+
+            FillingListViewProducts();
+            FillingListViewOrders();
+            FillingCustomerStackPanel(customersDict);
+
         }
 
+        private void ComboBoxTags_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBoxTags.SelectedIndex != -1)
+            {
+                ComboBoxGroups.SelectedIndex = -1;
+            }
+            FillingListViewProducts();
+        }
+
+        private void ComboBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBoxGroups.SelectedIndex != -1)
+            {
+                ComboBoxTags.SelectedIndex = -1;
+            }
+            FillingListViewProducts();
+        }
+
+        private void ButtonViewAllProducts_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxTags.SelectedIndex != -1 || ComboBoxGroups.SelectedIndex != -1)
+            {
+                ComboBoxGroups.SelectedIndex = -1;
+                ComboBoxTags.SelectedIndex = -1;
+            }
+            FillingListViewProducts();
+        }
+
+        private void ButtonFastProductDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewProducts.SelectedIndex > -1)
+            {
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить {((ProductBaseModel)ListViewProducts.SelectedItem).Name}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
+                    int id = actual.Id;
+                    var products = new ProductTagGroupService();
+                    products.DeleteProductById(id);
+                    FillingListViewProducts();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите продукт");
+            }
+        }
+
+        private void ButtonFastClientDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewClients.SelectedIndex > -1)
+            {
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить клиента " +
+                    $"{((CustomerInfoModel)ListViewClients.SelectedItem).FirstName} {((CustomerInfoModel)ListViewClients.SelectedItem).LastName}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    CustomerService serve = new CustomerService();
+                    serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
+                    customersDict = GetDictCustomerInfoModelWithId();
+                    FillingCustomerStackPanel(customersDict);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя");
+            }
+        }
+
+        private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewOrders.SelectedIndex > -1)
+            {
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewClients.SelectedItem).Id}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    //удаление
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите заказ");
+            }
+        }
+
+        private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListViewOrders.SelectedIndex = -1;
+            FillingListViewOrders();
+        }
+
+        private void ButtonViewAllOrders_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewCheck.Items.Clear();
+            ComboBoxStatus.SelectedIndex = -1;
+            FillingListViewOrders();
+        }
+
+        private void ComboBoxAnalitic_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillingListViewLogic();
+        }
+
+        private void ListViewOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListViewOrders.SelectedIndex > -1)
+            {
+                FillingListViewCheck();
+            }
+
+        }
+
+        #region filling
+        public void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        {
+            foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
+            {
+                ListViewClients.Items.Add(pair.Value);
+            }
+        }
+
+        public void FillingComboBoxStatus()
+        {
+            ComboBoxStatus.Items.Clear();
+            foreach (string Key in StatusIdAndStatus.Keys)
+            {
+                ComboBoxStatus.Items.Add(Key);
+            }
+        }
+
+        public void FillingComboBoxTags()
+        {
+            ComboBoxTags.Items.Clear();;
+            foreach (string Key in TagsIdAndTags.Keys)
+            {
+                ComboBoxTags.Items.Add(Key);
+            }
+        }
+
+        public void FillingComboBoxGroups()
+        {
+            ComboBoxGroups.Items.Clear();
+            foreach (string Key in GroupsIdAndGroups.Keys)
+            {
+                ComboBoxGroups.Items.Add(Key);
+            }
+        }
+
+        public void FillingListViewProducts()
+        {
+            ListViewProducts.Items.Clear();
+
+            if (ComboBoxTags.SelectedIndex > -1)
+            {
+                int id = TagsIdAndTags[ComboBoxTags.SelectedItem.ToString()];
+                var products = new ProductTagGroupService();
+                var listProducts = products.GetAllProductsByTagId(id);
+                foreach (var p in listProducts)
+                {
+                    ListViewProducts.Items.Add(p);
+                }
+            }
+            else if (ComboBoxGroups.SelectedIndex > -1)
+            {
+                int id = GroupsIdAndGroups[ComboBoxGroups.SelectedItem.ToString()];
+                var products = new ProductTagGroupService();
+                var listProducts = products.GetAllProductsByGroupId(id);
+                foreach (var p in listProducts)
+                {
+                    ListViewProducts.Items.Add(p);
+                }
+            }
+            else
+            {
+                var products = new ProductTagGroupService();
+                var listProducts = products.GetAllProducts();
+                foreach (var p in listProducts)
+                {
+                    ListViewProducts.Items.Add(p);
+                }
+            }
+        }
+
+        public void FillingListViewOrders()
+        {
+            ListViewOrders.Items.Clear();
+            if (ComboBoxStatus.SelectedIndex > -1)
+            {
+                var orders = new OrderCheckStatusService();
+                int id = StatusIdAndStatus[ComboBoxStatus.SelectedItem.ToString()];
+                var listOrders = orders.GetAllOrdersByStatusId(id);
+                foreach (var p in listOrders)
+                {
+                    ListViewOrders.Items.Add(p);
+                }
+            }
+            else
+            {
+                var orders = new OrderCheckStatusService();
+                var listOrders = orders.GetBaseOrderModel();
+                foreach (var p in listOrders)
+                {
+                    ListViewOrders.Items.Add(p);
+                }
+            }
+        }
+
+        public void FillingComboBoxAnalitic()
+        {
+            ComboBoxAnalitic.Items.Add("Товары");
+            ComboBoxAnalitic.Items.Add("Группы");
+            ComboBoxAnalitic.Items.Add("Тэги");
+        }
+
+        public void FillingListViewLogic()
+        {
+            ListViewLogic.Items.Clear();
+            
+            if (ComboBoxAnalitic.SelectedIndex == 0)
+            {
+                foreach (var val in stat.Products.Values)
+                {
+                    ListViewLogic.Items.Add(val);
+                }
+            }
+            else if (ComboBoxAnalitic.SelectedIndex == 1)
+            {
+                foreach (var val in stat.Groups.Values)
+                {
+                    ListViewLogic.Items.Add(val);
+                }
+            }
+            else if (ComboBoxAnalitic.SelectedIndex == 2)
+            {
+                foreach (var val in stat.Tags.Values)
+                {
+                    ListViewLogic.Items.Add(val);
+                }
+            }
+
+        }
+
+        public void FillingListViewCheck()
+        {
+            ListViewCheck.Items.Clear();
+            var service = new OrderCheckStatusService();
+            int orderId = ((OrderBaseModel)(ListViewOrders.SelectedItem)).Id;
+            var check = service.GetCheckByOrderId(orderId);
+            foreach( var c in check)
+            {
+                ListViewCheck.Items.Add(c);
+            }
+        }
+
+        #endregion
+
+        #region dictionary
         public Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
         {
             CustomerService customerService = new CustomerService();
@@ -47,20 +323,43 @@ namespace CustomerAnalyticSystem.UI
             return customersDict;
         }
 
-        public void FillCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        public void FillingDictGroups()
         {
-            ListViewClients.Items.Clear();
-            foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
+            GroupsIdAndGroups.Clear();
+            var service = new ProductTagGroupService();
+            var groupList = service.GetAllGroups();
+            foreach (var g in groupList)
             {
-                ListViewClients.Items.Add(pair.Value);
+                GroupsIdAndGroups.Add(g.Name, g.Id);
             }
         }
-        #region Open pop-up wndws
-        private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
+
+        public void FillingDictTags()
         {
-            AddClientWindow addClientWindow = new AddClientWindow(this);
-            addClientWindow.Show();
+            TagsIdAndTags.Clear();
+            var service = new ProductTagGroupService();
+            var tagList = service.GetAllTags();
+            foreach (var t in tagList)
+            {
+                TagsIdAndTags.Add(t.Name, t.Id);
+            }
         }
+
+        public void FillingDictStatus()
+        {
+            StatusIdAndStatus.Clear();
+            var service = new OrderCheckStatusService();
+            var statusList = service.GetAllStatus();
+            foreach (var s in statusList)
+            {
+                StatusIdAndStatus.Add(s.Name, s.Id);
+            }
+        }
+
+
+        #endregion
+
+        #region Open pop-up wndws
 
         private void ButtonOpenAddOrderWndw_Click(object sender, RoutedEventArgs e)
         {
@@ -71,10 +370,16 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonOpenEditOrderWndw_Click(object sender, RoutedEventArgs e)
         {
-            EditOrderWindow editOrderWindow = new EditOrderWindow(this);
-            editOrderWindow.Show();
+            if (ListViewOrders.SelectedIndex > -1)
+            {
+                EditOrderWindow editOrderWindow = new EditOrderWindow(this);
+                editOrderWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Выберите заказ");
+            }
         }
-
 
         private void ButtonOpenWindowOfProductAdding_Click(object sender, RoutedEventArgs e)
         {
@@ -82,14 +387,39 @@ namespace CustomerAnalyticSystem.UI
             addProductWindow.Show();
         }
 
+        private void ButtonOpenWindowOfAddingClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClientWindow addClientWindow = new AddClientWindow(this);
+            addClientWindow.Show();
+        }
+
         private void ButtonOpenWindowOfProductEditing_Click(object sender, RoutedEventArgs e)
         {
-            EditProductWindow editProductWindow = new EditProductWindow(this);
-            editProductWindow.Show();
-        }
-        #endregion
 
-        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+            if (ListViewProducts.SelectedIndex > -1)
+            {
+                ProductBaseModel product = (ProductBaseModel)ListViewProducts.SelectedItem;
+                EditProductWindow editProductWindow = new EditProductWindow(this, product);
+                editProductWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Выберите продукт для редактирования");
+
+            }
+        }
+        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+        {
+            EditTagsWindow editTagsWindow = new EditTagsWindow(this);
+            editTagsWindow.Show();
+        }
+
+        private void ButtonEditGroups_Click(object sender, RoutedEventArgs e)
+        {
+            EditGroupsWindow editGroupsWindow = new EditGroupsWindow(this);
+            editGroupsWindow.Show();
+        }
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewClients.SelectedIndex > -1)
             {
@@ -98,15 +428,9 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private void ButtonFastClientDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (ListViewClients.SelectedIndex > -1)
-            {
-                CustomerService serve = new CustomerService();
-                serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
-                customersDict = GetDictCustomerInfoModelWithId();
-                FillCustomerStackPanel(customersDict);
-            }
-        }
+
+        #endregion
+
     }
 }
+

@@ -10,5 +10,6 @@ inner join [dbo].[Check] as C
 on C.ProductId = P.Id
 inner join [dbo].[Order] as O
 on C.OrderId = O.Id
-where O.CustomerId = @Id
+where O.CustomerId = @Id and T.IsDeleted = 0 and PT.IsDeleted = 0 and P.IsDeleted = 0 
+and C.IsDeleted = 0 and O.IsDeleted = 0
 RETURN @Id
