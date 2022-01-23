@@ -79,8 +79,6 @@
                                 </ListView.View>
                             </ListView>
 
-
-
                         </Grid>
                         <ListView x:Name="ListViewClients" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.ItemContainerStyle>
@@ -93,10 +91,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="115" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
-                                    <GridViewColumn Width="115" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
-                                    <GridViewColumn Width="115" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
-                                    <GridViewColumn Width="115" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
+                                    <GridViewColumn Width="211" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Width="211" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="211" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="211" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
