@@ -25,6 +25,12 @@ namespace CustomerAnalyticSystem.BLL.Configs
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
             });
 
+        public MapperConfiguration ConfFromCommentDTOToCommentModel { get; private set; } = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<CommentDTO, CommentModel>();
+            });
+
         public MapperConfiguration ConfFromCustomerInfoDTOToCustomerModel = new MapperConfiguration(
            conf =>
            {

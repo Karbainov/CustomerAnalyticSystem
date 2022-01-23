@@ -12,6 +12,12 @@ namespace CustomerAnalyticSystem.BLL
 {
     public class MrMappi
     {
+        public List<CommentModel> MapFromCommentDTOToCommentModel(List<CommentDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfFromCommentDTOToCommentModel).Map<List<CommentDTO>, List<CommentModel>>(dto);
+        }
+
         public OrderInfoByOrderIdModel MapOrderInfoByOrderId(AllOrderInfoByOrderId dto)
         {
             var config = new MapperConfigs();

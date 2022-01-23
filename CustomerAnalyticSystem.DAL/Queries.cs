@@ -105,7 +105,7 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetCommentById = "GetCommentById";
         public const string GetAllComment = "GetAllComment";
         public const string AddComment = "AddComment";
-        public const string DeleteComment = "DeleteComment";
+        public const string DeleteComment = "DeleteCommentById";
         public const string UpdateComment = "UpdateComment";
         #endregion
 

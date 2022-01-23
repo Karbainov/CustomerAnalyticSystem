@@ -68,7 +68,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1">
+            <ListView x:Name="ListViewComments" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -79,7 +79,7 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="250" Header="Комментарии"/>
+                        <GridViewColumn Width="250" Header="Комментарии" DisplayMemberBinding="{Binding Text}"/>
                     </GridView>
                 </ListView.View>
 
@@ -99,11 +99,11 @@
             <Label Content="Добавить контакт" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"/>
             <Label Content="Добавить комментарий" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
             <TextBox x:Name="TextBoxContact" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" Grid.Column="0" Grid.Row="1" Margin="100,0,0,0" Height="20"/>
-            <TextBox HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" Grid.Column="1" Grid.Row="1" Height="50"/>
+            <TextBox x:Name="TextBoxCommentText" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" Grid.Column="1" Grid.Row="1" Height="50"/>
             <Button x:Name="ButtonAddContactEditClientWndw" Content="Добавить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,85,0" Width="70" Click="ButtonAddContactEditClientWndw_Click"/>
-            <Button x:Name="ButtonDeleteContactEditClientWndw" Content="Удалить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="85,0,0,0" Width="70"/>
-            <Button x:Name="ButtonAddCommentEditClientWndw" Content="Добавить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Margin="0,0,85,0" Width="70"/>
-            <Button x:Name="ButtonDeleteCommentEditClientWndw" Content="Удалить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Margin="85,0,0,0" Width="70"/>
+            <Button x:Name="ButtonDeleteContactEditClientWndw" Content="Удалить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="85,0,0,0" Width="70" Click="ButtonDeleteContactEditClientWndw_Click"/>
+            <Button x:Name="ButtonAddCommentEditClientWndw" Content="Добавить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Margin="0,0,85,0" Width="70" Click="ButtonAddCommentEditClientWndw_Click"/>
+            <Button x:Name="ButtonDeleteCommentEditClientWndw" Content="Удалить" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" Margin="85,0,0,0" Width="70" Click="ButtonDeleteCommentEditClientWndw_Click"/>
             <ComboBox x:Name="ComboBoxContactType" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Width="60" Margin="32,0,0,0" Height="20" ItemsSource="{Binding contactTypesWithId}" DisplayMemberPath="Value"/>
         </Grid>
         <Grid Grid.Row="3">

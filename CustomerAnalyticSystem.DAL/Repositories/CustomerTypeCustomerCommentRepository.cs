@@ -196,8 +196,11 @@ namespace CustomerAnalyticSystem.DAL
                     Queries.GetAllSortedComments
                     , (comment, obj) =>
                      {
-                         customersDict[comment.CustomerId].Comments.Add(comment);
+                         if (customersDict.Count > 0)
+                         {
+                            customersDict[comment.CustomerId].Comments.Add(comment);
 
+                         }
                          return comment;
                      }
                      , splitOn: "TempId"
@@ -248,11 +251,11 @@ namespace CustomerAnalyticSystem.DAL
 
         }
 
-        public void AddComment(int CustomerId, string Value)
+        public void AddComment(int CustomerId, string Text)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<CommentDTO>(Queries.AddComment, new { CustomerId, Value },
+                connection.Query(Queries.AddComment, new { CustomerId, Text },
                 commandType: CommandType.StoredProcedure);
             }
         }
@@ -261,7 +264,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<CommentDTO>(Queries.DeleteComment, new { id },
+                connection.Query(Queries.DeleteComment, new { id },
                 commandType: CommandType.StoredProcedure);
             }
         }

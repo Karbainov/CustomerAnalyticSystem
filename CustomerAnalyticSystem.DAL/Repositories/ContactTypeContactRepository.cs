@@ -49,7 +49,7 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.QuerySingle<ContactDTO>(Queries.DeleteContact, new { id },
+                connection.Query(Queries.DeleteContact, new { id },
                 commandType: CommandType.StoredProcedure);
             }
         }
