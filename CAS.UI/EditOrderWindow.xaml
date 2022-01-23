@@ -43,11 +43,13 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Content="Товар" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="0"/>
                 <Label Content="Количество" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="1"/>
                 <Label Content="Сумма заказа" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2"/>
                 <Label Content="Оценка" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="3"/>
+                <Label Content="Статус заказа" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="4"/>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -55,11 +57,17 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="ComboBoxChooseProductEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0" Height="20"/>
                 <ComboBox x:Name="ComboBoxChooseMarkEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="3" Height="20"/>
-                <TextBox x:Name="TextBoxAmountOfProductEditOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20" PreviewTextInput="TextBoxAmountOfProductEditOrderWndw_PreviewTextInput"/>
-                <TextBox x:Name="TextBoxPriceOfUnitEditOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20" PreviewTextInput="TextBoxPriceOfUnitEditOrderWndw_PreviewTextInput"/>
+                <TextBox x:Name="TextBoxAmountOfProductEditOrderWndw" HorizontalAlignment="Left" Grid.Row="1" 
+                         TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20" PreviewTextInput="TextBoxAmountOfProductEditOrderWndw_PreviewTextInput"/>
+                <TextBox x:Name="TextBoxPriceOfUnitEditOrderWndw" HorizontalAlignment="Left" Grid.Row="2" 
+                         TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20" PreviewTextInput="TextBoxPriceOfUnitEditOrderWndw_PreviewTextInput"/>
+                <ComboBox HorizontalAlignment="Left"  Grid.Row="4" VerticalAlignment="Center" Width="100" Height="20"/>
+                <Button x:Name="ButtonEditOrderStatus" Content="Редактировать" HorizontalAlignment="Left"  
+                        Grid.Row="4" VerticalAlignment="Center" Width="67" Height="20" Margin="133,0,0,0" FontSize="8" Click="ButtonEditOrderStatus_Click"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">

@@ -43,5 +43,11 @@ namespace CustomerAnalyticSystem.UI
             e.Handled = !IsTextAllowed(e.Text);
             IsTextAllowed(TextBoxPriceOfUnitEditOrderWndw.Text);
         }
+
+        private void ButtonEditOrderStatus_Click(object sender, RoutedEventArgs e)
+        {
+            EditStatusWindow editStatusWindow = new EditStatusWindow(this);
+            editStatusWindow.Show();
+        }
     }
 }
