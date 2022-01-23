@@ -58,8 +58,8 @@
 
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="ComboBoxChooseProductAddOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0" Height="20"/>
-                <TextBox x:Name="TextBoxAmountOfProductAddOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20"/>
-                <TextBox x:Name="TextBoxPriceOfUnitAddOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20"/>
+                <TextBox x:Name="TextBoxAmountOfProductAddOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20" PreviewTextInput="TextBoxAmountOfProductAddOrderWndw_PreviewTextInput"/>
+                <TextBox x:Name="TextBoxPriceOfUnitAddOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20" PreviewTextInput="TextBoxPriceOfUnitAddOrderWndw_PreviewTextInput"/>
                 <ComboBox HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Center" Width="100" Height="20"/>
                 <Button x:Name="ButtonEditOrderStatus" Content="Редактировать" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Center" Width="67" Height="20" Margin="133,0,0,0" FontSize="8" Click="ButtonEditOrderStatus_Click"/>
             </Grid>

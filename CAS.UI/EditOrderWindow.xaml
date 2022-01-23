@@ -58,8 +58,8 @@
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="ComboBoxChooseProductEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="0" Height="20"/>
                 <ComboBox x:Name="ComboBoxChooseMarkEditOrderWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Grid.Row="3" Height="20"/>
-                <TextBox x:Name="TextBoxAmountOfProductEditOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20"/>
-                <TextBox x:Name="TextBoxPriceOfUnitEditOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20"/>
+                <TextBox x:Name="TextBoxAmountOfProductEditOrderWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20" PreviewTextInput="TextBoxAmountOfProductEditOrderWndw_PreviewTextInput"/>
+                <TextBox x:Name="TextBoxPriceOfUnitEditOrderWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="20" PreviewTextInput="TextBoxPriceOfUnitEditOrderWndw_PreviewTextInput"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
