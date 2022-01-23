@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Редактор групп" Height="450" Width="300">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="44*"/>
             <RowDefinition Height="33*"/>
@@ -14,7 +17,7 @@
             <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="ListViewEditGroupsWndw" d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="2" >
+        <ListView x:Name="ListViewEditGroupsWndw" d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="1" Margin="0,66,0,0" Grid.RowSpan="2" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -24,7 +27,8 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="120" Header="Группа"  DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Width="35" Header="№"  DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Width="100" Header="Группа"  DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Width="200" Header="Описание"  DisplayMemberBinding="{Binding Description}"/>
                 </GridView>
             </ListView.View>
@@ -41,7 +45,7 @@
 
         </Grid>
         <Button x:Name="ButtonDeleteGroup" Content="Удалить" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="ButtonDeleteGroup_Click"  Width="90" Height="20" Grid.Row="3"/>
-        <TextBox x:Name="TextBoxDescription" HorizontalAlignment="Right"  Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="150" Height="50" Margin="0,0,10,0"/>
+        <TextBox x:Name="TextBoxDescription" HorizontalAlignment="Left"  Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Width="150" Height="50" Margin="140,0,0,0"/>
         <Label Content="Описание группы" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
     </Grid>
     <!--<Grid>

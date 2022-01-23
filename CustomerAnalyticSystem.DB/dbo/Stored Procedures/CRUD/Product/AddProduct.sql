@@ -5,5 +5,5 @@
 AS
 	insert into [dbo].[Product]
   values 
-  (@Name, @Description, @GroupId)
+  (@Name, @Description, @GroupId, 0)
 RETURN 0

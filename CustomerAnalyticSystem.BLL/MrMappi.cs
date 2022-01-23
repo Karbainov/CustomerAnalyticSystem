@@ -6,7 +6,11 @@ using System.Linq;
 using System.Text;
 using AutoMapper;
 using System.Threading.Tasks;
+using CustomerAnalyticSystem.BLL.Analytics;
 using CustomerAnalyticSystem.BLL.Configs;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
+using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 
 namespace CustomerAnalyticSystem.BLL
 {
@@ -40,10 +44,10 @@ namespace CustomerAnalyticSystem.BLL
             var config = new MapperConfigs();
             return new Mapper(config.ConfFromCustomerInfoDTOToCustomerinfoModel).Map<List<CustomerInfoDTO>, List<CustomerInfoModel>>(list);
         }
-        public List<OrderBaseModel> MapBaseOrder(List<OrderDTO> dto)
+        public List<OrderBaseModel> MapBaseOrder(List<GetOrderModelDTO> dto)
         {
             var config = new MapperConfigs();
-            return new Mapper(config.ConfigAllGroupsWithProducts).Map<List<OrderDTO>,List<OrderBaseModel>>(dto);
+            return new Mapper(config.ConfFromOrderDTOToOrderBaseModel).Map<List<GetOrderModelDTO>,List<OrderBaseModel>>(dto);
         }
 
         public List<TagModel> MapFromTagDTOToTagModel(List<TagDTO> dto)
@@ -58,6 +62,19 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseProduct).Map<List<ProductsWithGroupsDTO>, List<ProductBaseModel>>(dto);
         }
     
+        public PreferencesByCustomerIdModel MapFromPreferences (AllPreferencesAndGradeInfoByCustomerIdDTO dto)
+        {
+            var config = new MapperConfigs();
+            PreferencesByCustomerIdModel result = new Mapper(config.ConfigCustomerPreferencesAndGrades)
+                .Map<AllPreferencesAndGradeInfoByCustomerIdDTO,PreferencesByCustomerIdModel>(dto);
+            return result;
+        }
+        public StackModel GetAllInfoForProductAnalise (StackDTO dto)
+        {
+            var config = new MapperConfigs();
+            StackModel result = new Mapper(config.ConfigStack).Map<StackDTO, StackModel>(dto);
+            return result;
+        }
     
 
         public List<GroupBaseModel> MapFromGroupBaseDTOToGroupBaseModel(List<GroupBaseDTO> dto)
@@ -66,7 +83,25 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigBaseGroup).Map<List<GroupBaseDTO>, List<GroupBaseModel>>(dto);
         }
 
-        
+        public List<OrderBaseModel> MapFromOrderDTOToOrderBaseModel(List<GetOrderModelDTO> DTO)
+        {
+            var mapConfig = new MapperConfigs();
+            return new Mapper(mapConfig.ConfFromOrderDTOToOrderBaseModel).Map<List<GetOrderModelDTO>
+               , List<OrderBaseModel>>(DTO);
+        }
 
+        public List<StatusModel> MapFromStatus (List<StatusDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigStatus).Map<List<StatusDTO>, List<StatusModel>>(dto);
+        }
+
+        public List<CheckByOrderIdModel> MapCheckByOrderId(List<CheckByOrderIdDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigCheckByOrderIdDTOToCheckByOrderIdModel).Map<List<CheckByOrderIdDTO>
+               , List<CheckByOrderIdModel>>(dto);
+        }
     }
+
 }

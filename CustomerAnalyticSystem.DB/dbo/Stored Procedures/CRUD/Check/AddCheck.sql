@@ -4,6 +4,6 @@
 	@Amount integer,
 	@Mark integer
 as 
-	insert into [dbo].[Check] ([ProductId],[OrderId],[Amount],[Mark])
+	insert into [dbo].[Check] 
 	values
-	(@ProductId, @OrderId, @Amount, @Mark)
+	(@ProductId, @OrderId, @Amount, @Mark, 0)

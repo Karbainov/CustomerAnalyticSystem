@@ -23,7 +23,7 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Тэги" Width="300"/>
+                    <GridViewColumn Width="300" Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
                 </GridView>
             </ListView.View>
         </ListView>

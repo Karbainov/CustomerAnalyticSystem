@@ -34,19 +34,21 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillingEditProductWindowComboBoxGroups()
         {
-            var groups = new ProductTagGroupService();
-            var listGroups = groups.GetAllGroups();
-            foreach (var g in listGroups)
+            var service = new ProductTagGroupService();
+            var groupList = service.GetAllGroups();
+            foreach (var g in groupList)
+            //foreach (string Key in _mainWindow.GroupsIdAndGroups.Keys)
             {
                 ComboBoxProductGroupAddWndw.Items.Add(g.Name);
-            }
+            }          
         }
 
         private void FillingComboBoxTagsForAddProduct()
         {
-            var tags = new ProductTagGroupService();
-            var listTags = tags.GetAllTags();
-            foreach (var t in listTags)
+            var service = new ProductTagGroupService();
+            var tagList = service.GetAllTags();
+            foreach (var t in tagList)
+            //foreach (string Key in _mainWindow.TagsIdAndTags.Keys)
             {
                 ComboBoxTagsForAddProduct.Items.Add(t.Name);
             }
@@ -56,63 +58,77 @@ namespace CustomerAnalyticSystem.UI
         {
             if (TextBoxProductNameAddWndw.Text != String.Empty && ComboBoxProductGroupAddWndw.SelectedIndex != -1)
             {
-                //ПОМЕНЯТЬ ПРОВЕРКУ ПОСЛЕ ТОГО КАК ДИНАР ДОДЕЛАЕТ КЛАСС
-                bool one = true;
-                ProductTagGroupService tmpservice = new ProductTagGroupService();
-                var listProducts = tmpservice.GetAllProducts();
-                foreach(var p in listProducts)
+                foreach (var p in _mainWindow.stat.Products.Values)
                 {
-                    if(p.Name == TextBoxProductNameAddWndw.Text)
+                    if (p.Name == TextBoxProductNameAddWndw.Text)
                     {
-                        one = false;
+                        MessageBox.Show("Продукт с таким наименованием уже существует");
+                        return;
                     }
                 }
 
-                if (one == true)
+                ProductBaseModel product = new ProductBaseModel()
                 {
-                    ProductBaseModel product = new ProductBaseModel()
-                    {
-                        Name = TextBoxProductNameAddWndw.Text,
-                        Description = TextBoxProductDescriptionAddWndw.Text,
-                        GroupName = ComboBoxProductGroupAddWndw.SelectedItem.ToString()
-                    };
+                    Name = TextBoxProductNameAddWndw.Text,
+                    Description = TextBoxProductDescriptionAddWndw.Text,
+                    GroupName = ComboBoxProductGroupAddWndw.SelectedItem.ToString()
+                };
 
-                    string group = ComboBoxProductGroupAddWndw.SelectedItem.ToString();
-                    int id = _mainWindow.GroupsIdAndGroups[group];
+                int id = _mainWindow.GroupsIdAndGroups[ComboBoxProductGroupAddWndw.SelectedItem.ToString()];
 
-                    ProductTagGroupService service = new ProductTagGroupService();
-                    service.AddProduct(product.Name, product.Description, id);
-                    _mainWindow.FillingListViewProducts();
+                ProductTagGroupService service = new ProductTagGroupService();
+                service.AddProduct(product.Name, product.Description, id);
+                _mainWindow.FillingListViewProducts();
 
-                    foreach (var item in ListViewTagsAddWndw.Items)
-                    {
-                        string tag = item.ToString();
-                        int id1 = _mainWindow.TagsIdAndTags[tag];
-                        ProductTagGroupService service1 = new ProductTagGroupService();
-                        int count = _mainWindow.ListViewProducts.Items.Count;
-                        _mainWindow.ListViewProducts.SelectedIndex = count - 1;
-                        ProductBaseModel newProduct = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
-                        service.AddProductTag(newProduct.Id, id1);
-                    }
-
-                    this.Close();
-                }
-                else
+                foreach (var item in ListViewTagsAddWndw.Items)
                 {
-                    MessageBox.Show("Продукт с таким наименованием уже существует");
-
+                    string tag = item.ToString();
+                    int id1 = _mainWindow.TagsIdAndTags[tag];
+                    ProductTagGroupService service1 = new ProductTagGroupService();
+                    int count = _mainWindow.ListViewProducts.Items.Count - 1;
+                    _mainWindow.ListViewProducts.SelectedIndex = count;
+                    ProductBaseModel newProduct = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;
+                    service.AddProductTag(newProduct.Id, id1);
                 }
+
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Введите информацию о продукте");
             }
-
         }
 
         private void ButtonAddTag_Click(object sender, RoutedEventArgs e)
         {
-            ListViewTagsAddWndw.Items.Add(ComboBoxTagsForAddProduct.SelectedItem.ToString());          
+            ListViewTagsAddWndw.Items.Add(ComboBoxTagsForAddProduct.SelectedItem.ToString());
+            ListViewTagsAddWndw.UpdateLayout();
+
+
+        }
+
+        private void ButtonDeleteTag_Click(object sender, RoutedEventArgs e)
+        {
+            if(ListViewTagsAddWndw.SelectedIndex > -1)
+            {
+                ListViewTagsAddWndw.Items.Remove(ListViewTagsAddWndw.SelectedItem);
+            }
+            else 
+            {
+                MessageBox.Show("Выберите тэг для удаления");
+            }
+        }
+
+        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+        {
+            EditTagsWindow editTagsWindow = new EditTagsWindow(_mainWindow);
+            editTagsWindow.Show();
+        }
+
+        private void ButtonEditGoup_Click(object sender, RoutedEventArgs e)
+        {
+            EditGroupsWindow editGroupsWindow = new EditGroupsWindow(_mainWindow);
+            editGroupsWindow.Show();
         }
     }
 }

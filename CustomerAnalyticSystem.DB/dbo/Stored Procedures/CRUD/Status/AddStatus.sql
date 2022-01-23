@@ -2,5 +2,5 @@
 	@Name nvarchar(30)
 AS
 	insert dbo.[Status]
-	values (@Name)
+	values (@Name, 0)
 

@@ -30,7 +30,6 @@ namespace CustomerAnalyticSystem.UI
             InitializeComponent();
             _product = product;
             _mainWindow = mainWindow;
-           // _mainWindow.IsEnabled = false;
             FillingEditProductWindowComboBoxGroups();
             FillingComboBoxTagsForEdditProduct();
             FillingListViewTagsEditWndw();
@@ -40,18 +39,16 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillingEditProductWindowComboBoxGroups()
         {
-            var groups = new ProductTagGroupService();
-            var listGroups = groups.GetAllGroups();
-            int i = 0;
-            foreach (var g in listGroups)
+            int id = -1;
+            foreach (string Key in _mainWindow.GroupsIdAndGroups.Keys)
             {
-                i++;
-                ComboBoxProductGroupEditWndw.Items.Add(g.Name);
-                if (g.Name == _product.GroupName)
+                id++;
+                ComboBoxProductGroupEditWndw.Items.Add(Key);
+                if(Key == _product.GroupName)
                 {
-                    ComboBoxProductGroupEditWndw.SelectedIndex = i;
+                    ComboBoxProductGroupEditWndw.SelectedIndex = id;
                 }
-            }
+            }     
         }
 
         private void ButtonSaveChangesOfProductEditing_Click(object sender, RoutedEventArgs e)
@@ -61,8 +58,7 @@ namespace CustomerAnalyticSystem.UI
                 _product.Name = TextBoxProductNameEditWndw.Text;
                 _product.Description = TextBoxProductDescriptionEditWndw.Text;
                 _product.GroupName = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
-                string group = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
-                int id = _mainWindow.GroupsIdAndGroups[group];
+                int id = _mainWindow.GroupsIdAndGroups[ComboBoxProductGroupEditWndw.SelectedItem.ToString()];
                 ProductTagGroupService product = new ProductTagGroupService();
                 product.UpdateProductById(_product.Id, _product.Name, _product.Description, id);
                 _mainWindow.FillingListViewProducts();
@@ -103,11 +99,9 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillingComboBoxTagsForEdditProduct()
         {
-            var tags = new ProductTagGroupService();
-            var listTags = tags.GetAllTags();
-            foreach (var t in listTags)
+            foreach (string Key in _mainWindow.TagsIdAndTags.Keys)
             {
-                ComboBoxEditWindowTags.Items.Add(t.Name);
+                ComboBoxEditWindowTags.Items.Add(Key);
             }
         }
 
@@ -125,6 +119,30 @@ namespace CustomerAnalyticSystem.UI
             {
                 MessageBox.Show("Не выбран тэг для удаления");
             }
+        }
+
+        private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить {_product.Name}?",
+               "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var products = new ProductTagGroupService();
+                products.DeleteProductById(_product.Id);
+                _mainWindow.FillingListViewProducts();
+                this.Close();
+            }
+        }
+
+        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+        {
+            EditTagsWindow editTagsWindow = new EditTagsWindow(_mainWindow);
+            editTagsWindow.Show();
+        }     
+
+        private void ButtonEditGroups_Click(object sender, RoutedEventArgs e)
+        {
+            EditGroupsWindow editGroupsWindow = new EditGroupsWindow(_mainWindow);
+            editGroupsWindow.Show();
         }
     }
 }

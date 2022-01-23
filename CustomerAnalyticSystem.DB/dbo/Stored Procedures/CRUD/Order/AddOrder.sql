@@ -5,5 +5,5 @@
 	@Cost integer
 AS
 	insert dbo.[Order]
-	values (@CustomerId, @Date, @StatusId, @Cost)
+	values (@CustomerId, @Date, @StatusId, @Cost, 0)
 

@@ -32,13 +32,12 @@ namespace CustomerAnalyticSystem.UI
         private void FillingListViewEditGroupsWndw()
         {
             ListViewEditGroupsWndw.Items.Clear();
-            var groups = new ProductTagGroupService();
-            var listGroups = groups.GetAllGroups();
-            foreach (var g in listGroups)
+            var group = new ProductTagGroupService();
+            var groupList = group.GetAllGroups();
+            foreach (var g in groupList)
             {
                 ListViewEditGroupsWndw.Items.Add(g);
             }
-
         }
 
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
@@ -51,7 +50,10 @@ namespace CustomerAnalyticSystem.UI
                     group.AddGroup(TextBoxNewGroup.Text, TextBoxDescription.Text);
                     _mainWindow.FillingComboBoxGroups();
                     FillingListViewEditGroupsWndw();
-                    _mainWindow.FillingDictGroups();
+                    int count = ListViewEditGroupsWndw.Items.Count;
+                    ListViewEditGroupsWndw.SelectedIndex = count - 1;
+                    GroupBaseModel newGroup = ((GroupBaseModel)ListViewEditGroupsWndw.SelectedItem);
+                    _mainWindow.GroupsIdAndGroups.Add(TextBoxNewGroup.Text, newGroup.Id);
                     TextBoxNewGroup.Text = "";
                     TextBoxDescription.Text = "";
                 }
@@ -70,12 +72,17 @@ namespace CustomerAnalyticSystem.UI
         {
             if (ListViewEditGroupsWndw.SelectedItem != null)
             {
-                int id = _mainWindow.GroupsIdAndGroups[((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name];
-                var group = new ProductTagGroupService();
-                group.DeleteGroupById(id);
-                _mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
-                _mainWindow.FillingComboBoxGroups();
-                FillingListViewEditGroupsWndw();
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить группу " +
+                    $"{((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name}? Товары данной группы также будут удалены",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    int id = _mainWindow.GroupsIdAndGroups[((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name];
+                    var group = new ProductTagGroupService();
+                    group.DeleteGroupById(id);
+                    _mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
+                    _mainWindow.FillingComboBoxGroups();
+                    FillingListViewEditGroupsWndw();
+                }
             }
             else
             {
@@ -101,6 +108,7 @@ namespace CustomerAnalyticSystem.UI
                         FillingListViewEditGroupsWndw();
                         TextBoxEditGroup.Text = "";
                         TextBoxDescription.Text = "";
+                        _mainWindow.FillingListViewProducts();
                     }
                     else
                     {
