@@ -40,9 +40,10 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             CustomerTypeCustomerCommentService w = new();
             List<CustomerDTO> we = w.GetAllCustomers();
             BaseCustomers = new Mapper(configuration).Map<List<CustomerDTO>, List<CustomerInfoModel>>(we);
+            MakeStatisticksForCustomers();
 
         }
-        public void MakeStatisticksForCustomers()
+        private void MakeStatisticksForCustomers()
         {
             FillBaseCustomerInfo();
             AvgMarkForEveryProduct();
