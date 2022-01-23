@@ -46,8 +46,9 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             Groups = new();
             Tags = new();
             AmountOfOrders = Info.Orders.Count;
+            MakeStatistics();
         }
-        public void MakeStatistics()
+        private void MakeStatistics()
         {
             FillProducts();
             FillGroups();
