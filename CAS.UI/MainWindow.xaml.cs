@@ -144,6 +144,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonViewAllOrders_Click(object sender, RoutedEventArgs e)
         {
+            ListViewCheck.Items.Clear();
             ComboBoxStatus.SelectedIndex = -1;
             FillingListViewOrders();
         }
@@ -283,6 +284,18 @@ namespace CustomerAnalyticSystem.UI
 
         }
 
+        public void FillingListViewCheck()
+        {
+            ListViewCheck.Items.Clear();
+            var service = new OrderCheckStatusService();
+            int orderId = ((OrderBaseModel)(ListViewOrders.SelectedItem)).Id;
+            var check = service.GetCheckByOrderId(orderId);
+            foreach( var c in check)
+            {
+                ListViewCheck.Items.Add(c);
+            }
+        }
+
         #endregion
 
         #region dictionary
@@ -332,6 +345,7 @@ namespace CustomerAnalyticSystem.UI
                 StatusIdAndStatus.Add(s.Name, s.Id);
             }
         }
+
 
         #endregion
 
@@ -402,10 +416,15 @@ namespace CustomerAnalyticSystem.UI
                 EditClientWindow editClientWindow = new EditClientWindow(this, (CustomerInfoModel)ListViewClients.SelectedItem);
                 editClientWindow.Show();
             }
-        }
-    #endregion
+        }
 
 
+        #endregion
+
+        private void ListViewOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillingListViewCheck();
+        }
     }
 }
 

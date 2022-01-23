@@ -140,12 +140,10 @@ namespace CustomerAnalyticSystem.DAL
         public const string GetAllProductsWithGroups = "GetAllProductsWithGroups";
         public const string GetAllTagsByProductId = "GetAllTagsByProductId";
         public const string DeleteProduct_TagByTagIdAndProductId = "DeleteProduct_TagByTagIdAndProductId";
-
         public const string GetAllSortedComments = "GetAllSortedComments";
-
         public const string GetOrderModel = "GetOrderModel";
-
         public const string GetAllOrdersByStatusId = "GetAllOrdersByStatusId";
+        public const string GetCheckByOrderId = "GetCheckByOrderId";
 
         #region Logic
         public const string CountAllTagsInOrders = "CountAllTagsInOrders";

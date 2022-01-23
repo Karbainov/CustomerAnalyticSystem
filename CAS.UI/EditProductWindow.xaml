@@ -38,6 +38,7 @@
             <ComboBox x:Name="ComboBoxProductGroupEditWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="21"/>
             <TextBox x:Name="TextBoxProductNameEditWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="30"/>
             <TextBox x:Name="TextBoxProductDescriptionEditWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="55" BorderBrush="#FF2C3F76"/>
+            <Button x:Name="ButtonEditGroups" Content="Редактировать группы" HorizontalAlignment="Left" Margin="36,49,0,0" VerticalAlignment="Top" Click="ButtonEditGroups_Click"/>
         </Grid>
         <Grid  Grid.Row="1">
 
@@ -62,6 +63,7 @@
         </ListView>
         <Button x:Name="ButtonSaveChangesOfProductEditing" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Row="2" Click="ButtonSaveChangesOfProductEditing_Click"/>
         <Button x:Name="ButtonDeleteProduct" Content="Удалить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1" Grid.Row="2" Click="ButtonDeleteProduct_Click"/>
+        <Button x:Name="ButtonEditTags" Content="Редактировать тэги" HorizontalAlignment="Left" Margin="38,125,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2" Click="ButtonEditTags_Click"/>
     </Grid>
 
 

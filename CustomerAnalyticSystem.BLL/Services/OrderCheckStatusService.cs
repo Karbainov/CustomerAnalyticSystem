@@ -59,7 +59,14 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
-
+        public List<CheckByOrderIdModel> GetCheckByOrderId (int id)
+        {
+            MrMappi map = new();
+            var service = new OrderCheckStatusRepository();
+            var dto = service.GetCheckByOrderId(id);
+            List<CheckByOrderIdModel> result = map.MapCheckByOrderId(dto);
+            return result;
+        }
 
     }
 }

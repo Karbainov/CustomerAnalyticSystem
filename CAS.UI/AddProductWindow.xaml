@@ -37,6 +37,7 @@
             <ComboBox x:Name="ComboBoxProductGroupAddWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="21"/>
             <TextBox x:Name="TextBoxProductNameAddWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="30"/>
             <TextBox x:Name="TextBoxProductDescriptionAddWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="55" BorderBrush="#FF2C3F76"/>
+            <Button x:Name="ButtonEditGoup" Content="Редактировать группы" HorizontalAlignment="Left" Margin="41,54,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Click="ButtonEditGoup_Click"/>
         </Grid>
         <Grid  Grid.Row="1">
 
@@ -60,6 +61,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="ButtonAddProduct" Content="Добавить продукт" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Row="2" Click="ButtonAddProduct_Click"/>
+        <Button x:Name="ButtonEditTags" Content="Редактировать тэги" HorizontalAlignment="Left" Margin="25,5,0,0" Grid.Row="2" VerticalAlignment="Top" Click="ButtonEditTags_Click"/>
     </Grid>
-    
+
 </Window>

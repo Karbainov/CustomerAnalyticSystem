@@ -190,6 +190,7 @@
     <Build Include="dbo\Stored Procedures\GetAllSortedComments.sql" />
     <Build Include="dbo\Stored Procedures\GetOrderModel.sql" />
     <Build Include="dbo\Stored Procedures\GetAllOrdersByStatusId.sql" />
+    <Build Include="dbo\Stored Procedures\GetCheckByOrderId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CustomerAnalyticSystem.DB.refactorlog" />

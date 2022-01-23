@@ -132,5 +132,17 @@ namespace CustomerAnalyticSystem.UI
                 this.Close();
             }
         }
+
+        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+        {
+            EditTagsWindow editTagsWindow = new EditTagsWindow(_mainWindow);
+            editTagsWindow.Show();
+        }     
+
+        private void ButtonEditGroups_Click(object sender, RoutedEventArgs e)
+        {
+            EditGroupsWindow editGroupsWindow = new EditGroupsWindow(_mainWindow);
+            editGroupsWindow.Show();
+        }
     }
 }

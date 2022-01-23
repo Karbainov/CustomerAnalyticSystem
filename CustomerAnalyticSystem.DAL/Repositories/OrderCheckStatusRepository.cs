@@ -225,6 +225,15 @@ namespace CustomerAnalyticSystem.DAL
                      commandType: CommandType.StoredProcedure).ToList();
             }
         }
+
+        public List<CheckByOrderIdDTO> GetCheckByOrderId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
+            {
+                return connection.Query < CheckByOrderIdDTO > (Queries.GetCheckByOrderId, new { id },
+                     commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
     }
 }
 

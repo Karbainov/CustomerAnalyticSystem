@@ -86,7 +86,8 @@ namespace CustomerAnalyticSystem.BLL
         public List<OrderBaseModel> MapFromOrderDTOToOrderBaseModel(List<GetOrderModelDTO> DTO)
         {
             var mapConfig = new MapperConfigs();
-            return new Mapper(mapConfig.ConfFromOrderDTOToOrderBaseModel).Map<List<GetOrderModelDTO>, List<OrderBaseModel>>(DTO);
+            return new Mapper(mapConfig.ConfFromOrderDTOToOrderBaseModel).Map<List<GetOrderModelDTO>
+               , List<OrderBaseModel>>(DTO);
         }
 
         public List<StatusModel> MapFromStatus (List<StatusDTO> dto)
@@ -95,6 +96,12 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(config.ConfigStatus).Map<List<StatusDTO>, List<StatusModel>>(dto);
         }
 
+        public List<CheckByOrderIdModel> MapCheckByOrderId(List<CheckByOrderIdDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigCheckByOrderIdDTOToCheckByOrderIdModel).Map<List<CheckByOrderIdDTO>
+               , List<CheckByOrderIdModel>>(dto);
+        }
     }
 
 }

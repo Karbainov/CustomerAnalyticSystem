@@ -202,7 +202,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ListView x:Name="ListViewOrders" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4">
+                        <ListView x:Name="ListViewOrders" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" SelectionChanged="ListViewOrders_SelectionChanged">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -223,7 +223,7 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Margin="0,362,0,0" Grid.RowSpan="2">
+                        <ListView x:Name="ListViewCheck" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Margin="0,362,0,0" Grid.RowSpan="2">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -234,12 +234,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="ID заказа" Width="135"/>
-                                    <GridViewColumn Header="ID товара" Width="135"/>
-                                    <GridViewColumn Header="Наименование товара" Width="135"/>
-                                    <GridViewColumn Header="Количество" Width="135"/>
-                                    <GridViewColumn Header="Стоимость" Width="135"/>
-                                    <GridViewColumn Header="Оценка" Width="135"/>
+                                    <GridViewColumn Width="102" Header="№ товара"  DisplayMemberBinding="{Binding ProductId}" />
+                                    <GridViewColumn Width="202" Header="Наименование"  DisplayMemberBinding="{Binding ProductName}"/>
+                                    <GridViewColumn Width="202" Header="Количество"  DisplayMemberBinding="{Binding Amount}"/>
+                                    <GridViewColumn Width="302" Header="Оценка"  DisplayMemberBinding="{Binding Mark}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

@@ -118,5 +118,17 @@ namespace CustomerAnalyticSystem.UI
                 MessageBox.Show("Выберите тэг для удаления");
             }
         }
+
+        private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
+        {
+            EditTagsWindow editTagsWindow = new EditTagsWindow(_mainWindow);
+            editTagsWindow.Show();
+        }
+
+        private void ButtonEditGoup_Click(object sender, RoutedEventArgs e)
+        {
+            EditGroupsWindow editGroupsWindow = new EditGroupsWindow(_mainWindow);
+            editGroupsWindow.Show();
+        }
     }
 }
