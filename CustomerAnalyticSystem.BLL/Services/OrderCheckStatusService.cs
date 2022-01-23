@@ -50,6 +50,28 @@ namespace CustomerAnalyticSystem.BLL.Services
             List<StatusModel> result = map.MapFromStatus(dto);
             return result;
         }
+
+        public void AddStatus(string name)
+        {
+            MrMappi map = new();
+            var service = new OrderCheckStatusRepository();
+            service.AddStatus(name);     
+        }
+
+        public void DeleteStatusById(int id)
+        {
+            MrMappi map = new();
+            var service = new OrderCheckStatusRepository();
+            service.DeleteStatusById(id);
+        }
+
+        public void UpdateStatusById(int id, string name)
+        {
+            MrMappi map = new();
+            var service = new OrderCheckStatusRepository();
+            service.UpdateStatusById(id, name);
+        }
+
         public List<OrderBaseModel> GetAllOrdersByStatusId(int id)
         {
             MrMappi map = new();
@@ -67,6 +89,8 @@ namespace CustomerAnalyticSystem.BLL.Services
             List<CheckByOrderIdModel> result = map.MapCheckByOrderId(dto);
             return result;
         }
+
+
 
     }
 }

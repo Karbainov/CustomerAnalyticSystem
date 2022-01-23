@@ -70,15 +70,19 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonDeleteGroup_Click(object sender, RoutedEventArgs e)
         {
-
             if (ListViewEditGroupsWndw.SelectedItem != null)
             {
-                int id = _mainWindow.GroupsIdAndGroups[((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name];
-                var group = new ProductTagGroupService();
-                group.DeleteGroupById(id);
-                _mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
-                _mainWindow.FillingComboBoxGroups();
-                FillingListViewEditGroupsWndw();
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить группу " +
+                    $"{((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name}? Товары данной группы также будут удалены",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    int id = _mainWindow.GroupsIdAndGroups[((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name];
+                    var group = new ProductTagGroupService();
+                    group.DeleteGroupById(id);
+                    _mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
+                    _mainWindow.FillingComboBoxGroups();
+                    FillingListViewEditGroupsWndw();
+                }
             }
             else
             {
