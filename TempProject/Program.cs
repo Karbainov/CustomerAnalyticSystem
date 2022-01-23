@@ -42,15 +42,11 @@ namespace TempProject
             int r = 0;
             //worked on
             //должно лежать в блл говне
-            List<CustomerInfoModel> Custs = new();
-            CustomerTypeCustomerCommentService w = new();
-            List<CustomerDTO> we = w.GetAllCustomers();
-            Custs = new Mapper(config).Map<List<CustomerDTO>, List<CustomerInfoModel>>(we);
+
             //должно лежать в блл говне
 
 
-            AllCustomersPreferences test = new(stat);
-
+            AllCustomersPreferences test = new(stat);//жрет на вход генерал статистик после метода мейкстатистик
             test.MakeStatisticksForCustomers();
             //test.FillBaseCustomerInfo();
             //test.AvgMarkForEveryProduct();

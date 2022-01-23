@@ -18,9 +18,10 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public Dictionary<int , ItemToRecommend> ProductsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> GroupsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> TagsRecommends { get; set; }
+
+
+
         internal GeneralStatistics InfoToAnalise { get; set; }
-
-
         internal Dictionary<int, List<int>> AllOneProductMarks { get; set; }//держит для каждого продукта список оценок кастомера
         internal Dictionary<int, int> PreferenceByProductId { get; set; }//Ключ - айди продукта, велью его преф (-1 / 1)
         internal Dictionary<int, int> PreferenceByTagId { get; set; }

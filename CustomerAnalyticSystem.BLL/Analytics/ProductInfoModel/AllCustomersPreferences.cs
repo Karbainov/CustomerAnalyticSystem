@@ -17,7 +17,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
     public class AllCustomersPreferences
     {
 
-        public List<CustomerInfoModel> BaseCustomers { get; set; }
+        private List<CustomerInfoModel> BaseCustomers { get; set; }
         public List<PreferencesBaseModel> CustomersPreferences { get; set; }
 
 
@@ -25,7 +25,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public Dictionary<int, ConcreteCustomer> Customers { get; set; }
         public GeneralStatistics InfoToAnalise { get; set; }
 
-        public Dictionary<(int, int), List<int>> CustomerIdProductIdMark { get; set; }
+        private Dictionary<(int, int), List<int>> CustomerIdProductIdMark { get; set; }
         public MapperConfiguration configuration { get; set; } = new(cfg =>
           {
               cfg.CreateMap<CustomerInfoModel, ConcreteCustomer>();
@@ -46,7 +46,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             
         }
 
-        public void FillCustomerPreferences()
+        private void FillCustomerPreferences()
         {
             foreach (var pref in CustomersPreferences)//билдим префы для кастомеров
             {
@@ -59,7 +59,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                     value = -1;
                 if (Customers.ContainsKey(pref.CustomerId))
                 {
-                    if (pref.ProductId == 0)
+                    if (pref.ProductId != 0)
                     {
                         if (Customers[pref.CustomerId].PreferenceByProductId.ContainsKey(pref.ProductId) == false)
                         {
@@ -70,7 +70,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                             Customers[pref.CustomerId].PreferenceByProductId[pref.ProductId] = value;
                         }
                     }
-                    else if (pref.GroupId == 0)
+                    else if (pref.GroupId != 0)
                     {
                         if (Customers[pref.CustomerId].PreferenceByProductId.ContainsKey(pref.GroupId) == false)
                         {
@@ -108,7 +108,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 c.Value.GetAllCurrentCustomerOrders();
             }
         }
-        public void FillBaseCustomerInfo()//запускается первым делом чтобы не обосраться
+        private void FillBaseCustomerInfo()//запускается первым делом чтобы не обосраться
         {
             foreach(var customer in BaseCustomers)
             {
@@ -125,7 +125,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
 
         // ТУДУ: 
-        public void AvgMarkForEveryProduct()//есть средняя оценка для каждого продукта
+        private void AvgMarkForEveryProduct()//есть средняя оценка для каждого продукта
         {
             foreach (var grade in InfoToAnalise.Info.Grades)
             {
@@ -155,7 +155,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
 
 
-        public void SortGrades()
+        private void SortGrades()
         {
             foreach(var c in CustomerIdProductIdMark)
             {
@@ -174,7 +174,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
             }
         }
-        public void FindAllBestsellers()//количество появления продукта в каждом заказе
+        private void FindAllBestsellers()//количество появления продукта в каждом заказе
         {
             //BoundCheckProduct();//уже готовый список в ИнфоТуАнализ
             BoundGradeCustomer();//связываем по составному ключу (ИД кастомера и ИД продукта) НУЖНО???
