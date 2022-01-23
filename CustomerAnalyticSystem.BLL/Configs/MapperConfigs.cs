@@ -16,6 +16,25 @@ namespace CustomerAnalyticSystem.BLL.Configs
     public class MapperConfigs
     {
 
+        public MapperConfiguration ConfFromCustomerModelToCustomerDTO { get; private set; } = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<CustomerModel, CustomerDTO>();
+            });
+        public MapperConfiguration ConfFromCustomerInfoModelToCustomerInfoDTO { get; private set; } = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<CustomerInfoModel, CustomerInfoDTO>();
+                conf.CreateMap<ContactModel, ContactWithContactTypeNameDTO>()
+               .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
+               .ForMember(dest => dest.ContactTypeName, act => act.MapFrom(src => src.Name))
+               .ForMember(dest => dest.Value, act => act.MapFrom(src => src.Value));
+                conf.CreateMap<CommentModel, CommentDTO>()
+               .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
+               .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
+            });
+
+        
         public MapperConfiguration ConfFromCustomerInfoDTOToCustomerinfoModel { get; private set; } = new MapperConfiguration(
             conf =>
             {
@@ -27,6 +46,12 @@ namespace CustomerAnalyticSystem.BLL.Configs
                 conf.CreateMap<CommentDTO, CommentModel>()
                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
+            });
+
+        public MapperConfiguration ConfFromCommentDTOToCommentModel { get; private set; } = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<CommentDTO, CommentModel>();
             });
 
         public MapperConfiguration ConfFromCustomerInfoDTOToCustomerModel { get; private set; } = new MapperConfiguration(
@@ -41,6 +66,20 @@ namespace CustomerAnalyticSystem.BLL.Configs
                .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
                .ForMember(dest => dest.Text, act => act.MapFrom(src => src.Text));
            });
+
+        public MapperConfiguration ConfContactWithContactTypeDTOToContactModel { get; private set; } = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<ContactWithContactTypeNameDTO, ContactModel>()
+                .ForMember(dest => dest.Name, act => act.MapFrom(src => src.ContactTypeName));
+            });
+        
+
+        public MapperConfiguration ConfFromContactTypeDTOToContactTypeModel { get; private set; } = new MapperConfiguration(
+            conf =>
+            {
+                conf.CreateMap<ContactTypeDTO, ContactTypeModel>();
+            });
 
         public MapperConfiguration ConfFromCustomerTypeDTOToCustomerTypeModel { get; private set; } = new MapperConfiguration(
                 conf =>

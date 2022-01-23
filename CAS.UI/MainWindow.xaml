@@ -79,8 +79,6 @@
                                 </ListView.View>
                             </ListView>
 
-
-
                         </Grid>
                         <ListView x:Name="ListViewClients" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.ItemContainerStyle>
@@ -93,10 +91,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="115" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
-                                    <GridViewColumn Width="115" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
-                                    <GridViewColumn Width="115" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
-                                    <GridViewColumn Width="115" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
+                                    <GridViewColumn Width="211" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Width="211" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="211" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
+                                    <GridViewColumn Width="211" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -246,9 +244,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Аналитика склада" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="255">
-                <Grid Background="#FFE5E5E5">
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="47,49,0,0" VerticalAlignment="Top"/>
-                    <ListView x:Name="ListViewLogic" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0" Margin="0,0,0,158">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="629*"/>
+                        <RowDefinition Height="70*"/>
+                    </Grid.RowDefinitions>
+
+                    <ListView x:Name="ListViewLogic" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="0">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -259,14 +261,23 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="102" Header="№"  DisplayMemberBinding="{Binding Id}" />
-                                <GridViewColumn Width="202" Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
-                                <GridViewColumn Width="202" Header="Процентр пристствия в заказах"  DisplayMemberBinding="{Binding Percent}"/>
-                                <GridViewColumn Width="302" Header="Средняя оценка"  DisplayMemberBinding="{Binding AverageMark}"/>
+                                <GridViewColumn Width="260" Header="№"  DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Width="260" Header="Наименование"  DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Width="260" Header="Процентр пристствия в заказах"  DisplayMemberBinding="{Binding Percent}"/>
+                                <GridViewColumn Width="260" Header="Средняя оценка"  DisplayMemberBinding="{Binding AverageMark}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ComboBox x:Name="ComboBoxAnalitic" HorizontalAlignment="Left" Margin="61,524,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxAnalitic_SelectionChanged"/>
+
+                    <Grid Margin="0,609,0,0" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="41*"/>
+                            <ColumnDefinition Width="476*"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="ComboBoxAnalitic" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" 
+                              SelectionChanged="ComboBoxAnalitic_SelectionChanged" Height="20" Grid.Column="1"/>
+                        <Label Content="Фильтр" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="50"/>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>

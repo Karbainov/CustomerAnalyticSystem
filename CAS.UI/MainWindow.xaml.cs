@@ -27,7 +27,7 @@ namespace CustomerAnalyticSystem.UI
         public Dictionary<string, int> TagsIdAndTags = new Dictionary<string, int>();
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
         public Dictionary<string, int> StatusIdAndStatus = new Dictionary<string, int>();
-        public Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+        public List<CustomerInfoModel> customersList = new List<CustomerInfoModel>();
         public GeneralStatistics stat = new();
 
 
@@ -40,7 +40,7 @@ namespace CustomerAnalyticSystem.UI
             FillingDictTags();
             FillingDictGroups();
             FillingDictStatus();
-            customersDict = GetDictCustomerInfoModelWithId();
+            customersList = GetDictCustomerInfoModelWithId();
 
             FillingComboBoxStatus();
             FillingComboBoxTags();
@@ -49,7 +49,7 @@ namespace CustomerAnalyticSystem.UI
 
             FillingListViewProducts();
             FillingListViewOrders();
-            FillingCustomerStackPanel(customersDict);
+            FillingCustomerStackPanel(customersList);
 
         }
 
@@ -111,8 +111,8 @@ namespace CustomerAnalyticSystem.UI
                 {
                     CustomerService serve = new CustomerService();
                     serve.DeleteCustomerById(((CustomerInfoModel)ListViewClients.SelectedItem).Id);
-                    customersDict = GetDictCustomerInfoModelWithId();
-                    FillingCustomerStackPanel(customersDict);
+                    customersList = GetDictCustomerInfoModelWithId();
+                    FillingCustomerStackPanel(customersList);
                 }
             }
             else
@@ -165,11 +165,12 @@ namespace CustomerAnalyticSystem.UI
         }
 
         #region filling
-        public void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
+        public void FillingCustomerStackPanel(List<CustomerInfoModel> list)
         {
-            foreach (KeyValuePair<int, CustomerInfoModel> pair in dict)
+            ListViewClients.Items.Clear();
+            foreach (CustomerInfoModel model in list)
             {
-                ListViewClients.Items.Add(pair.Value);
+                ListViewClients.Items.Add(model);
             }
         }
 
@@ -309,18 +310,10 @@ namespace CustomerAnalyticSystem.UI
         #endregion
 
         #region dictionary
-        public Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
+        public List<CustomerInfoModel> GetDictCustomerInfoModelWithId()
         {
             CustomerService customerService = new CustomerService();
-            List<CustomerInfoModel> customers = customerService.GetAllCustomerInfoModels();
-
-            Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
-
-            foreach (CustomerInfoModel customer in customers)
-            {
-                customersDict.Add(customer.Id, customer);
-            }
-            return customersDict;
+            return customerService.GetAllCustomerInfoModels();
         }
 
         public void FillingDictGroups()
