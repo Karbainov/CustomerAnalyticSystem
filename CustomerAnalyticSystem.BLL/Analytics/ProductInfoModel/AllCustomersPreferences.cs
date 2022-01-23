@@ -15,7 +15,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
     {
 
         private List<CustomerInfoModel> BaseCustomers { get; set; }
-        public List<PreferencesBaseModel> CustomersPreferences { get; set; }
+        public List<PreferencesBaseModel> CustomersPreferences { get; set; }//Ключ - айди кастомера вся инфа тянется оттуда
 
 
 
