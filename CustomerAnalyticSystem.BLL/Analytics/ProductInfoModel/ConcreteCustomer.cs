@@ -23,7 +23,6 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public Dictionary<int, ItemToRecommend> TagsRecommends { get; set; }
 
 
-
         public Dictionary<int, List<int>> AllOneProductMarks { get; set; }//держит для каждого продукта список оценок кастомера
         public Dictionary<int, int> PreferenceByProductId { get; set; }//Ключ - айди продукта, велью его преф (-1 / 1)
         public Dictionary<int, int> PreferenceByTagId { get; set; }
@@ -70,13 +69,6 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         {
             InfoToAnalise = stats;
         }
-        //private int GetAverageMark(List<int> marks)
-        //{
-        //    if ()
-        //        //TODO
-        //        //нижний метод делает словарь ключ ИД продукта - велью - все оценки продукта
-        //        //может переделать на айди кастомера
-        //}
 
         public int GetAvgProductMark(List<int> marks)
         {
@@ -101,9 +93,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             {
                 if (groups[i] == ((int)IsContain.Contain))
                 {
-
                     GroupsRecommends.Values.ElementAt(i).Percent++;
-                    
                 }
             }
         }
@@ -143,14 +133,95 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 for (int i = 0; i < TagsRecommends.Count; i++)
                 {
                     var tag = TagsRecommends.ElementAt(i);
-
-
                     TagsRecommends[tag.Key].Percent = (TagsRecommends[tag.Key].Percent * 100) / AllcustomerOrders;
                 }
-                foreach(var tag in TagsRecommends)
+            }
+            else if(type is ConvertToPercent.product)
+            {
+                for (int i = 0; i < ProductsRecommends.Count; i++)
                 {
-                    if (tag.Value.Percent == 0)
-                        TagsRecommends.Remove(tag.Key);
+                    var prod = ProductsRecommends.ElementAt(i);
+                    ProductsRecommends[prod.Key].Percent = (ProductsRecommends[prod.Key].Percent * 100) / AllcustomerOrders;
+                }
+            }
+            SetValuesToCustomerPreferences();
+        }
+
+        public void ClearEmptyItems()
+        {
+            foreach (var tag in TagsRecommends)
+            {
+                if (tag.Value.Percent == 0)
+                    TagsRecommends.Remove(tag.Key);
+            }
+            foreach (var grp in GroupsRecommends)
+            {
+                if (grp.Value.Percent == 0)
+                    GroupsRecommends.Remove(grp.Key);
+            }
+        }
+        public void SetValuesToCustomerPreferences()
+        {
+            foreach(var group in PreferenceByGroupId)
+            {
+                if (group.Value == 1)
+                {
+                    GroupsRecommends[group.Key].AverageMark = 11;
+                }
+                else if (group.Value == -1)
+                {
+                    GroupsRecommends[group.Key].AverageMark = -1;
+                }
+            }
+            foreach(var tag in PreferenceByTagId)
+            {
+                if(tag.Value == 1)
+                {
+                    TagsRecommends[tag.Key].AverageMark = 11;
+                }
+                else if (tag.Value == -1)
+                {
+                    TagsRecommends[tag.Key].AverageMark = -1;
+                }
+            }
+            TakeAvgMarkForProduct();
+            ClearEmptyItems();
+        }
+
+        public int AvgMarkForCurProd(List<int> prodMarks)
+        {
+            if (prodMarks.Count == 1)
+            {
+                return prodMarks[0];
+            }
+            else if (prodMarks.Count == 2)
+            {
+                return (prodMarks[0] + prodMarks[1]) / 2;
+            }
+            else
+            {
+                return (prodMarks[prodMarks.Count / 2]);
+            }
+        }
+        public void TakeAvgMarkForProduct()
+        {
+            foreach (var prod in ProductsRecommends)
+            {
+                if (PreferenceByProductId.ContainsKey(prod.Key))
+                {
+                    if (PreferenceByProductId[prod.Key] == 1)
+                    {
+                        ProductsRecommends[prod.Key].AverageMark = 11;
+                    }
+                    else if (PreferenceByProductId[prod.Key] == -1)
+                    {
+                        ProductsRecommends[prod.Key].AverageMark = -1;
+                    }
+                }
+                else if(AllOneProductMarks.ContainsKey(prod.Key))
+                {
+                    var e = AllOneProductMarks[1];
+                    ProductsRecommends[prod.Key].AverageMark = AvgMarkForCurProd(AllOneProductMarks[prod.Key]);
                 }
             }
         }
@@ -166,6 +237,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             AllcustomerOrders = cnt;
             GetPercents(ConvertToPercent.group);
             GetPercents(ConvertToPercent.tag);
+            GetPercents(ConvertToPercent.product);
         }
 
     }

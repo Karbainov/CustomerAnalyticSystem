@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
+using CustomerAnalyticSystem.DAL.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,14 +29,21 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public MapperConfiguration configuration { get; set; } = new(cfg =>
           {
               cfg.CreateMap<CustomerInfoModel, ConcreteCustomer>();
+              cfg.CreateMap<CustomerDTO, CustomerInfoModel>();
           });
-        public AllCustomersPreferences(GeneralStatistics stat, List<CustomerInfoModel> custs)
+        public AllCustomersPreferences(GeneralStatistics stat)
         {
             GradePreferencesService preferences = new();
             InfoToAnalise = stat;
             Customers = new();
-            BaseCustomers = custs;
             CustomersPreferences = preferences.GetBasePreferencesModel();
+
+
+            List<CustomerInfoModel> Custs = new();
+            CustomerTypeCustomerCommentService w = new();
+            List<CustomerDTO> we = w.GetAllCustomers();
+            BaseCustomers = new Mapper(configuration).Map<List<CustomerDTO>, List<CustomerInfoModel>>(we);
+            
         }
 
         public void FillCustomerPreferences()
@@ -85,6 +93,19 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                         }
                     }
                 }
+            }
+        }
+
+
+        public void MakeStatisticksForCustomers()
+        {
+            FillBaseCustomerInfo();
+            AvgMarkForEveryProduct();
+            FindAllBestsellers();
+            foreach (var c in Customers)
+            {
+                c.Value.AvgMarkForEveryProduct();
+                c.Value.GetAllCurrentCustomerOrders();
             }
         }
         public void FillBaseCustomerInfo()//запускается первым делом чтобы не обосраться
@@ -179,7 +200,12 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                             if (Customers[order.CustomerId].ProductPercent.ContainsKey(prod.Key) == false)
                             {
                                 Customers[order.CustomerId].ProductPercent.Add(prod.Key, 0);
+                                if (Customers[order.CustomerId].ProductsRecommends.ContainsKey(prod.Key) == false)
+                                {
+                                    Customers[order.CustomerId].ProductsRecommends.Add(prod.Key, new(prod.Key, prod.Value.Name));
+                                }
                             }
+                            Customers[order.CustomerId].ProductsRecommends[prod.Key].Percent++;
                             Customers[order.CustomerId].ProductPercent[prod.Key]++;
                             InfoToAnalise.ComparingTagAndProduct(isContainTag, prod.Key);
                             InfoToAnalise.ComparingGroupAndProduct(isContainGroup, prod.Key);

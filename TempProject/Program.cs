@@ -49,15 +49,17 @@ namespace TempProject
             //должно лежать в блл говне
 
 
-            AllCustomersPreferences test = new(stat, Custs);
-            test.FillBaseCustomerInfo();
-            test.AvgMarkForEveryProduct();
-            test.FindAllBestsellers();
-            foreach(var c in test.Customers)
-            {
-                c.Value.AvgMarkForEveryProduct();
-                c.Value.GetAllCurrentCustomerOrders();
-            }
+            AllCustomersPreferences test = new(stat);
+
+            test.MakeStatisticksForCustomers();
+            //test.FillBaseCustomerInfo();
+            //test.AvgMarkForEveryProduct();
+            //test.FindAllBestsellers();
+            //foreach(var c in test.Customers)
+            //{
+            //    c.Value.AvgMarkForEveryProduct();
+            //    c.Value.GetAllCurrentCustomerOrders();
+            //}
             for (int d = 0; d < 10; d++) { }
             //AllPreferencesAndGradeInfoByCustomerIdDTO qwe = new();
             //GradePreferencesRepository www = new();
