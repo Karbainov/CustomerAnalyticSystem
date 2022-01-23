@@ -36,7 +36,7 @@ namespace CustomerAnalyticSystem.BLL.Test
         //    ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
 
         //    productTagGroupRepository.UpdateTagById(id, name);
-            
+        //    var actual = productTagGroupRepository.G
         //    //CollectionAssert.AreEqual(expected, actual);
         //    mock.Verify();
         //}

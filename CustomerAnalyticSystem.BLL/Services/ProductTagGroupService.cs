@@ -25,6 +25,8 @@ namespace CustomerAnalyticSystem.BLL.Services
         }
 
         #region tag crud
+
+
         public List<TagModel> GetAllTags()
         {
             MrMappi map = new();
