@@ -117,6 +117,11 @@ namespace CustomerAnalyticSystem.BLL
             return new Mapper(mapConfig.ConfFromOrderDTOToOrderBaseModel).Map<List<GetOrderModelDTO>
                , List<OrderBaseModel>>(DTO);
         }
+        public List<PreferencesBaseModel> MapFromPreferencesDTOToPreferenceBaseModel(List<PreferencesDTO> dto)
+        {
+            var config = new MapperConfigs();
+            return new Mapper(config.ConfigBasePreferences).Map<List<PreferencesDTO>, List<PreferencesBaseModel>>(dto);
+        }
 
         public List<StatusModel> MapFromStatus (List<StatusDTO> dto)
         {
