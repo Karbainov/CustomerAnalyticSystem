@@ -24,7 +24,7 @@ namespace CustomerAnalyticSystem.UI
     public partial class EditClientWindow : Window
     {
         public Dictionary<int, ContactTypeModel> contactTypesWithId = new Dictionary<int, ContactTypeModel>();
-        Dictionary<ContactModel, int> contactModelWitId = new Dictionary<ContactModel, int>();
+        List<ContactModel> contactModes = new List<ContactModel>();
         private Dictionary<CustomerTypeModel, int> customerTypesWithId = new Dictionary<CustomerTypeModel, int>();
         private List<CommentModel> _comments = new List<CommentModel>();
         private MainWindow _mainWindow;
@@ -38,11 +38,11 @@ namespace CustomerAnalyticSystem.UI
             _customer = customer;
             customerTypesWithId = GetAllDictCustomerTypeWithId();
             _comments = GetCommentList();
-            FillDictContactModelWitId();
+            FillListContactModelWitId();
             GetAllDictContactType();
             FillComboBoxContactType(contactTypesWithId);
             FillCustomerTypeComboBox(customerTypesWithId);
-            FillListViewContactContactType(contactModelWitId);
+            FillListViewContactContactType(contactModes);
             FillCustomerInfo(_customer);
             FillListViewComment(_comments);
         }
@@ -99,38 +99,27 @@ namespace CustomerAnalyticSystem.UI
         //GetAllContactModelByCustomerId
         //ListViewContactContactType
 
-        private void FillDictContactModelWitId()
+        private void FillListContactModelWitId()
         {
-            contactModelWitId.Clear();
+            contactModes.Clear();
 
             ContactTypeContactService serve = new ContactTypeContactService();
             List<ContactModel> contactModels = serve.GetAllContactModelByCustomerId(_customer.Id);
 
             foreach(ContactModel model in contactModels)
             {
-                contactModelWitId.Add(model, model.Id);
+                contactModes.Add(model);
             }
         }
 
-        private void FillListViewContactContactType(Dictionary<ContactModel, int> dict)
+        private void FillListViewContactContactType(List<ContactModel> list )
         {
             ListViewContactContactType.Items.Clear();
-            foreach (KeyValuePair<ContactModel, int> pair in dict)
+            foreach (ContactModel model in list)
             {
-                ListViewContactContactType.Items.Add(pair);
+                ListViewContactContactType.Items.Add(model);
             }
         }
-
-        //private void FillListComment()
-        //{
-        //    //ContactTypeContactService serve = new ContactTypeContactService();
-        //    //List<ContactModel> contactModels = serve.GetAllContactModelByCustomerId(_customer.Id);
-
-        //    foreach (CommentModel model in _customer.Contacts)
-        //    {
-        //        contactModelWitId.Add(model, model.Id);
-        //    }
-        //}
 
         private List<CommentModel> GetCommentList()
         {
@@ -196,8 +185,8 @@ namespace CustomerAnalyticSystem.UI
                     Value = TextBoxContact.Text
                 };
                 contactService.AddContact(model);
-                FillDictContactModelWitId();
-                FillListViewContactContactType(contactModelWitId);
+                FillListContactModelWitId();
+                FillListViewContactContactType(contactModes);
                 ComboBoxContactType.SelectedIndex = -1;
                 TextBoxContact.Text = "";
             }
@@ -224,16 +213,16 @@ namespace CustomerAnalyticSystem.UI
 
         //Проверить все слои по этому методу
 
-        //private void ButtonDeleteContactEditClientWndw_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var a = contactModelWitId.Keys.ToList();
-        //    var contactId = a[ListViewContactContactType.SelectedIndex].Id;
-        //    ContactTypeContactService serve = new ContactTypeContactService();
-        //    serve.DeleteContact(contactId);
+        private void ButtonDeleteContactEditClientWndw_Click(object sender, RoutedEventArgs e)
+        {
+            
+            var contactId = contactModes[ListViewContactContactType.SelectedIndex].Id;
+            ContactTypeContactService serve = new ContactTypeContactService();
+            serve.DeleteContact(contactId);
 
-        //    FillDictContactModelWitId();
-        //    FillListViewContactContactType(contactModelWitId);
-        //}
+            FillListContactModelWitId();
+            FillListViewContactContactType(contactModes);
+        }
 
         private void ButtonDeleteCommentEditClientWndw_Click(object sender, RoutedEventArgs e)
         {
