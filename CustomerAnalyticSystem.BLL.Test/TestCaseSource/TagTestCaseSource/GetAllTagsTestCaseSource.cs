@@ -1,12 +1,7 @@
-﻿using System;
+﻿using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.DAL.DTOs;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.BLL.Models;
-using CustomerAnalyticSystem.BLL.Test;
-using CustomerAnalyticSystem.DAL.DTOs;
 
 namespace CustomerAnalyticSystem.BLL.Test.TestCaseSourse
 {
@@ -14,7 +9,7 @@ namespace CustomerAnalyticSystem.BLL.Test.TestCaseSourse
     {
         public IEnumerator GetEnumerator()
         {
-            List<TagModel> expected = new List<TagModel>() { new TagModel() { Id = 1, Name = "fjffjf" }, new TagModel() {Id = 3, Name = "qweqwe" } };
+            List<TagModel> expected = new List<TagModel>() { new TagModel() { Id = 1, Name = "fjffjf" }, new TagModel() { Id = 3, Name = "qweqwe" } };
             List<TagDTO> tagDTO = new List<TagDTO>() { new TagDTO() { Id = 1, Name = "fjffjf" }, new TagDTO() { Id = 3, Name = "qweqwe" } };
             yield return new object[] { expected, tagDTO };
 
@@ -26,7 +21,7 @@ namespace CustomerAnalyticSystem.BLL.Test.TestCaseSourse
             List<TagDTO> tagDTO3 = new List<TagDTO>() { new TagDTO() { } };
             yield return new object[] { expected3, tagDTO3 };
         }
-    
+
 
     }
 }

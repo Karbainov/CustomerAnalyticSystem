@@ -1,15 +1,10 @@
 ﻿using CustomerAnalyticSystem.DAL.DTOs;
-using System;
+using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.DAL;
 using System.Data;
-using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
+using System.Linq;
 namespace CustomerAnalyticSystem.DAL
 {
     public class GradePreferencesRepository
@@ -111,7 +106,7 @@ namespace CustomerAnalyticSystem.DAL
         }
 
         #region logic
-        public AllPreferencesAndGradeInfoByCustomerIdDTO GetAllCustomerPreferencesAndGrades (int id)
+        public AllPreferencesAndGradeInfoByCustomerIdDTO GetAllCustomerPreferencesAndGrades(int id)
         {
             int i = 0;
             string connectionString = ConnectionString.Connection;

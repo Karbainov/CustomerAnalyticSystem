@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AutoMapper;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.DAL;
+﻿using CustomerAnalyticSystem.DAL;
 
 namespace CustomerAnalyticSystem.BLL.Services.Logic
 {

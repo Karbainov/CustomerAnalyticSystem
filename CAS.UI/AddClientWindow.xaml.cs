@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using CustomerAnalyticSystem.BLL;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
-using CustomerAnalyticSystem.BLL;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -71,8 +61,8 @@ namespace CustomerAnalyticSystem.UI
         // не доделано!!!
         private void ButtonAddClient_Click(object sender, RoutedEventArgs e)
         {
-            if (TextBoxAddClientSurname.Text != "" 
-                && TextBoxAddClientName.Text != "" 
+            if (TextBoxAddClientSurname.Text != ""
+                && TextBoxAddClientName.Text != ""
                 && ComboBoxAddTypeOfClient.SelectedIndex != -1)
             {
                 CustomerModel customerModel = new CustomerModel()

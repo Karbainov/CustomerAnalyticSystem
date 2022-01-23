@@ -1,10 +1,6 @@
-﻿using System;
+﻿using CustomerAnalyticSystem.BLL.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using CustomerAnalyticSystem.BLL.Models;
 using static CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel.GeneralStatistics;
 
 namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
@@ -15,7 +11,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Name { get; set; }
-        public Dictionary<int , ItemToRecommend> ProductsRecommends { get; set; }
+        public Dictionary<int, ItemToRecommend> ProductsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> GroupsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> TagsRecommends { get; set; }
 
@@ -45,11 +41,11 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         internal void AllocatePlaceesForGroupsAndTags()
         {
             List<GroupBaseModel> grps = InfoToAnalise.Info.Groups;
-            foreach(var group in grps)
+            foreach (var group in grps)
             {
                 GroupsRecommends.Add(group.Id, new(group.Id, group.Name));
             }
-            foreach(var tag in InfoToAnalise.Info.Tags)
+            foreach (var tag in InfoToAnalise.Info.Tags)
             {
                 TagsRecommends.Add(tag.Id, new(tag.Id, tag.Name));
             }
@@ -60,7 +56,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             ProductsRecommends = new();
             GroupsRecommends = new();
             TagsRecommends = new();
-           
+
         }
 
         internal void IncludeStatistics(GeneralStatistics stats)
@@ -80,7 +76,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         internal void AvgMarkForEveryProduct()
         {
             ProductAvgGrade = new();
-            foreach(var c in AllOneProductMarks)
+            foreach (var c in AllOneProductMarks)
             {
                 ProductAvgGrade.Add(c.Key, GetAvgProductMark(c.Value));
             }
@@ -122,7 +118,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 for (int i = 0; i < GroupsRecommends.Count; i++)
                 {
                     var group = GroupsRecommends.ElementAt(i);
-                        GroupsRecommends[group.Key].Percent = (GroupsRecommends[group.Key].Percent * 100) / AllcustomerOrders;
+                    GroupsRecommends[group.Key].Percent = (GroupsRecommends[group.Key].Percent * 100) / AllcustomerOrders;
                 }
             }
             else if (type is ConvertToPercent.tag)
@@ -133,7 +129,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                     TagsRecommends[tag.Key].Percent = (TagsRecommends[tag.Key].Percent * 100) / AllcustomerOrders;
                 }
             }
-            else if(type is ConvertToPercent.product)
+            else if (type is ConvertToPercent.product)
             {
                 for (int i = 0; i < ProductsRecommends.Count; i++)
                 {
@@ -159,7 +155,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
         private void SetValuesToCustomerPreferences()
         {
-            foreach(var group in PreferenceByGroupId)
+            foreach (var group in PreferenceByGroupId)
             {
                 if (group.Value == 1)
                 {
@@ -170,9 +166,9 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                     GroupsRecommends[group.Key].AverageMark = -1;
                 }
             }
-            foreach(var tag in PreferenceByTagId)
+            foreach (var tag in PreferenceByTagId)
             {
-                if(tag.Value == 1)
+                if (tag.Value == 1)
                 {
                     TagsRecommends[tag.Key].AverageMark = 11;
                 }
@@ -215,7 +211,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                         ProductsRecommends[prod.Key].AverageMark = -1;
                     }
                 }
-                else if(AllOneProductMarks.ContainsKey(prod.Key))
+                else if (AllOneProductMarks.ContainsKey(prod.Key))
                 {
                     var e = AllOneProductMarks[1];
                     ProductsRecommends[prod.Key].AverageMark = AvgMarkForCurProd(AllOneProductMarks[prod.Key]);
@@ -226,7 +222,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         internal void GetAllCurrentCustomerOrders()
         {
             int cnt = 0;
-            foreach(var order in InfoToAnalise.Info.Orders)
+            foreach (var order in InfoToAnalise.Info.Orders)
             {
                 if (order.CustomerId == this.Id)
                     cnt++;

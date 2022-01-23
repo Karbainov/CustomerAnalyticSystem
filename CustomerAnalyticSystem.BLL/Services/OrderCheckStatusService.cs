@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.BLL.Models;
+﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
-using CustomerAnalyticSystem.DAL.DTOs;
+using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
@@ -20,7 +15,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         //    return result;
         //}
 
-        public void UpdateCheck (int id, int productId, int orderId, int amount, int mark)
+        public void UpdateCheck(int id, int productId, int orderId, int amount, int mark)
         {
             OrderCheckStatusRepository rep = new OrderCheckStatusRepository();
             rep.UpdateCheck(id, productId, orderId, amount, mark);
@@ -55,7 +50,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         {
             MrMappi map = new();
             var service = new OrderCheckStatusRepository();
-            service.AddStatus(name);     
+            service.AddStatus(name);
         }
 
         public void DeleteStatusById(int id)
@@ -81,7 +76,7 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
-        public List<CheckByOrderIdModel> GetCheckByOrderId (int id)
+        public List<CheckByOrderIdModel> GetCheckByOrderId(int id)
         {
             MrMappi map = new();
             var service = new OrderCheckStatusRepository();

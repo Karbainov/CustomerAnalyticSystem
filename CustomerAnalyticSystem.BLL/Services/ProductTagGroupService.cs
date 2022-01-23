@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
-using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
-using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
-using CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel;
 using CustomerAnalyticSystem.DAL.RepInterfaces;
+using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
@@ -51,7 +45,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         {
             MrMappi map = new();
             _rep.AddTag(name);
-        }       
+        }
 
         #endregion
 
@@ -173,7 +167,7 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
-        public StackModel GetAllInfoAboutAll ()
+        public StackModel GetAllInfoAboutAll()
         {
             MrMappi map = new();
             var dto = _rep.GetAllInfo();

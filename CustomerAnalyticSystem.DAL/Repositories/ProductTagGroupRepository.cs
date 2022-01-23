@@ -1,15 +1,12 @@
 ﻿using CustomerAnalyticSystem.DAL.DTOs;
-using Dapper;
-using Microsoft.Data.SqlClient;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences;
 using CustomerAnalyticSystem.DAL.DTOs.DTOsForPreferences.ForProduct;
 using CustomerAnalyticSystem.DAL.RepInterfaces;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 
 namespace CustomerAnalyticSystem.DAL
@@ -22,7 +19,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query(Queries.AddProduct, new { Name = name, Description = description, GroupId = groupId}
+                connection.Query(Queries.AddProduct, new { Name = name, Description = description, GroupId = groupId }
                 , commandType: CommandType.StoredProcedure);
             }
         }
@@ -114,7 +111,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                return connection.QuerySingle<TagDTO>(Queries.GetTagById, new { id}, commandType: CommandType.StoredProcedure);
+                return connection.QuerySingle<TagDTO>(Queries.GetTagById, new { id }, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -123,7 +120,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query(Queries.UpdateTagById, new { id, name}, commandType: CommandType.StoredProcedure);
+                connection.Query(Queries.UpdateTagById, new { id, name }, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -132,7 +129,7 @@ namespace CustomerAnalyticSystem.DAL
             string connectionString = ConnectionString.Connection;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Query(Queries.AddTag, new { name}, commandType: CommandType.StoredProcedure);
+                connection.Query(Queries.AddTag, new { name }, commandType: CommandType.StoredProcedure);
             }
         }
 

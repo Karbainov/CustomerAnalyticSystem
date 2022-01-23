@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomerAnalyticSystem.BLL.Models;
+﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
+using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL
 {
@@ -50,7 +46,7 @@ namespace CustomerAnalyticSystem.BLL
         public List<CustomerDTO> GetAllCustomers()
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-           return rep.GetAllCustomers();
+            return rep.GetAllCustomers();
         }
         //public void UpdateComment(int id, int customerId, string text)
         //{

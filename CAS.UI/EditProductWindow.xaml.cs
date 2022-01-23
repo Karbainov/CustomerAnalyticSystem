@@ -1,20 +1,7 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CustomerAnalyticSystem.BLL;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -44,11 +31,11 @@ namespace CustomerAnalyticSystem.UI
             {
                 id++;
                 ComboBoxProductGroupEditWndw.Items.Add(Key);
-                if(Key == _product.GroupName)
+                if (Key == _product.GroupName)
                 {
                     ComboBoxProductGroupEditWndw.SelectedIndex = id;
                 }
-            }     
+            }
         }
 
         private void ButtonSaveChangesOfProductEditing_Click(object sender, RoutedEventArgs e)
@@ -137,7 +124,7 @@ namespace CustomerAnalyticSystem.UI
         {
             EditTagsWindow editTagsWindow = new EditTagsWindow(_mainWindow);
             editTagsWindow.Show();
-        }     
+        }
 
         private void ButtonEditGroups_Click(object sender, RoutedEventArgs e)
         {
