@@ -23,5 +23,11 @@ namespace CustomerAnalyticSystem.UI
             _mainWindow = mainWindow;
             InitializeComponent();
         }
+
+        private void ButtonEditOrderStatus_Click(object sender, RoutedEventArgs e)
+        {
+            //EditStatusWindow editStatusWindow = new EditStatusWindow();
+
+        }
     }
 }
