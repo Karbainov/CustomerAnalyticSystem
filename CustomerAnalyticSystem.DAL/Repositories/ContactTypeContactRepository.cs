@@ -113,7 +113,8 @@ namespace CustomerAnalyticSystem.DAL
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                return connection.Query<ContactWithContactTypeNameDTO>(Queries.GetAllContactWithContactTypeByCustomerId
+                return connection.Query<ContactWithContactTypeNameDTO>(
+                    Queries.GetAllContactWithContactTypeByCustomerId
                     , new { id }
                     , commandType: CommandType.StoredProcedure).ToList();
             }

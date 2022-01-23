@@ -11,6 +11,14 @@ namespace CustomerAnalyticSystem.BLL
 {
     public class CustomerService
     {
+        public void AddCustomer(CustomerModel model)
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            MrMappi map = new MrMappi();
+            CustomerDTO customer = map.MapFromCustomerModelToCustomerDTO(model);
+            rep.AddCustomer(customer);
+        }
+
         public CustomerInfoModel GetCustomerModel(int id)
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();

@@ -75,12 +75,12 @@ namespace CustomerAnalyticSystem.DAL
             }
         }            
 
-        public void AddCustomer(string firstName, string lastName, int typeId)
+        public void AddCustomer(CustomerDTO customer)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query(Queries.AddCustomer
-                    , new { lastName, firstName, typeId }
+                    , new { customer.LastName, customer.FirstName, customer.TypeId }
                     , commandType: CommandType.StoredProcedure);
             }
         }
@@ -199,7 +199,6 @@ namespace CustomerAnalyticSystem.DAL
                          if (customersDict.Count > 0)
                          {
                             customersDict[comment.CustomerId].Comments.Add(comment);
-
                          }
                          return comment;
                      }

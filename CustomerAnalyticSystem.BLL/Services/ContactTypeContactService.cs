@@ -52,7 +52,6 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public List<ContactModel> GetAllContactModelByCustomerId(int id)
         {
-            List<ContactModel> contacts = new List<ContactModel>();
             ContactTypeContactRepository rep = new ContactTypeContactRepository();
             var DTOs = rep.GetAllContactWithContactTypeByCustomerId(id);
             MrMappi map = new MrMappi();

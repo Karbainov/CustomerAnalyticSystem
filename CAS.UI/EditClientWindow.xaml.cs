@@ -24,7 +24,7 @@ namespace CustomerAnalyticSystem.UI
     public partial class EditClientWindow : Window
     {
         public Dictionary<int, ContactTypeModel> contactTypesWithId = new Dictionary<int, ContactTypeModel>();
-        List<ContactModel> contactModes = new List<ContactModel>();
+        List<ContactModel> contactModels = new List<ContactModel>();
         private Dictionary<CustomerTypeModel, int> customerTypesWithId = new Dictionary<CustomerTypeModel, int>();
         private List<CommentModel> _comments = new List<CommentModel>();
         private MainWindow _mainWindow;
@@ -32,18 +32,18 @@ namespace CustomerAnalyticSystem.UI
 
         public EditClientWindow(MainWindow mainWindow, CustomerInfoModel customer)
         {
-            _mainWindow = mainWindow;
             InitializeComponent();
             _mainWindow = mainWindow;
             _mainWindow.IsEnabled = false;
             _customer = customer;
             customerTypesWithId = GetAllDictCustomerTypeWithId();
             _comments = GetCommentList();
-            FillListContactModelWitId();
+            contactModels.Clear();
+            contactModels = FillListContactModelWitId();
             GetAllDictContactType();
             FillComboBoxContactType(contactTypesWithId);
             FillCustomerTypeComboBox(customerTypesWithId);
-            FillListViewContactContactType(contactModes);
+            FillListViewContactContactType(contactModels);
             FillCustomerInfo(_customer);
             FillListViewComment(_comments);
         }
@@ -100,17 +100,10 @@ namespace CustomerAnalyticSystem.UI
         //GetAllContactModelByCustomerId
         //ListViewContactContactType
 
-        private void FillListContactModelWitId()
+        private List<ContactModel> FillListContactModelWitId()
         {
-            contactModes.Clear();
-
             ContactTypeContactService serve = new ContactTypeContactService();
-            List<ContactModel> contactModels = serve.GetAllContactModelByCustomerId(_customer.Id);
-
-            foreach(ContactModel model in contactModels)
-            {
-                contactModes.Add(model);
-            }
+            return serve.GetAllContactModelByCustomerId(_customer.Id);
         }
 
         private void FillListViewContactContactType(List<ContactModel> list )
@@ -164,8 +157,8 @@ namespace CustomerAnalyticSystem.UI
             CustomerService serve = new CustomerService();
             serve.UpdateCustomer(customer);
             this.Close();
-            _mainWindow.customersDict = _mainWindow.GetDictCustomerInfoModelWithId();
-            _mainWindow.FillingCustomerStackPanel(_mainWindow.customersDict);
+            _mainWindow.customersList = _mainWindow.GetDictCustomerInfoModelWithId();
+            _mainWindow.FillingCustomerStackPanel(_mainWindow.customersList);
             _mainWindow.IsEnabled = true;
         }
 
@@ -186,8 +179,9 @@ namespace CustomerAnalyticSystem.UI
                     Value = TextBoxContact.Text
                 };
                 contactService.AddContact(model);
-                FillListContactModelWitId();
-                FillListViewContactContactType(contactModes);
+                contactModels.Clear();
+                contactModels = FillListContactModelWitId();
+                FillListViewContactContactType(contactModels);
                 ComboBoxContactType.SelectedIndex = -1;
                 TextBoxContact.Text = "";
             }
@@ -212,17 +206,15 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        //Проверить все слои по этому методу
-
         private void ButtonDeleteContactEditClientWndw_Click(object sender, RoutedEventArgs e)
         {
             
-            var contactId = contactModes[ListViewContactContactType.SelectedIndex].Id;
+            var contactId = contactModels[ListViewContactContactType.SelectedIndex].Id;
             ContactTypeContactService serve = new ContactTypeContactService();
             serve.DeleteContact(contactId);
-
-            FillListContactModelWitId();
-            FillListViewContactContactType(contactModes);
+            contactModels.Clear();
+            contactModels = FillListContactModelWitId();
+            FillListViewContactContactType(contactModels);
         }
 
         private void ButtonDeleteCommentEditClientWndw_Click(object sender, RoutedEventArgs e)
@@ -233,16 +225,19 @@ namespace CustomerAnalyticSystem.UI
             _comments = GetCommentList();
             FillListViewComment(_comments);
         }
-        }
 
         private void ButtonDeleteClientCard_Click(object sender, RoutedEventArgs e)
         {
-
             if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить клиента " +
                 $"{((CustomerInfoModel)_mainWindow.ListViewClients.SelectedItem).FirstName} {((CustomerInfoModel)_mainWindow.ListViewClients.SelectedItem).LastName}?",
                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                //удааление
+                CustomerService serve = new CustomerService();
+                serve.DeleteCustomerById(((CustomerInfoModel)_mainWindow.ListViewClients.SelectedItem).Id);
+                _mainWindow.customersList = _mainWindow.GetDictCustomerInfoModelWithId();
+                _mainWindow.FillingCustomerStackPanel(_mainWindow.customersList);
+
+                this.Close();
             }
         }
     }
