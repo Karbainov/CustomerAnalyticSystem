@@ -38,7 +38,7 @@ namespace CustomerAnalyticSystem.BLL.Services
             rep.DeleteOrderById(id);
         }
 
-        public List<OrderBaseModel> GetBaseOrderModel()
+        public List<OrderBaseModel> GetBaseOrderModel()//getAll
         {
             MrMappi map = new();
             var service = new OrderCheckStatusRepository();

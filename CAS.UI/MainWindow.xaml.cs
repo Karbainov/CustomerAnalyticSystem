@@ -27,7 +27,7 @@ namespace CustomerAnalyticSystem.UI
         public Dictionary<string, int> GroupsIdAndGroups = new Dictionary<string, int>();
         public Dictionary<string, int> StatusIdAndStatus = new Dictionary<string, int>();
         public Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
-        public Dictionary<int, OrderBaseModel> orderDict = new Dictionary<int, OrderBaseModel>();
+        public Dictionary<int, OrderBaseModel> ordersDict = new Dictionary<int, OrderBaseModel>();
 
         public MainWindow()
         {
@@ -113,24 +113,24 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        //private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (ListViewOrders.SelectedIndex > -1)
-        //    {
-        //        if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewClients.SelectedItem).Id}?",
-        //           "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-        //        {
-        //            OrderCheckStatusService serve = new OrderCheckStatusService();
-        //            serve.DeleteOrderById(((CustomerInfoModel)ListViewOrders.SelectedItem).Id);
-        //            orderDict = GetDictCustomerInfoModelWithId();
-        //            FillingCustomerStackPanel(customersDict);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Выберите заказ");
-        //    }
-        //}
+        private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListViewOrders.SelectedIndex > -1)
+            {
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewOrders.SelectedItem).Id}?",
+                   "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    OrderCheckStatusService serve = new OrderCheckStatusService();
+                    serve.DeleteOrderById(((OrderBaseModel)ListViewOrders.SelectedItem).Id);
+                    ordersDict = GetDictGetOrderById();
+                    FillingOrderStackPanel(ordersDict);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите заказ");
+            }
+        }
 
         #region filling
         public void FillingCustomerStackPanel(Dictionary<int, CustomerInfoModel> dict)
@@ -227,7 +227,19 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-    #endregion
+        public void FillingOrderStackPanel(Dictionary<int, OrderBaseModel> dict)
+        {
+            ListViewOrders.Items.Clear();
+
+            foreach (KeyValuePair<int, OrderBaseModel> pair in dict)
+            {
+                ListViewOrders.Items.Add(pair.Value);
+            }
+        }
+
+
+
+        #endregion
 
         #region dictionary
         public Dictionary<int, CustomerInfoModel> GetDictCustomerInfoModelWithId()
@@ -277,20 +289,21 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        //public Dictionary<int, CustomerInfoModel> GetDictGetOrderById()
-        //{
-        //    var orderService = new OrderCheckStatusService();
-        //    List<CustomerInfoModel> customers = orderService.GetAllOrdersByStatusId();
+        public Dictionary<int, OrderBaseModel> GetDictGetOrderById()
+        {
+            var orderService = new OrderCheckStatusService();
+            List<OrderBaseModel> orders = orderService.GetBaseOrderModel();
 
-        //    Dictionary<int, CustomerInfoModel> customersDict = new Dictionary<int, CustomerInfoModel>();
+            Dictionary<int, OrderBaseModel> ordersDict = new Dictionary<int, OrderBaseModel>();
 
-        //    foreach (CustomerInfoModel customer in customers)
-        //    {
-        //        customersDict.Add(customer.Id, customer);
-        //    }
-        //    return customersDict;
-        //}
+            foreach (OrderBaseModel order in orders)
+            {
+                ordersDict.Add(order.Id, order);
+            }
+            return ordersDict;
+        }
 
+        
         #endregion
 
         #region Open pop-up wndws

@@ -10,5 +10,4 @@
     Foreign key (StatusId) references [Status] (Id),
 	Foreign key (CustomerId) references [Customer] (Id),
 
-Foreign key (FirstName) references [Customer] (FirstName),
-Foreign key (LastName) references [Customer] (LastName))
+)
