@@ -83,5 +83,23 @@ namespace CustomerAnalyticSystem.BLL
             var map = new MrMappi();
             return map.MapFromCommentDTOToCommentModel(coments);
         }
+
+        public List<CustomerDTO> GetAllCustomers()
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            return rep.GetAllCustomers();
+        }
+
+        //public List<CustomerTypeModel> GetAllCustomerTypeModel()
+        //{
+        //    List<CustomerTypeModel> customerTypes = new List<CustomerTypeModel>();
+
+        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+        //    List<CustomerTypeDTO> DTOs = rep.GetAllCustomerType();
+        //    MrMappi map = new MrMappi();
+        //    customerTypes = map.MapCustomerTypeDTOToCustomerTypeModel(DTOs);
+
+        //    return customerTypes;
+        //}
     }
 }

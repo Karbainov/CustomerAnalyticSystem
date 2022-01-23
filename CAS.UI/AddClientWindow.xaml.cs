@@ -46,7 +46,7 @@ namespace CustomerAnalyticSystem.UI
 
         private List<CustomerTypeModel> GetCustomerTypeModels()
         {
-            CustomerTypeCustomerCommentService serve = new CustomerTypeCustomerCommentService();
+            CustomerService serve = new CustomerService();
             return serve.GetAllCustomerTypeModel();
         }
 
