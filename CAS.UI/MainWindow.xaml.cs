@@ -24,8 +24,6 @@ namespace CustomerAnalyticSystem.UI
         {
             InitializeComponent();
 
-            stat.MakeStatistics();
-
             FillingDictTags();
             FillingDictGroups();
             FillingDictStatus();
@@ -389,7 +387,8 @@ namespace CustomerAnalyticSystem.UI
                 MessageBox.Show("Выберите продукт для редактирования");
 
             }
-        }
+        }
+
         private void ButtonEditTags_Click(object sender, RoutedEventArgs e)
         {
             EditTagsWindow editTagsWindow = new EditTagsWindow(this);
@@ -401,7 +400,8 @@ namespace CustomerAnalyticSystem.UI
             EditGroupsWindow editGroupsWindow = new EditGroupsWindow(this);
             editGroupsWindow.Show();
         }
-        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
+
+        private void ButtonOpenWindowOfEditingClient_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewClients.SelectedIndex > -1)
             {
@@ -409,6 +409,8 @@ namespace CustomerAnalyticSystem.UI
                 editClientWindow.Show();
             }
         }
+
+        
 
 
         #endregion

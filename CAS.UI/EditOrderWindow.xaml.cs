@@ -1,5 +1,6 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -22,6 +23,31 @@ namespace CustomerAnalyticSystem.UI
             {
                 //удаление
             }
+        }
+
+        private static readonly Regex _regex = new Regex("[^0-9.-]+");
+
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+
+        private void TextBoxAmountOfProductEditOrderWndw_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+            IsTextAllowed(TextBoxAmountOfProductEditOrderWndw.Text);
+        }
+
+        private void TextBoxPriceOfUnitEditOrderWndw_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+            IsTextAllowed(TextBoxPriceOfUnitEditOrderWndw.Text);
+        }
+
+        private void ButtonEditOrderStatus_Click(object sender, RoutedEventArgs e)
+        {
+            EditStatusWindow editStatusWindow = new EditStatusWindow(this);
+            editStatusWindow.Show();
         }
     }
 }

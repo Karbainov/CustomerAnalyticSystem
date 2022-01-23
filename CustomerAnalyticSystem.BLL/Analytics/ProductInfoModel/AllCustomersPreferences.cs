@@ -15,7 +15,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
     {
 
         private List<CustomerInfoModel> BaseCustomers { get; set; }
-        public List<PreferencesBaseModel> CustomersPreferences { get; set; }
+        public List<PreferencesBaseModel> CustomersPreferences { get; set; }//Ключ - айди кастомера вся инфа тянется оттуда
 
 
 
@@ -40,7 +40,19 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             CustomerService serve = new();
             List<CustomerDTO> we = serve.GetAllCustomers();
             BaseCustomers = new Mapper(configuration).Map<List<CustomerDTO>, List<CustomerInfoModel>>(we);
+            MakeStatisticksForCustomers();
 
+        }
+        private void MakeStatisticksForCustomers()
+        {
+            FillBaseCustomerInfo();
+            AvgMarkForEveryProduct();
+            FindAllBestsellers();
+            foreach (var c in Customers)
+            {
+                c.Value.AvgMarkForEveryProduct();
+                c.Value.GetAllCurrentCustomerOrders();
+            }
         }
 
         private void FillCustomerPreferences()
@@ -94,17 +106,6 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
 
 
-        public void MakeStatisticksForCustomers()
-        {
-            FillBaseCustomerInfo();
-            AvgMarkForEveryProduct();
-            FindAllBestsellers();
-            foreach (var c in Customers)
-            {
-                c.Value.AvgMarkForEveryProduct();
-                c.Value.GetAllCurrentCustomerOrders();
-            }
-        }
         private void FillBaseCustomerInfo()//запускается первым делом чтобы не обосраться
         {
             foreach (var customer in BaseCustomers)

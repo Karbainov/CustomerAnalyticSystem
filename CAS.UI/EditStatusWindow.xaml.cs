@@ -10,14 +10,22 @@ namespace CustomerAnalyticSystem.UI
     public partial class EditStatusWindow : Window
     {
         MainWindow _mainWindow;
-        public EditStatusWindow(MainWindow mainWindow)
+        //AddOrderWindow _addOrderWindow;
+        public EditStatusWindow(AddOrderWindow addOrderWindow)
         {
-            _mainWindow = mainWindow;
+            
+            InitializeComponent();
+        }
+
+        public EditStatusWindow(EditOrderWindow editOrderWindow)
+        {
+            
             InitializeComponent();
         }
 
         public void FillingListViewStatus()
         {
+            //var a = _addOrderWindow;
             foreach (var Key in _mainWindow.StatusIdAndStatus.Keys)
             {
                 ListViewStatus.Items.Add(Key);

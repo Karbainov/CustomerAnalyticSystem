@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace CustomerAnalyticSystem.UI
 {
@@ -230,6 +231,22 @@ namespace CustomerAnalyticSystem.UI
 
                 this.Close();
             }
+        }
+
+        private void TextBoxContact_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (ComboBoxContactType.Text == "Phone")
+            {
+                e.Handled = !IsTextAllowed(e.Text);
+                IsTextAllowed(TextBoxContact.Text);
+            }
+        }
+
+        private static readonly Regex _regex = new Regex("[^0-9.-]+");
+
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
         }
     }
 }
