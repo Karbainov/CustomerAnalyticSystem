@@ -23,26 +23,23 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    
 
                 </Grid.RowDefinitions>
                 <Label Content="Тип клиента" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0"/>
                 <Label Content="Фамилия" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
                 <Label Content="Имя" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
-                <Label Content="e-mail" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"/>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition/>                    
 
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="ComboBoxEditTypeOfClient" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="300" Grid.Row="0" Margin="0,0,0,0"/>
                 <TextBox x:Name="TextBoxEditClientSurname"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.Row="1" HorizontalAlignment="Center" Width="300" Margin="0,0,0,0"/>
                 <TextBox x:Name="TextBoxEditClientName" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="300" Grid.Row="2" Margin="0,0,0,0"/>
-                <TextBox x:Name="TextBoxAddClientMail" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="300" Grid.Row="3" Margin="0,0,0,0"/>
             </Grid>
 
         </Grid>

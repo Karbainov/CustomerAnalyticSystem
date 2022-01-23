@@ -14,8 +14,8 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonEditOrderStatus_Click(object sender, RoutedEventArgs e)
         {
-            //EditStatusWindow editStatusWindow = new EditStatusWindow();
-
+            EditStatusWindow editStatusWindow = new EditStatusWindow(this);
+            editStatusWindow.Show();
         }
     }
 }
