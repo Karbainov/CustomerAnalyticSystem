@@ -39,7 +39,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         {
 
             StackModel allLists;
-            ProductTagGroupService dtos = new();
+            ProductService dtos = new();
             allLists = dtos.GetAllInfoAboutAll();
             Info = allLists;
             Products = new();

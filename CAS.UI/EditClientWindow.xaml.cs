@@ -55,7 +55,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void GetAllDictContactType()
         {
-            ContactTypeContactService serve = new ContactTypeContactService();
+            ContactService serve = new ContactService();
             List<ContactTypeModel> contactTypes = serve.GetAllContactTypeModel();
 
             foreach (ContactTypeModel contactType in contactTypes)
@@ -94,7 +94,7 @@ namespace CustomerAnalyticSystem.UI
 
         private List<ContactModel> FillListContactModelWitId()
         {
-            ContactTypeContactService serve = new ContactTypeContactService();
+            ContactService serve = new ContactService();
             return serve.GetAllContactModelByCustomerId(_customer.Id);
         }
 
@@ -163,7 +163,7 @@ namespace CustomerAnalyticSystem.UI
         {
             if (TextBoxContact.Text != "" && ComboBoxContactType.SelectedIndex > -1)
             {
-                ContactTypeContactService contactService = new ContactTypeContactService();
+                ContactService contactService = new ContactService();
                 ContactBaseModel model = new ContactBaseModel()
                 {
                     CustomerId = _customer.Id,
@@ -202,7 +202,7 @@ namespace CustomerAnalyticSystem.UI
         {
 
             var contactId = contactModels[ListViewContactContactType.SelectedIndex].Id;
-            ContactTypeContactService serve = new ContactTypeContactService();
+            ContactService serve = new ContactService();
             serve.DeleteContact(contactId);
             contactModels.Clear();
             contactModels = FillListContactModelWitId();

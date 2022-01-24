@@ -30,7 +30,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
           });
         public AllCustomersPreferences(GeneralStatistics stat)
         {
-            GradePreferencesService preferences = new();
+            PreferencesService preferences = new();
             InfoToAnalise = stat;
             Customers = new();
             CustomersPreferences = preferences.GetBasePreferencesModel();

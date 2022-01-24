@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL
 {
-    public class MrMappi
+    public class BestMapper
     {
 
         public CustomerDTO MapFromCustomerModelToCustomerDTO(CustomerModel model)
