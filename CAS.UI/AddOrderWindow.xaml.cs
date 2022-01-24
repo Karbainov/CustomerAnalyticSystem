@@ -1,12 +1,16 @@
 ﻿using System.Windows;
 using System.Text.RegularExpressions;
+using CustomerAnalyticSystem.BLL.Models;
+using CustomerAnalyticSystem.BLL.Services;
+using System;
+
 
 namespace CustomerAnalyticSystem.UI
 {
 
     public partial class AddOrderWindow : Window
     {
-        MainWindow _mainWindow;
+        private MainWindow _mainWindow;
         public AddOrderWindow(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
@@ -18,7 +22,16 @@ namespace CustomerAnalyticSystem.UI
             EditStatusWindow editStatusWindow = new EditStatusWindow(_mainWindow);
             editStatusWindow.Show();
         }
-
+        //private void FillingEditOrderWindowComboBoxGroups()
+        //{
+        //    var service = new OrderCheckStatusService();
+        //    var statusList = service.GetAllStatus();
+        //    foreach (var g in statusList)
+        //    ////foreach (string Key in _mainWindow.GroupsIdAndGroups.Keys)
+        //    //{
+        //    //    ComboBoxProductGroupAddWndw.Items.Add(g.Name);
+        //    //}
+        //}
 
 
         private static readonly Regex _regex = new Regex("[^0-9.-]+");

@@ -93,7 +93,22 @@ namespace CustomerAnalyticSystem.BLL.Services
             return result;
         }
 
-
-
+        public void DeleteOrderById(int id)
+        {
+            OrderRepository rep = new OrderRepository();
+            rep.DeleteOrderById(id);
+        }
+        public void UpdateOrderById(int id, int CustomerId, string Date, int StatusId, int Cost)
+        {
+            BestMapper map = new();
+            var service = new OrderRepository();
+            service.UpdateOrderById(id, CustomerId, Date, StatusId, Cost);
+        }
+        public void AddOrder(int CustomerId, string Date, int StatusId, int Cost)
+        {
+            BestMapper map = new();
+            var service = new OrderRepository();
+            service.AddOrder(CustomerId, Date, StatusId, Cost);
+        }
     }
 }
