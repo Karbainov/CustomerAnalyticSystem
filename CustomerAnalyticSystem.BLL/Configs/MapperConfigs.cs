@@ -100,7 +100,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
               {
                   cfg.CreateMap<GroupsWithProductsDTO, GroupsWithProductsModel>();
                   cfg.CreateMap<ProductBaseDTO, ProductBaseModel>();
-                  //cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();
+                  
                   cfg.CreateMap<OrderBaseModel, OrderDTO>();
                   cfg.CreateMap<OrderDTO, OrderBaseModel>();
               }
@@ -122,13 +122,7 @@ namespace CustomerAnalyticSystem.BLL.Configs
         });
 
 
-        //public MapperConfiguration ConfigForBaseOrderModel = new MapperConfiguration(cfg =>
-        //{
-        //    cfg.CreateMap<List<OrderBaseModel>, List<OrderDTO>>();
-        //    cfg.CreateMap<OrderBaseModel, OrderDTO>().ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
-        //    .ForMember(dest => dest.Date, act => act.MapFrom(src => src.Date)).ForMember(dest => dest.Cost, act => act.MapFrom(src => src.Cost))
-        //    .ForMember(dest => dest.CustomerId, act => act.MapFrom(src => src.CustomerId)).ForMember(dest => dest.StatusId, act => act.MapFrom(src => src.StatusId));
-        //});
+        
         public MapperConfiguration ConfigCustomerPreferencesAndGrades = new MapperConfiguration(cfg =>
         {
 

@@ -14,31 +14,13 @@ namespace CustomerAnalyticSystem.BLL
 
         public List<ProductPrefModel> Products { get; set; }
         public List<GroupPrefModel> Groups { get; set; }
-        public List<TagPrefModel> Tags { get; set; }//ПРЕФЫ ТЕГОВ
+        public List<TagPrefModel> Tags { get; set; }
 
-        public List<GradePrefModel> CustomerGrades { get; set; }//ОЦЕНКАТОВАРА
-        public List<CustomerTagGradesModel> TagGrades { get; set; }//ОЦЕНКА ТЕГОВ
+        public List<GradePrefModel> CustomerGrades { get; set; }
+        public List<CustomerTagGradesModel> TagGrades { get; set; }
 
 
-        //public PreferencesByCustomerIdModel(string firstName, string lastName)
-        //{
-        //    FirstName = firstName;
-        //    LastName = lastName;
-        //}
-
-        //public void FillGradeList(List<GradeBaseModel> gradesByCustomerId)
-        //{
-        //    int curProduct = 0;
-        //    CustomerGrades = new();
-        //    foreach (var product in gradesByCustomerId)
-        //    {
-        //        if (curProduct != product.ProductId)
-        //        {
-        //            CustomerGrades.Add(product);
-        //            curProduct = product.ProductId;
-        //        }
-        //    }
-        //}
+        
 
         public void ClearPrevGrades()
         {

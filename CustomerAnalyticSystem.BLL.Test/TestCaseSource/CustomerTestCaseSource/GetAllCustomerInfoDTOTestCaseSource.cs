@@ -1,11 +1,7 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL.DTOs;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace CustomerAnalyticSystem.BLL.Test.TestCaseSource.CustomerTestCaseSource
@@ -33,7 +29,7 @@ namespace CustomerAnalyticSystem.BLL.Test.TestCaseSource.CustomerTestCaseSource
                     new ContactModel() { Id = 13, Value = "321", Name = "ewq" }
                     ,new ContactModel() { Id = 2, Value = "432", Name = "ytr"}}
                 , Comments = new List<CommentModel>() {
-                    new CommentModel(){Id = 4, Text = "bnm,."}} 
+                    new CommentModel(){Id = 4, Text = "bnm,."}}
                 }
             };
 

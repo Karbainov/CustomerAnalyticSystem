@@ -173,7 +173,7 @@ namespace CustomerAnalyticSystem.UI
             //    ListViewInterestedClients.Items.Add(c);
 
             //}
-           // foreach(var c in a.ProductsRecommends) 
+            // foreach(var c in a.ProductsRecommends) 
         }
 
         public void FillingCustomerStackPanel(List<CustomerInfoModel> list)

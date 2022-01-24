@@ -1,17 +1,13 @@
 ﻿using AutoMapper;
 using CustomerAnalyticSystem.BLL.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
     public class AllProductsAnalytic
     {
 
-        public Dictionary<int, ConcreteProduct> Products { get; set; }// ключ - айди продукта, три листа с группами тегами и продуктами
+        public Dictionary<int, ConcreteProduct> Products { get; set; }/
 
         public AllCustomersPreferences AllCustomers { get; set; }
         public StackModel Tables { get; set; }
@@ -24,7 +20,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 .ForMember(dest => dest.ProductName, act => act.MapFrom(src => src.Name))
                 .ForMember(dest => dest.GroupName, act => act.MapFrom(src => src.GroupName));
                 cfg.CreateMap<ItemToRecommend, ConcreteProduct>();
-                
+
 
             }
         );
@@ -42,21 +38,21 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
             GetListOfProducts();
             BoundCustomersAndProduct();
         }
-        private void GetListOfProducts()//начало первый метод для вызова
+        private void GetListOfProducts()
         {
-            foreach(var prod in MainAnalytics.Products)
+            foreach (var prod in MainAnalytics.Products)
             {
-                var dictProd = new Mapper(config).Map<ItemToRecommend, ConcreteProduct> (prod.Value);
+                var dictProd = new Mapper(config).Map<ItemToRecommend, ConcreteProduct>(prod.Value);
                 Products.Add(prod.Value.Id, dictProd);
                 Products[prod.Value.Id].Customers = new();
             }
         }
 
-        private void BoundCustomersAndProduct()//второй метод
+        private void BoundCustomersAndProduct()
         {
-            foreach(var cust in AllCustomers.Customers)
+            foreach (var cust in AllCustomers.Customers)
             {
-                foreach(var pref in cust.Value.PreferenceByProductId)
+                foreach (var pref in cust.Value.PreferenceByProductId)
                 {
                     if (pref.Value == 1)
                     {
@@ -68,6 +64,6 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 }
             }
         }
-        
+
     }
 }

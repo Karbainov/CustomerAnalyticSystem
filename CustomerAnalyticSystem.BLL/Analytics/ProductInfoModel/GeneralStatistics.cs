@@ -8,7 +8,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
     public class GeneralStatistics
     {
-        // в общую сводку: три листа Products;Groups;Tags Оттуда вся инфа для заполнения
+        
         public enum IsContain { Contain = -555 };
         private enum ConvertToPercent
         {
@@ -18,17 +18,17 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         };
         public StackModel Info;
 
-        //словарь рекомендаций
-        public Dictionary<int, ItemToRecommend> Products { get; set; }//в общей сво
-        public Dictionary<int, ItemToRecommend> Groups { get; set; }//
+        
+        public Dictionary<int, ItemToRecommend> Products { get; set; }
+        public Dictionary<int, ItemToRecommend> Groups { get; set; }
         public Dictionary<int, ItemToRecommend> Tags { get; set; }
 
 
-        //словарь который соотносит все теги с продуктом и группы с продуктом
-        public Dictionary<int, List<int>> ProductsByTagId { get; set; }//key = tagId value = product Ids
+        
+        public Dictionary<int, List<int>> ProductsByTagId { get; set; }
         public Dictionary<int, List<int>> GroupsByProductId { get; set; }
 
-        //словарь соотносит айди чека с ордером
+        
         public Dictionary<int, List<int>> ChecksInOrder { get; set; }
         public Dictionary<int, int> CheckProduct { get; set; }
 
@@ -155,7 +155,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
         #endregion
 
-        internal bool IsContains(int id, int prodId)//проверка на появление продукта в заказе (по чеку)
+        internal bool IsContains(int id, int prodId)
         {
             List<int> oneOrder;
 
@@ -281,7 +281,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                 }
             }
         }
-        public void FindAllBestsellers()//количество появления продукта в каждом заказе
+        public void FindAllBestsellers()
         {
             BoundCheckProduct();
 

@@ -1,6 +1,6 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
-using System.Windows;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace CustomerAnalyticSystem.UI
 {

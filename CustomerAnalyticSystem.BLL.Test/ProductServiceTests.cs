@@ -45,7 +45,7 @@ namespace CustomerAnalyticSystem.BLL.Test
 
         #endregion
 
-        //#region product
+        
 
         [TestCaseSource(typeof(GetAllProductsTestCaseSource))]
         public void GetAllProductsTest(List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
@@ -76,52 +76,52 @@ namespace CustomerAnalyticSystem.BLL.Test
         #endregion
 
         #region  GetAllTagsByProductId
-        
+
         [TestCaseSource(typeof(GetAllTagsByProductIdTestCaseSource))]
         public void GetAllTagsByProductIdTest(int id, List<TagModel> expected, List<TagDTO> tagDTO)
         {
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllTagsByProductId(id)).Returns(tagDTO);
             ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
-        
+
             List<TagModel> actual = productTagGroupRepository.GetAllTagsByProductId(id);
-        
+
             CollectionAssert.AreEqual(expected, actual);
         }
-        
+
         #endregion
-        
+
         #region GetAllProductsByTag
-        
+
         [TestCaseSource(typeof(GetAllProductsByTagTestCaseSource))]
         public void GetAllProductsByTagTest(int id, List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
         {
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllProductsByTag(id)).Returns(productDTO);
             ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
-        
+
             List<ProductBaseModel> actual = productTagGroupRepository.GetAllProductsByTagId(id);
-        
+
             CollectionAssert.AreEqual(expected, actual);
         }
-        
+
         #endregion
-        
+
         #region GetAllProductsWithGroups
-        
+
         [TestCaseSource(typeof(GetAllProductsWithGroupsTestCaseSource))]
         public void GetAllProductsWithGroupsTest(List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
         {
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllProductsWithGroups()).Returns(productDTO);
             ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
-        
+
             List<ProductBaseModel> actual = productTagGroupRepository.GetAllProducts();
-        
+
             CollectionAssert.AreEqual(expected, actual);
         }
-        
-        
+
+
         #endregion
     }
 }

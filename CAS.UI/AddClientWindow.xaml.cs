@@ -3,8 +3,8 @@ using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
 using System;
 using System.Collections.Generic;
-using System.Windows;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace CustomerAnalyticSystem.UI
 {

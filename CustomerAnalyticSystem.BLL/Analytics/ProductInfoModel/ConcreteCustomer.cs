@@ -17,14 +17,14 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
 
         internal GeneralStatistics InfoToAnalise { get; set; }
-        internal Dictionary<int, List<int>> AllOneProductMarks { get; set; }//держит для каждого продукта список оценок кастомера
-        internal Dictionary<int, int> PreferenceByProductId { get; set; }//Ключ - айди продукта, велью его преф (-1 / 1)
+        internal Dictionary<int, List<int>> AllOneProductMarks { get; set; }
+        internal Dictionary<int, int> PreferenceByProductId { get; set; }
         internal Dictionary<int, int> PreferenceByTagId { get; set; }
         internal Dictionary<int, int> PreferenceByGroupId { get; set; }
 
 
         internal Dictionary<int, int> ProductPercent { get; set; }
-        private Dictionary<int, int> ProductAvgGrade { get; set; }//key = prId, val = avgGrade
+        private Dictionary<int, int> ProductAvgGrade { get; set; }
         private int AllcustomerOrders { get; set; }
         public ConcreteCustomer(GeneralStatistics info, CustomerInfoModel customer)
         {

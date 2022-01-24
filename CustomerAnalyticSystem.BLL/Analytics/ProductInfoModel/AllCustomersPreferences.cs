@@ -8,14 +8,12 @@ using System.Linq;
 namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 {
 
-    //Есть средняя оценка продукта для каждого кастомера
-    //есть преференцы групп тегов продуктов для каждого кастомера
-    //НЕТ популярности групп тегов продуктов
+
     public class AllCustomersPreferences
     {
 
         private List<CustomerInfoModel> BaseCustomers { get; set; }
-        public List<PreferencesBaseModel> CustomersPreferences { get; set; }//Ключ - айди кастомера вся инфа тянется оттуда
+        public List<PreferencesBaseModel> CustomersPreferences { get; set; }
 
 
 
@@ -57,7 +55,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
         private void FillCustomerPreferences()
         {
-            foreach (var pref in CustomersPreferences)//билдим префы для кастомеров
+            foreach (var pref in CustomersPreferences)
             {
                 int value = 0;
                 if (pref.IsInterested == true)
@@ -106,7 +104,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
 
 
-        private void FillBaseCustomerInfo()//запускается первым делом чтобы не обосраться
+        private void FillBaseCustomerInfo()
         {
             foreach (var customer in BaseCustomers)
             {
@@ -123,7 +121,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         }
 
         // ТУДУ: 
-        private void AvgMarkForEveryProduct()//есть средняя оценка для каждого продукта
+        private void AvgMarkForEveryProduct()
         {
             foreach (var grade in InfoToAnalise.Info.Grades)
             {
@@ -172,11 +170,11 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
             }
         }
-        private void FindAllBestsellers()//количество появления продукта в каждом заказе
+        private void FindAllBestsellers()
         {
-            //BoundCheckProduct();//уже готовый список в ИнфоТуАнализ
-            BoundGradeCustomer();//связываем по составному ключу (ИД кастомера и ИД продукта) НУЖНО???
-            SortGrades();//раскидывает оценки по сложному ключу в каждого кастомера ----------- НУЖНО???
+
+            BoundGradeCustomer();
+            SortGrades();
             List<int> isContainTag;
             List<int> isContainGroup;
 
@@ -213,9 +211,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
                     Customers[order.CustomerId].GetPopularityTag(isContainTag);//ТУДУ
                 }
             }
-            //ConvertToPercents(ConvertToPercent.product);//внутри кастомера
-            //ConvertToPercents(ConvertToPercent.group);//внутри кастомера
-            //ConvertToPercents(ConvertToPercent.tag);//внутри кастомера
+
         }
     }
 }

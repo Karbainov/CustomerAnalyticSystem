@@ -16,9 +16,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics
 
 
         private PreferencesByCustomerIdModel Preferences { get; set; }
-
-        // public List<TagPrefModel> Tags - ТЕГИПРЕФЫ
-        // public List<CustomerTagGradesModel> TagGrades ТЕГИОЦЕНКИ
+              
 
         enum ProductTag
         {

@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace CustomerAnalyticSystem.UI
 {
