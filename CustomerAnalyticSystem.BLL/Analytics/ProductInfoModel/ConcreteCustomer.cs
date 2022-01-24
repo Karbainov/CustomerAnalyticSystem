@@ -10,7 +10,6 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Name { get; set; }
         public Dictionary<int, ItemToRecommend> ProductsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> GroupsRecommends { get; set; }
         public Dictionary<int, ItemToRecommend> TagsRecommends { get; set; }

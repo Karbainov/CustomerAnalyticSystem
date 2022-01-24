@@ -19,10 +19,16 @@ namespace CustomerAnalyticSystem.UI
         public List<CustomerInfoModel> customersList = new List<CustomerInfoModel>();
         public GeneralStatistics stat = new();
 
+        public AllInfo info { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+
+            info = AllInfo.GetInstance();
+            info.GeneralInfo = new();
+            info.CustomersInfo = new(info.GeneralInfo);
+            info.ProductInfo = new(info.CustomersInfo);
 
             FillingDictTags();
             FillingDictGroups();
@@ -151,7 +157,26 @@ namespace CustomerAnalyticSystem.UI
 
         }
 
+        private void ListViewClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillingListViewInterestedClients();
+        }
+
         #region filling
+
+        public void FillingListViewInterestedClients()
+        {
+            ListViewInterestedClients.Items.Clear();
+            var a = info.ProductInfo.Products[((ProductBaseModel)(ListViewProducts.SelectedItem)).Id];
+            foreach (var c in a.Customers)
+            {
+                ListViewInterestedClients.Items.Add(c);
+
+            }
+           // foreach(var c in a.ProductsRecommends)
+            
+        }
+
         public void FillingCustomerStackPanel(List<CustomerInfoModel> list)
         {
             ListViewClients.Items.Clear();
@@ -410,7 +435,7 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        
+
 
 
         #endregion
