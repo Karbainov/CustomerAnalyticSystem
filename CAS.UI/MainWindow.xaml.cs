@@ -166,15 +166,14 @@ namespace CustomerAnalyticSystem.UI
 
         public void FillingListViewInterestedClients()
         {
-            ListViewInterestedClients.Items.Clear();
-            var a = info.ProductInfo.Products[((ProductBaseModel)(ListViewProducts.SelectedItem)).Id];
-            foreach (var c in a.Customers)
-            {
-                ListViewInterestedClients.Items.Add(c);
+            //ListViewInterestedClients.Items.Clear();
+            //var a = info.ProductInfo.Products[((ProductBaseModel)(ListViewProducts.SelectedItem)).Id];
+            //foreach (var c in a.Customers)
+            //{
+            //    ListViewInterestedClients.Items.Add(c);
 
-            }
-           // foreach(var c in a.ProductsRecommends)
-            
+            //}
+           // foreach(var c in a.ProductsRecommends) 
         }
 
         public void FillingCustomerStackPanel(List<CustomerInfoModel> list)
