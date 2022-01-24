@@ -10,7 +10,7 @@ namespace CustomerAnalyticSystem.UI
     public partial class EditStatusWindow : Window
     {
         MainWindow _mainWindow;
-        public EditStatusWindow(AddOrderWindow addOrderWindow)
+        public EditStatusWindow(MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
