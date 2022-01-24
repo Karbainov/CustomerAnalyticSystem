@@ -59,7 +59,6 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        // не доделано!!!
         private void ButtonAddClient_Click(object sender, RoutedEventArgs e)
         {
             if (TextBoxAddClientSurname.Text != ""
@@ -89,12 +88,15 @@ namespace CustomerAnalyticSystem.UI
                     serve.AddCommentByCustomerId(CustomerId, comment);
                 }
 
-                foreach (ContactBaseModel contact in ListViewContact.Items)
+                if (ComboBoxContactType.SelectedIndex != -1 && TextBoxContact.Text != "")
                 {
-                    contact.CustomerId = CustomerId;
+                    foreach (ContactBaseModel contact in ListViewContact.Items)
+                    {
+                        contact.CustomerId = CustomerId;
 
-                    ContactService contServe = new ContactService();
-                    contServe.AddContact(contact);
+                        ContactService contServe = new ContactService();
+                        contServe.AddContact(contact);
+                    }
                 }
 
                 this.Close();
@@ -103,13 +105,16 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonAddContactAddClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            ContactBaseModel model = new ContactBaseModel()
+            if (ComboBoxContactType.SelectedIndex != -1 && TextBoxContact.Text != "")
             {
-                ContactTypeId = (_contactTypes)[ComboBoxContactType.SelectedIndex].Id,
-                Value = TextBoxContact.Text
-            };
+                ContactBaseModel model = new ContactBaseModel()
+                {
+                    ContactTypeId = (_contactTypes)[ComboBoxContactType.SelectedIndex].Id,
+                    Value = TextBoxContact.Text
+                };
 
-            ListViewContact.Items.Add(model);
+                ListViewContact.Items.Add(model);
+            }
         }
 
         private void ButtonDeleteContactAddClientWndw_Click(object sender, RoutedEventArgs e)
@@ -122,20 +127,26 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonDeleteCommentAddClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            if (ListViewComments.SelectedIndex != -1)
+            if (ListViewComments.SelectedIndex > -1)
             {
-                ListViewComments.Items.Remove(ListViewComments.SelectedItem);
+                if (ListViewComments.SelectedIndex != -1)
+                {
+                    ListViewComments.Items.Remove(ListViewComments.SelectedItem);
+                }
             }
         }
 
         private void ButtonAddCommentAddClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            CommentModel model = new CommentModel()
+            if (TextBoxComment.Text != "")
             {
-                Text = TextBoxComment.Text
-            };
+                CommentModel model = new CommentModel()
+                {
+                    Text = TextBoxComment.Text
+                };
 
-            ListViewComments.Items.Add(model);
+                ListViewComments.Items.Add(model);
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
