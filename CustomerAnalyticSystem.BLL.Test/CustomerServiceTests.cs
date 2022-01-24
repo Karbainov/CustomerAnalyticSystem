@@ -37,11 +37,6 @@ namespace CustomerAnalyticSystem.BLL.Test
 
             List<CustomerInfoModel> actual = customerService.GetAllCustomerInfoModels();
 
-            for (int i = 0; i < actual.Count; i++)
-            {
-                CollectionAssert.AreEqual(expected[i].Comments, actual[i].Comments);
-                CollectionAssert.AreEqual(expected[i].Contacts, actual[i].Contacts);
-            }
             CollectionAssert.AreEqual(expected, actual);
         }
     }
