@@ -95,19 +95,19 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public void DeleteOrderById(int id)
         {
-            OrderCheckStatusRepository rep = new OrderCheckStatusRepository();
+            OrderRepository rep = new OrderRepository();
             rep.DeleteOrderById(id);
         }
         public void UpdateOrderById(int id, int CustomerId, string Date, int StatusId, int Cost)
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             service.UpdateOrderById(id, CustomerId, Date, StatusId, Cost);
         }
         public void AddOrder(int CustomerId, string Date, int StatusId, int Cost)
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             service.AddOrder(CustomerId, Date, StatusId, Cost);
         }
     }
