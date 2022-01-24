@@ -38,7 +38,7 @@
             <ComboBox x:Name="ComboBoxProductGroupAddWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="30"/>
             <TextBox x:Name="TextBoxProductNameAddWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="30"/>
             <TextBox x:Name="TextBoxProductDescriptionAddWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="55" BorderBrush="#FF2C3F76"/>
-            <Button x:Name="ButtonEditGoup" BorderBrush="#FF575958"  Background="#FF7CCDDC" Content="Редактировать группы" HorizontalAlignment="Left" Margin="32,95,0,0" VerticalAlignment="Top" Click="ButtonEditGoup_Click" Width="135" Height="25"/>
+            <Button x:Name="ButtonEditGoup" BorderBrush="#FF575958"  Background="#FFCAE9F3" Content="Редактировать группы" HorizontalAlignment="Left" Margin="32,95,0,0" VerticalAlignment="Top" Click="ButtonEditGoup_Click" Width="135" Height="25"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
@@ -67,8 +67,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ButtonAddProduct" Content="Добавить продукт" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="50" Grid.Row="2" Click="ButtonAddProduct_Click" Margin="150,0,0,0" BorderBrush="#FF575958"  Background="#FF7CDC89"/>
-        <Button x:Name="ButtonEditTags" BorderBrush="#FF575958"  Background="#FF7CCDDC" Content="Редактировать тэги" HorizontalAlignment="Center" Margin="0,135,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonEditTags_Click" Height="25" Width="120"/>
+        <Button x:Name="ButtonAddProduct" Content="Добавить продукт" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="50" Grid.Row="2" Click="ButtonAddProduct_Click" Margin="150,0,0,0" BorderBrush="#FF575958"  Background="#FFBCEEC3"/>
+        <Button x:Name="ButtonEditTags" BorderBrush="#FF575958"  Background="#FFCAE9F3" Content="Редактировать тэги" HorizontalAlignment="Center" Margin="0,135,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ButtonEditTags_Click" Height="25" Width="120"/>
     </Grid>
 
 
