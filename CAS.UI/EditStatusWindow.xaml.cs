@@ -11,15 +11,9 @@ namespace CustomerAnalyticSystem.UI
     {
         MainWindow _mainWindow;
         //AddOrderWindow _addOrderWindow;
-        public EditStatusWindow(AddOrderWindow addOrderWindow)
+        public EditStatusWindow(MainWindow mainWindow)
         {
-            
-            InitializeComponent();
-        }
-
-        public EditStatusWindow(EditOrderWindow editOrderWindow)
-        {
-            
+            _mainWindow = mainWindow;
             InitializeComponent();
         }
 
