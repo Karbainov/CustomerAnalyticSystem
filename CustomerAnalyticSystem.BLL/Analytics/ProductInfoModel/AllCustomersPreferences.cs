@@ -37,8 +37,8 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
 
 
             List<CustomerInfoModel> Custs = new();
-            CustomerTypeCustomerCommentService w = new();
-            List<CustomerDTO> we = w.GetAllCustomers();
+            CustomerService serve = new();
+            List<CustomerDTO> we = serve.GetAllCustomers();
             BaseCustomers = new Mapper(configuration).Map<List<CustomerDTO>, List<CustomerInfoModel>>(we);
             MakeStatisticksForCustomers();
 

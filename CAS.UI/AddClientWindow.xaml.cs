@@ -45,10 +45,10 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private List<CustomerTypeModel> GetCustomerTypeModels()
-        {
-            CustomerTypeCustomerCommentService serve = new CustomerTypeCustomerCommentService();
-            return serve.GetAllCustomerTypeModel();
+        private List<CustomerTypeModel> GetCustomerTypeModels()
+        {
+            CustomerService serve = new CustomerService();
+            return serve.GetAllCustomerTypeModel();
         }
 
         private void FillCustomerTypeComboBox(List<CustomerTypeModel> list)

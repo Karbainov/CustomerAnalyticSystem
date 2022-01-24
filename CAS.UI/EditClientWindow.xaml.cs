@@ -43,7 +43,7 @@ namespace CustomerAnalyticSystem.UI
         private Dictionary<CustomerTypeModel, int> GetAllDictCustomerTypeWithId()
         {
             Dictionary<CustomerTypeModel, int> customerTypesAndId = new Dictionary<CustomerTypeModel, int>();
-            CustomerTypeCustomerCommentService serve = new CustomerTypeCustomerCommentService();
+            CustomerService serve = new CustomerService();
             List<CustomerTypeModel> customerModels = serve.GetAllCustomerTypeModel();
 
             foreach (CustomerTypeModel customerTypeModel in customerModels)

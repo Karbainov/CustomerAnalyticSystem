@@ -6,8 +6,8 @@ set IsDeleted = 1
 	where Id = @Id
 update [dbo].[Contact]
 set IsDeleted = 1
-	where Id = @Id
+	where CustomerId = @Id
 update [dbo].[Comment]
 set IsDeleted = 1
-	where Id = @Id
+	where CustomerId = @Id
 return @Id

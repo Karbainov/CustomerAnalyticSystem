@@ -1,13 +1,15 @@
 ﻿using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL.RepInterfaces;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    public class CustomerTypeCustomerCommentRepository
+    public class CustomerTypeCustomerCommentRepository : ICustomerRepository
     {
         public List<CustomerTypeDTO> GetAllCustomerType()
         {
@@ -41,24 +43,19 @@ namespace CustomerAnalyticSystem.DAL
 
         public CustomerDTO GetCustomerById(int id)
         {
-            CustomerDTO customer = null;
-
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
-                connection.Query<CustomerDTO, object, CustomerDTO>(Queries.GetCustomerById
-                    , (customer1, hz) =>
-                     {
-                         if (customer == null)
-                         {
-                             customer = customer1;
-                         }
-                         return customer;
-                     }
-                    , new { id }
-                    , commandType: CommandType.StoredProcedure
-                    , splitOn: "TI");
-            }
-            return customer;
+                try
+                {
+                    return connection.QuerySingle<CustomerDTO>(Queries.GetCustomerById
+                        , new { id }
+                        , commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Нет клиента с таким Id", ex);
+                }
+            };
         }
 
         public void UpdateCustomerTypeById(int id, string name)
