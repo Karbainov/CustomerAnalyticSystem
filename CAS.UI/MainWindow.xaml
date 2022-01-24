@@ -86,7 +86,7 @@
                             </ListView>
 
                         </Grid>
-                        <ListView x:Name="ListViewClients" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListViewClients_SelectionChanged">
+                        <ListView x:Name="ListViewClients" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -107,8 +107,8 @@
                     </Grid>
                     <StackPanel Grid.Column="0" Margin="0,0,0,411">
                         <Button x:Name="ButtonOpenWindowOfAddingClient" Content="Добавить нового клиента" Height="75" Click="ButtonOpenWindowOfAddingClient_Click" BorderBrush="#FF575958" Background="#FFBED492" FontSize="15"/>
-                        <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75" Click="ButtonOpenWindowOfEditingClient_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
-                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75" Click="ButtonFastClientDelete_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
+                        <Button x:Name="ButtonOpenWindowOfEditingClient" Content="Редактировать карту клиента" Height="75" Click="ButtonOpenWindowOfEditingClient_Click" BorderBrush="#FF575958" Background="#FFBED492" FontSize="15"/>
+                        <Button x:Name="ButtonFastClientDelete" Content="Удалить карту клиента" Height="75" Click="ButtonFastClientDelete_Click" BorderBrush="#FF575958"  Background="#FF929F77" FontSize="15"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -134,11 +134,11 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="112" Header="ID клиента"  DisplayMemberBinding="{Binding Id}"/>
-                                    <GridViewColumn Header="Приоритет" Width="162"  DisplayMemberBinding="{Binding AverageMark}"/>
-                                    <GridViewColumn Width="212" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
-                                    <GridViewColumn Width="162" Header="Имя"  DisplayMemberBinding="{Binding FirstName}"/>
+                                    <GridViewColumn Width="112" Header="ID клиента"/>
+                                    <GridViewColumn Header="Приоритет" Width="162"/>
                                     <GridViewColumn Width="162" Header="Тип клиента"/>
+                                    <GridViewColumn Width="212" Header="Фамилия"/>
+                                    <GridViewColumn Width="162" Header="Имя"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -164,7 +164,7 @@
                     <StackPanel Grid.Column="0">
                         <Button x:Name="ButtonOpenWindowOfProductAdding" Content="Добавить товар" Height="75" Click="ButtonOpenWindowOfProductAdding_Click" BorderBrush="#FF575958" Background="#FFBED492" FontSize="15"/>
                         <Button x:Name="ButtonOpenWindowOfProductEditing" Content="Редактировать товар" Height="75" Click="ButtonOpenWindowOfProductEditing_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
-                        <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75" Click="ButtonFastProductDelete_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
+                        <Button x:Name="ButtonFastProductDelete" Content="Удалить товар" Height="75" Click="ButtonFastProductDelete_Click" BorderBrush="#FF575958"  Background="#FF929F77" FontSize="15"/>
                         <Button x:Name="ButtonViewAllProducts" Content="Показать все товары" Height="75" Click="ButtonViewAllProducts_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
                         <Label Content="" Height="15"/>
                         <Label Content="Поиск товаров по тэгу" FontSize="15"/>
@@ -190,7 +190,7 @@
                     <StackPanel>
                         <Button x:Name="ButtonOpenAddOrderWndw" Content="Добавить заказ" Height="75" Click="ButtonOpenAddOrderWndw_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
                         <Button x:Name="ButtonOpenEditOrderWndw" Content="Редактировать заказ" Height="75" Click="ButtonOpenEditOrderWndw_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
-                        <Button x:Name="ButtonFastOrderDelete" Content="Удалить заказ" Height="75" Click="ButtonFastOrderDelete_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
+                        <Button x:Name="ButtonFastOrderDelete" Content="Удалить заказ" Height="75" Click="ButtonFastOrderDelete_Click" BorderBrush="#FF575958"  Background="#FF929F77" FontSize="15"/>
                         <Button x:Name="ButtonViewAllOrders" Content="Показать все заказы" Height="75" Click="ButtonViewAllOrders_Click" BorderBrush="#FF575958"  Background="#FFBED492" FontSize="15"/>
                         <Label Content="Поиск заказа по статусу" FontSize="15"/>
                         <ComboBox x:Name="ComboBoxStatus" SelectionChanged="ComboBoxStatus_SelectionChanged" Height="30" >
