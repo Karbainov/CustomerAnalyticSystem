@@ -110,25 +110,43 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
+        //private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (ListViewOrders.SelectedIndex > -1)
+        //    {
+        //        if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewOrders.SelectedItem).Id}?",
+        //           "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+        //        {
+        //            OrderCheckStatusService serve = new OrderCheckStatusService();
+        //            serve.DeleteOrderById(((OrderBaseModel)ListViewOrders.SelectedItem).Id);
+        //            ordersDict = GetDictGetOrderById();
+        //            FillingOrderStackPanel(ordersDict);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Выберите заказ");
+        //    }
+        //}
         private void ButtonFastOrderDelete_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewOrders.SelectedIndex > -1)
             {
-                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить заказ № {((OrderBaseModel)ListViewOrders.SelectedItem).Id}?",
+                if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить {((OrderBaseModel)ListViewOrders.SelectedItem).Id}?",
                    "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    OrderCheckStatusService serve = new OrderCheckStatusService();
-                    serve.DeleteOrderById(((OrderBaseModel)ListViewOrders.SelectedItem).Id);
-                    ordersDict = GetDictGetOrderById();
-                    FillingOrderStackPanel(ordersDict);
+                    OrderBaseModel actual = (OrderBaseModel)ListViewOrders.SelectedItem;
+                    int id = actual.Id;
+                    var orders = new OrderCheckStatusService();
+                    orders.DeleteOrderById(id);
+                    FillingListViewOrders();
                 }
             }
             else
             {
-                MessageBox.Show("Выберите заказ");
+                MessageBox.Show("Выберите продукт");
             }
         }
-
         private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListViewOrders.SelectedIndex = -1;
@@ -372,7 +390,7 @@ namespace CustomerAnalyticSystem.UI
             addOrderWindow.Show();
 
         }
-
+        
         private void ButtonOpenEditOrderWndw_Click(object sender, RoutedEventArgs e)
         {
             if (ListViewOrders.SelectedIndex > -1)
@@ -435,11 +453,11 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        
+
 
 
         #endregion
-
+        
     }
 }
 

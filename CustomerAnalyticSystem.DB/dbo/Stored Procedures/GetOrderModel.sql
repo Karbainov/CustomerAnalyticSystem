@@ -5,3 +5,4 @@ join [dbo].[Customer] as Cust
 	on Cust.Id = O.CustomerId
 join [dbo].[Status] as S
 	on S.Id = O.StatusId
+where  O.[IsDeleted] = 0
