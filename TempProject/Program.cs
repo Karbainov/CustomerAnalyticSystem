@@ -35,10 +35,9 @@ namespace TempProject
             //должно лежать в блл говне
 
 
-            AllCustomersPreferences test = new(stat);//жрет на вход генерал статистик после метода мейкстатистик
-            test.MakeStatisticksForCustomers();
+            AllCustomersPreferences test = new(stat);//жрет на вход генерал статистик после метода мейкстатистик           
             AllProductsAnalytic we = new(test);
-            we.MakeProductStatistics();
+            
             //test.FillBaseCustomerInfo();
             //test.AvgMarkForEveryProduct();
             //test.FindAllBestsellers();
