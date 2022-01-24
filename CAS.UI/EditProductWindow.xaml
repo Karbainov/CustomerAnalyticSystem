@@ -37,7 +37,7 @@
             <ComboBox x:Name="ComboBoxProductGroupEditWndw" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="30"/>
             <TextBox x:Name="TextBoxProductNameEditWndw" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" BorderBrush="#FF2C3F76" Height="30"/>
             <TextBox x:Name="TextBoxProductDescriptionEditWndw" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="55" BorderBrush="#FF2C3F76"/>
-            <Button x:Name="ButtonEditGroups" Content="Редактировать группы" HorizontalAlignment="Left" Margin="32,95,0,0" VerticalAlignment="Top" Click="ButtonEditGroups_Click" Width="135" Height="25"/>
+            <Button x:Name="ButtonEditGroups" BorderBrush="#FF575958"  Background="#FFCAE9F3" Content="Редактировать группы" HorizontalAlignment="Left" Margin="32,95,0,0" VerticalAlignment="Top" Click="ButtonEditGroups_Click" Width="135" Height="25"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.RowDefinitions>
@@ -66,9 +66,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ButtonSaveChangesOfProductEditing" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Row="2" Click="ButtonSaveChangesOfProductEditing_Click"/>
-        <Button x:Name="ButtonDeleteProduct" Content="Удалить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1" Grid.Row="2" Click="ButtonDeleteProduct_Click"/>
-        <Button x:Name="ButtonEditTags" Content="Редактировать тэги" HorizontalAlignment="Center" Margin="0,135,0,0" Grid.Row="1" VerticalAlignment="Center" Click="ButtonEditTags_Click" Width="120" Height="25"/>
+        <Button x:Name="ButtonSaveChangesOfProductEditing" BorderBrush="#FF575958"  Background="#FFBCEEC3" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Row="2" Click="ButtonSaveChangesOfProductEditing_Click"/>
+        <Button x:Name="ButtonDeleteProduct" BorderBrush="#FF575958"  Background="#FFE98585" Content="Удалить" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="30" Grid.Column="1" Grid.Row="2" Click="ButtonDeleteProduct_Click"/>
+        <Button x:Name="ButtonEditTags" BorderBrush="#FF575958"  Background="#FFCAE9F3" Content="Редактировать тэги" HorizontalAlignment="Center" Margin="0,135,0,0" Grid.Row="1" VerticalAlignment="Center" Click="ButtonEditTags_Click" Width="120" Height="25"/>
     </Grid>
 
 

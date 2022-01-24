@@ -20,11 +20,16 @@ namespace CustomerAnalyticSystem.UI
         public GeneralStatistics stat = new();
         public Dictionary<int, OrderBaseModel> ordersDict = new Dictionary<int, OrderBaseModel>();
 
+        public AllInfo info { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
 
-            //stat.MakeStatistics();
+            info = AllInfo.GetInstance();
+            info.GeneralInfo = new();
+            info.CustomersInfo = new(info.GeneralInfo);
+            info.ProductInfo = new(info.CustomersInfo);
 
             FillingDictTags();
             FillingDictGroups();
@@ -79,7 +84,7 @@ namespace CustomerAnalyticSystem.UI
                 {
                     ProductBaseModel actual = (ProductBaseModel)ListViewProducts.SelectedItem;
                     int id = actual.Id;
-                    var products = new ProductTagGroupService();
+                    var products = new ProductService();
                     products.DeleteProductById(id);
                     FillingListViewProducts();
                 }
@@ -174,7 +179,25 @@ namespace CustomerAnalyticSystem.UI
 
         }
 
+        private void ListViewClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillingListViewInterestedClients();
+        }
+
         #region filling
+
+        public void FillingListViewInterestedClients()
+        {
+            //ListViewInterestedClients.Items.Clear();
+            //var a = info.ProductInfo.Products[((ProductBaseModel)(ListViewProducts.SelectedItem)).Id];
+            //foreach (var c in a.Customers)
+            //{
+            //    ListViewInterestedClients.Items.Add(c);
+
+            //}
+           // foreach(var c in a.ProductsRecommends) 
+        }
+
         public void FillingCustomerStackPanel(List<CustomerInfoModel> list)
         {
             ListViewClients.Items.Clear();
@@ -218,7 +241,7 @@ namespace CustomerAnalyticSystem.UI
             if (ComboBoxTags.SelectedIndex > -1)
             {
                 int id = TagsIdAndTags[ComboBoxTags.SelectedItem.ToString()];
-                var products = new ProductTagGroupService();
+                var products = new ProductService();
                 var listProducts = products.GetAllProductsByTagId(id);
                 foreach (var p in listProducts)
                 {
@@ -228,7 +251,7 @@ namespace CustomerAnalyticSystem.UI
             else if (ComboBoxGroups.SelectedIndex > -1)
             {
                 int id = GroupsIdAndGroups[ComboBoxGroups.SelectedItem.ToString()];
-                var products = new ProductTagGroupService();
+                var products = new ProductService();
                 var listProducts = products.GetAllProductsByGroupId(id);
                 foreach (var p in listProducts)
                 {
@@ -237,7 +260,7 @@ namespace CustomerAnalyticSystem.UI
             }
             else
             {
-                var products = new ProductTagGroupService();
+                var products = new ProductService();
                 var listProducts = products.GetAllProducts();
                 foreach (var p in listProducts)
                 {
@@ -337,7 +360,7 @@ namespace CustomerAnalyticSystem.UI
         public void FillingDictGroups()
         {
             GroupsIdAndGroups.Clear();
-            var service = new ProductTagGroupService();
+            var service = new ProductService();
             var groupList = service.GetAllGroups();
             foreach (var g in groupList)
             {
@@ -348,7 +371,7 @@ namespace CustomerAnalyticSystem.UI
         public void FillingDictTags()
         {
             TagsIdAndTags.Clear();
-            var service = new ProductTagGroupService();
+            var service = new ProductService();
             var tagList = service.GetAllTags();
             foreach (var t in tagList)
             {

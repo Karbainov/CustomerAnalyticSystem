@@ -7,8 +7,8 @@ namespace CustomerAnalyticSystem.BLL.Services
     {
         public OrderInfoByOrderIdModel GetOrderInfoByOrderId(int id)
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             var dto = service.FillOrderInfoByOrderId(id);
             OrderInfoByOrderIdModel result = map.MapOrderInfoByOrderId(dto);
             return result;

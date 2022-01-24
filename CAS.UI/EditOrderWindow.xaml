@@ -79,16 +79,16 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonAddPositionEditOrderWndw" Content="Добавить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
-            <Button x:Name="ButtonDeletePositionEditOrderWndw" Content="Удалить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
+            <Button x:Name="ButtonAddPositionEditOrderWndw" Content="Добавить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30" BorderBrush="#FF575958"  Background="#FFCAE9F3"/>
+            <Button x:Name="ButtonDeletePositionEditOrderWndw" Content="Удалить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30" Background="#FFEDB193"/>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonSaveChangesEditOrderWndw" Content="Сохранить изменения" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
-            <Button x:Name="ButtonDeleteOrderEditOrderWndw" Content="Удалить заказ" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30" Click="ButtonDeleteOrderEditOrderWndw_Click"/>
+            <Button x:Name="ButtonSaveChangesEditOrderWndw" BorderBrush="#FF575958"  Background="#FFBCEEC3" Content="Сохранить изменения" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
+            <Button x:Name="ButtonDeleteOrderEditOrderWndw" BorderBrush="#FF575958"  Background="#FFE98585"  Content="Удалить заказ" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30" Click="ButtonDeleteOrderEditOrderWndw_Click"/>
         </Grid>
 
     </Grid>

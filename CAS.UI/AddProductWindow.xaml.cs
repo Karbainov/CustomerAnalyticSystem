@@ -21,7 +21,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillingEditProductWindowComboBoxGroups()
         {
-            var service = new ProductTagGroupService();
+            var service = new ProductService();
             var groupList = service.GetAllGroups();
             foreach (var g in groupList)
             //foreach (string Key in _mainWindow.GroupsIdAndGroups.Keys)
@@ -32,7 +32,7 @@ namespace CustomerAnalyticSystem.UI
 
         private void FillingComboBoxTagsForAddProduct()
         {
-            var service = new ProductTagGroupService();
+            var service = new ProductService();
             var tagList = service.GetAllTags();
             foreach (var t in tagList)
             //foreach (string Key in _mainWindow.TagsIdAndTags.Keys)
@@ -63,7 +63,7 @@ namespace CustomerAnalyticSystem.UI
 
                 int id = _mainWindow.GroupsIdAndGroups[ComboBoxProductGroupAddWndw.SelectedItem.ToString()];
 
-                ProductTagGroupService service = new ProductTagGroupService();
+                ProductService service = new ProductService();
                 service.AddProduct(product.Name, product.Description, id);
                 _mainWindow.FillingListViewProducts();
 
@@ -71,7 +71,7 @@ namespace CustomerAnalyticSystem.UI
                 {
                     string tag = item.ToString();
                     int id1 = _mainWindow.TagsIdAndTags[tag];
-                    ProductTagGroupService service1 = new ProductTagGroupService();
+                    ProductService service1 = new ProductService();
                     int count = _mainWindow.ListViewProducts.Items.Count - 1;
                     _mainWindow.ListViewProducts.SelectedIndex = count;
                     ProductBaseModel newProduct = (ProductBaseModel)_mainWindow.ListViewProducts.SelectedItem;

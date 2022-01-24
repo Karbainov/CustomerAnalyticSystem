@@ -5,52 +5,52 @@ using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
-    public class ContactTypeContactService
+    public class ContactService
     {
 
         public List<ContactTypeModel> GetAllContactTypeModel()
         {
-            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            ContactRepository rep = new ContactRepository();
             List<ContactTypeDTO> DTO = rep.GetAllContactType();
-            MrMappi map = new MrMappi();
+            BestMapper map = new BestMapper();
             return map.MapFromContactTypeDTOToContactTypeModel(DTO);
         }
 
         public void AddContact(ContactBaseModel contact)
         {
-            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            ContactRepository rep = new ContactRepository();
             rep.AddContact(contact.CustomerId, contact.ContactTypeId, contact.Value);
         }
 
         public void UpdateContact(int id, int customerId, int contactTypeId, string value)
         {
-            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            ContactRepository rep = new ContactRepository();
             rep.UpdateContact(id, customerId, contactTypeId, value);
         }
 
         public void DeleteContact(int id)
         {
-            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            ContactRepository rep = new ContactRepository();
             rep.DeleteContact(id);
         }
 
         public void UpdateContactType(int id, string name)
         {
-            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            ContactRepository rep = new ContactRepository();
             rep.UpdateContactType(id, name);
         }
 
         public void DeleteContactType(int id)
         {
-            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            ContactRepository rep = new ContactRepository();
             rep.DeleteContactType(id);
         }
 
         public List<ContactModel> GetAllContactModelByCustomerId(int id)
         {
-            ContactTypeContactRepository rep = new ContactTypeContactRepository();
+            ContactRepository rep = new ContactRepository();
             var DTOs = rep.GetAllContactWithContactTypeByCustomerId(id);
-            MrMappi map = new MrMappi();
+            BestMapper map = new BestMapper();
             return map.MapFromContactWithContactTypeNameDTOToContactModel(DTOs);
         }
     }

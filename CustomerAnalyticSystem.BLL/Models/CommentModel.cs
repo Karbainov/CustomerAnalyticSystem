@@ -9,5 +9,18 @@
         {
             return $"{Text}";
         }
+
+        public override bool Equals(object obj)
+        {
+            if (Id != ((CommentModel)obj).Id
+                || Text != ((CommentModel)obj).Text)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

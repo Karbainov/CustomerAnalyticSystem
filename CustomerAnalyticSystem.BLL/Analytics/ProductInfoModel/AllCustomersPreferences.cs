@@ -15,7 +15,7 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
     {
 
         private List<CustomerInfoModel> BaseCustomers { get; set; }
-        public List<PreferencesBaseModel> CustomersPreferences { get; set; }
+        public List<PreferencesBaseModel> CustomersPreferences { get; set; }//Ключ - айди кастомера вся инфа тянется оттуда
 
 
 
@@ -30,15 +30,15 @@ namespace CustomerAnalyticSystem.BLL.Analytics.ProductInfoModel
           });
         public AllCustomersPreferences(GeneralStatistics stat)
         {
-            GradePreferencesService preferences = new();
+            PreferencesService preferences = new();
             InfoToAnalise = stat;
             Customers = new();
             CustomersPreferences = preferences.GetBasePreferencesModel();
 
 
             List<CustomerInfoModel> Custs = new();
-            CustomerTypeCustomerCommentService w = new();
-            List<CustomerDTO> we = w.GetAllCustomers();
+            CustomerService serve = new();
+            List<CustomerDTO> we = serve.GetAllCustomers();
             BaseCustomers = new Mapper(configuration).Map<List<CustomerDTO>, List<CustomerInfoModel>>(we);
             MakeStatisticksForCustomers();
 

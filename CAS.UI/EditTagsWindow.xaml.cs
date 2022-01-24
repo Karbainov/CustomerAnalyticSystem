@@ -20,7 +20,7 @@ namespace CustomerAnalyticSystem.UI
         private void FillingListViewEditTagsWndw()
         {
             ListViewEditTagsWndw.Items.Clear();
-            var tags = new ProductTagGroupService();
+            var tags = new ProductService();
             var listTags = tags.GetAllTags();
             foreach (var t in listTags)
             {
@@ -35,7 +35,7 @@ namespace CustomerAnalyticSystem.UI
             {
                 if (TextBoxNewTag.Text != String.Empty)
                 {
-                    var tag = new ProductTagGroupService();
+                    var tag = new ProductService();
                     tag.AddTag(TextBoxNewTag.Text);
                     _mainWindow.FillingComboBoxTags();
                     FillingListViewEditTagsWndw();
@@ -62,7 +62,7 @@ namespace CustomerAnalyticSystem.UI
             {
                 var tag = ((TagModel)ListViewEditTagsWndw.SelectedItem);
                 int id = _mainWindow.TagsIdAndTags[tag.Name];
-                var tag1 = new ProductTagGroupService();
+                var tag1 = new ProductService();
                 tag1.DeleteTagById(id);
                 _mainWindow.TagsIdAndTags.Remove(ListViewEditTagsWndw.SelectedItem.ToString());
                 _mainWindow.FillingComboBoxTags();
@@ -83,7 +83,7 @@ namespace CustomerAnalyticSystem.UI
                     if (TextBoxEditTag.Text != String.Empty)
                     {
                         int id = _mainWindow.TagsIdAndTags[((TagModel)ListViewEditTagsWndw.SelectedItem).Name];
-                        var tag = new ProductTagGroupService();
+                        var tag = new ProductService();
                         tag.UpdateTagById(id, TextBoxEditTag.Text);
                         _mainWindow.TagsIdAndTags.Remove(ListViewEditTagsWndw.SelectedItem.ToString());
                         _mainWindow.TagsIdAndTags.Add(TextBoxEditTag.Text, id);

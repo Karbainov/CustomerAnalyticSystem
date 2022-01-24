@@ -1,16 +1,35 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
 using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL.RepInterfaces;
 using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL
 {
     public class CustomerService
     {
+
+        protected ICustomerRepository _rep = new CustomerTypeCustomerCommentRepository();
+
+        public CustomerService(ICustomerRepository rep = null)
+        {
+            if (rep is not null)
+            {
+                _rep = rep;
+            }
+        }
+
+        public List<CustomerTypeModel> GetAllCustomerTypeModel()
+        {
+            List<CustomerTypeDTO> DTOs = _rep.GetAllCustomerType();
+            BestMapper map = new BestMapper();
+            return map.MapCustomerTypeDTOToCustomerTypeModel(DTOs);
+        }
+
         public void AddCustomer(CustomerModel model)
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-            MrMappi map = new MrMappi();
+            BestMapper map = new BestMapper();
             CustomerDTO customer = map.MapFromCustomerModelToCustomerDTO(model);
             rep.AddCustomer(customer);
         }
@@ -19,7 +38,7 @@ namespace CustomerAnalyticSystem.BLL
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             var DTO = rep.GetCustomerInfoService(id);
-            var map = new MrMappi();
+            var map = new BestMapper();
             CustomerInfoModel result = map.MapCustomerInfoDTOToCustomerModel(DTO);
 
             return result;
@@ -27,9 +46,8 @@ namespace CustomerAnalyticSystem.BLL
 
         public List<CustomerInfoModel> GetAllCustomerInfoModels()
         {
-            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
-            List<CustomerInfoDTO> customers = rep.GetAllCustomerInfoDTO();
-            var map = new MrMappi();
+            List<CustomerInfoDTO> customers = _rep.GetAllCustomerInfoDTO();
+            var map = new BestMapper();
 
             return map.MapListCustomerDTOToListCustomerModel(customers);
         }
@@ -62,8 +80,26 @@ namespace CustomerAnalyticSystem.BLL
         {
             CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
             List<CommentDTO> coments = rep.GetAllCommentByCustomerId(id);
-            var map = new MrMappi();
+            var map = new BestMapper();
             return map.MapFromCommentDTOToCommentModel(coments);
         }
+
+        public List<CustomerDTO> GetAllCustomers()
+        {
+            CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+            return rep.GetAllCustomers();
+        }
+
+        //public List<CustomerTypeModel> GetAllCustomerTypeModel()
+        //{
+        //    List<CustomerTypeModel> customerTypes = new List<CustomerTypeModel>();
+
+        //    CustomerTypeCustomerCommentRepository rep = new CustomerTypeCustomerCommentRepository();
+        //    List<CustomerTypeDTO> DTOs = rep.GetAllCustomerType();
+        //    MrMappi map = new MrMappi();
+        //    customerTypes = map.MapCustomerTypeDTOToCustomerTypeModel(DTOs);
+
+        //    return customerTypes;
+        //}
     }
 }

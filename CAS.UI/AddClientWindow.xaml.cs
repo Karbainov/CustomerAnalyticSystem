@@ -31,7 +31,7 @@ namespace CustomerAnalyticSystem.UI
 
         private List<ContactTypeModel> GetContactTypes()
         {
-            ContactTypeContactService serve = new ContactTypeContactService();
+            ContactService serve = new ContactService();
             return serve.GetAllContactTypeModel();
         }
 
@@ -45,10 +45,10 @@ namespace CustomerAnalyticSystem.UI
             }
         }
 
-        private List<CustomerTypeModel> GetCustomerTypeModels()
-        {
-            CustomerTypeCustomerCommentService serve = new CustomerTypeCustomerCommentService();
-            return serve.GetAllCustomerTypeModel();
+        private List<CustomerTypeModel> GetCustomerTypeModels()
+        {
+            CustomerService serve = new CustomerService();
+            return serve.GetAllCustomerTypeModel();
         }
 
         private void FillCustomerTypeComboBox(List<CustomerTypeModel> list)
@@ -93,7 +93,7 @@ namespace CustomerAnalyticSystem.UI
                 {
                     contact.CustomerId = CustomerId;
 
-                    ContactTypeContactService contServe = new ContactTypeContactService();
+                    ContactService contServe = new ContactService();
                     contServe.AddContact(contact);
                 }
 
@@ -103,13 +103,16 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonAddContactAddClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            ContactBaseModel model = new ContactBaseModel()
+            if (ComboBoxContactType.SelectedIndex > -1 && TextBoxContact.Text != "")
             {
-                ContactTypeId = (_contactTypes)[ComboBoxContactType.SelectedIndex].Id,
-                Value = TextBoxContact.Text
-            };
+                ContactBaseModel model = new ContactBaseModel()
+                {
+                    ContactTypeId = (_contactTypes)[ComboBoxContactType.SelectedIndex].Id,
+                    Value = TextBoxContact.Text
+                };
 
-            ListViewContact.Items.Add(model);
+                ListViewContact.Items.Add(model);
+            }
         }
 
         private void ButtonDeleteContactAddClientWndw_Click(object sender, RoutedEventArgs e)
@@ -130,12 +133,15 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonAddCommentAddClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            CommentModel model = new CommentModel()
+            if (TextBoxComment.Text != "")
             {
-                Text = TextBoxComment.Text
-            };
+                CommentModel model = new CommentModel()
+                {
+                    Text = TextBoxComment.Text
+                };
 
-            ListViewComments.Items.Add(model);
+                ListViewComments.Items.Add(model);
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)

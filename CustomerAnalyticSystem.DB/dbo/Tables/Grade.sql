@@ -5,6 +5,6 @@
 	[CustomerId] integer NOT NULL,
 	[Value] integer NULL,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
-    Foreign key (ProductID) references [Product] (ID),
-	Foreign key (CustomerID) references [Customer] (ID)
+    Foreign key (ProductId) references [Product] (ID),
+	Foreign key (CustomerId) references [Customer] (ID)
 )

@@ -13,12 +13,12 @@
 
         public override bool Equals(object obj)
         {
-            if (obj is not ProductBaseModel)
+            if (obj is not GroupBaseModel)
             {
                 return false;
             }
 
-            ProductBaseModel model = (ProductBaseModel)obj;
+            GroupBaseModel model = (GroupBaseModel)obj;
 
             return
                 model.Id == Id

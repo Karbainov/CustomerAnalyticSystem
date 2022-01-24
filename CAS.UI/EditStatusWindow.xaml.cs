@@ -10,23 +10,16 @@ namespace CustomerAnalyticSystem.UI
     public partial class EditStatusWindow : Window
     {
         MainWindow _mainWindow;
-        //AddOrderWindow _addOrderWindow;
-        public EditStatusWindow(AddOrderWindow addOrderWindow)
+        public EditStatusWindow(MainWindow mainWindow)
         {
-            
             InitializeComponent();
-        }
-
-        public EditStatusWindow(EditOrderWindow editOrderWindow)
-        {
-            
-            InitializeComponent();
+            _mainWindow = mainWindow;
+            FillingListViewStatus();
         }
 
         public void FillingListViewStatus()
         {
-            //var a = _addOrderWindow;
-            foreach (var Key in _mainWindow.StatusIdAndStatus.Keys)
+            foreach (string Key in _mainWindow.StatusIdAndStatus.Keys)
             {
                 ListViewStatus.Items.Add(Key);
             }
@@ -68,6 +61,8 @@ namespace CustomerAnalyticSystem.UI
                     _mainWindow.StatusIdAndStatus.Remove(ListViewStatus.SelectedItem.ToString());
                     servise.DeleteStatusById(id);
                     _mainWindow.FillingComboBoxStatus();
+                    FillingListViewStatus();
+
                 }
             }
             else
@@ -90,6 +85,8 @@ namespace CustomerAnalyticSystem.UI
                         _mainWindow.FillingComboBoxStatus();
                         var servise = new OrderCheckStatusService();
                         servise.UpdateStatusById(id, TextBoxNewStatus.Text);
+                        FillingListViewStatus();
+                        TextBoxNewStatus.Text = "";
                     }
                     else
                     {
@@ -106,5 +103,7 @@ namespace CustomerAnalyticSystem.UI
                 MessageBox.Show("Выберите статус для редактирвоания");
             }
         }
+
+       
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    public class ContactTypeContactRepository
+    public class ContactRepository
     {
         public List<ContactDTO> GetAllContact()
         {

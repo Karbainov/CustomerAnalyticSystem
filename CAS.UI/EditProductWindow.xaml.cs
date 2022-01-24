@@ -46,7 +46,7 @@ namespace CustomerAnalyticSystem.UI
                 _product.Description = TextBoxProductDescriptionEditWndw.Text;
                 _product.GroupName = ComboBoxProductGroupEditWndw.SelectedItem.ToString();
                 int id = _mainWindow.GroupsIdAndGroups[ComboBoxProductGroupEditWndw.SelectedItem.ToString()];
-                ProductTagGroupService product = new ProductTagGroupService();
+                ProductService product = new ProductService();
                 product.UpdateProductById(_product.Id, _product.Name, _product.Description, id);
                 _mainWindow.FillingListViewProducts();
                 this.Close();
@@ -60,7 +60,7 @@ namespace CustomerAnalyticSystem.UI
         private void FillingListViewTagsEditWndw()
         {
             ListViewTagsEditWndw.Items.Clear();
-            var tags = new ProductTagGroupService();
+            var tags = new ProductService();
             var listTags = tags.GetAllTagsByProductId(_product.Id);
             foreach (var t in listTags)
             {
@@ -72,7 +72,7 @@ namespace CustomerAnalyticSystem.UI
         {
             if (ComboBoxEditWindowTags.SelectedIndex != -1)
             {
-                var tags = new ProductTagGroupService();
+                var tags = new ProductService();
                 string tag = ComboBoxEditWindowTags.SelectedItem.ToString();
                 int id = _mainWindow.TagsIdAndTags[tag];
                 tags.AddProductTag(_product.Id, id);
@@ -98,7 +98,7 @@ namespace CustomerAnalyticSystem.UI
             {
                 string tag = ListViewTagsEditWndw.SelectedItem.ToString();
                 int id = _mainWindow.TagsIdAndTags[tag];
-                var tag2 = new ProductTagGroupService();
+                var tag2 = new ProductService();
                 tag2.DeleteProduct_TagByTagIdAndProductId(_product.Id, id);
                 FillingListViewTagsEditWndw();
             }
@@ -113,7 +113,7 @@ namespace CustomerAnalyticSystem.UI
             if (System.Windows.MessageBox.Show(this, $"Вы уверены, что хотите удалить {_product.Name}?",
                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                var products = new ProductTagGroupService();
+                var products = new ProductService();
                 products.DeleteProductById(_product.Id);
                 _mainWindow.FillingListViewProducts();
                 this.Close();

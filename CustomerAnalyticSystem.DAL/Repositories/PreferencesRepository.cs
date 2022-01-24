@@ -7,7 +7,7 @@ using System.Data;
 using System.Linq;
 namespace CustomerAnalyticSystem.DAL
 {
-    public class GradePreferencesRepository
+    public class PreferencesRepository
     {
         public List<GradeDTO> GetAllGrades()
         {

@@ -1,4 +1,5 @@
 ﻿using CustomerAnalyticSystem.DAL.DTOs;
+using CustomerAnalyticSystem.DAL.RepInterfaces;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    public class OrderCheckStatusRepository
+    public class OrderRepository : IOrderRepository
     {
         public List<OrderDTO> GetAllOrders()
         {
@@ -83,7 +84,6 @@ namespace CustomerAnalyticSystem.DAL
 
         public void AddStatus(string Name)
         {
-
             using (SqlConnection connection = new SqlConnection(ConnectionString.Connection))
             {
                 connection.Query<StatusDTO>(Queries.AddStatus, new { Name }
