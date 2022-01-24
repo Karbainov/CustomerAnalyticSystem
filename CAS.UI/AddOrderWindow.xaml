@@ -76,15 +76,15 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonAddPositionAddOrderWndw" Content="Добавить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30"/>
-            <Button x:Name="ButtonDeletePositionAddOrderWndw" Content="Удалить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
+            <Button x:Name="ButtonAddPositionAddOrderWndw" Content="Добавить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Width="150" Height="30" BorderBrush="#FF575958"  Background="#FF7CDC89"/>
+            <Button x:Name="ButtonDeletePositionAddOrderWndw" BorderBrush="#FF575958"  Background="#FFE33030" Content="Удалить позицию" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Width="150" Height="30"/>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonAddOrderAddOrderWndw" Content="Сохранить изменения" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="0" Width="150" Height="30" Grid.ColumnSpan="2" Margin="125,10,0,0"/>
+            <Button x:Name="ButtonAddOrderAddOrderWndw" Content="Сохранить изменения" HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.Column="0" Width="150" Height="30" Grid.ColumnSpan="2" Margin="125,10,0,0" Background="#FF98E5FF"/>
 
         </Grid>
 

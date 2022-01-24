@@ -33,12 +33,12 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="TextBoxNewTag" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="100" Grid.Column="0" Height="20" Margin="0,0,0,20"/>
-            <Button x:Name="ButtonAddTag" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="ButtonAddTag_Click" Margin="0,0,0,7" Width="90" Height="20"/>
+            <Button x:Name="ButtonAddTag" BorderBrush="#FF575958"  Background="#FF7CDC89" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="ButtonAddTag_Click" Margin="0,0,0,7" Width="90" Height="20"/>
             <TextBox x:Name="TextBoxEditTag" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Width="100" Grid.Column="1" GotFocus="TextBoxEditTag_GotFocus" Height="20" Margin="0,0,0,20"/>
-            <Button x:Name="ButtonEditTag" Content="Редактировать" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Click="ButtonEditTag_Click" Grid.Column="1" Margin="0,0,0,7" Width="90"/>
+            <Button x:Name="ButtonEditTag" BorderBrush="#FF575958"  Background="#FF7CCDDC" Content="Редактировать" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Click="ButtonEditTag_Click" Grid.Column="1" Margin="0,0,0,7" Width="90"/>
 
         </Grid>
-        <Button x:Name="ButtonDeleteTag" Content="Удалить" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="ButtonDeleteTag_Click"  Width="90" Height="20" Grid.Row="3"/>
+        <Button x:Name="ButtonDeleteTag" BorderBrush="#FF575958"  Background="#FFE33030" Content="Удалить" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="ButtonDeleteTag_Click"  Width="90" Height="20" Grid.Row="3"/>
     </Grid>
 
 
