@@ -8,6 +8,6 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Status { get; set; }
-        public string Cost { get; set; }
+        public int Cost { get; set; }
     }
 }

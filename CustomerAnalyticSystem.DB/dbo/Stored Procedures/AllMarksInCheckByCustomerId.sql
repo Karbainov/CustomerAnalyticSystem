@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[AllMarksInCheckByCustomerId]
-	@id int
+	@Id int
 AS
 	select C.[ProductId], Prd.[Name], Prd.[Description], C.[Mark] from [dbo].[Check] as C
 join [dbo].[Product] as Prd

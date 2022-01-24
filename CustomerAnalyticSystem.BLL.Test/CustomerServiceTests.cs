@@ -4,14 +4,9 @@ using CustomerAnalyticSystem.DAL.DTOs;
 using CustomerAnalyticSystem.DAL.RepInterfaces;
 using NUnit.Framework;
 using System;
-using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.BLL.Services;
 using CustomerAnalyticSystem.BLL.Test.TestCaseSource.ProductTestCaseSource;
-using CustomerAnalyticSystem.BLL.Test.TestCaseSourse;
-using CustomerAnalyticSystem.DAL.DTOs;
-using CustomerAnalyticSystem.DAL.RepInterfaces;
 using Moq;
-using NUnit.Framework;
 using System.Collections.Generic;
 using CustomerAnalyticSystem.DAL;
 

@@ -1,11 +1,22 @@
 ﻿using CustomerAnalyticSystem.BLL.Models;
 using CustomerAnalyticSystem.DAL;
+using CustomerAnalyticSystem.DAL.RepInterfaces;
 using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
     public class OrderCheckStatusService
     {
+        protected IOrderRepository _rep = new OrderRepository();
+
+        public OrderCheckStatusService(IOrderRepository rep = null)
+        {
+            if (rep is not null)
+            {
+                _rep = rep;
+            }
+        }
+
         //public List<OrderBaseModel> GetBaseOrderModel()
         //{
         //    MrMappi map = new();
@@ -40,8 +51,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         public List<StatusModel> GetAllStatus()
         {
             BestMapper map = new();
-            var service = new OrderRepository();
-            var dto = service.GetAllStatus();
+            var dto = _rep.GetAllStatus();
             List<StatusModel> result = map.MapFromStatus(dto);
             return result;
         }
@@ -70,8 +80,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         public List<OrderBaseModel> GetAllOrdersByStatusId(int id)
         {
             BestMapper map = new();
-            var service = new OrderRepository();
-            var dto = service.GetAllOrdersByStatusId(id);
+            var dto = _rep.GetAllOrdersByStatusId(id);
             List<OrderBaseModel> result = map.MapFromOrderDTOToOrderBaseModel(dto);
             return result;
         }
@@ -79,8 +88,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         public List<CheckByOrderIdModel> GetCheckByOrderId(int id)
         {
             BestMapper map = new();
-            var service = new OrderRepository();
-            var dto = service.GetCheckByOrderId(id);
+            var dto = _rep.GetCheckByOrderId(id);
             List<CheckByOrderIdModel> result = map.MapCheckByOrderId(dto);
             return result;
         }
