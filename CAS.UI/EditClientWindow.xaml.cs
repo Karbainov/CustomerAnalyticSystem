@@ -200,22 +200,27 @@ namespace CustomerAnalyticSystem.UI
 
         private void ButtonDeleteContactEditClientWndw_Click(object sender, RoutedEventArgs e)
         {
-
-            var contactId = contactModels[ListViewContactContactType.SelectedIndex].Id;
-            ContactService serve = new ContactService();
-            serve.DeleteContact(contactId);
-            contactModels.Clear();
-            contactModels = FillListContactModelWitId();
-            FillListViewContactContactType(contactModels);
+            if (ListViewContactContactType.SelectedIndex > -1)
+            {
+                var contactId = contactModels[ListViewContactContactType.SelectedIndex].Id;
+                ContactService serve = new ContactService();
+                serve.DeleteContact(contactId);
+                contactModels.Clear();
+                contactModels = FillListContactModelWitId();
+                FillListViewContactContactType(contactModels);
+            }
         }
 
         private void ButtonDeleteCommentEditClientWndw_Click(object sender, RoutedEventArgs e)
         {
-            var commentId = _comments[ListViewComments.SelectedIndex].Id;
-            CustomerService serve = new CustomerService();
-            serve.DeleteCommentById(commentId);
-            _comments = GetCommentList();
-            FillListViewComment(_comments);
+            if (ListViewComments.SelectedIndex > -1)
+            {
+                var commentId = _comments[ListViewComments.SelectedIndex].Id;
+                CustomerService serve = new CustomerService();
+                serve.DeleteCommentById(commentId);
+                _comments = GetCommentList();
+                FillListViewComment(_comments);
+            }
         }
 
         private void ButtonDeleteClientCard_Click(object sender, RoutedEventArgs e)
