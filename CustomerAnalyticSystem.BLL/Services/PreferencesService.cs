@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
-    public class GradePreferencesService
+    public class PreferencesService
     {
         public List<PreferencesBaseModel> GetBasePreferencesModel()
         {
-            MrMappi map = new();
-            var service = new GradePreferencesRepository();
+            BestMapper map = new();
+            var service = new PreferencesRepository();
             var dto = service.GetAllPreferences();
             List<PreferencesBaseModel> result = map.MapFromPreferencesDTOToPreferenceBaseModel(dto);
             return result;

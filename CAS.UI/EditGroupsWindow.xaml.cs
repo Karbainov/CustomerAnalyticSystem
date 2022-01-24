@@ -19,7 +19,7 @@ namespace CustomerAnalyticSystem.UI
         private void FillingListViewEditGroupsWndw()
         {
             ListViewEditGroupsWndw.Items.Clear();
-            var group = new ProductTagGroupService();
+            var group = new ProductService();
             var groupList = group.GetAllGroups();
             foreach (var g in groupList)
             {
@@ -33,7 +33,7 @@ namespace CustomerAnalyticSystem.UI
             {
                 if (TextBoxNewGroup.Text != String.Empty)
                 {
-                    var group = new ProductTagGroupService();
+                    var group = new ProductService();
                     group.AddGroup(TextBoxNewGroup.Text, TextBoxDescription.Text);
                     _mainWindow.FillingComboBoxGroups();
                     FillingListViewEditGroupsWndw();
@@ -64,7 +64,7 @@ namespace CustomerAnalyticSystem.UI
                    "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     int id = _mainWindow.GroupsIdAndGroups[((GroupBaseModel)(ListViewEditGroupsWndw.SelectedItem)).Name];
-                    var group = new ProductTagGroupService();
+                    var group = new ProductService();
                     group.DeleteGroupById(id);
                     _mainWindow.GroupsIdAndGroups.Remove(ListViewEditGroupsWndw.SelectedItem.ToString());
                     _mainWindow.FillingComboBoxGroups();
@@ -87,7 +87,7 @@ namespace CustomerAnalyticSystem.UI
                     {
                         GroupBaseModel model = (GroupBaseModel)ListViewEditGroupsWndw.SelectedItem;
                         int id = _mainWindow.GroupsIdAndGroups[model.Name];
-                        var group = new ProductTagGroupService();
+                        var group = new ProductService();
                         group.UpdateGroupById(id, TextBoxEditGroup.Text, TextBoxDescription.Text);
                         _mainWindow.GroupsIdAndGroups.Remove(model.Name);
                         _mainWindow.GroupsIdAndGroups.Add(TextBoxEditGroup.Text, id);

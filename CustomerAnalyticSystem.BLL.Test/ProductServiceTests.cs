@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL.Test
 {
-    public class ProductTagGroupServiceTests
+    public class ProductServiceTests
     {
 
         #region tag
@@ -18,9 +18,9 @@ namespace CustomerAnalyticSystem.BLL.Test
         [TestCaseSource(typeof(GetAllTagsTestCaseSource))]
         public void GetAllTagsTest(List<TagModel> expected, List<TagDTO> tagDTO)
         {
-            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllTags()).Returns(tagDTO);
-            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+            ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
 
             List<TagModel> actual = productTagGroupRepository.GetAllTags();
 
@@ -34,9 +34,9 @@ namespace CustomerAnalyticSystem.BLL.Test
         [TestCaseSource(typeof(GetAllGroupsTestCaseSource))]
         public void GetAllGroupTest(List<GroupBaseModel> expected, List<GroupBaseDTO> groupDTO)
         {
-            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllGroup()).Returns(groupDTO);
-            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+            ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
 
             List<GroupBaseModel> actual = productTagGroupRepository.GetAllGroups();
 
@@ -50,9 +50,9 @@ namespace CustomerAnalyticSystem.BLL.Test
         [TestCaseSource(typeof(GetAllProductsTestCaseSource))]
         public void GetAllProductsTest(List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
         {
-            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllProductsWithGroups()).Returns(productDTO);
-            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+            ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
 
             List<ProductBaseModel> actual = productTagGroupRepository.GetAllProducts();
 
@@ -65,9 +65,9 @@ namespace CustomerAnalyticSystem.BLL.Test
         [TestCaseSource(typeof(GetAllProductsByGroupIdTestCaseSource))]
         public void GetAllProductsByGroupIdTest(int id, List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
         {
-            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllProductsByGroupId(id)).Returns(productDTO);
-            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+            ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
 
             List<ProductBaseModel> actual = productTagGroupRepository.GetAllProductsByGroupId(id);
 
@@ -80,9 +80,9 @@ namespace CustomerAnalyticSystem.BLL.Test
         [TestCaseSource(typeof(GetAllTagsByProductIdTestCaseSource))]
         public void GetAllTagsByProductIdTest(int id, List<TagModel> expected, List<TagDTO> tagDTO)
         {
-            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllTagsByProductId(id)).Returns(tagDTO);
-            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+            ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
         
             List<TagModel> actual = productTagGroupRepository.GetAllTagsByProductId(id);
         
@@ -96,9 +96,9 @@ namespace CustomerAnalyticSystem.BLL.Test
         [TestCaseSource(typeof(GetAllProductsByTagTestCaseSource))]
         public void GetAllProductsByTagTest(int id, List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
         {
-            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllProductsByTag(id)).Returns(productDTO);
-            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+            ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
         
             List<ProductBaseModel> actual = productTagGroupRepository.GetAllProductsByTagId(id);
         
@@ -112,9 +112,9 @@ namespace CustomerAnalyticSystem.BLL.Test
         [TestCaseSource(typeof(GetAllProductsWithGroupsTestCaseSource))]
         public void GetAllProductsWithGroupsTest(List<ProductBaseModel> expected, List<ProductsWithGroupsDTO> productDTO)
         {
-            Mock<IProductTagGroupRepository> mock = new Mock<IProductTagGroupRepository>();
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup((obj) => obj.GetAllProductsWithGroups()).Returns(productDTO);
-            ProductTagGroupService productTagGroupRepository = new ProductTagGroupService((IProductTagGroupRepository)mock.Object);
+            ProductService productTagGroupRepository = new ProductService((IProductRepository)mock.Object);
         
             List<ProductBaseModel> actual = productTagGroupRepository.GetAllProducts();
         

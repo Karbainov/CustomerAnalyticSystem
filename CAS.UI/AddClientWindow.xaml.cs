@@ -31,7 +31,7 @@ namespace CustomerAnalyticSystem.UI
 
         private List<ContactTypeModel> GetContactTypes()
         {
-            ContactTypeContactService serve = new ContactTypeContactService();
+            ContactService serve = new ContactService();
             return serve.GetAllContactTypeModel();
         }
 
@@ -93,7 +93,7 @@ namespace CustomerAnalyticSystem.UI
                 {
                     contact.CustomerId = CustomerId;
 
-                    ContactTypeContactService contServe = new ContactTypeContactService();
+                    ContactService contServe = new ContactService();
                     contServe.AddContact(contact);
                 }
 

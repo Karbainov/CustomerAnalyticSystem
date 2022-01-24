@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    public class ProductTagGroupRepository : IProductTagGroupRepository
+    public class ProductRepository : IProductRepository
     {
         #region Product
         public void AddProduct(string name, string description, int groupId)
@@ -342,8 +342,8 @@ namespace CustomerAnalyticSystem.DAL
         public StackDTO GetAllInfo()
         {
             StackDTO result = new();
-            var tmp = new OrderCheckStatusRepository();
-            var tmp2 = new GradePreferencesRepository();
+            var tmp = new OrderRepository();
+            var tmp2 = new PreferencesRepository();
 
             result.Groups = GetAllGroup();
             result.Tags = GetAllTags();

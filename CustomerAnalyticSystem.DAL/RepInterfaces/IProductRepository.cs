@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.DAL.RepInterfaces
 {
-    public interface IProductTagGroupRepository
+    public interface IProductRepository
     {
         public List<TagDTO> GetAllTags();
         public void UpdateTagById(int id, string name);

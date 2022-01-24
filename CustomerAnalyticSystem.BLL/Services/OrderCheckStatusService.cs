@@ -17,21 +17,21 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public void UpdateCheck(int id, int productId, int orderId, int amount, int mark)
         {
-            OrderCheckStatusRepository rep = new OrderCheckStatusRepository();
+            OrderRepository rep = new OrderRepository();
             rep.UpdateCheck(id, productId, orderId, amount, mark);
         }
 
         public void DeleteCheck(int id)
         {
-            OrderCheckStatusRepository rep = new OrderCheckStatusRepository();
+            OrderRepository rep = new OrderRepository();
             rep.DeleteCheck(id);
         }
 
 
         public List<OrderBaseModel> GetBaseOrderModel()
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             var dto = service.GetOrderModel();
             List<OrderBaseModel> result = map.MapBaseOrder(dto);
             return result;
@@ -39,8 +39,8 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public List<StatusModel> GetAllStatus()
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             var dto = service.GetAllStatus();
             List<StatusModel> result = map.MapFromStatus(dto);
             return result;
@@ -48,29 +48,29 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public void AddStatus(string name)
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             service.AddStatus(name);
         }
 
         public void DeleteStatusById(int id)
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             service.DeleteStatusById(id);
         }
 
         public void UpdateStatusById(int id, string name)
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             service.UpdateStatusById(id, name);
         }
 
         public List<OrderBaseModel> GetAllOrdersByStatusId(int id)
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             var dto = service.GetAllOrdersByStatusId(id);
             List<OrderBaseModel> result = map.MapFromOrderDTOToOrderBaseModel(dto);
             return result;
@@ -78,8 +78,8 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public List<CheckByOrderIdModel> GetCheckByOrderId(int id)
         {
-            MrMappi map = new();
-            var service = new OrderCheckStatusRepository();
+            BestMapper map = new();
+            var service = new OrderRepository();
             var dto = service.GetCheckByOrderId(id);
             List<CheckByOrderIdModel> result = map.MapCheckByOrderId(dto);
             return result;

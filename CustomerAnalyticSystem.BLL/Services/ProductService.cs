@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace CustomerAnalyticSystem.BLL.Services
 {
-    public class ProductTagGroupService
+    public class ProductService
     {
-        protected IProductTagGroupRepository _rep = new ProductTagGroupRepository();
+        protected IProductRepository _rep = new ProductRepository();
 
-        public ProductTagGroupService(IProductTagGroupRepository rep = null)
+        public ProductService(IProductRepository rep = null)
         {
             if (rep is not null)
             {
@@ -21,7 +21,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         #region tag crud
         public List<TagModel> GetAllTags()
         {
-            MrMappi map = new();
+            BestMapper map = new();
             var dto = _rep.GetAllTags();
             List<TagModel> result = map.MapFromTagDTOToTagModel(dto);
             return result;
@@ -29,19 +29,19 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public void UpdateTagById(int id, string name)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.UpdateTagById(id, name);
         }
 
         public void DeleteTagById(int id)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.DeleteTagById(id);
         }
 
         public void AddTag(string name)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.AddTag(name);
         }
 
@@ -50,19 +50,19 @@ namespace CustomerAnalyticSystem.BLL.Services
         #region product crud
         public void UpdateProductById(int id, string name, string description, int groupId)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.UpdateProductById(id, name, description, groupId);
         }
 
         public void AddProduct(string name, string description, int groupId)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.AddProduct(name, description, groupId);
         }
 
         public List<ProductBaseModel> GetAllProducts()
         {
-            MrMappi map = new();
+            BestMapper map = new();
             var dto = _rep.GetAllProductsWithGroups();
             var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
@@ -70,7 +70,7 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public void DeleteProductById(int id)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.DeleteProductById(id);
         }
 
@@ -79,7 +79,7 @@ namespace CustomerAnalyticSystem.BLL.Services
         #region group crud
         public List<GroupBaseModel> GetAllGroups()
         {
-            MrMappi map = new();
+            BestMapper map = new();
             var dto = _rep.GetAllGroup();
             List<GroupBaseModel> result = map.MapFromGroupBaseDTOToGroupBaseModel(dto);
             return result;
@@ -87,19 +87,19 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public void UpdateGroupById(int id, string name, string description)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.UpdateGroupById(id, name, description);
         }
 
         public void AddGroup(string name, string description)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.AddGroup(name, description);
         }
 
         public void DeleteGroupById(int id)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.DeleteGroupById(id);
         }
 
@@ -109,19 +109,19 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public void UpdateProductTag(int id, int productId, int tagId)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.UpdateProduct_TagById(id, productId, tagId);
         }
 
         public void AddProductTag(int productId, int tagId)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.AddProduct_Tag(productId, tagId);
         }
 
         public void DeleteProductTag(int id)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.DeleteProduct_TagById(id);
         }
 
@@ -129,7 +129,7 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public List<ProductBaseModel> GetAllProductsByTagId(int id)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             var dto = _rep.GetAllProductsByTag(id);
             var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
@@ -137,7 +137,7 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public List<ProductBaseModel> GetAllProductsByGroupId(int id)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             var dto = _rep.GetAllProductsByGroupId(id);
             var result = map.MapFromProductBaseDTOToProductBaseModel(dto);
             return result;
@@ -145,7 +145,7 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public List<TagModel> GetAllTagsByProductId(int id)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             var dto = _rep.GetAllTagsByProductId(id);
             List<TagModel> result = map.MapFromTagDTOToTagModel(dto);
             return result;
@@ -153,13 +153,13 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public void DeleteProduct_TagByTagIdAndProductId(int idP, int idT)
         {
-            MrMappi map = new();
+            BestMapper map = new();
             _rep.DeleteProduct_TagByTagIdAndProductId(idP, idT);
         }
 
         public List<GroupsWithProductsModel> GetAllGroupsWithProducts()
         {
-            MrMappi map = new();
+            BestMapper map = new();
             var dto = _rep.GetAllGroupsWithProducts();
             List<GroupsWithProductsModel> result = map.MapGroupsWithProducts(dto);
             return result;
@@ -167,7 +167,7 @@ namespace CustomerAnalyticSystem.BLL.Services
 
         public StackModel GetAllInfoAboutAll()
         {
-            MrMappi map = new();
+            BestMapper map = new();
             var dto = _rep.GetAllInfo();
             StackModel result = map.GetAllInfoForProductAnalise(dto);
             return result;

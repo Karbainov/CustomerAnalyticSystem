@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace CustomerAnalyticSystem.DAL
 {
-    public class OrderCheckStatusRepository
+    public class OrderRepository
     {
         public List<OrderDTO> GetAllOrders()
         {
