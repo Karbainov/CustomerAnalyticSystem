@@ -99,8 +99,8 @@
                                 <GridView>
                                     <GridViewColumn Width="211" Header="ID клиента" DisplayMemberBinding="{Binding Id}"/>
                                     <GridViewColumn Width="211" Header="Тип клиента" DisplayMemberBinding="{Binding Name}"/>
-                                    <GridViewColumn Width="211" Header="Фамилия" DisplayMemberBinding="{Binding LastName}"/>
-                                    <GridViewColumn Width="211" Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
+                                    <GridViewColumn Width="211" Header="Фамилия" DisplayMemberBinding="{Binding FirstName}"/>
+                                    <GridViewColumn Width="211" Header="Имя" DisplayMemberBinding="{Binding LastName}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
